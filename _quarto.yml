@@ -1,0 +1,68 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "CE306 - Instrumentação Matemática para Estatística"
+  # author: "Wagner Bonat"
+  favicon: default_overview_image.jpg
+  # description: Material da disciplina CE306 - Instrumentação Matemática para Estatística do curso de Estatística da Universidade Federal do Paraná (UFPR).
+  keyword: statistics, math, R, quarto, data science, matemática para estatística, ciencia de dados
+  # url: https://raymz1990.github.io/CE306/
+
+  repo-url: https://raymz1990.github.io/CE313/
+  repo-subdir: book
+  repo-branch: main
+  repo-actions: [edit, issue]
+
+  search: true
+  downloads: [pdf, docx]
+  sharing: [twitter, facebook, linkedin]
+  page-navigation: true
+  image: default_overview_image.jpg
+  # comments:
+  #  giscus:
+  #    repo: raymz1990/CE306
+  open-graph:
+    image: default_overview_image.jpg
+    description: Material da disciplina CE306 - Instrumentação Matemática para Estatística do curso de Estatística da Universidade Federal do Paraná (UFPR).
+  
+  sidebar: 
+    background: "#F5F5F5"
+    # logo: default_overview_image.jpg
+    # search: true
+    # pinned: true
+    # align: center
+
+  chapters:
+    - index.qmd
+
+    - content/index.qmd
+    
+    - content/Modulo01/index.qmd
+    - content/Modulo02/index.qmd
+    - content/Modulo03/index.qmd
+    - content/Modulo04/index.qmd
+
+  page-footer: 
+    left: |
+      Estatística 2023-2026
+    right: |
+      This book was built with <a href="https://quarto.org/">Quarto</a>.
+  
+
+format:
+  html:
+    theme:
+      light: cosmo
+    code-fold: false
+    css: custom.css
+    backgroundcolor: "#F5F5F5"
+  pdf:
+    documentclass: scrreprt
+
+execute:
+  freeze: auto
+
+# good themes: default, cosmo, flatly, lumen, minty, pulse, sandstone, solar, united
+# favourites: minty, cosmo

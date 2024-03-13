@@ -1,0 +1,151 @@
+# Apresentação {.unnumbered}
+
+**CE306 - Instrumentação Matemática para Estatística**
+<br>Departamento de Estatística - UFPR
+<br>Professor: [Wagner Bonat](https://docs.ufpr.br/~wagner/)
+<br>Primeiro Semestre 2024 (27/Fevereiro/2024 - 2/Julho/2024).
+
+---
+
+## Regras Gerais
+
+Olá Pessoal,
+
+De acordo com o discutido em sala de aula segue algumas regras para o bom andamento do curso:
+
+1. As aulas instrucionais serão realizadas de acordo com o [cronograma](#sec-cronograma) abaixo na sala PA09. Nas terças o horário será das 19:00 às 20:30 e nas quintas o horário será das 20:45 às 22:15.
+
+2. As avaliações serão todas realizadas na plataforma ufprvirtual.ufpr.br de acordo com o [cronograma](#sec-cronograma) abaixo. Respeitando sempre os dias e horários destinados à disciplina. Só será permitida UMA tentativa.
+
+3. Serão realizadas 6 (seis) avaliações durante o semestre conforme [cronograma](#sec-cronograma) abaixo. 
+
+4. A nota final será composta da média aritmética das seis avaliações (todas com o mesmo peso).
+
+5. Nas aulas instrucionais  (16 aulas) e avaliações (6 aulas) a presença é OBRIGATÓRIA e será controlado pela chamada oral AO FINAL da aula.
+
+6. Para aprovação o aluno deverá comparecer em pelo menos 75% das aulas. De acordo com o [cronograma](#sec-cronograma) em anexo o aluno deverá comparecer em pelo menos 16 (dezesseis) aulas para ter presença para aprovação.
+
+7. Para aprovação o aluno deverá obter média igual ou superior a 70 de acordo com o item 4. Caso a média fique entre 40 e 70 o aluno deverá realizar exame final. A média aritmética da nota do item 4 com a nota do exame final deverá ser maior que 50 para aprovação.
+
+8. Só será permitido realizar o exame final alunos que tenham presença suficiente para serem aprovados.
+
+9. O [cronograma](#sec-cronograma) de atividades poderá ser modificado de acordo com o andamento do semestre.
+
+10. A mudança nos dias das avaliações deverá ser aceita pela maioria dos alunos presentes no dia da decisão (caso seja necessário).
+
+Bom curso a todos.
+
+## Ementa
+
+Funções, limites e continuidade. Derivadas e integrais. Séries numéricas. Vetores, matrizes, sistemas lineares e decomposições matriciais. Métodos numéricos. Solução de sistemas de equações não-lineares. Derivação e integração numéricas. Otimização numéricos. Programação linear, quadrática e não-linear. Aspectos computacionais. Softwares para computação científica.
+
+## Referências bibliográficas básicas
+
+1, Deisenroth, M. P. ; Faisal, A. A. ; Ong, C. S. Mathematics for Machine Learning, Cambridge University Press, 2020;
+
+2. Goodfellow et. al. Deep Learning, MIT Press, 2016;
+
+3. R. A. Becker, J. M. Chambers and A. R. Wilks, “The New S Language,” Wadsworth &Brooks/Cole, Monterey, 1988.
+
+## Cronograma {#sec-cronograma}
+
+| Data     | Conteúdo                          |Local      | Presença |
+|:--------:|:----------------------------------|:---------:|:--------:|
+| 27/02/24 | Apresentação do curso             | PA09      | Sim      |
+| 29/02/24 | Motivação                         | PA09      | Sim      |
+| 05/03/24 | Funções                           | PA09      | Sim      |
+| 07/03/24 | Limites e Continuidade            | PA09      | Sim      |
+| 12/03/24 | Exercícios                        | Livre     | Não      | 
+| 14/03/24 | **Avaliação 1**                   | **LAB12** | Sim      |
+| 19/03/24 | Derivadas                         | PA09      | Sim      |
+| 21/03/24 | Derivadas                         | PA09      | Sim      |
+| 26/03/24 | Derivadas + Integrais + Exercicio | PA09      | Sim      |
+| 28/03/24 | Exercícios                        | Livre     | Não      |
+| 02/04/24 | Exercícios                        | Livre     | Não      |
+| 04/04/24 | **Avaliação 2**                   | **LAB12** | Sim      |
+| 09/04/24 | Vetores e Matrizes                | PA09      | Sim      |
+| 11/04/24 | Vetores e Matrizes                | PA09      | Sim      |
+| 16/04/24 | Exercícios                        | Livre     | Não      |
+| 18/04/24 | **Avaliação 3**                   | **LAB12** | Sim      |
+| 23/04/24 | Sistemas lineares e decomposições | PA09      | Sim      |
+| 25/04/24 | Sistemas Lineares e decomposições | PA09      | Sim      |
+| 30/04/24 | Exercícos                         | Livre     | Não      |
+| 02/05/24 | **Avaliação 4**                   | **LAB12** | Sim      |
+| 07/05/24 | Folga                             | Livre     | Não      |
+| 09/05/24 | Sistemas não lineares             | PA09      | Sim      |
+| 14/05/24 | Diferenciação numérica            | PA09      | Sim      |
+| 16/05/24 | Exercícios                        | Livre     | Não      |
+| 21/05/24 | **Avaliação 5**                   | **LAB12** | Sim      |
+| 23/05/24 | Integração numérica               | PA09      | Sim      |
+| 28/05/24 | Otimização numérica I             | PA09      | Sim      |
+| 30/05/24 | RBRAS                             | Livre     | Não      |
+| 04/06/24 | RBRAS                             | Livre     | Não      |
+| 06/06/24 | Otimização numérica II            | PA09      | Sim      |
+| 11/06/24 | Exercícios                        | Livre     | Não      |
+| 13/06/24 | Exercícios                        | Livre     | Não      |
+| 18/06/24 | **Avaliação 6**                   | **LAB12** | Sim      |
+| 20/06/24 | Folga                             | Livre     | Não      |
+| 25/06/24 | Semana de estudos                 | Livre     | Não      |
+| 27/06/24 | Semana de estudos                 | Livre     | Não      |
+| 02/07/24 | Final                             | **LAB12** | Sim      |
+
+## Materiais de Apoio e Exercícios
+
+Pessoal,
+
+Para cada avaliação eu criei um roteiro para você estudar. Você terá três momentos.
+
+1. Leitura prévia antes da aula;
+
+2. Aula instrucional em sala de aula;
+
+3. Leitura pós aula;
+
+4. Exercícios.
+
+O material base para você estudar é o meu livro "Matemática para Ciência de Dados" disponível neste endereço:
+http://leg.ufpr.br/~wagner/TMCD/
+
+**MUITO CUIDADO! O livro pode não estar disponível no dia da avaliação. Por isso, estude antes!**
+
+### Avaliação 1: 
+
+* Leitura do Prefácio + Seção 1.1;
+* Assistir e participar das aulas instrucionais;
+* Reler e refazer os exemplos da Seção 1.1;
+* Realizar os exercícios disponíveis na Seção 1.5 referentes a funções, limites e continuidade.
+
+### Avaliação 2:
+* Leitura das Seções 1.2 e 1.3;
+* Assistir e participar das aulas instrucionais;
+* Reler e refazer os exemplos das Seções 1.2 e 1.3.
+* Realizar os exercícios disponíveis na Seção 1.5 referentes a derivadas, integrais e os desafios.
+
+### Avaliação 3:
+* Leitura das Seções 2.1 e 2.2;
+* Assistir e participar das aulas instrucionais;
+* Reler e refazer os exemplos das Seções 2.1 e 2.2;
+* Realizar os exercícios disponíveis na Seção 2.8 referentes vetores e escalares e Matrizes.
+
+### Avaliação 4:
+* Leitura das Seções 2.3, 2.4, 2.5 e 2.6;
+* Assistir e participar das aulas instrucionais;
+* Reler e refazer os exemplos das Seções 2.3, 2.4, 2.5 e 2.6;
+* Realizar os exercícios disponíveis na Seção 2.8 referentes a sistemas lineares e decomposições e o desafio.
+
+### Avaliação 5:
+* Leitura das Seções 3.1 e 3.2;
+* Assistir e participar das aulas instrucionais;
+* Reler e refazer os exemplos das Seções 3.1 e 3.2;
+* Realizar os exercícios disponíveis na Seção 3.6 referentes a equações não-lineares e diferenciação numérica.
+
+### Avaliação 6:
+* Leitura das Seções 3.3 e 3.4;
+* Assistir e participar das aulas instrucionais;
+* Reler e refazer os exemplos das Seções 3.3 e 3.4;
+* Realizar os exercícios disponíveis na Seção 3.6 referentes a integração numérica e otimização numérica.
+
+Prof. Wagner
+
+
+

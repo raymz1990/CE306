@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.549">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>CE306 - Instrumentação Matemática para Estatística</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./content/index.html" rel="next">
+<link href="./default_overview_image.jpg" rel="icon" type="image/jpeg">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="custom.css">
+<meta property="og:title" content="CE306 - Instrumentação Matemática para Estatística">
+<meta property="og:description" content="Material da disciplina CE306 - Instrumentação Matemática para Estatística do curso de Estatística da Universidade Federal do Paraná (UFPR).">
+<meta property="og:image" content="default_overview_image.jpg">
+<meta property="og:site_name" content="CE306 - Instrumentação Matemática para Estatística">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Apresentação</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">CE306 - Instrumentação Matemática para Estatística</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://raymz1990.github.io/CE313/tree/main/book/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-git"></i></a>
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./CE306---Instrumentação-Matemática-para-Estatística.pdf">
+              <i class="bi bi-bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./CE306---Instrumentação-Matemática-para-Estatística.docx">
+              <i class="bi bi-bi-file-word pe-1"></i>
+            Download Docx
+            </a>
+          </li>
+      </ul>
+    </div>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-1" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-1">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+              <i class="bi bi-bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.facebook.com/sharer/sharer.php?u=|url|">
+              <i class="bi bi-bi-facebook pe-1"></i>
+            Facebook
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.linkedin.com/sharing/share-offsite/?url=|url|">
+              <i class="bi bi-bi-linkedin pe-1"></i>
+            LinkedIn
+            </a>
+          </li>
+      </ul>
+    </div>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Apresentação</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Prefácio</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./content/Modulo01/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Estatística Não Paramétrica</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./content/Modulo02/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Estatísticas de Ordem</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./content/Modulo03/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Estatística Não Paramétrica 2</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./content/Modulo04/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Função de Distribuição Empírica</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#apresentação" id="toc-apresentação" class="nav-link active" data-scroll-target="#apresentação">Apresentação</a>
+  <ul class="collapse">
+  <li><a href="#regras-gerais" id="toc-regras-gerais" class="nav-link" data-scroll-target="#regras-gerais">Regras Gerais</a></li>
+  <li><a href="#ementa" id="toc-ementa" class="nav-link" data-scroll-target="#ementa">Ementa</a></li>
+  <li><a href="#referências-bibliográficas-básicas" id="toc-referências-bibliográficas-básicas" class="nav-link" data-scroll-target="#referências-bibliográficas-básicas">Referências bibliográficas básicas</a></li>
+  <li><a href="#sec-cronograma" id="toc-sec-cronograma" class="nav-link" data-scroll-target="#sec-cronograma">Cronograma</a></li>
+  <li><a href="#materiais-de-apoio-e-exercícios" id="toc-materiais-de-apoio-e-exercícios" class="nav-link" data-scroll-target="#materiais-de-apoio-e-exercícios">Materiais de Apoio e Exercícios</a>
+  <ul class="collapse">
+  <li><a href="#avaliação-1" id="toc-avaliação-1" class="nav-link" data-scroll-target="#avaliação-1">Avaliação 1:</a></li>
+  <li><a href="#avaliação-2" id="toc-avaliação-2" class="nav-link" data-scroll-target="#avaliação-2">Avaliação 2:</a></li>
+  <li><a href="#avaliação-3" id="toc-avaliação-3" class="nav-link" data-scroll-target="#avaliação-3">Avaliação 3:</a></li>
+  <li><a href="#avaliação-4" id="toc-avaliação-4" class="nav-link" data-scroll-target="#avaliação-4">Avaliação 4:</a></li>
+  <li><a href="#avaliação-5" id="toc-avaliação-5" class="nav-link" data-scroll-target="#avaliação-5">Avaliação 5:</a></li>
+  <li><a href="#avaliação-6" id="toc-avaliação-6" class="nav-link" data-scroll-target="#avaliação-6">Avaliação 6:</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://raymz1990.github.io/CE313/edit/main/book/index.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://raymz1990.github.io/CE313/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">CE306 - Instrumentação Matemática para Estatística</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="apresentação" class="level1 unnumbered">
+<h1 class="unnumbered">Apresentação</h1>
+<p><strong>CE306 - Instrumentação Matemática para Estatística</strong> <br>Departamento de Estatística - UFPR <br>Professor: <a href="https://docs.ufpr.br/~wagner/">Wagner Bonat</a> <br>Primeiro Semestre 2024 (27/Fevereiro/2024 - 2/Julho/2024).</p>
+<hr>
+<section id="regras-gerais" class="level2">
+<h2 class="anchored" data-anchor-id="regras-gerais">Regras Gerais</h2>
+<p>Olá Pessoal,</p>
+<p>De acordo com o discutido em sala de aula segue algumas regras para o bom andamento do curso:</p>
+<ol type="1">
+<li><p>As aulas instrucionais serão realizadas de acordo com o <a href="#sec-cronograma">cronograma</a> abaixo na sala PA09. Nas terças o horário será das 19:00 às 20:30 e nas quintas o horário será das 20:45 às 22:15.</p></li>
+<li><p>As avaliações serão todas realizadas na plataforma ufprvirtual.ufpr.br de acordo com o <a href="#sec-cronograma">cronograma</a> abaixo. Respeitando sempre os dias e horários destinados à disciplina. Só será permitida UMA tentativa.</p></li>
+<li><p>Serão realizadas 6 (seis) avaliações durante o semestre conforme <a href="#sec-cronograma">cronograma</a> abaixo.</p></li>
+<li><p>A nota final será composta da média aritmética das seis avaliações (todas com o mesmo peso).</p></li>
+<li><p>Nas aulas instrucionais (16 aulas) e avaliações (6 aulas) a presença é OBRIGATÓRIA e será controlado pela chamada oral AO FINAL da aula.</p></li>
+<li><p>Para aprovação o aluno deverá comparecer em pelo menos 75% das aulas. De acordo com o <a href="#sec-cronograma">cronograma</a> em anexo o aluno deverá comparecer em pelo menos 16 (dezesseis) aulas para ter presença para aprovação.</p></li>
+<li><p>Para aprovação o aluno deverá obter média igual ou superior a 70 de acordo com o item 4. Caso a média fique entre 40 e 70 o aluno deverá realizar exame final. A média aritmética da nota do item 4 com a nota do exame final deverá ser maior que 50 para aprovação.</p></li>
+<li><p>Só será permitido realizar o exame final alunos que tenham presença suficiente para serem aprovados.</p></li>
+<li><p>O <a href="#sec-cronograma">cronograma</a> de atividades poderá ser modificado de acordo com o andamento do semestre.</p></li>
+<li><p>A mudança nos dias das avaliações deverá ser aceita pela maioria dos alunos presentes no dia da decisão (caso seja necessário).</p></li>
+</ol>
+<p>Bom curso a todos.</p>
+</section>
+<section id="ementa" class="level2">
+<h2 class="anchored" data-anchor-id="ementa">Ementa</h2>
+<p>Funções, limites e continuidade. Derivadas e integrais. Séries numéricas. Vetores, matrizes, sistemas lineares e decomposições matriciais. Métodos numéricos. Solução de sistemas de equações não-lineares. Derivação e integração numéricas. Otimização numéricos. Programação linear, quadrática e não-linear. Aspectos computacionais. Softwares para computação científica.</p>
+</section>
+<section id="referências-bibliográficas-básicas" class="level2">
+<h2 class="anchored" data-anchor-id="referências-bibliográficas-básicas">Referências bibliográficas básicas</h2>
+<p>1, Deisenroth, M. P. ; Faisal, A. A. ; Ong, C. S. Mathematics for Machine Learning, Cambridge University Press, 2020;</p>
+<ol start="2" type="1">
+<li><p>Goodfellow et. al.&nbsp;Deep Learning, MIT Press, 2016;</p></li>
+<li><p>R. A. Becker, J. M. Chambers and A. R. Wilks, “The New S Language,” Wadsworth &amp;Brooks/Cole, Monterey, 1988.</p></li>
+</ol>
+</section>
+<section id="sec-cronograma" class="level2">
+<h2 class="anchored" data-anchor-id="sec-cronograma">Cronograma</h2>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Data</th>
+<th style="text-align: left;">Conteúdo</th>
+<th style="text-align: center;">Local</th>
+<th style="text-align: center;">Presença</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">27/02/24</td>
+<td style="text-align: left;">Apresentação do curso</td>
+<td style="text-align: center;">PA09</td>
+<td style="text-align: center;">Sim</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">29/02/24</td>
+<td style="text-align: left;">Motivação</td>
+<td style="text-align: center;">PA09</td>
+<td style="text-align: center;">Sim</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">05/03/24</td>
+<td style="text-align: left;">Funções</td>
+<td style="text-align: center;">PA09</td>
+<td style="text-align: center;">Sim</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">07/03/24</td>
+<td style="text-align: left;">Limites e Continuidade</td>
+<td style="text-align: center;">PA09</td>
+<td style="text-align: center;">Sim</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">12/03/24</td>
+<td style="text-align: left;">Exercícios</td>
+<td style="text-align: center;">Livre</td>
+<td style="text-align: center;">Não</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">14/03/24</td>
+<td style="text-align: left;"><strong>Avaliação 1</strong></td>
+<td style="text-align: center;"><strong>LAB12</strong></td>
+<td style="text-align: center;">Sim</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">19/03/24</td>
+<td style="text-align: left;">Derivadas</td>
+<td style="text-align: center;">PA09</td>
+<td style="text-align: center;">Sim</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">21/03/24</td>
+<td style="text-align: left;">Derivadas</td>
+<td style="text-align: center;">PA09</td>
+<td style="text-align: center;">Sim</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">26/03/24</td>
+<td style="text-align: left;">Derivadas + Integrais + Exercicio</td>
+<td style="text-align: center;">PA09</td>
+<td style="text-align: center;">Sim</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">28/03/24</td>
+<td style="text-align: left;">Exercícios</td>
+<td style="text-align: center;">Livre</td>
+<td style="text-align: center;">Não</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">02/04/24</td>
+<td style="text-align: left;">Exercícios</td>
+<td style="text-align: center;">Livre</td>
+<td style="text-align: center;">Não</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">04/04/24</td>
+<td style="text-align: left;"><strong>Avaliação 2</strong></td>
+<td style="text-align: center;"><strong>LAB12</strong></td>
+<td style="text-align: center;">Sim</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">09/04/24</td>
+<td style="text-align: left;">Vetores e Matrizes</td>
+<td style="text-align: center;">PA09</td>
+<td style="text-align: center;">Sim</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">11/04/24</td>
+<td style="text-align: left;">Vetores e Matrizes</td>
+<td style="text-align: center;">PA09</td>
+<td style="text-align: center;">Sim</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">16/04/24</td>
+<td style="text-align: left;">Exercícios</td>
+<td style="text-align: center;">Livre</td>
+<td style="text-align: center;">Não</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">18/04/24</td>
+<td style="text-align: left;"><strong>Avaliação 3</strong></td>
+<td style="text-align: center;"><strong>LAB12</strong></td>
+<td style="text-align: center;">Sim</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">23/04/24</td>
+<td style="text-align: left;">Sistemas lineares e decomposições</td>
+<td style="text-align: center;">PA09</td>
+<td style="text-align: center;">Sim</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">25/04/24</td>
+<td style="text-align: left;">Sistemas Lineares e decomposições</td>
+<td style="text-align: center;">PA09</td>
+<td style="text-align: center;">Sim</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">30/04/24</td>
+<td style="text-align: left;">Exercícos</td>
+<td style="text-align: center;">Livre</td>
+<td style="text-align: center;">Não</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">02/05/24</td>
+<td style="text-align: left;"><strong>Avaliação 4</strong></td>
+<td style="text-align: center;"><strong>LAB12</strong></td>
+<td style="text-align: center;">Sim</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">07/05/24</td>
+<td style="text-align: left;">Folga</td>
+<td style="text-align: center;">Livre</td>
+<td style="text-align: center;">Não</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">09/05/24</td>
+<td style="text-align: left;">Sistemas não lineares</td>
+<td style="text-align: center;">PA09</td>
+<td style="text-align: center;">Sim</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">14/05/24</td>
+<td style="text-align: left;">Diferenciação numérica</td>
+<td style="text-align: center;">PA09</td>
+<td style="text-align: center;">Sim</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">16/05/24</td>
+<td style="text-align: left;">Exercícios</td>
+<td style="text-align: center;">Livre</td>
+<td style="text-align: center;">Não</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">21/05/24</td>
+<td style="text-align: left;"><strong>Avaliação 5</strong></td>
+<td style="text-align: center;"><strong>LAB12</strong></td>
+<td style="text-align: center;">Sim</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">23/05/24</td>
+<td style="text-align: left;">Integração numérica</td>
+<td style="text-align: center;">PA09</td>
+<td style="text-align: center;">Sim</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">28/05/24</td>
+<td style="text-align: left;">Otimização numérica I</td>
+<td style="text-align: center;">PA09</td>
+<td style="text-align: center;">Sim</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">30/05/24</td>
+<td style="text-align: left;">RBRAS</td>
+<td style="text-align: center;">Livre</td>
+<td style="text-align: center;">Não</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">04/06/24</td>
+<td style="text-align: left;">RBRAS</td>
+<td style="text-align: center;">Livre</td>
+<td style="text-align: center;">Não</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">06/06/24</td>
+<td style="text-align: left;">Otimização numérica II</td>
+<td style="text-align: center;">PA09</td>
+<td style="text-align: center;">Sim</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">11/06/24</td>
+<td style="text-align: left;">Exercícios</td>
+<td style="text-align: center;">Livre</td>
+<td style="text-align: center;">Não</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">13/06/24</td>
+<td style="text-align: left;">Exercícios</td>
+<td style="text-align: center;">Livre</td>
+<td style="text-align: center;">Não</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">18/06/24</td>
+<td style="text-align: left;"><strong>Avaliação 6</strong></td>
+<td style="text-align: center;"><strong>LAB12</strong></td>
+<td style="text-align: center;">Sim</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">20/06/24</td>
+<td style="text-align: left;">Folga</td>
+<td style="text-align: center;">Livre</td>
+<td style="text-align: center;">Não</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">25/06/24</td>
+<td style="text-align: left;">Semana de estudos</td>
+<td style="text-align: center;">Livre</td>
+<td style="text-align: center;">Não</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">27/06/24</td>
+<td style="text-align: left;">Semana de estudos</td>
+<td style="text-align: center;">Livre</td>
+<td style="text-align: center;">Não</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">02/07/24</td>
+<td style="text-align: left;">Final</td>
+<td style="text-align: center;"><strong>LAB12</strong></td>
+<td style="text-align: center;">Sim</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="materiais-de-apoio-e-exercícios" class="level2">
+<h2 class="anchored" data-anchor-id="materiais-de-apoio-e-exercícios">Materiais de Apoio e Exercícios</h2>
+<p>Pessoal,</p>
+<p>Para cada avaliação eu criei um roteiro para você estudar. Você terá três momentos.</p>
+<ol type="1">
+<li><p>Leitura prévia antes da aula;</p></li>
+<li><p>Aula instrucional em sala de aula;</p></li>
+<li><p>Leitura pós aula;</p></li>
+<li><p>Exercícios.</p></li>
+</ol>
+<p>O material base para você estudar é o meu livro “Matemática para Ciência de Dados” disponível neste endereço: http://leg.ufpr.br/~wagner/TMCD/</p>
+<p><strong>MUITO CUIDADO! O livro pode não estar disponível no dia da avaliação. Por isso, estude antes!</strong></p>
+<section id="avaliação-1" class="level3">
+<h3 class="anchored" data-anchor-id="avaliação-1">Avaliação 1:</h3>
+<ul>
+<li>Leitura do Prefácio + Seção 1.1;</li>
+<li>Assistir e participar das aulas instrucionais;</li>
+<li>Reler e refazer os exemplos da Seção 1.1;</li>
+<li>Realizar os exercícios disponíveis na Seção 1.5 referentes a funções, limites e continuidade.</li>
+</ul>
+</section>
+<section id="avaliação-2" class="level3">
+<h3 class="anchored" data-anchor-id="avaliação-2">Avaliação 2:</h3>
+<ul>
+<li>Leitura das Seções 1.2 e 1.3;</li>
+<li>Assistir e participar das aulas instrucionais;</li>
+<li>Reler e refazer os exemplos das Seções 1.2 e 1.3.</li>
+<li>Realizar os exercícios disponíveis na Seção 1.5 referentes a derivadas, integrais e os desafios.</li>
+</ul>
+</section>
+<section id="avaliação-3" class="level3">
+<h3 class="anchored" data-anchor-id="avaliação-3">Avaliação 3:</h3>
+<ul>
+<li>Leitura das Seções 2.1 e 2.2;</li>
+<li>Assistir e participar das aulas instrucionais;</li>
+<li>Reler e refazer os exemplos das Seções 2.1 e 2.2;</li>
+<li>Realizar os exercícios disponíveis na Seção 2.8 referentes vetores e escalares e Matrizes.</li>
+</ul>
+</section>
+<section id="avaliação-4" class="level3">
+<h3 class="anchored" data-anchor-id="avaliação-4">Avaliação 4:</h3>
+<ul>
+<li>Leitura das Seções 2.3, 2.4, 2.5 e 2.6;</li>
+<li>Assistir e participar das aulas instrucionais;</li>
+<li>Reler e refazer os exemplos das Seções 2.3, 2.4, 2.5 e 2.6;</li>
+<li>Realizar os exercícios disponíveis na Seção 2.8 referentes a sistemas lineares e decomposições e o desafio.</li>
+</ul>
+</section>
+<section id="avaliação-5" class="level3">
+<h3 class="anchored" data-anchor-id="avaliação-5">Avaliação 5:</h3>
+<ul>
+<li>Leitura das Seções 3.1 e 3.2;</li>
+<li>Assistir e participar das aulas instrucionais;</li>
+<li>Reler e refazer os exemplos das Seções 3.1 e 3.2;</li>
+<li>Realizar os exercícios disponíveis na Seção 3.6 referentes a equações não-lineares e diferenciação numérica.</li>
+</ul>
+</section>
+<section id="avaliação-6" class="level3">
+<h3 class="anchored" data-anchor-id="avaliação-6">Avaliação 6:</h3>
+<ul>
+<li>Leitura das Seções 3.3 e 3.4;</li>
+<li>Assistir e participar das aulas instrucionais;</li>
+<li>Reler e refazer os exemplos das Seções 3.3 e 3.4;</li>
+<li>Realizar os exercícios disponíveis na Seção 3.6 referentes a integração numérica e otimização numérica.</li>
+</ul>
+<p>Prof.&nbsp;Wagner</p>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./content/index.html" class="pagination-link" aria-label="Prefácio">
+        <span class="nav-page-text">Prefácio</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Estatística 2023-2026</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://raymz1990.github.io/CE313/edit/main/book/index.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://raymz1990.github.io/CE313/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>This book was built with <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

@@ -1,0 +1,50 @@
+---
+Title: Tópicos em Matemática para Cientistas de Dados
+code-fold: true
+---
+
+# Prefácio {.unnumbered}
+
+## Contexto e motivação
+
+A transformação digital pela qual a sociedade está passando, aliada ao maior acesso a dispositivos tecnológicos como *smartphones* e *tablets* conectados à internet vêm revolucionando a forma como vivemos. Neste contexto, as empresas de tecnologia não demoraram para criar diversos produtos em que o lucro é gerado baseado nos dados de seus clientes. Exemplos deste mercado de dados incluem e-mails gratuitos, mídias sociais, plataformas de divulgação de vídeos, portais de informação e busca, entre outros.
+
+Seguindo esta tendência, empresas de praticamente todos os seguimentos estão procurando em seus dados formas de otimizar a sua operação e gerar mais lucro. Neste cenário de transformação digital surge a profissão do cientista de dados. Este profissional é o responsável por usar métodos científicos para entender e criar valor baseado em dados. Devido a sua flexibilidade e o momento em que vivemos, o profissional de ciência de dados está em alta demanda pelo mercado de trabalho, sendo um dos profissionais mais bem remunerados. Consequentemente, profissionais de outras áreas estão interessados em migrar para a área de ciência de dados e para isto estão procurando por formação adicional.
+
+A profissão denominada de cientista de dados é extremamente nova e definições precisas sobre as habilidades de tal profissional estão em pleno desenvolvimento. Isto dificulta a formação de profissionais nesta área. Além de ser um desafio para instituições de ensino desenharem cursos que respondam as reais necessidades do mercado de trabalho. Uma busca rápida por ofertas de empregos para cientistas de dados traz uma lista enciclopédica de habilidades que vão desde ferramentas tecnológicas baseadas em softwares proprietários, passando por diversas linguagens de programação, até chegar em algoritmos específicos de aprendizagem de máquina e modelos estatísticos.
+
+Quando focamos apenas nas diversas técnicas que compõem a caixa de ferramentas do cientista de dados, nos deparamos com uma infinidade de modelos e algoritmos. De forma semelhante, livros que tem no título a expressão ciência de dados ou, mais geralmente, na língua Inglesa *Data Science* trazem um grande conjunto de técnicas que incluem pelo menos uma ampla gama de modelos estatísticos e de aprendizagem de máquina. Alguns livros chegam a trazer modelos para processamento de linguagem natural, análise de redes, dados espaciais entre outros. Esta grande quantidade de técnicas para análise de dados que faz parte do dia-a-dia do cientista de dados torna-se intimidante para profissionais de outras áreas que buscam um reposicionamento como cientistas de dados. Além disso, é um grande desafio desenhar cursos para tais profissionais, uma vez que não está claro quais são as técnicas que devem receber maior atenção e discutir todas as técnicas em uso pelos cientistas de dados é um trabalho impossível.
+
+Por outro lado, a grande maioria das técnicas e algoritmos utilizados em aplicações de ciência de dados são herdadas de outras áreas, principalmente da estatística e da ciência da computação, que por sua vez estão alicerçadas em disciplinas básicas da matemática do ensino superior, tais como, cálculo diferencial integral, álgebra matricial e métodos numéricos. Tais disciplinas são conhecidas por muitos profissionais das áreas de engenharia, economia, administração, tecnologia e análise de desenvolvimento de sistemas entre outros. Porém, a forma como tais disciplinas são ministradas nos diversos programas de graduação, bem como a junção destas disciplinas na criação de uma única técnica, torna difícil para tais profissionais identificarem suas aplicações nas ferramentas de análise de dados.
+
+## Objetivos e público alvo
+
+O objetivo deste livro é fornecer aos profissionais das mais diversas áreas um texto introdutório e acessível em tópicos de matemática. Tais tópicos são a base fundamental para compreender e criar grande parte das técnicas de análise de dados, utilizadas por cientistas de dados para resolver problemas práticos diariamente. O objetivo não é ser exaustivo e nem matematicamente rigoroso, mas sim fornecer uma visão geral, intuitiva e muitas vezes computacional sobre os tópicos abordados, dando ênfase para as aplicações em ciência de dados. Além disso, este livro fornece um conjunto de conhecimentos básicos necessários para o estudo de técnicas avançadas de aprendizagem de máquina, tais como redes neurais, redes neurais profundas, modelos hierárquicos bayesianos ou de forma mais geral redes bayesianas probabilísticas.
+
+O uso de linguagens de programação é primordial em ciência de dados e neste livro utilizou-se a linguagem de programação `R`. Porém, a linguagem `R` será utilizada apenas com uma conotação pedagógica, a fim de materializar os conceitos matemáticos abstratos apresentados no texto. Em matemática é comum, quando um resultado importante é obtido, apresentá-lo na forma de um Teorema seguido de sua demonstração. Porém, nem sempre as implicações práticas do Teorema ficam claras para o leitor. Neste sentido, sempre que um resultado importante for apresentado neste material usaremos a linguagem `R` para ilustrar as suas implicações em termos práticos e como elas afetam as análises de dados.
+
+É importante salientar que este livro está longe de ser um guia prático para a análise de dados ou uma espécie de livro de receitas em que para cada situação um conjunto de procedimentos é apresentado acompanhado do respectivo código de uma ferramenta computacional. Pelo contrário, salvo pelos exemplos motivadores, o livro enfatiza as ferramentas necessárias e em como combiná-las para criar as técnicas de análise de dados. Os objetivos desta abordagem são:
+
+1. desmistificar o processo pelos quais os algoritmos resolvem problemas, por exemplo de previsão e classificação;
+
+2. mostrar que apesar de existir um conjunto enorme de técnicas, muitas delas são apenas pequenas modificações ou seguem as mesmas premissas de outras e que portanto, entendendo a base o leitor está apto a entender as demais;
+
+3. promover um uso qualificado das ferramentas já disponíveis, ou seja, não apenas usar uma rotina computacional já implementada em algum software e interpretar a saída, mas também compreender em linhas gerais o que está sendo realizado dentro do software e naturalmente as limitações e escolhas que devem ser feitas durante as implementações computacionais.
+
+O público-alvo são profissionais que desejam uma introdução acessível aos fundamentos de matemática necessários para o profundo entendimento das técnicas utilizadas por cientistas de dados. Formações usuais destes profissionais incluem, mas não estão limitadas à engenharia, ciência da computação, economia, física, administração, gestão da informação e tecnologia em análise e desenvolvimento de sistemas.
+
+## Seleção dos tópicos
+
+Selecionar os principais tópicos para servir ao objetivo deste livro não foi uma tarefa simples. Para tal tarefa nós imaginamos o que gostaríamos que o leitor fosse capaz de entender após ler o livro. Assim, consideramos dois livros fantásticos os quais recomendamos para qualquer um que tenha interesse em técnicas avançadas de ciência de dados, são eles:
+
+1. [Deep Learning, Ian Goodfellow and Yoshua Bengio and Aaro Courville, MIT Press, 2016](https://www.deeplearningbook.org/).
+
+2. [Mathematics for Machine Learning, Marc Peter Deisenroth, A. Aldo Faisal and Cheng Soon Ong, Cambridge, 2019](https://mml-book.github.io/).
+
+Ambos são excelentes livros. O primeiro é focado em *deep learning*, mas com uma bela introdução sobre tópicos de matemática necessários para o entendimento do livro e uma ampla visão da área de aprendizado de máquina com uma conclusão a respeito das perspectivas da pesquisa na área de *deep learning*. O segundo é uma descrição impecável da matemática por trás de algumas das principais técnicas de ciência de dados, como análise de componentes principais e máquinas de vetor de suporte.
+
+Porém, nenhum deles é acessível para grande parte dos profissionais que não são da área de aprendizado de máquina, estatística ou matemática aplicada. Sendo assim, buscamos incluir neste livro grande parte dos conceitos de cálculo diferencial e integral, álgebra matricial e métodos numéricos necessários para uma qualificada apreciação de ambos.
+O texto foi escrito utilizando o sistema para análise reproduzível `knitr`. Por meio da linguagem de marcação `markdown` e a estrutura de livro fornecida pelo pacote `bookdown` dentro da linguagem `R`.
+W.H.B
+
+Curitiba, Janeiro, 2021.
