@@ -1,0 +1,488 @@
+---
+title: "Algebra Matricial"
+code-fold: false
+---
+
+Os objetivos deste tutorial são:
+
+* Ganhar experiência com operações vetoriais.
+* Praticar a implementação computacional de operações vetoriais básicas.
+* Ganhar experiência com operações matriciais.
+* Praticar a implementação computacional de operações matriciais, tais como, soma, subtração e multiplicação.
+* Usar algoritmo para a solução de sistemas de lineares.
+* Usar decomposições matriciais para resolver sistemas lineares e obter a inversa de matrizes.
+* Comparar a performance computacional de diferentes algoritmos para a solução de sistemas lineares.
+* Desafio do módulo é implementar a distribuição Normal multivariada de forma mais eficiente que a função padrão do `R`.
+
+### Vetores e escalares### 
+
+1. Considere os vetores $\boldsymbol{v}_1 = (1, 5, 10)$ e $\boldsymbol{v}_2 = (10, 50, 100)$. Obtenha
+
+a) O comprimento de $\boldsymbol{v}_1$ e $\boldsymbol{v}_2$.
+
+``` {r}
+v1 <- c(1, 5, 10)
+v2 <- c(10, 50, 100)
+
+comprimento_v1 <- sqrt(sum(v1^2))
+comprimento_v2 <- sqrt(sum(v2^2))
+
+comprimento_v1
+comprimento_v2
+```
+
+b) O vetor unitário definido por $\boldsymbol{v}_1$ e $\boldsymbol{v}_2$.
+
+``` {r}
+v1 <- c(1, 5, 10)
+v2 <- c(10, 50, 100)
+
+comprimento_v1 <- sqrt(sum(v1^2))
+comprimento_v2 <- sqrt(sum(v2^2))
+
+v1/comprimento_v1
+v2/comprimento_v2 
+```
+
+c) A soma de $\boldsymbol{v}_1$ e $\boldsymbol{v}_2$.
+
+``` {r}
+v1 <- c(1, 5, 10)
+v2 <- c(10, 50, 100)
+
+soma <- v1 + v2 
+```
+
+d) A multiplicação de $\boldsymbol{v}_1$ e $\boldsymbol{v}_2$.
+
+``` {r}
+v1 <- c(1, 5, 10)
+v2 <- c(10, 50, 100)
+
+v1%*%v2 
+```
+
+e) O produto interno de $\boldsymbol{v}_1$ e $\boldsymbol{v}_2$.
+
+``` {r}
+v1 <- c(1, 5, 10)
+v2 <- c(10, 50, 100)
+
+sum(v1*v2) 
+```
+
+f) Sendo $\alpha = 10$, obtenha $\alpha \boldsymbol{v}_1$.
+
+``` {r}
+alpha = 10
+
+v1 <- c(1, 5, 10)
+
+alpha*v1 
+```
+
+2. Implemente usando apenas funções básicas, funções genéricas para:
+
+a) Soma entre vetores.
+
+``` {r}
+my_soma <- function(v1, v2) {
+  if(length(v1) != length(v2)) {stop("Tamanho dos vetores não é compatível para soma.")}
+  n <- length(v1)
+  soma <- c()
+  for(i in 1:n) {
+    soma[i] <- v1[i] + v2[i]
+  }
+  return(soma)
+}
+
+v1 <- c(1, 5, 10)
+v2 <- c(10, 50, 100)
+my_soma(v1 = v1, v2 = v2) 
+```
+
+b) Subtração entre vetores.
+
+``` {r}
+my_sub <- function(v1, v2) {
+  if(length(v1) != length(v2)) {stop("Tamanho dos vetores não é compatível para subtração.")}
+  n <- length(v1)
+  soma <- c()
+  for(i in 1:n) {
+    soma[i] <- v1[i] - v2[i]
+  }
+  return(soma)
+}
+
+v1 <- c(1, 5, 10)
+v2 <- c(10, 50, 100)
+
+my_sub(v1 = v1, v2 = v2) 
+```
+
+c) Multiplicação de um vetor por escalar.
+
+``` {r}
+my_esc_vetor <- function(alpha, v1) {
+  n <- length(v1)
+  out <- c()
+  for(i in 1:n) {
+    out[i] <- alpha*v1[i]
+  }
+  return(out)
+}
+
+my_esc_vetor(alpha = 10, v1 = c(1, 2, 3))
+```
+
+d) Produto interno
+
+``` {r}
+my_prod <- function(v1, v2) {
+  if(length(v1) != length(v2)) {stop("Tamanho dos vetores não é compatível para multiplicação.")}
+  n <- length(v1)
+  mul <- c()
+  mul <- 0
+  for(i in 1:n) {
+    mul <- v1[i]*v2[i] + mul
+  }
+  return(mul)
+}
+
+my_prod(v1 = c(1,2,3), v2 = c(10, 20, 30))
+```
+
+### Matrizes
+
+a) Sendo 
+
+$$
+\mathbf{A} = \begin{bmatrix}
+1 & 0.8 & 0.6\\ 
+0.8 & 1 & 0.4 \\ 
+0.6 & 0.4 & 1
+\end{bmatrix} \quad \text{e} \quad
+\mathbf{B} = \begin{bmatrix}
+1.5 & 0.1 & 0.5\\ 
+0.1 & 2 & 0.3\\ 
+0.5 & 0.3 & 3
+\end{bmatrix}.
+$$
+
+Obtenha:
+
+a) $\mathbf{C} = \mathbf{A} + \mathbf{B}$.
+
+``` {r}
+A <- matrix(c(1,0.8,0.6,0.8,1,0.4,0.6,0.4,1), 3, 3)
+B <- matrix(c(1.5,0.1,0.5,0.1,2,0.3,0.5,0.3,3), 3, 3)
+
+C = A + B
+```
+
+b) $\mathbf{C} = \mathbf{A} - \mathbf{B}$.
+
+``` {r}
+A <- matrix(c(1,0.8,0.6,0.8,1,0.4,0.6,0.4,1), 3, 3)
+B <- matrix(c(1.5,0.1,0.5,0.1,2,0.3,0.5,0.3,3), 3, 3)
+
+C = A - B
+```
+
+c) $\mathbf{A}^{\top}$ e $\mathbf{B}^{\top}$.
+
+``` {r}
+A <- matrix(c(1,0.8,0.6,0.8,1,0.4,0.6,0.4,1), 3, 3)
+B <- matrix(c(1.5,0.1,0.5,0.1,2,0.3,0.5,0.3,3), 3, 3)
+
+t(A)
+t(B)
+```
+
+d) Sendo $\alpha = 5$ obtenha $\alpha (\mathbf{A} + \mathbf{B})$.
+
+``` {r}
+A <- matrix(c(1,0.8,0.6,0.8,1,0.4,0.6,0.4,1), 3, 3)
+B <- matrix(c(1.5,0.1,0.5,0.1,2,0.3,0.5,0.3,3), 3, 3)
+alpha = 5
+
+alpha*(A + B)
+```
+
+e) O determinante de $\mathbf{A}$.
+
+``` {r}
+A <- matrix(c(1,0.8,0.6,0.8,1,0.4,0.6,0.4,1), 3, 3)
+
+determinant(A, log = FALSE)
+```
+
+f) O traço de $\mathbf{B}$.
+
+``` {r}
+B <- matrix(c(1.5,0.1,0.5,0.1,2,0.3,0.5,0.3,3), 3, 3)
+
+sum(diag(B))
+```
+
+g) $\mathbf{C} = \mathbf{A}\mathbf{B}.$
+
+``` {r}
+A <- matrix(c(1,0.8,0.6,0.8,1,0.4,0.6,0.4,1), 3, 3)
+B <- matrix(c(1.5,0.1,0.5,0.1,2,0.3,0.5,0.3,3), 3, 3)
+
+A%*%B
+```
+
+h) $\mathbf{C} = \mathbf{B}\mathbf{A}.$
+
+``` {r}
+A <- matrix(c(1,0.8,0.6,0.8,1,0.4,0.6,0.4,1), 3, 3)
+B <- matrix(c(1.5,0.1,0.5,0.1,2,0.3,0.5,0.3,3), 3, 3)
+
+B%*%A
+```
+
+i) $\mathbf{C} = \mathbf{A}\mathbf{A}^{\top}.$
+
+``` {r}
+A <- matrix(c(1,0.8,0.6,0.8,1,0.4,0.6,0.4,1), 3, 3)
+
+A%*%t(A)
+```
+
+j) $\mathbf{C} = \mathbf{A}(\mathbf{A} + \mathbf{B}).$
+
+``` {r}
+A <- matrix(c(1,0.8,0.6,0.8,1,0.4,0.6,0.4,1), 3, 3)
+B <- matrix(c(1.5,0.1,0.5,0.1,2,0.3,0.5,0.3,3), 3, 3)
+
+A%*%(A + B)
+```
+
+4. Implemente uma função para multiplicar duas matrizes. Não esqueça de verificar se as matrizes são compatíveis.
+
+``` {r}
+my_prod_mat <- function(A, B) {
+  if(dim(A)[2] != dim(B)[1])
+    { stop("Tamanho dos vetores não é compatível para multiplicação.") }
+  m <- dim(A)[1]
+  n <- dim(B)[2]
+  C <- matrix(NA, nrow = m, ncol = n)
+  for(i in 1:m) {
+    for(j in 1:n) {
+      C[i,j] <- sum(A[i,]*B[,j])
+    }
+  }
+  return(C)
+}
+
+my_prod_mat(A = A, B = B)
+```
+
+5. Considere o seguinte sistema de equações lineares: 
+
+$$
+\begin{matrix}
+2x_1 + 2x_2 - 3x_3 = 2\\ 
+-1 x_1 + 3 x_2 + 2 x_3 = 0\\ 
+3 x_1 + x_2 - 3x_3 = 1
+\end{matrix}
+$$
+a) Resolva manualmente usando o método de eliminação de Gauss.
+
+b) Use a função criada em aula para resolver o sistema usando o método de eliminação de Gauss.
+
+``` {r}
+# Decomposição de Gauss
+gauss <- function(A, b) {
+  # Sistema aumentado
+  Ae <- cbind(A, b)
+  rownames(Ae) <- paste0("x", 1:length(b))
+  n_row <- nrow(Ae)
+  n_col <- ncol(Ae)
+  # Matriz para receber os resultados
+  SOL <- matrix(NA, n_row, n_col)
+  SOL[1,] <- Ae[1,]
+  pivo <- matrix(0, n_col, n_row)
+  for(j in 1:c(n_row-1)) {
+    for(i in c(j+1):c(n_row)) {
+      pivo[i,j] <- Ae[i,j]/SOL[j,j]
+      SOL[i,] <- Ae[i,] - pivo[i,j]*SOL[j,]
+      Ae[i,] <- SOL[i,]
+    }
+  }
+  return(SOL)
+}
+
+# Substituição regressiva
+sub_reg <- function(SOL) {
+  n_row <- nrow(SOL)
+  n_col <- ncol(SOL)
+  A <- SOL[1:n_row,1:n_row]
+  b <- SOL[,n_col]
+  n <- length(b)
+  x <- c()
+  x[n] <- b[n]/A[n,n]
+  for(i in (n-1):1) {
+    x[i] <- (b[i] - sum(A[i,c(i+1):n]*x[c(i+1):n] ))/A[i,i]
+  }
+  return(x)
+}
+
+# Sistema
+A <- matrix(c(2,-1,3,2,3,1,-3,2,3), 3, 3)
+b <- c(2,0,1)
+
+# Passo 1: Triangularização
+S <- gauss(A, b)
+
+# Passo 2: Substituição regressiva
+sol = sub_reg(SOL = S)
+sol
+
+# Verificando
+A%*%sol
+```
+
+c) Implemente o método de Gauss-Jordan e resolva o sistema usando a sua função.
+
+``` {r}
+gauss_jordan <- function(A, b) {
+  # Matrix aumentada
+  Ab <- cbind(A, b)
+  # Capturando a dimensão da saída
+  rownames(Ab) <- paste0("x", 1:length(b))
+  n_row <- nrow(Ab)
+  n_col <- ncol(Ab)
+  n_col_for <- n_col-1
+  # Matriz para receber os resultados
+  SOL <- matrix(NA, n_row, n_col)
+  for(j in 1:n_col_for) {
+    SOL[j,] <- Ab[j,]/Ab[j,j]
+    for(i in 1:n_row) {
+      if(i != j) {
+        SOL[i,] <- Ab[i,] - SOL[j,]*Ab[i,j] 
+      }
+    }
+    Ab <- SOL
+  }
+  return(list("Sistema" = SOL, "Solução" = SOL[,n_col]))
+}
+
+## Sistema de equações
+A <- matrix(c(2,-1,3,2,3,1,-3,2,3), 3, 3)
+b <- c(2,0,1)
+resul <- gauss_jordan(A = A, b = b)
+
+A%*%resul$Solução
+```
+
+d) Obtenha a decomposição $\mathbf{L} \mathbf{U}$ e resolva o sistema.
+
+``` {r}
+my_lu <- function(A) {
+  n_row <- nrow(A)
+  n_col <- ncol(A)
+  # Matriz para receber os resultados
+  SOL <- matrix(NA, n_row, n_col)
+  SOL[1,] <- A[1,]
+  pivo <- matrix(0, n_col, n_row)
+  for(j in 1:c(n_row-1)) {
+    for(i in c(j+1):c(n_row)) {
+      pivo[i,j] <- A[i,j]/SOL[j,j]
+      SOL[i,] <- A[i,] - pivo[i,j]*SOL[j,]
+      A[i,] <- SOL[i,]
+    }
+  }
+  diag(pivo) <- 1
+  return(list("L" = pivo, "U" = SOL))
+}
+
+## Sistema de equações
+A <- matrix(c(2,-1,3,2,3,1,-3,2,3), 3, 3)
+b <- c(2,0,1)
+
+# Decomposição LU
+LU <- my_lu(A)
+y = forwardsolve(LU$L, b)
+x = backsolve(LU$U, y)
+```
+
+e) Resolva o sistema usando o método de Jacobi.
+
+``` {r}
+# require(Rlinsolve)
+# A <- matrix(c(2,-1,3,2,3,1,-3,2,3), 3, 3)
+# b <- c(2,0,1)
+# lsolve.jacobi(A, b)$x
+```
+
+f) Resolva o sistema usando o método de Gauss-Seidel.
+
+``` {r}
+# require(Rlinsolve)
+# A <- matrix(c(2,-1,3,2,3,1,-3,2,3), 3, 3)
+# b <- c(2,0,1)
+# lsolve.gs(A, b)$x
+```
+
+6. Considere a matriz
+
+$$
+\mathbf{A} =
+\begin{bmatrix}
+1 & 0.9 & 0.8\\ 
+0.9 & 1 & 0.95\\ 
+0.8 & 0.95 & 1
+\end{bmatrix}.
+$$
+
+a) Obtenha $\mathbf{A}^{-1}$ pela decomposição $\mathbf{LU}$. E verifique a solução.
+
+``` {r}
+A <- matrix(c(1,0.9,0.8,0.9,1,0.95,0.8,0.95,1), 3, 3)
+inv_A <- solve(A)
+
+# Verificando a solução
+A%*%inv_A # Ok
+```
+
+b) Obtenha a decomposição em autovalores e autovetores de $\mathbf{A}$.
+
+``` {r}
+A <- matrix(c(1,0.9,0.8,0.9,1,0.95,0.8,0.95,1), 3, 3)
+
+eigen(A)
+```
+
+c) Baseado na letra b) obtenha $\mathbf{A}^{-1}$. Verifique sua solução.
+
+``` {r}
+A <- matrix(c(1, 0.9, 0.8,
+              0.9, 1, 0.95,
+              0.8, 0.95, 1),
+            3, 3)
+
+deco <- eigen(A)
+Q <- deco$vectors
+inv_D <- diag(1/deco$values)
+inv_A <- Q%*%inv_D%*%t(Q)
+
+# Verificando
+A%*%inv_A
+```
+
+### Desafio
+
+7. A função densidade probabilidade da distribuição Normal multivariada é dada pela seguinte equação 
+
+$$
+p(\boldsymbol{y}; \boldsymbol{\mu}, \mathbf{\Sigma}) = (2 \pi)^{-\frac{n}{2}} | \mathbf{\Sigma}|^{\frac{1}{2}} \exp\left \{ -\frac{1}{2}(\boldsymbol{y} - \boldsymbol{\mu})^{\top} \mathbf
+{\Sigma}^{-1} (\boldsymbol{y} - \boldsymbol{\mu}) \right \},
+$$
+
+onde $\mathbf{y}$ e $\boldsymbol{\mu}$ são vetores $n \times 1$ de variáveis aleatórias e valores esperados. A matriz $\Sigma$ é chamada de matriz de variância-covariância, sendo simétrica e positiva definida (admite inversa).
+
+a) Implemente a função densidade da distribuição Normal multivariada em R em pelo menos três formas diferentes e compare o tempo computacional para diferentes números de variáveis aleatórias.
+b) Compare a sua implementação com a função `dmvnorm()` do pacote `mvtnorm` em termos de tempo computacional.

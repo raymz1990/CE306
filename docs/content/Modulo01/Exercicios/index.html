@@ -1,0 +1,2205 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.549">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>CE306 - Instrumentação Matemática para Estatística - 5&nbsp; Cálculo Diferencial e Integral para Cientista de Dados</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../content/Modulo04/index.html" rel="prev">
+<link href="../../../default_overview_image.jpg" rel="icon" type="image/jpeg">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../../custom.css">
+<meta property="og:title" content="CE306 - Instrumentação Matemática para Estatística - 5&nbsp; Cálculo Diferencial e Integral para Cientista de Dados">
+<meta property="og:description" content="Material da disciplina CE306 - Instrumentação Matemática para Estatística do curso de Estatística da Universidade Federal do Paraná (UFPR).">
+<meta property="og:image" content="default_overview_image.jpg">
+<meta property="og:site_name" content="CE306 - Instrumentação Matemática para Estatística">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../content/Modulo01/Exercicios/index.html">Exercicios</a></li><li class="breadcrumb-item"><a href="../../../content/Modulo01/Exercicios/index.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Cálculo Diferencial e Integral para Cientista de Dados</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../../">CE306 - Instrumentação Matemática para Estatística</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://raymz1990.github.io/CE313/tree/main/book/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-git"></i></a>
+    <div class="dropdown">
+      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download"><i class="bi bi-download"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="../../../CE306---Instrumentação-Matemática-para-Estatística.pdf">
+              <i class="bi bi-bi-file-pdf pe-1"></i>
+            Download PDF
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="../../../CE306---Instrumentação-Matemática-para-Estatística.docx">
+              <i class="bi bi-bi-file-word pe-1"></i>
+            Download Docx
+            </a>
+          </li>
+      </ul>
+    </div>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-1" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-1">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+              <i class="bi bi-bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.facebook.com/sharer/sharer.php?u=|url|">
+              <i class="bi bi-bi-facebook pe-1"></i>
+            Facebook
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.linkedin.com/sharing/share-offsite/?url=|url|">
+              <i class="bi bi-bi-linkedin pe-1"></i>
+            LinkedIn
+            </a>
+          </li>
+      </ul>
+    </div>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Apresentação</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefácio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/Modulo01/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Cálculo Diferencial e Integral</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/Modulo02/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Cálculo Diferencial e Integral para Cientista de Dados</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/Modulo03/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Estatística Não Paramétrica 2</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/Modulo04/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Função de Distribuição Empírica</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Exercicios</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../content/Modulo01/Exercicios/index.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Cálculo Diferencial e Integral para Cientista de Dados</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#funções-limites-e-continuidade" id="toc-funções-limites-e-continuidade" class="nav-link active" data-scroll-target="#funções-limites-e-continuidade"><span class="header-section-number">5.1</span> Funções, limites e continuidade</a>
+  <ul class="collapse">
+  <li><a href="#implementação-de-funções-e-seus-gráficos" id="toc-implementação-de-funções-e-seus-gráficos" class="nav-link" data-scroll-target="#implementação-de-funções-e-seus-gráficos"><span class="header-section-number">5.1.1</span> Implementação de funções e seus gráficos</a></li>
+  <li><a href="#funções-parametrizadas" id="toc-funções-parametrizadas" class="nav-link" data-scroll-target="#funções-parametrizadas"><span class="header-section-number">5.1.2</span> Funções parametrizadas</a></li>
+  <li><a href="#limites" id="toc-limites" class="nav-link" data-scroll-target="#limites"><span class="header-section-number">5.1.3</span> Limites</a></li>
+  <li><a href="#continuidade" id="toc-continuidade" class="nav-link" data-scroll-target="#continuidade"><span class="header-section-number">5.1.4</span> Continuidade</a></li>
+  <li><a href="#funções-especiais" id="toc-funções-especiais" class="nav-link" data-scroll-target="#funções-especiais"><span class="header-section-number">5.1.5</span> Funções especiais</a></li>
+  </ul></li>
+  <li><a href="#derivadas" id="toc-derivadas" class="nav-link" data-scroll-target="#derivadas"><span class="header-section-number">5.2</span> Derivadas</a>
+  <ul class="collapse">
+  <li><a href="#derivadas-triviais" id="toc-derivadas-triviais" class="nav-link" data-scroll-target="#derivadas-triviais"><span class="header-section-number">5.2.1</span> Derivadas triviais</a></li>
+  <li><a href="#reta-tangente" id="toc-reta-tangente" class="nav-link" data-scroll-target="#reta-tangente"><span class="header-section-number">5.2.2</span> Reta tangente</a></li>
+  <li><a href="#regra-da-cadeia" id="toc-regra-da-cadeia" class="nav-link" data-scroll-target="#regra-da-cadeia"><span class="header-section-number">5.2.3</span> Regra da cadeia</a></li>
+  <li><a href="#aproximação-por-série-de-taylor" id="toc-aproximação-por-série-de-taylor" class="nav-link" data-scroll-target="#aproximação-por-série-de-taylor"><span class="header-section-number">5.2.4</span> Aproximação por Série de Taylor</a></li>
+  </ul></li>
+  <li><a href="#integrais" id="toc-integrais" class="nav-link" data-scroll-target="#integrais"><span class="header-section-number">5.3</span> Integrais</a>
+  <ul class="collapse">
+  <li><a href="#integrais-indefinidas" id="toc-integrais-indefinidas" class="nav-link" data-scroll-target="#integrais-indefinidas"><span class="header-section-number">5.3.1</span> Integrais indefinidas</a></li>
+  <li><a href="#integrais-definidas" id="toc-integrais-definidas" class="nav-link" data-scroll-target="#integrais-definidas"><span class="header-section-number">5.3.2</span> Integrais definidas</a></li>
+  </ul></li>
+  <li><a href="#desafios" id="toc-desafios" class="nav-link" data-scroll-target="#desafios"><span class="header-section-number">5.4</span> Desafios</a>
+  <ul class="collapse">
+  <li><a href="#redução-de-dados-usando-perda-absoluta" id="toc-redução-de-dados-usando-perda-absoluta" class="nav-link" data-scroll-target="#redução-de-dados-usando-perda-absoluta"><span class="header-section-number">5.4.1</span> Redução de dados usando perda absoluta</a></li>
+  <li><a href="#regressão-linear-simples-usando-perda-absoluta" id="toc-regressão-linear-simples-usando-perda-absoluta" class="nav-link" data-scroll-target="#regressão-linear-simples-usando-perda-absoluta"><span class="header-section-number">5.4.2</span> Regressão linear simples usando perda absoluta</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://raymz1990.github.io/CE313/edit/main/book/content/Modulo01/Exercicios/index.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://raymz1990.github.io/CE313/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../content/Modulo01/Exercicios/index.html">Exercicios</a></li><li class="breadcrumb-item"><a href="../../../content/Modulo01/Exercicios/index.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Cálculo Diferencial e Integral para Cientista de Dados</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Cálculo Diferencial e Integral para Cientista de Dados</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="funções-limites-e-continuidade" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="funções-limites-e-continuidade"><span class="header-section-number">5.1</span> Funções, limites e continuidade</h2>
+<p>Os objetivos deste tutorial são:</p>
+<ul>
+<li>Ganhar experiência com a interpretação de equações matemáticas.</li>
+<li>Praticar a implementação computacional de funções matemáticas.</li>
+<li>Desenhar e interpretar o gráfico de funções uni e bidimensionais.</li>
+<li>Revisar e ilustrar computacionalmente propriedades de funções do tipo potência, exponencial e logarítmos.</li>
+</ul>
+<section id="implementação-de-funções-e-seus-gráficos" class="level3" data-number="5.1.1">
+<h3 data-number="5.1.1" class="anchored" data-anchor-id="implementação-de-funções-e-seus-gráficos"><span class="header-section-number">5.1.1</span> Implementação de funções e seus gráficos</h3>
+<p>Para os exercícios abaixo use a função <code>plot()</code> com a opção <code>type = "l"</code> para desenhar o gráfico das funções. Lembre-se que computacionalmente você vai avaliar a função em um conjunto de pontos. Para criar esse conjunto de pontos use a função <code>seq(a, b, l = tamanho)</code> onde <code>a</code> e <code>b</code> são os limites inferior e superior do intervalo e <code>l</code> determina o número de pontos dentro do intervalo. Recomendo que para esses exercícios você use <code>l = 100</code>. Você pode consultar a minha solução clicando no botão <code>Solution</code>. Note que a minha solução é apenas uma sugestão. O importante é você desenvolver a habilidade de traduzir uma equação matemática para o computador e desenhar o gráfico associado.</p>
+<ol type="a">
+<li>Implemente a função <span class="math inline">\(f(x) = \sqrt{x}\)</span> e desenhe seu gráfico no intervalo <span class="math inline">\((0,3)\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">3</span>, <span class="at">l =</span> <span class="dv">100</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>fx <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sqrt</span>(x)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">fx</span>(<span class="at">x =</span> x)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y <span class="sc">~</span> x, <span class="at">type =</span> <span class="st">"l"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="2" type="a">
+<li>Implemente a função <span class="math inline">\(f(x) = \log(x)\)</span> e desenhe seu gráfico no intervalo <span class="math inline">\((-5,5)\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">5</span>, <span class="at">l =</span> <span class="dv">100</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>fx <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">log</span>(x)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">fx</span>(<span class="at">x =</span> x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in log(x): NaNs produzidos</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y <span class="sc">~</span> x, <span class="at">type =</span> <span class="st">"l"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hint:
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Note que o domínio da função <span class="math inline">\(\log\)</span> é apenas os reais positivos. Assim, a parte negativa não faz sentido para este gráfico.</p>
+</div>
+</div>
+<ol start="3" type="a">
+<li>Implemente a função <span class="math inline">\(\log_{10}(x)\)</span> e desenhe seu gráfico no intervalo <span class="math inline">\((0,5)\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">5</span>, <span class="at">l =</span> <span class="dv">100</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>fx <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">log10</span>(x)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">fx</span>(<span class="at">x =</span> x)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y <span class="sc">~</span> x, <span class="at">type =</span> <span class="st">"l"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="4" type="a">
+<li>Implemente a função <span class="math inline">\(\exp(x)\)</span> e desenhe seu gráfico no intervalo <span class="math inline">\((0,1)\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">l =</span> <span class="dv">100</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>fx <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">exp</span>(x)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">fx</span>(<span class="at">x =</span> x)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y <span class="sc">~</span> x, <span class="at">type =</span> <span class="st">"l"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="5" type="a">
+<li>Implemente a função <span class="math inline">\(\Gamma(x)\)</span> e desenhe seu gráfico no intervalo <span class="math inline">\((0.5, 3)\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fl">0.5</span>, <span class="dv">3</span>, <span class="at">l =</span> <span class="dv">100</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>fx <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gamma</span>(x)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">fx</span>(<span class="at">x =</span> x)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y <span class="sc">~</span> x, <span class="at">type =</span> <span class="st">"l"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="6" type="a">
+<li>Implemente a função <span class="math inline">\(f(x) = \frac{1}{x}\)</span> e desenhe seu gráfico no intervalo <span class="math inline">\((-1, 1)\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="at">l =</span> <span class="dv">50</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">l =</span> <span class="dv">50</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>fx <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span><span class="sc">/</span>x</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>y1 <span class="ot">&lt;-</span> <span class="fu">fx</span>(<span class="at">x =</span> x1)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>y2 <span class="ot">&lt;-</span> <span class="fu">fx</span>(<span class="at">x =</span> x2)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">c</span>(y1, y2) <span class="sc">~</span> <span class="fu">c</span>(x1, x2), <span class="at">type =</span> <span class="st">"l"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hint:
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Note que neste exercício o ideal é dividir o domínio de <span class="math inline">\(f(x)\)</span> em duas partes, uma vez que a função é descontinua em <span class="math inline">\(x = 0\)</span>. Avalie a função no ponto <span class="math inline">\(x = 0\)</span> para ver o que o <code>R</code> retorna.</p>
+</div>
+</div>
+<ol start="7" type="a">
+<li>Implemente a função <span class="math inline">\(f(x) = |x - 1| + 2\)</span> e desenhe seu gráfico no intervalo <span class="math inline">\((-5, 5)\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">5</span>, <span class="dv">5</span>, <span class="at">l =</span> <span class="dv">100</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>fx <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">abs</span>(x <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">+</span> <span class="dv">2</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">fx</span>(<span class="at">x =</span> x)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y <span class="sc">~</span> x, <span class="at">type =</span> <span class="st">"l"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="8" type="a">
+<li>Implemente a função <span class="math inline">\(f(x) = \mathrm{beta}(x, 0.5)\)</span> e desenhe seu gráfico no intervalo <span class="math inline">\((0, 1)\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">l =</span> <span class="dv">100</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>fx <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">beta</span>(<span class="at">a =</span> x, <span class="at">b =</span> <span class="fl">0.5</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">fx</span>(<span class="at">x =</span> x)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y <span class="sc">~</span> x, <span class="at">type =</span> <span class="st">"l"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hint:
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Veja a documentão da função beta <code>?beta</code>.</p>
+</div>
+</div>
+<ol type="i">
+<li>Implemente a função <span class="math inline">\(f(x) = (x-1)^3\)</span> e desenhe seu gráfico no intervalo <span class="math inline">\((-3, 5)\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">5</span>, <span class="at">l =</span> <span class="dv">100</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>fx <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  (x <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">^</span><span class="dv">3</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">fx</span>(<span class="at">x =</span> x)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y <span class="sc">~</span> x, <span class="at">type =</span> <span class="st">"l"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="10" type="a">
+<li>Implemente a função <span class="math inline">\(f(x) = \frac{(x+1)}{x}\)</span> e desenhe seu gráfico no intervalo <span class="math inline">\((-3, 3)\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">0</span>, <span class="at">l =</span> <span class="dv">100</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">3</span>, <span class="at">l =</span> <span class="dv">100</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>fx <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  (x<span class="sc">+</span><span class="dv">1</span>)<span class="sc">/</span>x</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>y1 <span class="ot">&lt;-</span> <span class="fu">fx</span>(<span class="at">x =</span> x1)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>y2 <span class="ot">&lt;-</span> <span class="fu">fx</span>(<span class="at">x =</span> x2)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">c</span>(y1, y2) <span class="sc">~</span> <span class="fu">c</span>(x1, x2), <span class="at">type =</span> <span class="st">"l"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hint:
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Note novamente a descontinuidade de <span class="math inline">\(f(x)\)</span> no ponto <span class="math inline">\(x = 0\)</span>.</p>
+</div>
+</div>
+</section>
+<section id="funções-parametrizadas" class="level3" data-number="5.1.2">
+<h3 data-number="5.1.2" class="anchored" data-anchor-id="funções-parametrizadas"><span class="header-section-number">5.1.2</span> Funções parametrizadas</h3>
+<p>Para os exercícios abaixo você deve fazer o gráfico como uma função de <span class="math inline">\(x\)</span> com o parâmetro <span class="math inline">\(\theta\)</span> fixado. Tenha cuidado tanto com o domínio de <span class="math inline">\(f(x)\)</span> quanto com o espaço paramétrico de <span class="math inline">\(\theta\)</span>, ou seja, o conjunto de valores que <span class="math inline">\(\theta\)</span> pode assumir. Para entender como o parâmetro controla a curva você deve desenhar o gráfico usando diversos valores para <span class="math inline">\(\theta\)</span>.</p>
+<section id="considere-a-função-fx-theta-left-x-log-fracxtheta---x-thetaright." class="level4" data-number="5.1.2.1">
+<h4 data-number="5.1.2.1" class="anchored" data-anchor-id="considere-a-função-fx-theta-left-x-log-fracxtheta---x-thetaright."><span class="header-section-number">5.1.2.1</span> Considere a função <span class="math inline">\(f(x; \theta) = \left( x \log \frac{x}{\theta} - x + \theta\right)\)</span>.</h4>
+<ol type="a">
+<li>Implemente a função e desenhe seu gráfico com <span class="math inline">\(\theta = 10\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">20</span>,  <span class="at">l =</span> <span class="dv">100</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>fx <span class="ot">&lt;-</span> <span class="cf">function</span>(x, theta) {</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> x<span class="sc">*</span><span class="fu">log</span>(x<span class="sc">/</span>theta) <span class="sc">-</span> x <span class="sc">+</span> theta</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(out)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">fx</span>(<span class="at">x =</span> x, <span class="at">theta =</span> <span class="dv">10</span>)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y <span class="sc">~</span> x, <span class="at">type =</span> <span class="st">"l"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="2" type="a">
+<li>Qual é o domínio de <span class="math inline">\(f(x)\)</span>?</li>
+</ol>
+<ul>
+<li>Reais</li>
+<li>Intervalo (0,1)</li>
+<li><strong>Reais estritamente positivos</strong></li>
+<li>Naturais</li>
+</ul>
+<ol start="3" type="a">
+<li>Qual é o espaço paramétrico de <span class="math inline">\(\theta\)</span>?</li>
+</ol>
+<ul>
+<li>Reais</li>
+<li>Intervalo (0,1)</li>
+<li><strong>Reais estritamente positivos</strong></li>
+<li>Inteiros positivos</li>
+</ul>
+<ol start="4" type="a">
+<li>Sobre o comportamento do gráfico de <span class="math inline">\(f(x)\)</span> marque a alternativa correta.</li>
+</ol>
+<ul>
+<li>O parâmetro indica o ponto de minimo relativo e a curva é côncava para baixo.</li>
+<li>O parâmetro indica o ponto de máximo relativo e a curva é côncava para baixo.</li>
+<li><strong>O parâmetro indica o ponto de minimo relativo e a curva é côncava para cima.</strong></li>
+<li>O parâmetro indica o ponto de máximo relativo e a curva é côncava para cima.</li>
+</ul>
+</section>
+<section id="considere-a-função-fx-theta-binom100x-exp-leftx-log-fractheta1-theta-100-log1---theta-right." class="level4" data-number="5.1.2.2">
+<h4 data-number="5.1.2.2" class="anchored" data-anchor-id="considere-a-função-fx-theta-binom100x-exp-leftx-log-fractheta1-theta-100-log1---theta-right."><span class="header-section-number">5.1.2.2</span> Considere a função <span class="math inline">\(f(x; \theta) = \binom{100}{x} \exp \left\{x \log \frac{\theta}{1-\theta} +100 \log(1 - \theta) \right\}\)</span>.</h4>
+<ol type="a">
+<li>Implemente a função e desenhe seu gráfico considerando <span class="math inline">\(\theta = 0.40\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">100</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>fx <span class="ot">&lt;-</span> <span class="cf">function</span>(x, theta) {</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">choose</span>(<span class="at">n =</span> <span class="dv">100</span>, <span class="at">k =</span> x) <span class="sc">*</span> <span class="fu">exp</span>(x <span class="sc">*</span> <span class="fu">log</span>(theta<span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span>theta)) <span class="sc">+</span> <span class="dv">100</span><span class="sc">*</span><span class="fu">log</span>(<span class="dv">1</span><span class="sc">-</span> theta))</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(out)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">fx</span>(<span class="at">x =</span> x, <span class="at">theta =</span> <span class="fl">0.4</span>)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(y <span class="sc">~</span> x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="2" type="a">
+<li>Qual é o domínio de <span class="math inline">\(f(x)\)</span>?</li>
+</ol>
+<ul>
+<li>Reais</li>
+<li>Intervalo (0,1)</li>
+<li>Inteiros (0, 100)</li>
+<li><strong>Inteiros de [0, 100]</strong></li>
+</ul>
+<ol start="3" type="a">
+<li>Qual é o espaço paramétrico de <span class="math inline">\(\theta\)</span>?</li>
+</ol>
+<ul>
+<li>Reais ✗</li>
+<li><strong>Intervalo (0,1)</strong> ✓</li>
+<li>Reais estritamente positivos ✗</li>
+<li>Reais estritamente negativo ✗</li>
+</ul>
+<ol start="4" type="a">
+<li>Sobre o comportamento do gráfico de <span class="math inline">\(f(x)\)</span> marque a alternativa correta.</li>
+</ol>
+<ul>
+<li>O parâmetro indica o ponto de minimo relativo e a curva é côncava para baixo. ✗</li>
+<li><strong>O parâmetro indica o ponto de máximo relativo e a curva é côncava para baixo</strong>. ✓</li>
+<li>O parâmetro indica o ponto de minimo relativo e a curva é côncava para cima. ✗</li>
+<li>O parâmetro indica o ponto de máximo relativo e a curva é côncava para cima. ✗</li>
+</ul>
+</section>
+<section id="considere-a-função-fx-theta-sum_i1n-left-fracx_itheta--log-left-fracx_itheta-right--1-right-." class="level4" data-number="5.1.2.3">
+<h4 data-number="5.1.2.3" class="anchored" data-anchor-id="considere-a-função-fx-theta-sum_i1n-left-fracx_itheta--log-left-fracx_itheta-right--1-right-."><span class="header-section-number">5.1.2.3</span> Considere a função <span class="math inline">\(f(x; \theta) = \sum_{i=1}^n \left( \frac{x_i}{\theta} -\log \left\{ \frac{x_i}{\theta} \right \} -1 \right )\)</span>.</h4>
+<ol type="a">
+<li>Implemente a função e desenhe seu gráfico considerando <span class="math inline">\(\theta = 10\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>fx <span class="ot">&lt;-</span> <span class="cf">function</span>(x, theta) {</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> (x<span class="sc">/</span>theta) <span class="sc">-</span> <span class="fu">log</span>(x<span class="sc">/</span>theta) <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(out)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">5</span>, <span class="dv">15</span>, <span class="at">l =</span> <span class="dv">100</span>)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">fx</span>(<span class="at">x =</span> x, <span class="at">theta =</span> <span class="dv">10</span>)</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y <span class="sc">~</span> x, <span class="at">type =</span> <span class="st">"l"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="2" type="a">
+<li>Qual é o domínio de <span class="math inline">\(f(x)\)</span>?</li>
+</ol>
+<ul>
+<li>Reais ✗</li>
+<li>Intervalo (0,1) ✗</li>
+<li><strong>Reais estritamente positivos</strong> ✓</li>
+<li>Intervalo (0,2π] ✗</li>
+</ul>
+<ol start="3" type="a">
+<li>Qual é o espaço paramétrico de <span class="math inline">\(\theta\)</span>?</li>
+</ol>
+<ul>
+<li>Reais ✗</li>
+<li>Intervalo (0,1) ✗</li>
+<li><strong>Reais estritamente positivos</strong> ✓</li>
+<li>Intervalo (0,2π] ✗</li>
+</ul>
+<ol start="4" type="a">
+<li>Sobre o comportamento do gráfico de <span class="math inline">\(f(x)\)</span> marque a alternativa correta.</li>
+</ol>
+<ul>
+<li>O parâmetro indica o ponto de minimo relativo e a curva é côncava para baixo.</li>
+<li>O parâmetro indica o ponto de máximo relativo e a curva é côncava para baixo.</li>
+<li><strong>O parâmetro indica o ponto de minimo relativo e a curva é côncava para cima</strong>.</li>
+<li>O parâmetro indica o ponto de máximo relativo e a curva é côncava para cima.</li>
+</ul>
+</section>
+<section id="considere-a-função-fx-theta-1---cosx---theta." class="level4" data-number="5.1.2.4">
+<h4 data-number="5.1.2.4" class="anchored" data-anchor-id="considere-a-função-fx-theta-1---cosx---theta."><span class="header-section-number">5.1.2.4</span> Considere a função <span class="math inline">\(f(x; \theta) = (1 - \cos(x - \theta))\)</span>.</h4>
+<ol type="a">
+<li>Implemente a função e desenhe seu gráfico considerando <span class="math inline">\(\theta = 2\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>fx <span class="ot">&lt;-</span> <span class="cf">function</span>(x, theta) {</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">cos</span>(x <span class="sc">-</span> theta))</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(out)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">2</span><span class="sc">*</span>pi, <span class="at">l =</span> <span class="dv">100</span>)</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">fx</span>(<span class="at">x =</span> x, <span class="at">theta =</span> <span class="dv">2</span>)</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y <span class="sc">~</span> x, <span class="at">type =</span> <span class="st">"l"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="2" type="a">
+<li>Entre as opções abaixo para o domínio de <span class="math inline">\(f(x)\)</span> qual garante que <span class="math inline">\(f(x)\)</span> tenha apenas um mínimo relativo?</li>
+</ol>
+<ul>
+<li>Reais ✗</li>
+<li>Inteiros ✗</li>
+<li>Reais estritamente positivos ✗</li>
+<li><strong>Intervalo (0,2π]</strong> ✓</li>
+</ul>
+<ol start="3" type="a">
+<li>Considerando b) qual é o espaço paramétrico de <span class="math inline">\(\theta\)</span>?</li>
+</ol>
+<ul>
+<li>Reais ✗</li>
+<li>Intervalo (0,1) ✗</li>
+<li>Reais estritamente positivos ✗</li>
+<li><strong>Intervalo (0,2π]</strong> ✓</li>
+</ul>
+<ol start="4" type="a">
+<li>Sobre o comportamento do gráfico de <span class="math inline">\(f(x)\)</span> marque a alternativa correta.</li>
+</ol>
+<ul>
+<li>O parâmetro indica o ponto de minimo relativo e a curva é côncava para baixo. ✗</li>
+<li>O parâmetro indica o ponto de máximo relativo e a curva é côncava para baixo. ✗</li>
+<li><strong>O parâmetro indica o ponto de minimo relativo e a curva é côncava para cima.</strong> ✓</li>
+<li>O parâmetro indica o ponto de máximo relativo e a curva é côncava para cima. ✗</li>
+</ul>
+</section>
+<section id="considere-a-função-fx-theta-p-2left-fracx2-p1-p2-p---fracx-theta1-p1-p-fractheta2-p2-p-right-." class="level4" data-number="5.1.2.5">
+<h4 data-number="5.1.2.5" class="anchored" data-anchor-id="considere-a-função-fx-theta-p-2left-fracx2-p1-p2-p---fracx-theta1-p1-p-fractheta2-p2-p-right-."><span class="header-section-number">5.1.2.5</span> Considere a função <span class="math inline">\(f(x; \theta, p) = 2\left \{ \frac{x^{(2-p)}}{(1-p)(2-p)} - \frac{x \theta^{(1-p)}}{1-p} + \frac{\theta^{(2-p)}}{2-p} \right \}\)</span>.</h4>
+<ol type="a">
+<li>Implemente a função e desenhe seu gráfico considerando <span class="math inline">\(\theta = 5\)</span> e <span class="math inline">\(p = 1.5\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>fx <span class="ot">&lt;-</span> <span class="cf">function</span>(x, theta, p) {</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  term1 <span class="ot">&lt;-</span> ( x<span class="sc">^</span>(<span class="dv">2</span><span class="sc">-</span>p) )<span class="sc">/</span>( (<span class="dv">1</span><span class="sc">-</span>p)<span class="sc">*</span>(<span class="dv">2</span><span class="sc">-</span>p) )</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  term2 <span class="ot">&lt;-</span> (x<span class="sc">*</span>(theta<span class="sc">^</span>(<span class="dv">1</span><span class="sc">-</span>p)))<span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span>p)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  term3 <span class="ot">&lt;-</span> (theta<span class="sc">^</span>(<span class="dv">2</span><span class="sc">-</span>p))<span class="sc">/</span>(<span class="dv">2</span><span class="sc">-</span>p)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">*</span>(term1 <span class="sc">-</span> term2 <span class="sc">+</span> term3)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(out)</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">20</span>, <span class="at">l =</span> <span class="dv">100</span>)</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">fx</span>(<span class="at">x =</span> x, <span class="at">theta =</span> <span class="dv">5</span>, <span class="at">p =</span> <span class="fl">1.5</span>)</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y <span class="sc">~</span> x, <span class="at">type =</span> <span class="st">"l"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="2" type="a">
+<li>Qual é o domínio de <span class="math inline">\(f(x)\)</span>?</li>
+</ol>
+<ul>
+<li>Reais ✗</li>
+<li>Inteiros ✗</li>
+<li><strong>Reais estritamente positivos</strong> ✓</li>
+<li>Intervalo (0,2π]. ✗</li>
+</ul>
+<ol start="3" type="a">
+<li>Qual o espaço paramétrico de <span class="math inline">\(\theta\)</span> e <span class="math inline">\(p\)</span>?</li>
+</ol>
+<ul>
+<li><span class="math inline">\(\theta\)</span> é real e <span class="math inline">\(p\)</span> é estritamente positivo. ✗</li>
+<li>Intervalo (0,1) para ambos ✗</li>
+<li><span class="math inline">\(\theta\)</span> é real e <span class="math inline">\(p \in (1,2)\)</span>. ✗</li>
+<li><strong><span class="math inline">\(\theta\)</span> é real estritamente positivo e <span class="math inline">\(p \in (1,2)\)</span></strong> ✓</li>
+</ul>
+<ol start="4" type="a">
+<li>Sobre o comportamento do gráfico de <span class="math inline">\(f(x)\)</span> marque a alternativa correta.</li>
+</ol>
+<ul>
+<li>O parâmetro <span class="math inline">\(\theta\)</span> indica o ponto de minimo relativo e a curva é côncava para baixo. ✗</li>
+<li>O parâmetro <span class="math inline">\(\theta\)</span> indica o ponto de máximo relativo e a curva é côncava para baixo. ✗</li>
+<li><strong>O parâmetro <span class="math inline">\(\theta\)</span> indica o ponto de minimo relativo e a curva é côncava para cima.</strong> ✓</li>
+<li>O parâmetro <span class="math inline">\(\theta\)</span> indica o ponto de máximo relativo e a curva é côncava para cima. ✗</li>
+</ul>
+</section>
+</section>
+<section id="limites" class="level3" data-number="5.1.3">
+<h3 data-number="5.1.3" class="anchored" data-anchor-id="limites"><span class="header-section-number">5.1.3</span> Limites</h3>
+<section id="considere-a-seguinte-função-fx-sqrtx-x." class="level4" data-number="5.1.3.1">
+<h4 data-number="5.1.3.1" class="anchored" data-anchor-id="considere-a-seguinte-função-fx-sqrtx-x."><span class="header-section-number">5.1.3.1</span> Considere a seguinte função <span class="math inline">\(f(x) = \sqrt{x} + x\)</span>.</h4>
+<ol type="a">
+<li>Esboce o gráfico e marque o ponto <span class="math inline">\(x = 0\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">2</span>,  <span class="at">l =</span> <span class="dv">100</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>fx <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(x) <span class="sc">+</span> x</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(out)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">fx</span>(<span class="at">x =</span> x)</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y <span class="sc">~</span> x, <span class="at">type =</span> <span class="st">"l"</span>)</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">y =</span> <span class="fu">fx</span>(<span class="at">x =</span> <span class="dv">0</span>), <span class="at">pch =</span> <span class="dv">18</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="2" type="a">
+<li>Calcule <span class="math inline">\(\lim_{x \to 0 } ( \sqrt{x} + x)\)</span>.</li>
+</ol>
+<ul>
+<li>-2 ✗</li>
+<li>4 ✗</li>
+<li><strong>0</strong> ✓</li>
+<li>6/5 ✗</li>
+<li>1 ✗</li>
+</ul>
+</section>
+<section id="considere-a-seguinte-função-fx-fracx2-x-x-3." class="level4" data-number="5.1.3.2">
+<h4 data-number="5.1.3.2" class="anchored" data-anchor-id="considere-a-seguinte-função-fx-fracx2-x-x-3."><span class="header-section-number">5.1.3.2</span> Considere a seguinte função <span class="math inline">\(f(x) = \frac{x^2 + x}{ x + 3}\)</span>.</h4>
+<ol type="a">
+<li>Esboce o gráfico e marque o ponto <span class="math inline">\(x = 2\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">4</span>,  <span class="at">l =</span> <span class="dv">100</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>fx <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> (x<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> x)<span class="sc">/</span>(x <span class="sc">+</span> <span class="dv">3</span>)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(out)</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">fx</span>(<span class="at">x =</span> x)</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y <span class="sc">~</span> x, <span class="at">type =</span> <span class="st">"l"</span>)</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="at">x =</span> <span class="dv">2</span>, <span class="at">y =</span> <span class="fu">fx</span>(<span class="at">x =</span> <span class="dv">2</span>), <span class="at">pch =</span> <span class="dv">18</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="2" type="a">
+<li>Calcule <span class="math inline">\(\lim_{x \to 2 } \frac{x^2 + x}{ x + 3}\)</span>.</li>
+</ol>
+<ul>
+<li><strong>6/5</strong> ✓</li>
+<li>4 ✗</li>
+<li>-2 ✗</li>
+<li>1 ✗</li>
+<li>6 ✗</li>
+</ul>
+</section>
+<section id="considere-a-seguinte-função-fx-fracx2---4x-2." class="level4" data-number="5.1.3.3">
+<h4 data-number="5.1.3.3" class="anchored" data-anchor-id="considere-a-seguinte-função-fx-fracx2---4x-2."><span class="header-section-number">5.1.3.3</span> Considere a seguinte função <span class="math inline">\(f(x) = \frac{x^2 - 4}{x-2}\)</span>.</h4>
+<ol type="a">
+<li>Esboce o gráfico e marque o ponto <span class="math inline">\(x = 2\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="at">l =</span> <span class="dv">50</span>), <span class="dv">2</span>, <span class="fu">seq</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="at">l =</span> <span class="dv">50</span>))</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>fx <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> (x<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> <span class="dv">4</span>)<span class="sc">/</span>(x <span class="sc">-</span> <span class="dv">2</span>)</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(out)</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">fx</span>(<span class="at">x =</span> x)</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y <span class="sc">~</span> x, <span class="at">type =</span> <span class="st">"l"</span>)</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="at">x =</span> <span class="dv">2</span>, <span class="at">y =</span> <span class="dv">4</span>, <span class="at">pch =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="2" type="a">
+<li>Calcule <span class="math inline">\(\lim_{x \to 2 } \frac{x^2 - 4}{x - 2}\)</span>.</li>
+</ol>
+<ul>
+<li>-2 ✗</li>
+<li><strong>4</strong> ✓</li>
+<li>0 ✗</li>
+<li>6/5 ✗</li>
+<li>1 ✗</li>
+</ul>
+</section>
+<section id="considere-a-seguinte-função-fx-fracx2---1x-1." class="level4" data-number="5.1.3.4">
+<h4 data-number="5.1.3.4" class="anchored" data-anchor-id="considere-a-seguinte-função-fx-fracx2---1x-1."><span class="header-section-number">5.1.3.4</span> Considere a seguinte função <span class="math inline">\(f(x) = \frac{x^2 - 1}{x + 1}\)</span>.</h4>
+<ol type="a">
+<li>Esboce o gráfico e marque o ponto <span class="math inline">\(x = -1\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">0</span>,  <span class="at">l =</span> <span class="dv">100</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>fx <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> (x<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">/</span>(x <span class="sc">+</span> <span class="dv">1</span>)</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(out)</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">fx</span>(<span class="at">x =</span> x)</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y <span class="sc">~</span> x, <span class="at">type =</span> <span class="st">"l"</span>)</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="at">x =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">y =</span> <span class="sc">-</span><span class="dv">2</span>, <span class="at">pch =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="2" type="a">
+<li>Calcule <span class="math inline">\(\lim_{x \to -1 } \frac{x^2 - 1}{x + 1}\)</span>.</li>
+</ol>
+<ul>
+<li><strong>-2</strong> ✗</li>
+<li>4 ✓</li>
+<li>0 ✗</li>
+<li>6/5 ✗</li>
+<li>1 ✗</li>
+</ul>
+</section>
+<section id="considere-a-seguinte-função-fx-sinx." class="level4" data-number="5.1.3.5">
+<h4 data-number="5.1.3.5" class="anchored" data-anchor-id="considere-a-seguinte-função-fx-sinx."><span class="header-section-number">5.1.3.5</span> Considere a seguinte função <span class="math inline">\(f(x) = \sin(x)\)</span>.</h4>
+<ol type="a">
+<li>Esboce o gráfico e marque o ponto <span class="math inline">\(x = 0\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>,  <span class="at">l =</span> <span class="dv">100</span>)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>fx <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">sin</span>(x)</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(out)</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">fx</span>(<span class="at">x =</span> x)</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y <span class="sc">~</span> x, <span class="at">type =</span> <span class="st">"l"</span>)</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">y =</span> <span class="fu">fx</span>(<span class="at">x =</span> <span class="dv">0</span>), <span class="at">pch =</span> <span class="dv">18</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="2" type="a">
+<li>Calcule <span class="math inline">\(\lim_{x \to 0 } \sin(x)\)</span>.</li>
+</ol>
+<ul>
+<li>-2 ✗</li>
+<li>4 ✗</li>
+<li><strong>0</strong> ✓</li>
+<li>6/5 ✗</li>
+<li>1 ✗</li>
+</ul>
+</section>
+</section>
+<section id="continuidade" class="level3" data-number="5.1.4">
+<h3 data-number="5.1.4" class="anchored" data-anchor-id="continuidade"><span class="header-section-number">5.1.4</span> Continuidade</h3>
+<p>Considere as seguintes funções:</p>
+<ol type="a">
+<li><span class="math inline">\(f(x) = \sqrt{x}\)</span> em <span class="math inline">\(x = 0\)</span>.</li>
+<li><span class="math inline">\(f(x) = \frac{x^2 - 4}{x-2}\)</span> em <span class="math inline">\(x = 2\)</span>.</li>
+<li><span class="math inline">\(f(x) = \left\{\begin{matrix} x \quad \text{se} \quad x &amp;lt; 1 \\ \frac{1}{x} \quad \text{se} \quad x &amp;gt; 1 \quad \text{em} \quad x = 1 \end{matrix}\right.\)</span></li>
+<li><span class="math inline">\(f(x) = \Gamma(x)\)</span> em <span class="math inline">\(x = 2\)</span>.</li>
+<li><span class="math inline">\(f(x) = \frac{|x-2|}{x-2}\)</span> em <span class="math inline">\(x = 2\)</span>.</li>
+</ol>
+<p>Usando a definição intuitiva de limite marque a alternativa correta</p>
+<ul>
+<li>a), b) e d) são contínuas. ✗</li>
+<li>e), b) e a) são contínuas. ✗</li>
+<li><strong>b), c) e e) são não contínuas</strong> ✓</li>
+<li>b), c) e d) são não contínuas ✗</li>
+<li>Apenas d) é não contínua. ✗</li>
+</ul>
+</section>
+<section id="funções-especiais" class="level3" data-number="5.1.5">
+<h3 data-number="5.1.5" class="anchored" data-anchor-id="funções-especiais"><span class="header-section-number">5.1.5</span> Funções especiais</h3>
+<p>Ilustre computacionalmente cada uma das seguintes propriedades das funções do tipo potência.</p>
+<ol type="1">
+<li><span class="math inline">\(x^a (x^c) = x^{a+c}\)</span>;</li>
+<li><span class="math inline">\((x^a)^c = x^{ac}\)</span>;</li>
+<li><span class="math inline">\((xz)^a = x^a (z^a)\)</span>;</li>
+<li><span class="math inline">\(\left ( \frac{x}{z} \right )^c = \frac{x^c}{z^c}\)</span>;</li>
+<li><span class="math inline">\(\frac{1}{x^a} = x^{-a}\)</span>;</li>
+<li><span class="math inline">\(\frac{x^a}{x^c} = x^{a-c}\)</span>;</li>
+<li><span class="math inline">\(\sqrt{x} = x^{1/2}\)</span>;</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>c <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>((x<span class="sc">^</span>a)<span class="sc">*</span>(x<span class="sc">^</span>c),x<span class="sc">^</span>(a<span class="sc">+</span>c))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>((x<span class="sc">^</span>a)<span class="sc">^</span>c, x<span class="sc">^</span>(a<span class="sc">*</span>c))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>((x<span class="sc">*</span>z)<span class="sc">^</span>a, (x<span class="sc">^</span>a) <span class="sc">*</span> (z<span class="sc">^</span>a))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(((x<span class="sc">/</span>z)<span class="sc">^</span>c), ((x<span class="sc">^</span>c)<span class="sc">/</span>(z<span class="sc">^</span>c)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(<span class="dv">1</span><span class="sc">/</span>(x<span class="sc">^</span>a) , x<span class="sc">^</span>(<span class="sc">-</span>a))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>((x<span class="sc">^</span>a)<span class="sc">/</span>(x<span class="sc">^</span>c), x<span class="sc">^</span>(a<span class="sc">-</span>c))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(<span class="fu">sqrt</span>(x), x<span class="sc">^</span><span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="derivadas" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="derivadas"><span class="header-section-number">5.2</span> Derivadas</h2>
+<p>Os objetivos deste tutorial são:</p>
+<ul>
+<li>Derivar funções triviais.</li>
+<li>Obter a equação da reta tangente a uma função.</li>
+<li>Cálculo de derivadas usando a regra da cadeia.</li>
+<li>Aproximar funções usando a expansão em séries de Taylor.</li>
+</ul>
+<section id="derivadas-triviais" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="derivadas-triviais"><span class="header-section-number">5.2.1</span> Derivadas triviais</h3>
+<p>Para cada uma das funções abaixo obtenha a sua derivada, implemente uma função chamada <code>dx()</code> que calcula a derivada obtida no ponto <span class="math inline">\(x = 1/2\)</span> e retorna o seu valor. Para usar a correção automática a linha final do seu código deve ser <code>dx(x = 1/2)</code>.</p>
+<ol type="a">
+<li><span class="math inline">\(f(x) = x^4\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>dx <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {<span class="dv">4</span><span class="sc">*</span>x<span class="sc">^</span><span class="dv">3</span>}</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dx</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.5</code></pre>
+</div>
+</div>
+<ol start="2" type="a">
+<li><span class="math inline">\(f(x) = x^{-3}\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>dx <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {<span class="sc">-</span><span class="dv">3</span><span class="sc">/</span>(x<span class="sc">^</span><span class="dv">4</span>)}</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dx</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -48</code></pre>
+</div>
+</div>
+<ol start="3" type="a">
+<li><span class="math inline">\(f(x) = \sqrt[3]{x}\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>dx <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {(<span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>)<span class="sc">*</span>(x<span class="sc">^</span>(<span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>))}</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dx</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.2099868</code></pre>
+</div>
+</div>
+<ol start="4" type="a">
+<li><span class="math inline">\(f(x) = \frac{1}{x}\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>dx <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {<span class="sc">-</span><span class="dv">1</span><span class="sc">/</span>(x<span class="sc">^</span><span class="dv">2</span>)}</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dx</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -4</code></pre>
+</div>
+</div>
+<ol start="5" type="a">
+<li><span class="math inline">\(f(x) = \sqrt[8]{x^2}\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>dx <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {<span class="dv">1</span><span class="sc">/</span>(<span class="dv">4</span><span class="sc">*</span> x<span class="sc">^</span>(<span class="dv">3</span><span class="sc">/</span><span class="dv">4</span>))}</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dx</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.4204482</code></pre>
+</div>
+</div>
+<ol start="6" type="a">
+<li><span class="math inline">\(f(x) = 4x^3 + x^2\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>dx <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {<span class="dv">12</span><span class="sc">*</span>x<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span><span class="sc">*</span>x}</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dx</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4</code></pre>
+</div>
+</div>
+<ol start="7" type="a">
+<li><span class="math inline">\(f(x) = \frac{2x + 3}{x^2 + 1}\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>dx <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>  p1 <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">/</span>(x<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">1</span>)</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>  p2 <span class="ot">&lt;-</span> (<span class="dv">2</span><span class="sc">*</span>x<span class="sc">*</span>(<span class="dv">2</span><span class="sc">*</span>x <span class="sc">+</span> <span class="dv">3</span>))<span class="sc">/</span>(x<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">1</span>)</span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(p1 <span class="sc">-</span> p2)</span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a><span class="fu">dx</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -1.6</code></pre>
+</div>
+</div>
+<ol start="8" type="a">
+<li><span class="math inline">\(f(x) = (3x^2 + 1) \exp(x)\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>dx <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> (<span class="dv">3</span><span class="sc">*</span>x<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">1</span>)<span class="sc">*</span><span class="fu">exp</span>(x) <span class="sc">+</span> <span class="dv">6</span><span class="sc">*</span>x<span class="sc">*</span><span class="fu">exp</span>(x)</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(out)</span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a><span class="fu">dx</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 7.831426</code></pre>
+</div>
+</div>
+<ol type="i">
+<li><span class="math inline">\(f(x) = 5x^4 + 6x^3 + x^2 + 2\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>dx <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="dv">20</span><span class="sc">*</span>x<span class="sc">^</span><span class="dv">3</span> <span class="sc">+</span> <span class="dv">18</span><span class="sc">*</span>x<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span><span class="sc">*</span>x</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(out)</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a><span class="fu">dx</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 8</code></pre>
+</div>
+</div>
+<ol start="10" type="a">
+<li><span class="math inline">\(f(x) = \log(x) 3x^4\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>dx <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="dv">12</span><span class="sc">*</span>x<span class="sc">^</span><span class="dv">3</span> <span class="sc">*</span> <span class="fu">log</span>(x) <span class="sc">+</span> <span class="dv">3</span><span class="sc">*</span>x<span class="sc">^</span><span class="dv">3</span></span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(out)</span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a><span class="fu">dx</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -0.6647208</code></pre>
+</div>
+</div>
+</section>
+<section id="reta-tangente" class="level3" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="reta-tangente"><span class="header-section-number">5.2.2</span> Reta tangente</h3>
+<p>Para cada uma das funções abaixo obtenha a reta tangente a <span class="math inline">\(f(x)\)</span> e esboce o gráfico. Para usar a correção aumotmática a última linha do seu código deve retornar o intercepto e a inclinação da reta tangente da seguinte forma <code>resultado = c(intercepto, inclinacao)</code>.</p>
+<ol type="a">
+<li><span class="math inline">\(f(x) = \frac{1}{x}\)</span> em <span class="math inline">\(x = 2\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Função</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>fx <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span><span class="sc">/</span>x</span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Derivada da função</span></span>
+<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a>dx <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a> <span class="sc">-</span><span class="dv">1</span><span class="sc">/</span>x<span class="sc">^</span><span class="dv">2</span> </span>
+<span id="cb57-8"><a href="#cb57-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb57-9"><a href="#cb57-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Reta tangente</span></span>
+<span id="cb57-10"><a href="#cb57-10" aria-hidden="true" tabindex="-1"></a>reta_tangente <span class="ot">&lt;-</span> <span class="cf">function</span>(a) {</span>
+<span id="cb57-11"><a href="#cb57-11" aria-hidden="true" tabindex="-1"></a>  intercept <span class="ot">=</span> (<span class="fu">fx</span>(<span class="at">x =</span> a) <span class="sc">-</span> <span class="fu">dx</span>(<span class="at">x =</span> a)<span class="sc">*</span>a)</span>
+<span id="cb57-12"><a href="#cb57-12" aria-hidden="true" tabindex="-1"></a>  slope <span class="ot">&lt;-</span> <span class="fu">dx</span>(<span class="at">x =</span> a)</span>
+<span id="cb57-13"><a href="#cb57-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">c</span>(intercept,slope))</span>
+<span id="cb57-14"><a href="#cb57-14" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb57-15"><a href="#cb57-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Gráfico da função</span></span>
+<span id="cb57-16"><a href="#cb57-16" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="at">l =</span> <span class="dv">100</span>) <span class="do">## Sequencia definindo o eixo x</span></span>
+<span id="cb57-17"><a href="#cb57-17" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">fx</span>(x) <span class="sc">~</span> x, <span class="at">type =</span> <span class="st">"l"</span>) <span class="do">## Desenhando a função</span></span>
+<span id="cb57-18"><a href="#cb57-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-19"><a href="#cb57-19" aria-hidden="true" tabindex="-1"></a><span class="do">## Reta tangente ao ponto a = 2</span></span>
+<span id="cb57-20"><a href="#cb57-20" aria-hidden="true" tabindex="-1"></a>reta1 <span class="ot">&lt;-</span> <span class="fu">reta_tangente</span>(<span class="at">a  =</span> <span class="dv">2</span>)</span>
+<span id="cb57-21"><a href="#cb57-21" aria-hidden="true" tabindex="-1"></a>intercepto <span class="ot">=</span> reta1[<span class="dv">1</span>]</span>
+<span id="cb57-22"><a href="#cb57-22" aria-hidden="true" tabindex="-1"></a>inclinacao <span class="ot">&lt;-</span> reta1[<span class="dv">2</span>]</span>
+<span id="cb57-23"><a href="#cb57-23" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x, <span class="fu">c</span>(intercepto <span class="sc">+</span> inclinacao<span class="sc">*</span>x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>resultado <span class="ot">&lt;-</span> <span class="fu">c</span>(intercepto, inclinacao)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="2" type="a">
+<li><span class="math inline">\(f(x) = x^3\)</span> em <span class="math inline">\(x = 3\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Função</span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>fx <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>  x<span class="sc">^</span><span class="dv">3</span></span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Derivada da função</span></span>
+<span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a>dx <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb59-7"><a href="#cb59-7" aria-hidden="true" tabindex="-1"></a> <span class="dv">3</span><span class="sc">*</span>x<span class="sc">^</span><span class="dv">2</span> </span>
+<span id="cb59-8"><a href="#cb59-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb59-9"><a href="#cb59-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Reta tangente</span></span>
+<span id="cb59-10"><a href="#cb59-10" aria-hidden="true" tabindex="-1"></a>reta_tangente <span class="ot">&lt;-</span> <span class="cf">function</span>(a) {</span>
+<span id="cb59-11"><a href="#cb59-11" aria-hidden="true" tabindex="-1"></a>  intercept <span class="ot">=</span> (<span class="fu">fx</span>(<span class="at">x =</span> a) <span class="sc">-</span> <span class="fu">dx</span>(<span class="at">x =</span> a)<span class="sc">*</span>a)</span>
+<span id="cb59-12"><a href="#cb59-12" aria-hidden="true" tabindex="-1"></a>  slope <span class="ot">&lt;-</span> <span class="fu">dx</span>(<span class="at">x =</span> a)</span>
+<span id="cb59-13"><a href="#cb59-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">c</span>(intercept,slope))</span>
+<span id="cb59-14"><a href="#cb59-14" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb59-15"><a href="#cb59-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Gráfico da função</span></span>
+<span id="cb59-16"><a href="#cb59-16" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="at">l =</span> <span class="dv">100</span>) <span class="do">## Sequencia definindo o eixo x</span></span>
+<span id="cb59-17"><a href="#cb59-17" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">fx</span>(x) <span class="sc">~</span> x, <span class="at">type =</span> <span class="st">"l"</span>) <span class="do">## Desenhando a função</span></span>
+<span id="cb59-18"><a href="#cb59-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-19"><a href="#cb59-19" aria-hidden="true" tabindex="-1"></a><span class="do">## Reta tangente ao ponto a = 2</span></span>
+<span id="cb59-20"><a href="#cb59-20" aria-hidden="true" tabindex="-1"></a>reta1 <span class="ot">&lt;-</span> <span class="fu">reta_tangente</span>(<span class="at">a  =</span> <span class="dv">3</span>)</span>
+<span id="cb59-21"><a href="#cb59-21" aria-hidden="true" tabindex="-1"></a>intercepto <span class="ot">=</span> reta1[<span class="dv">1</span>]</span>
+<span id="cb59-22"><a href="#cb59-22" aria-hidden="true" tabindex="-1"></a>inclinacao <span class="ot">&lt;-</span> reta1[<span class="dv">2</span>]</span>
+<span id="cb59-23"><a href="#cb59-23" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x, <span class="fu">c</span>(intercepto <span class="sc">+</span> inclinacao<span class="sc">*</span>x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>resultado <span class="ot">&lt;-</span> <span class="fu">c</span>(intercepto, inclinacao)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="3" type="a">
+<li><span class="math inline">\(f(x) = \exp(x)\)</span> em <span class="math inline">\(x = 0\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Função</span></span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>fx <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">exp</span>(x)</span>
+<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Derivada da função</span></span>
+<span id="cb61-6"><a href="#cb61-6" aria-hidden="true" tabindex="-1"></a>dx <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb61-7"><a href="#cb61-7" aria-hidden="true" tabindex="-1"></a> <span class="fu">exp</span>(x) </span>
+<span id="cb61-8"><a href="#cb61-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb61-9"><a href="#cb61-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Reta tangente</span></span>
+<span id="cb61-10"><a href="#cb61-10" aria-hidden="true" tabindex="-1"></a>reta_tangente <span class="ot">&lt;-</span> <span class="cf">function</span>(a) {</span>
+<span id="cb61-11"><a href="#cb61-11" aria-hidden="true" tabindex="-1"></a>  intercept <span class="ot">=</span> (<span class="fu">fx</span>(<span class="at">x =</span> a) <span class="sc">-</span> <span class="fu">dx</span>(<span class="at">x =</span> a)<span class="sc">*</span>a)</span>
+<span id="cb61-12"><a href="#cb61-12" aria-hidden="true" tabindex="-1"></a>  slope <span class="ot">&lt;-</span> <span class="fu">dx</span>(<span class="at">x =</span> a)</span>
+<span id="cb61-13"><a href="#cb61-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">c</span>(intercept,slope))</span>
+<span id="cb61-14"><a href="#cb61-14" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb61-15"><a href="#cb61-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Gráfico da função</span></span>
+<span id="cb61-16"><a href="#cb61-16" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">2</span>, <span class="at">l =</span> <span class="dv">100</span>) <span class="do">## Sequencia definindo o eixo x</span></span>
+<span id="cb61-17"><a href="#cb61-17" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">fx</span>(x) <span class="sc">~</span> x, <span class="at">type =</span> <span class="st">"l"</span>) <span class="do">## Desenhando a função</span></span>
+<span id="cb61-18"><a href="#cb61-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-19"><a href="#cb61-19" aria-hidden="true" tabindex="-1"></a><span class="do">## Reta tangente ao ponto a = 2</span></span>
+<span id="cb61-20"><a href="#cb61-20" aria-hidden="true" tabindex="-1"></a>reta1 <span class="ot">&lt;-</span> <span class="fu">reta_tangente</span>(<span class="at">a  =</span> <span class="dv">0</span>)</span>
+<span id="cb61-21"><a href="#cb61-21" aria-hidden="true" tabindex="-1"></a>intercepto <span class="ot">=</span> reta1[<span class="dv">1</span>]</span>
+<span id="cb61-22"><a href="#cb61-22" aria-hidden="true" tabindex="-1"></a>inclinacao <span class="ot">&lt;-</span> reta1[<span class="dv">2</span>]</span>
+<span id="cb61-23"><a href="#cb61-23" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x, <span class="fu">c</span>(intercepto <span class="sc">+</span> inclinacao<span class="sc">*</span>x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>resultado <span class="ot">&lt;-</span> <span class="fu">c</span>(intercepto, inclinacao)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="4" type="a">
+<li><span class="math inline">\(f(x) = \log(x)\)</span> em <span class="math inline">\(x = 2\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Função</span></span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>fx <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">log</span>(x)</span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Derivada da função</span></span>
+<span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a>dx <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb63-7"><a href="#cb63-7" aria-hidden="true" tabindex="-1"></a> <span class="dv">1</span><span class="sc">/</span>x </span>
+<span id="cb63-8"><a href="#cb63-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb63-9"><a href="#cb63-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Reta tangente</span></span>
+<span id="cb63-10"><a href="#cb63-10" aria-hidden="true" tabindex="-1"></a>reta_tangente <span class="ot">&lt;-</span> <span class="cf">function</span>(a) {</span>
+<span id="cb63-11"><a href="#cb63-11" aria-hidden="true" tabindex="-1"></a>  intercept <span class="ot">=</span> (<span class="fu">fx</span>(<span class="at">x =</span> a) <span class="sc">-</span> <span class="fu">dx</span>(<span class="at">x =</span> a)<span class="sc">*</span>a)</span>
+<span id="cb63-12"><a href="#cb63-12" aria-hidden="true" tabindex="-1"></a>  slope <span class="ot">&lt;-</span> <span class="fu">dx</span>(<span class="at">x =</span> a)</span>
+<span id="cb63-13"><a href="#cb63-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">c</span>(intercept,slope))</span>
+<span id="cb63-14"><a href="#cb63-14" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb63-15"><a href="#cb63-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Gráfico da função</span></span>
+<span id="cb63-16"><a href="#cb63-16" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fl">0.5</span>, <span class="dv">4</span>, <span class="at">l =</span> <span class="dv">100</span>) <span class="do">## Sequencia definindo o eixo x</span></span>
+<span id="cb63-17"><a href="#cb63-17" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">fx</span>(x) <span class="sc">~</span> x, <span class="at">type =</span> <span class="st">"l"</span>) <span class="do">## Desenhando a função</span></span>
+<span id="cb63-18"><a href="#cb63-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-19"><a href="#cb63-19" aria-hidden="true" tabindex="-1"></a><span class="do">## Reta tangente ao ponto a = 2</span></span>
+<span id="cb63-20"><a href="#cb63-20" aria-hidden="true" tabindex="-1"></a>reta1 <span class="ot">&lt;-</span> <span class="fu">reta_tangente</span>(<span class="at">a  =</span> <span class="dv">2</span>)</span>
+<span id="cb63-21"><a href="#cb63-21" aria-hidden="true" tabindex="-1"></a>intercepto <span class="ot">=</span> reta1[<span class="dv">1</span>]</span>
+<span id="cb63-22"><a href="#cb63-22" aria-hidden="true" tabindex="-1"></a>inclinacao <span class="ot">&lt;-</span> reta1[<span class="dv">2</span>]</span>
+<span id="cb63-23"><a href="#cb63-23" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(x, <span class="fu">c</span>(intercepto <span class="sc">+</span> inclinacao<span class="sc">*</span>x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-35-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>resultado <span class="ot">&lt;-</span> <span class="fu">c</span>(intercepto, inclinacao)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="regra-da-cadeia" class="level3" data-number="5.2.3">
+<h3 data-number="5.2.3" class="anchored" data-anchor-id="regra-da-cadeia"><span class="header-section-number">5.2.3</span> Regra da cadeia</h3>
+<p>Para cada uma das funções abaixo obtenha a sua derivada, implemente uma função chamada <code>dx()</code> que calcula a derivada obtida no ponto <span class="math inline">\(x = 2\)</span> e retorna o seu valor. Para usar a correção automática a linha final do seu código deve ser <code>dx(x = 2)</code>.</p>
+<ol type="a">
+<li><span class="math inline">\(f(x) = \exp{3x}\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>dx <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {<span class="dv">3</span><span class="sc">*</span><span class="fu">exp</span>(<span class="dv">3</span><span class="sc">*</span>x)}</span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dx</span>(<span class="at">x =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1210.286</code></pre>
+</div>
+</div>
+<ol start="2" type="a">
+<li><span class="math inline">\(f(x) = \sin(x^2)\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>dx <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {<span class="dv">2</span><span class="sc">*</span>x<span class="sc">*</span><span class="fu">cos</span>(x<span class="sc">^</span><span class="dv">2</span>)}</span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dx</span>(<span class="at">x =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -2.614574</code></pre>
+</div>
+</div>
+<ol start="3" type="a">
+<li><span class="math inline">\(f(x) = (3x^2 + 1)^3\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>dx <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {<span class="dv">18</span><span class="sc">*</span>x<span class="sc">*</span>(<span class="dv">3</span><span class="sc">*</span>x<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">1</span>)<span class="sc">^</span><span class="dv">2</span>}</span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dx</span>(<span class="at">x =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6084</code></pre>
+</div>
+</div>
+<ol start="4" type="a">
+<li><span class="math inline">\(f(x) = \log(x^2 + 3)\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>dx <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {<span class="dv">2</span><span class="sc">*</span>x<span class="sc">/</span>(x<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span>)}</span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dx</span>(<span class="at">x =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.5714286</code></pre>
+</div>
+</div>
+<ol start="5" type="a">
+<li><span class="math inline">\(f(x) = x^2 \exp(3x)\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>dx <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {<span class="dv">3</span><span class="sc">*</span>(x<span class="sc">^</span><span class="dv">2</span>)<span class="sc">*</span><span class="fu">exp</span>(<span class="dv">3</span><span class="sc">*</span>x) <span class="sc">+</span> <span class="dv">2</span><span class="sc">*</span>x<span class="sc">*</span><span class="fu">exp</span>(<span class="dv">3</span><span class="sc">*</span>x)}</span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dx</span>(<span class="at">x =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6454.861</code></pre>
+</div>
+</div>
+<ol start="6" type="a">
+<li><span class="math inline">\(f(x) = \log(x^2 + 3x + 9)\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>dx <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {(<span class="dv">2</span><span class="sc">*</span>x <span class="sc">+</span> <span class="dv">3</span>)<span class="sc">/</span>(x<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">3</span><span class="sc">*</span>x <span class="sc">+</span> <span class="dv">9</span>)}</span>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dx</span>(<span class="at">x =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3684211</code></pre>
+</div>
+</div>
+<ol start="7" type="a">
+<li><span class="math inline">\(f(x) = \sqrt{x + \exp(x)}\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>dx <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {(<span class="fu">exp</span>(x) <span class="sc">+</span> <span class="dv">1</span>)<span class="sc">/</span>(<span class="dv">2</span><span class="sc">*</span><span class="fu">sqrt</span>(<span class="fu">exp</span>(x) <span class="sc">+</span> x))}</span>
+<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dx</span>(<span class="at">x =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.368901</code></pre>
+</div>
+</div>
+</section>
+<section id="aproximação-por-série-de-taylor" class="level3" data-number="5.2.4">
+<h3 data-number="5.2.4" class="anchored" data-anchor-id="aproximação-por-série-de-taylor"><span class="header-section-number">5.2.4</span> Aproximação por Série de Taylor</h3>
+<p>Aproxime as seguintes funções usando a expansão de Taylor de segunda ordem. Esboce o gráfico da função e da aproximação. Note que <span class="math inline">\(y_i\)</span> é constante nos valores informados e que a aproximação deve ser feita em relação a <span class="math inline">\(\mu\)</span>. Pode fixar como ponto de referência para a aproximação <span class="math inline">\(\mu_0\)</span> a média dos <span class="math inline">\(y_i\)</span>’s. Para usar a correção automática você deve avaliar a aproximação de Taylor em cada valor de <span class="math inline">\(y_i\)</span> fornecido.</p>
+<ol type="a">
+<li><span class="math inline">\(f(\mu; \boldsymbol{y}) = \sum_{i=1}^n (y_i - \mu)^2\)</span>. Fixe <span class="math inline">\(y_i = 2.09;-1.32;-0.20;0.05;-0.07\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Função genérica</span></span>
+<span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a>taylor_ap <span class="ot">&lt;-</span> <span class="cf">function</span>(mu, mu0, f, f_prime, f_dprime) {</span>
+<span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a>  app <span class="ot">&lt;-</span> <span class="fu">f</span>(<span class="at">mu =</span> mu0) <span class="sc">+</span> (mu <span class="sc">-</span> mu0)<span class="sc">*</span><span class="fu">f_prime</span>(<span class="at">mu =</span> mu0) <span class="sc">+</span> </span>
+<span id="cb79-4"><a href="#cb79-4" aria-hidden="true" tabindex="-1"></a>    (((mu <span class="sc">-</span> mu0)<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span>(<span class="dv">2</span>))<span class="sc">*</span><span class="fu">f_dprime</span>(<span class="at">mu =</span> mu0)</span>
+<span id="cb79-5"><a href="#cb79-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(app)</span>
+<span id="cb79-6"><a href="#cb79-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb79-7"><a href="#cb79-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-8"><a href="#cb79-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Dados do exercício</span></span>
+<span id="cb79-9"><a href="#cb79-9" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">2.09</span>, <span class="sc">-</span><span class="fl">1.32</span>, <span class="sc">-</span><span class="fl">0.20</span>, <span class="fl">0.05</span>, <span class="sc">-</span><span class="fl">0.07</span>)</span>
+<span id="cb79-10"><a href="#cb79-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-11"><a href="#cb79-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Ponto referencia da aproximação</span></span>
+<span id="cb79-12"><a href="#cb79-12" aria-hidden="true" tabindex="-1"></a>mu0 <span class="ot">&lt;-</span> <span class="fu">mean</span>(y)</span>
+<span id="cb79-13"><a href="#cb79-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-14"><a href="#cb79-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Função a ser aproximada</span></span>
+<span id="cb79-15"><a href="#cb79-15" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(mu) {<span class="fu">sum</span>( (y <span class="sc">-</span> mu)<span class="sc">^</span><span class="dv">2</span>) }</span>
+<span id="cb79-16"><a href="#cb79-16" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="fu">Vectorize</span>(<span class="at">FUN =</span> f, <span class="at">vectorize.args =</span> <span class="st">"mu"</span>)</span>
+<span id="cb79-17"><a href="#cb79-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Primeira derivada da função a ser aproximada</span></span>
+<span id="cb79-18"><a href="#cb79-18" aria-hidden="true" tabindex="-1"></a>f_prime <span class="ot">&lt;-</span> <span class="cf">function</span>(mu) {<span class="sc">-</span><span class="dv">2</span><span class="sc">*</span><span class="fu">sum</span>(y<span class="sc">-</span>mu)}</span>
+<span id="cb79-19"><a href="#cb79-19" aria-hidden="true" tabindex="-1"></a>f_prime <span class="ot">&lt;-</span> <span class="fu">Vectorize</span>(<span class="at">FUN =</span> f_prime, <span class="at">vectorize.args =</span> <span class="st">"mu"</span>)</span>
+<span id="cb79-20"><a href="#cb79-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Segunda derivada da função a ser aproximada</span></span>
+<span id="cb79-21"><a href="#cb79-21" aria-hidden="true" tabindex="-1"></a>f_dprime <span class="ot">&lt;-</span> <span class="cf">function</span>(mu) {<span class="dv">2</span><span class="sc">*</span><span class="fu">length</span>(y)}</span>
+<span id="cb79-22"><a href="#cb79-22" aria-hidden="true" tabindex="-1"></a>f_dprime <span class="ot">&lt;-</span> <span class="fu">Vectorize</span>(<span class="at">FUN =</span> f_dprime, <span class="at">vectorize.args =</span> <span class="st">"mu"</span>)</span>
+<span id="cb79-23"><a href="#cb79-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Grafico da aproximação</span></span>
+<span id="cb79-24"><a href="#cb79-24" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(f, <span class="fu">min</span>(y), <span class="fu">max</span>(y), <span class="at">ylab =</span> <span class="fu">expression</span>(<span class="fu">f</span>(mu)), <span class="at">xlab =</span> <span class="fu">expression</span>(mu))</span>
+<span id="cb79-25"><a href="#cb79-25" aria-hidden="true" tabindex="-1"></a>xx <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">min</span>(y), <span class="fu">max</span>(y), <span class="at">l =</span> <span class="dv">100</span>)</span>
+<span id="cb79-26"><a href="#cb79-26" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(xx, <span class="fu">taylor_ap</span>(<span class="at">mu =</span> xx, <span class="at">mu0 =</span> mu0, <span class="at">f =</span> f, <span class="at">f_prime =</span> f_prime, </span>
+<span id="cb79-27"><a href="#cb79-27" aria-hidden="true" tabindex="-1"></a>                      <span class="at">f_dprime =</span> f_dprime), <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb79-28"><a href="#cb79-28" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"topleft"</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"True"</span>,<span class="st">"Taylor Aprx."</span>), <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="at">lwd =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">col =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-43-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">taylor_ap</span>(<span class="at">mu =</span> y, <span class="at">mu0 =</span> <span class="fu">mean</span>(y), <span class="at">f =</span> f, <span class="at">f_prime =</span> f_prime, <span class="at">f_dprime =</span> f_dprime)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 25.6994 16.3219  6.5779  6.1154  6.2594</code></pre>
+</div>
+</div>
+<ol start="2" type="a">
+<li><span class="math inline">\(f(\mu; \boldsymbol{y}) = \sum_{i=1}^n 2 \left ( y_i \log \frac{y_i}{\mu} + \mu - y_i \right )\)</span>. Fixe <span class="math inline">\(y_i = 7;4;4;6;5\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Função genérica</span></span>
+<span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a>taylor_ap <span class="ot">&lt;-</span> <span class="cf">function</span>(mu, mu0, f, f_prime, f_dprime) {</span>
+<span id="cb82-3"><a href="#cb82-3" aria-hidden="true" tabindex="-1"></a>  app <span class="ot">&lt;-</span> <span class="fu">f</span>(<span class="at">mu =</span> mu0) <span class="sc">+</span> (mu <span class="sc">-</span> mu0)<span class="sc">*</span><span class="fu">f_prime</span>(<span class="at">mu =</span> mu0) <span class="sc">+</span> </span>
+<span id="cb82-4"><a href="#cb82-4" aria-hidden="true" tabindex="-1"></a>    (((mu <span class="sc">-</span> mu0)<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span>(<span class="dv">2</span>))<span class="sc">*</span><span class="fu">f_dprime</span>(<span class="at">mu =</span> mu0)</span>
+<span id="cb82-5"><a href="#cb82-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(app)</span>
+<span id="cb82-6"><a href="#cb82-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb82-7"><a href="#cb82-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-8"><a href="#cb82-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Dados do exercício</span></span>
+<span id="cb82-9"><a href="#cb82-9" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">7</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">5</span>)</span>
+<span id="cb82-10"><a href="#cb82-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-11"><a href="#cb82-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Ponto referencia da aproximação</span></span>
+<span id="cb82-12"><a href="#cb82-12" aria-hidden="true" tabindex="-1"></a>mu0 <span class="ot">&lt;-</span> <span class="fu">mean</span>(y)</span>
+<span id="cb82-13"><a href="#cb82-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-14"><a href="#cb82-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Função a ser aproximada</span></span>
+<span id="cb82-15"><a href="#cb82-15" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(mu) {<span class="fu">sum</span>(<span class="dv">2</span><span class="sc">*</span>(y<span class="sc">*</span><span class="fu">log</span>(y<span class="sc">/</span>mu) <span class="sc">+</span> mu <span class="sc">-</span> y) )}</span>
+<span id="cb82-16"><a href="#cb82-16" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="fu">Vectorize</span>(<span class="at">FUN =</span> f, <span class="at">vectorize.args =</span> <span class="st">"mu"</span>)</span>
+<span id="cb82-17"><a href="#cb82-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Primeira derivada da função a ser aproximada</span></span>
+<span id="cb82-18"><a href="#cb82-18" aria-hidden="true" tabindex="-1"></a>f_prime <span class="ot">&lt;-</span> <span class="cf">function</span>(mu) {<span class="fu">sum</span>(<span class="dv">2</span><span class="sc">*</span>(<span class="dv">1</span> <span class="sc">-</span> y<span class="sc">/</span>mu))}</span>
+<span id="cb82-19"><a href="#cb82-19" aria-hidden="true" tabindex="-1"></a>f_prime <span class="ot">&lt;-</span> <span class="fu">Vectorize</span>(<span class="at">FUN =</span> f_prime, <span class="at">vectorize.args =</span> <span class="st">"mu"</span>)</span>
+<span id="cb82-20"><a href="#cb82-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Segunda derivada da função a ser aproximada</span></span>
+<span id="cb82-21"><a href="#cb82-21" aria-hidden="true" tabindex="-1"></a>f_dprime <span class="ot">&lt;-</span> <span class="cf">function</span>(mu) {<span class="fu">sum</span>(<span class="dv">2</span><span class="sc">*</span>y<span class="sc">/</span>mu<span class="sc">^</span><span class="dv">2</span>)}</span>
+<span id="cb82-22"><a href="#cb82-22" aria-hidden="true" tabindex="-1"></a>f_dprime <span class="ot">&lt;-</span> <span class="fu">Vectorize</span>(<span class="at">FUN =</span> f_dprime, <span class="at">vectorize.args =</span> <span class="st">"mu"</span>)</span>
+<span id="cb82-23"><a href="#cb82-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Grafico da aproximação</span></span>
+<span id="cb82-24"><a href="#cb82-24" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(f, <span class="fu">min</span>(y), <span class="fu">max</span>(y), <span class="at">ylab =</span> <span class="fu">expression</span>(<span class="fu">f</span>(mu)), <span class="at">xlab =</span> <span class="fu">expression</span>(mu))</span>
+<span id="cb82-25"><a href="#cb82-25" aria-hidden="true" tabindex="-1"></a>xx <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">min</span>(y), <span class="fu">max</span>(y), <span class="at">l =</span> <span class="dv">100</span>)</span>
+<span id="cb82-26"><a href="#cb82-26" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(xx, <span class="fu">taylor_ap</span>(<span class="at">mu =</span> xx, <span class="at">mu0 =</span> mu0, <span class="at">f =</span> f, <span class="at">f_prime =</span> f_prime, </span>
+<span id="cb82-27"><a href="#cb82-27" aria-hidden="true" tabindex="-1"></a>                      <span class="at">f_dprime =</span> f_dprime), <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb82-28"><a href="#cb82-28" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"topleft"</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"True"</span>,<span class="st">"Taylor Aprx."</span>), <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="at">lwd =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">col =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-44-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="fu">taylor_ap</span>(<span class="at">mu =</span> y, <span class="at">mu0 =</span> <span class="fu">mean</span>(y), <span class="at">f =</span> f, <span class="at">f_prime =</span> f_prime, <span class="at">f_dprime =</span> f_dprime)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4.404081 2.673311 2.673311 1.904081 1.327158</code></pre>
+</div>
+</div>
+<ol start="3" type="a">
+<li><span class="math inline">\(f(\mu; \boldsymbol{y}) = \sum_{i=1}^n 2 \left ( \frac{y_i}{\mu} - \log \frac{y_i}{\mu} - 1 \right )\)</span>. Fixe <span class="math inline">\(y_i = 2.35;0.16;0.56;1.05;0.51\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Função genérica</span></span>
+<span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a>taylor_ap <span class="ot">&lt;-</span> <span class="cf">function</span>(mu, mu0, f, f_prime, f_dprime) {</span>
+<span id="cb85-3"><a href="#cb85-3" aria-hidden="true" tabindex="-1"></a>  app <span class="ot">&lt;-</span> <span class="fu">f</span>(<span class="at">mu =</span> mu0) <span class="sc">+</span> (mu <span class="sc">-</span> mu0)<span class="sc">*</span><span class="fu">f_prime</span>(<span class="at">mu =</span> mu0) <span class="sc">+</span> </span>
+<span id="cb85-4"><a href="#cb85-4" aria-hidden="true" tabindex="-1"></a>    (((mu <span class="sc">-</span> mu0)<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span>(<span class="dv">2</span>))<span class="sc">*</span><span class="fu">f_dprime</span>(<span class="at">mu =</span> mu0)</span>
+<span id="cb85-5"><a href="#cb85-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(app)</span>
+<span id="cb85-6"><a href="#cb85-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb85-7"><a href="#cb85-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb85-8"><a href="#cb85-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Dados do exercício</span></span>
+<span id="cb85-9"><a href="#cb85-9" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">2.35</span>, <span class="fl">0.16</span>, <span class="fl">0.56</span>, <span class="fl">1.05</span>, <span class="fl">0.51</span>)</span>
+<span id="cb85-10"><a href="#cb85-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb85-11"><a href="#cb85-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Ponto referencia da aproximação</span></span>
+<span id="cb85-12"><a href="#cb85-12" aria-hidden="true" tabindex="-1"></a>mu0 <span class="ot">&lt;-</span> <span class="fu">mean</span>(y)</span>
+<span id="cb85-13"><a href="#cb85-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb85-14"><a href="#cb85-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Função a ser aproximada</span></span>
+<span id="cb85-15"><a href="#cb85-15" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(mu) {<span class="fu">sum</span>(<span class="dv">2</span><span class="sc">*</span>((y<span class="sc">/</span>mu) <span class="sc">-</span> <span class="fu">log</span>(y<span class="sc">/</span>mu) <span class="sc">-</span><span class="dv">1</span> ))}</span>
+<span id="cb85-16"><a href="#cb85-16" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="fu">Vectorize</span>(<span class="at">FUN =</span> f, <span class="at">vectorize.args =</span> <span class="st">"mu"</span>)</span>
+<span id="cb85-17"><a href="#cb85-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Primeira derivada da função a ser aproximada</span></span>
+<span id="cb85-18"><a href="#cb85-18" aria-hidden="true" tabindex="-1"></a>f_prime <span class="ot">&lt;-</span> <span class="cf">function</span>(mu) {<span class="fu">sum</span>( <span class="dv">2</span><span class="sc">*</span>( (<span class="dv">1</span><span class="sc">/</span>mu) <span class="sc">-</span> y<span class="sc">/</span>(mu<span class="sc">^</span><span class="dv">2</span>) ))}</span>
+<span id="cb85-19"><a href="#cb85-19" aria-hidden="true" tabindex="-1"></a>f_prime <span class="ot">&lt;-</span> <span class="fu">Vectorize</span>(<span class="at">FUN =</span> f_prime, <span class="at">vectorize.args =</span> <span class="st">"mu"</span>)</span>
+<span id="cb85-20"><a href="#cb85-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Segunda derivada da função a ser aproximada</span></span>
+<span id="cb85-21"><a href="#cb85-21" aria-hidden="true" tabindex="-1"></a>f_dprime <span class="ot">&lt;-</span> <span class="cf">function</span>(mu) {<span class="fu">sum</span>( <span class="dv">2</span><span class="sc">*</span>( (<span class="dv">2</span><span class="sc">*</span>y<span class="sc">/</span>mu<span class="sc">^</span><span class="dv">3</span>) <span class="sc">-</span> <span class="dv">1</span><span class="sc">/</span>(mu<span class="sc">^</span><span class="dv">2</span>)))}</span>
+<span id="cb85-22"><a href="#cb85-22" aria-hidden="true" tabindex="-1"></a>f_dprime <span class="ot">&lt;-</span> <span class="fu">Vectorize</span>(<span class="at">FUN =</span> f_dprime, <span class="at">vectorize.args =</span> <span class="st">"mu"</span>)</span>
+<span id="cb85-23"><a href="#cb85-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Grafico da aproximação</span></span>
+<span id="cb85-24"><a href="#cb85-24" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(f, <span class="fu">min</span>(y), <span class="fu">max</span>(y), <span class="at">ylab =</span> <span class="fu">expression</span>(<span class="fu">f</span>(mu)), <span class="at">xlab =</span> <span class="fu">expression</span>(mu))</span>
+<span id="cb85-25"><a href="#cb85-25" aria-hidden="true" tabindex="-1"></a>xx <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">min</span>(y), <span class="fu">max</span>(y), <span class="at">l =</span> <span class="dv">100</span>)</span>
+<span id="cb85-26"><a href="#cb85-26" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(xx, <span class="fu">taylor_ap</span>(<span class="at">mu =</span> xx, <span class="at">mu0 =</span> mu0, <span class="at">f =</span> f, <span class="at">f_prime =</span> f_prime, </span>
+<span id="cb85-27"><a href="#cb85-27" aria-hidden="true" tabindex="-1"></a>                      <span class="at">f_dprime =</span> f_dprime), <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb85-28"><a href="#cb85-28" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"topleft"</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"True"</span>,<span class="st">"Taylor Aprx."</span>), <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="at">lwd =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">col =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-45-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">taylor_ap</span>(<span class="at">mu =</span> y, <span class="at">mu0 =</span> <span class="fu">mean</span>(y), <span class="at">f =</span> f, <span class="at">f_prime =</span> f_prime, <span class="at">f_dprime =</span> f_dprime)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 15.420365  7.017681  4.377374  3.685926  4.605369</code></pre>
+</div>
+</div>
+<ol start="4" type="a">
+<li><span class="math inline">\(f(\mu; \boldsymbol{y}) = \sum_{i=1}^n 2 \left ( y_i \log \frac{y_i}{\mu} + (1- y_i) \log \frac{1-y_i}{1-\mu} \right )\)</span>. Fixe <span class="math inline">\(y_i = 1;0;0;1;1\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Função genérica</span></span>
+<span id="cb88-2"><a href="#cb88-2" aria-hidden="true" tabindex="-1"></a>taylor_ap <span class="ot">&lt;-</span> <span class="cf">function</span>(mu, mu0, f, f_prime, f_dprime) {</span>
+<span id="cb88-3"><a href="#cb88-3" aria-hidden="true" tabindex="-1"></a>  app <span class="ot">&lt;-</span> <span class="fu">f</span>(<span class="at">mu =</span> mu0) <span class="sc">+</span> (mu <span class="sc">-</span> mu0)<span class="sc">*</span><span class="fu">f_prime</span>(<span class="at">mu =</span> mu0) <span class="sc">+</span> </span>
+<span id="cb88-4"><a href="#cb88-4" aria-hidden="true" tabindex="-1"></a>    (((mu <span class="sc">-</span> mu0)<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span>(<span class="dv">2</span>))<span class="sc">*</span><span class="fu">f_dprime</span>(<span class="at">mu =</span> mu0)</span>
+<span id="cb88-5"><a href="#cb88-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(app)</span>
+<span id="cb88-6"><a href="#cb88-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb88-7"><a href="#cb88-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb88-8"><a href="#cb88-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Dados do exercício</span></span>
+<span id="cb88-9"><a href="#cb88-9" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>)</span>
+<span id="cb88-10"><a href="#cb88-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb88-11"><a href="#cb88-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Ponto referencia da aproximação</span></span>
+<span id="cb88-12"><a href="#cb88-12" aria-hidden="true" tabindex="-1"></a>mu0 <span class="ot">&lt;-</span> <span class="fu">mean</span>(y)</span>
+<span id="cb88-13"><a href="#cb88-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb88-14"><a href="#cb88-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Função a ser aproximada</span></span>
+<span id="cb88-15"><a href="#cb88-15" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(mu) {</span>
+<span id="cb88-16"><a href="#cb88-16" aria-hidden="true" tabindex="-1"></a>  temp <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb88-17"><a href="#cb88-17" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(y)) {</span>
+<span id="cb88-18"><a href="#cb88-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(y[i] <span class="sc">==</span> <span class="dv">1</span>) { temp[i] <span class="ot">&lt;-</span> y[i]<span class="sc">*</span><span class="fu">log</span>(y[i]<span class="sc">/</span>mu) }</span>
+<span id="cb88-19"><a href="#cb88-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(y[i] <span class="sc">==</span> <span class="dv">0</span>) { temp[i] <span class="ot">&lt;-</span> (<span class="dv">1</span><span class="sc">-</span>y[i])<span class="sc">*</span><span class="fu">log</span>( (<span class="dv">1</span><span class="sc">-</span>y[i])<span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span>mu) ) }</span>
+<span id="cb88-20"><a href="#cb88-20" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb88-21"><a href="#cb88-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">sum</span>(<span class="dv">2</span><span class="sc">*</span>temp))</span>
+<span id="cb88-22"><a href="#cb88-22" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb88-23"><a href="#cb88-23" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="fu">Vectorize</span>(<span class="at">FUN =</span> f, <span class="at">vectorize.args =</span> <span class="st">"mu"</span>)</span>
+<span id="cb88-24"><a href="#cb88-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Primeira derivada da função a ser aproximada</span></span>
+<span id="cb88-25"><a href="#cb88-25" aria-hidden="true" tabindex="-1"></a>f_prime <span class="ot">&lt;-</span> <span class="cf">function</span>(mu) {<span class="fu">sum</span>(<span class="dv">2</span><span class="sc">*</span>((<span class="dv">1</span><span class="sc">-</span>y)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span>mu) <span class="sc">-</span> y<span class="sc">/</span>mu ))}</span>
+<span id="cb88-26"><a href="#cb88-26" aria-hidden="true" tabindex="-1"></a>f_prime <span class="ot">&lt;-</span> <span class="fu">Vectorize</span>(<span class="at">FUN =</span> f_prime, <span class="at">vectorize.args =</span> <span class="st">"mu"</span>)</span>
+<span id="cb88-27"><a href="#cb88-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Segunda derivada da função a ser aproximada</span></span>
+<span id="cb88-28"><a href="#cb88-28" aria-hidden="true" tabindex="-1"></a>f_dprime <span class="ot">&lt;-</span> <span class="cf">function</span>(mu) {<span class="fu">sum</span>(<span class="dv">2</span><span class="sc">*</span>( (y<span class="sc">/</span>mu<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">-</span>y)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span>mu)<span class="sc">^</span><span class="dv">2</span>))}</span>
+<span id="cb88-29"><a href="#cb88-29" aria-hidden="true" tabindex="-1"></a>f_dprime <span class="ot">&lt;-</span> <span class="fu">Vectorize</span>(<span class="at">FUN =</span> f_dprime, <span class="at">vectorize.args =</span> <span class="st">"mu"</span>)</span>
+<span id="cb88-30"><a href="#cb88-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Grafico da aproximação</span></span>
+<span id="cb88-31"><a href="#cb88-31" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(f, <span class="fl">0.1</span>, <span class="fl">0.9</span>, <span class="at">ylab =</span> <span class="fu">expression</span>(<span class="fu">f</span>(mu)), <span class="at">xlab =</span> <span class="fu">expression</span>(mu))</span>
+<span id="cb88-32"><a href="#cb88-32" aria-hidden="true" tabindex="-1"></a>xx <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fl">0.1</span>, <span class="fl">0.9</span>, <span class="at">l =</span> <span class="dv">100</span>)</span>
+<span id="cb88-33"><a href="#cb88-33" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(xx, <span class="fu">taylor_ap</span>(<span class="at">mu =</span> xx, <span class="at">mu0 =</span> mu0, <span class="at">f =</span> f, <span class="at">f_prime =</span> f_prime, </span>
+<span id="cb88-34"><a href="#cb88-34" aria-hidden="true" tabindex="-1"></a>                      <span class="at">f_dprime =</span> f_dprime), <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb88-35"><a href="#cb88-35" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"topleft"</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"True"</span>,<span class="st">"Taylor Aprx."</span>), <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="at">lwd =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">col =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-46-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="fu">taylor_ap</span>(<span class="at">mu =</span> y, <span class="at">mu0 =</span> <span class="fu">mean</span>(y), <span class="at">f =</span> f, <span class="at">f_prime =</span> f_prime, <span class="at">f_dprime =</span> f_dprime)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10.06345 14.23012 14.23012 10.06345 10.06345</code></pre>
+</div>
+</div>
+<ol start="5" type="a">
+<li>$f(; ) = _{i=1}^n 2 ( y_i + (m + y_i) ) $. Fixe <span class="math inline">\(m = 10\)</span> e <span class="math inline">\(y_i = 7;4;4;6;5\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Função genérica</span></span>
+<span id="cb91-2"><a href="#cb91-2" aria-hidden="true" tabindex="-1"></a>taylor_ap <span class="ot">&lt;-</span> <span class="cf">function</span>(mu, mu0, f, f_prime, f_dprime) {</span>
+<span id="cb91-3"><a href="#cb91-3" aria-hidden="true" tabindex="-1"></a>  app <span class="ot">&lt;-</span> <span class="fu">f</span>(<span class="at">mu =</span> mu0) <span class="sc">+</span> (mu <span class="sc">-</span> mu0)<span class="sc">*</span><span class="fu">f_prime</span>(<span class="at">mu =</span> mu0) <span class="sc">+</span> </span>
+<span id="cb91-4"><a href="#cb91-4" aria-hidden="true" tabindex="-1"></a>    (((mu <span class="sc">-</span> mu0)<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span>(<span class="dv">2</span>))<span class="sc">*</span><span class="fu">f_dprime</span>(<span class="at">mu =</span> mu0)</span>
+<span id="cb91-5"><a href="#cb91-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(app)</span>
+<span id="cb91-6"><a href="#cb91-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb91-7"><a href="#cb91-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb91-8"><a href="#cb91-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Dados do exercício</span></span>
+<span id="cb91-9"><a href="#cb91-9" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">7</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">5</span>)</span>
+<span id="cb91-10"><a href="#cb91-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb91-11"><a href="#cb91-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Ponto referencia da aproximação</span></span>
+<span id="cb91-12"><a href="#cb91-12" aria-hidden="true" tabindex="-1"></a>mu0 <span class="ot">&lt;-</span> <span class="fu">mean</span>(y)</span>
+<span id="cb91-13"><a href="#cb91-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb91-14"><a href="#cb91-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Função a ser aproximada</span></span>
+<span id="cb91-15"><a href="#cb91-15" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="cf">function</span>(mu) {<span class="fu">sum</span> (<span class="dv">2</span><span class="sc">*</span>( y<span class="sc">*</span><span class="fu">log</span>(y<span class="sc">/</span>mu) <span class="sc">+</span> (<span class="dv">10</span> <span class="sc">+</span> y)<span class="sc">*</span> <span class="fu">log</span>( (<span class="dv">10</span><span class="sc">+</span>mu)<span class="sc">/</span>(<span class="dv">10</span> <span class="sc">+</span> y) ))) }</span>
+<span id="cb91-16"><a href="#cb91-16" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="fu">Vectorize</span>(<span class="at">FUN =</span> f, <span class="at">vectorize.args =</span> <span class="st">"mu"</span>)</span>
+<span id="cb91-17"><a href="#cb91-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Primeira derivada da função a ser aproximada</span></span>
+<span id="cb91-18"><a href="#cb91-18" aria-hidden="true" tabindex="-1"></a>f_prime <span class="ot">&lt;-</span> <span class="cf">function</span>(mu) {<span class="fu">sum</span>(<span class="dv">2</span><span class="sc">*</span>( (y<span class="sc">+</span><span class="dv">10</span>)<span class="sc">/</span>(mu<span class="sc">+</span><span class="dv">10</span>) <span class="sc">-</span> y<span class="sc">/</span>mu ))}</span>
+<span id="cb91-19"><a href="#cb91-19" aria-hidden="true" tabindex="-1"></a>f_prime <span class="ot">&lt;-</span> <span class="fu">Vectorize</span>(<span class="at">FUN =</span> f_prime, <span class="at">vectorize.args =</span> <span class="st">"mu"</span>)</span>
+<span id="cb91-20"><a href="#cb91-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Segunda derivada da função a ser aproximada</span></span>
+<span id="cb91-21"><a href="#cb91-21" aria-hidden="true" tabindex="-1"></a>f_dprime <span class="ot">&lt;-</span> <span class="cf">function</span>(mu) {<span class="fu">sum</span>((y<span class="sc">/</span>mu<span class="sc">^</span><span class="dv">2</span>) <span class="sc">-</span> (y <span class="sc">+</span> <span class="dv">10</span>)<span class="sc">/</span>(mu <span class="sc">+</span> <span class="dv">10</span>)<span class="sc">^</span><span class="dv">2</span>)}</span>
+<span id="cb91-22"><a href="#cb91-22" aria-hidden="true" tabindex="-1"></a>f_dprime <span class="ot">&lt;-</span> <span class="fu">Vectorize</span>(<span class="at">FUN =</span> f_dprime, <span class="at">vectorize.args =</span> <span class="st">"mu"</span>)</span>
+<span id="cb91-23"><a href="#cb91-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Grafico da aproximação</span></span>
+<span id="cb91-24"><a href="#cb91-24" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(f, <span class="dv">1</span>, <span class="dv">9</span>, <span class="at">ylab =</span> <span class="fu">expression</span>(<span class="fu">f</span>(mu)), <span class="at">xlab =</span> <span class="fu">expression</span>(mu))</span>
+<span id="cb91-25"><a href="#cb91-25" aria-hidden="true" tabindex="-1"></a>xx <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">9</span>, <span class="at">l =</span> <span class="dv">100</span>)</span>
+<span id="cb91-26"><a href="#cb91-26" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(xx, <span class="fu">taylor_ap</span>(<span class="at">mu =</span> xx, <span class="at">mu0 =</span> mu0, <span class="at">f =</span> f, <span class="at">f_prime =</span> f_prime, </span>
+<span id="cb91-27"><a href="#cb91-27" aria-hidden="true" tabindex="-1"></a>                      <span class="at">f_dprime =</span> f_dprime), <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb91-28"><a href="#cb91-28" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"topleft"</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"True"</span>,<span class="st">"Taylor Aprx."</span>), <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="at">lwd =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">col =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-47-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="fu">taylor_ap</span>(<span class="at">mu =</span> y, <span class="at">mu0 =</span> <span class="fu">mean</span>(y), <span class="at">f =</span> f, <span class="at">f_prime =</span> f_prime, <span class="at">f_dprime =</span> f_dprime)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.8695894 1.3002574 1.3002574 1.0472210 0.8574436</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="integrais" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="integrais"><span class="header-section-number">5.3</span> Integrais</h2>
+<p>Os objetivos deste tutorial são:</p>
+<ul>
+<li>Obtenção de integrais indefinidas simples.</li>
+<li>Cálculo de área abaixo de curvas (integrais definidas)</li>
+<li>Uso de funções do <code>R</code>para o cálculo de integrais.</li>
+</ul>
+<section id="integrais-indefinidas" class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="integrais-indefinidas"><span class="header-section-number">5.3.1</span> Integrais indefinidas</h3>
+<p>Calcule cada uma das integrais abaixo e implemente uma função chamada <code>integral()</code> que calcula a integral obtida considerando a constante <span class="math inline">\(c = 0\)</span> e retorna o seu valor. Para usar a correção automática a linha final do seu código deve ser <code>integral(x = 2)</code>.</p>
+<ol type="a">
+<li><span class="math inline">\(\int x^3 dx\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a>integral <span class="ot">&lt;-</span> <span class="cf">function</span>(x) { (x<span class="sc">^</span><span class="dv">4</span>)<span class="sc">/</span><span class="dv">4</span> }</span>
+<span id="cb94-2"><a href="#cb94-2" aria-hidden="true" tabindex="-1"></a><span class="fu">integral</span>(<span class="at">x =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4</code></pre>
+</div>
+</div>
+<ol start="2" type="a">
+<li><span class="math inline">\(\int \frac{1}{x^2} dx\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a>integral <span class="ot">&lt;-</span> <span class="cf">function</span>(x) { <span class="sc">-</span><span class="dv">1</span><span class="sc">/</span>x }</span>
+<span id="cb96-2"><a href="#cb96-2" aria-hidden="true" tabindex="-1"></a><span class="fu">integral</span>(<span class="at">x =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -0.5</code></pre>
+</div>
+</div>
+<ol start="3" type="a">
+<li><span class="math inline">\(\int \frac{1}{x} + \sqrt{x} dx\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a>integral <span class="ot">&lt;-</span> <span class="cf">function</span>(x) { <span class="fu">log</span>(x) <span class="sc">+</span> (<span class="dv">2</span><span class="sc">*</span>x<span class="sc">^</span>(<span class="dv">3</span><span class="sc">/</span><span class="dv">2</span>))<span class="sc">/</span><span class="dv">3</span> }</span>
+<span id="cb98-2"><a href="#cb98-2" aria-hidden="true" tabindex="-1"></a><span class="fu">integral</span>(<span class="at">x =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.578765</code></pre>
+</div>
+</div>
+<ol start="4" type="a">
+<li><span class="math inline">\(\int \exp^{-x} dx\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a>integral <span class="ot">&lt;-</span> <span class="cf">function</span>(x) { <span class="sc">-</span><span class="fu">exp</span>(<span class="sc">-</span>x) }</span>
+<span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a><span class="fu">integral</span>(<span class="at">x =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -0.1353353</code></pre>
+</div>
+</div>
+<ol start="5" type="a">
+<li><span class="math inline">\(\int x + 3 \exp^{x} dx\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a>integral <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {<span class="dv">3</span><span class="sc">*</span><span class="fu">exp</span>(x) <span class="sc">+</span> (x<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span><span class="dv">2</span>}</span>
+<span id="cb102-2"><a href="#cb102-2" aria-hidden="true" tabindex="-1"></a><span class="fu">integral</span>(<span class="at">x =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 24.16717</code></pre>
+</div>
+</div>
+</section>
+<section id="integrais-definidas" class="level3" data-number="5.3.2">
+<h3 data-number="5.3.2" class="anchored" data-anchor-id="integrais-definidas"><span class="header-section-number">5.3.2</span> Integrais definidas</h3>
+<p>Obtenha as seguintes integrais definidas. Você pode obter a anti-derivada e avaliar a área ou usar a função <code>integrate()</code> do <code>R</code>. Para usar a correção automática a última linha do seu código deve ser <code>area = valor</code> ondelo <code>valor</code> é um valor (numérico).</p>
+<ol type="a">
+<li><span class="math inline">\(\int_{1}^2 x^2 dx\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a>fx <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {x<span class="sc">^</span><span class="dv">2</span>}</span>
+<span id="cb104-2"><a href="#cb104-2" aria-hidden="true" tabindex="-1"></a>temporario <span class="ot">&lt;-</span> <span class="fu">integrate</span>(<span class="at">f =</span> fx, <span class="at">lower =</span> <span class="dv">1</span>, <span class="at">upper =</span> <span class="dv">2</span>)</span>
+<span id="cb104-3"><a href="#cb104-3" aria-hidden="true" tabindex="-1"></a>area <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(temporario<span class="sc">$</span>value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="2" type="a">
+<li><span class="math inline">\(\int_{0}^2 (x^3 + 3x -1) dx\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb105"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a>fx <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {x<span class="sc">^</span><span class="dv">3</span> <span class="sc">+</span> <span class="dv">3</span><span class="sc">*</span>x <span class="sc">-</span> <span class="dv">1</span>}</span>
+<span id="cb105-2"><a href="#cb105-2" aria-hidden="true" tabindex="-1"></a>temporario <span class="ot">&lt;-</span> <span class="fu">integrate</span>(<span class="at">f =</span> fx, <span class="at">lower =</span> <span class="dv">0</span>, <span class="at">upper =</span> <span class="dv">2</span>)</span>
+<span id="cb105-3"><a href="#cb105-3" aria-hidden="true" tabindex="-1"></a>area <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(temporario<span class="sc">$</span>value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="3" type="a">
+<li><span class="math inline">\(\int_{-150}^{150} \exp \left\{ -\frac{(x - 5)^2}{2}   \right \} dx\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a>fx <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {<span class="fu">exp</span>( <span class="sc">-</span> ((x <span class="sc">-</span> <span class="dv">5</span>)<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span><span class="dv">2</span> )}</span>
+<span id="cb106-2"><a href="#cb106-2" aria-hidden="true" tabindex="-1"></a>temporario <span class="ot">&lt;-</span> <span class="fu">integrate</span>(<span class="at">f =</span> fx, <span class="at">lower =</span> <span class="sc">-</span><span class="dv">150</span>, <span class="at">upper =</span> <span class="dv">150</span>)</span>
+<span id="cb106-3"><a href="#cb106-3" aria-hidden="true" tabindex="-1"></a>area <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(temporario<span class="sc">$</span>value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="4" type="a">
+<li><span class="math inline">\(\int_{0}^{100} \exp \left\{ -\frac{|x - 5|}{2}   \right \} dx\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a>fx <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {<span class="fu">exp</span>(<span class="sc">-</span><span class="fu">abs</span>(x <span class="sc">-</span> <span class="dv">5</span>)<span class="sc">/</span><span class="dv">2</span> )}</span>
+<span id="cb107-2"><a href="#cb107-2" aria-hidden="true" tabindex="-1"></a>temporario <span class="ot">&lt;-</span> <span class="fu">integrate</span>(<span class="at">f =</span> fx, <span class="at">lower =</span> <span class="dv">0</span>, <span class="at">upper =</span> <span class="dv">150</span>)</span>
+<span id="cb107-3"><a href="#cb107-3" aria-hidden="true" tabindex="-1"></a>area <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(temporario<span class="sc">$</span>value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="5" type="a">
+<li><span class="math inline">\(\int_{1}^{2}  \left(\frac{1}{x} + \frac{1}{x^3}   \right \} dx\)</span>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a>fx <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {(<span class="dv">1</span><span class="sc">/</span>x <span class="sc">+</span> <span class="dv">1</span><span class="sc">/</span>x<span class="sc">^</span><span class="dv">3</span>)}</span>
+<span id="cb108-2"><a href="#cb108-2" aria-hidden="true" tabindex="-1"></a>temporario <span class="ot">&lt;-</span> <span class="fu">integrate</span>(<span class="at">f =</span> fx, <span class="at">lower =</span> <span class="dv">1</span>, <span class="at">upper =</span> <span class="dv">2</span>)</span>
+<span id="cb108-3"><a href="#cb108-3" aria-hidden="true" tabindex="-1"></a>area <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(temporario<span class="sc">$</span>value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="desafios" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="desafios"><span class="header-section-number">5.4</span> Desafios</h2>
+<p>Os próximos dois exercícios são desafios. Não apresento nenhuma solução a ideia é vocês tentarem resolver usando quaisquer meios. Isso inclue procurar soluções na internet, discutir com os colegas, postar em grupos etc. Se você chegar em uma solução que queira compartilhar comigo pode me mandar a solução por e-mail.</p>
+<section id="redução-de-dados-usando-perda-absoluta" class="level3" data-number="5.4.1">
+<h3 data-number="5.4.1" class="anchored" data-anchor-id="redução-de-dados-usando-perda-absoluta"><span class="header-section-number">5.4.1</span> Redução de dados usando perda absoluta</h3>
+<section id="sejam-y_i-valores-observados-para-i-1-ldots-n.-considere-a-função-perda-absoluta-dada-por" class="level4" data-number="5.4.1.1">
+<h4 data-number="5.4.1.1" class="anchored" data-anchor-id="sejam-y_i-valores-observados-para-i-1-ldots-n.-considere-a-função-perda-absoluta-dada-por"><span class="header-section-number">5.4.1.1</span> Sejam <span class="math inline">\(y_i\)</span> valores observados para <span class="math inline">\(i = 1, \ldots, n\)</span>. Considere a função perda absoluta dada por</h4>
+<p><span class="math display">\[f(\mu; \mathbf{y}) = \sum_{i=1}^n |y_i - \mu|.\]</span></p>
+<ol type="a">
+<li>Simule um conjunto de valores adequado para <span class="math inline">\(y_i\)</span>.</li>
+<li>Esboce o gráfico da função perda para este conjunto de dados e diferentes valores de <span class="math inline">\(\mu\)</span>.</li>
+<li>Encontre o valor de <span class="math inline">\(\mu\)</span> que minimiza a função perda absoluta.</li>
+<li>Discuta quando a função perda absoluta pode ser mais conveniente do que a função perda quadrática.</li>
+</ol>
+</section>
+</section>
+<section id="regressão-linear-simples-usando-perda-absoluta" class="level3" data-number="5.4.2">
+<h3 data-number="5.4.2" class="anchored" data-anchor-id="regressão-linear-simples-usando-perda-absoluta"><span class="header-section-number">5.4.2</span> Regressão linear simples usando perda absoluta</h3>
+<p>Sejam <span class="math inline">\(y_i\)</span> e <span class="math inline">\(x_i\)</span> valores observados para <span class="math inline">\(i = 1, \ldots, n\)</span>. Considere o problema de ajustar um reta relacionando <span class="math inline">\(y_i\)</span> com <span class="math inline">\(x_i\)</span>, usando a função perda absoluta</p>
+<p><span class="math display">\[f(\beta_0, \beta_1) = \sum_{i=1}^n |y_i - (\beta_0 + \beta_1 x_i)|.\]</span></p>
+<ol type="a">
+<li>Simule um conjunto de valores adequado para <span class="math inline">\(y_i\)</span> fixado um vetor de <span class="math inline">\(x_i\)</span>.</li>
+<li>Esboce o gráfico da função perda para o conjunto de dados simulado.</li>
+<li>Encontre o valor de <span class="math inline">\(\beta_0\)</span> e <span class="math inline">\(\beta_1\)</span> que miniza a função perda absoluta.</li>
+<li>Discuta quando a função perda absoluta pode ser mais conveniente do que a função perda quadrática para o ajuste deste modelo.</li>
+</ol>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../../content/Modulo04/index.html" class="pagination-link  aria-label=" &lt;span="" de="" distribuição="" empírica&lt;="" span&gt;"="">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Função de Distribuição Empírica</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Estatística 2023-2026</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://raymz1990.github.io/CE313/edit/main/book/content/Modulo01/Exercicios/index.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://raymz1990.github.io/CE313/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>This book was built with <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
