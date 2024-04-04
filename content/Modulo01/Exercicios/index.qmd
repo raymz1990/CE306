@@ -13,7 +13,7 @@ Os objetivos deste tutorial são:
 
 ### Implementação de funções e seus gráficos
 
-Para os exercícios abaixo use a função `plot()` com a opção `type = &quot;l&quot;` para desenhar o gráfico das funções. Lembre-se que computacionalmente você vai avaliar a função em um conjunto de pontos. Para criar esse conjunto de pontos use a função `seq(a, b, l = tamanho)` onde `a` e `b` são os limites inferior e superior do intervalo e `l` determina o número de pontos dentro do intervalo. Recomendo que para esses exercícios você use `l = 100`. Você pode consultar a minha solução clicando no botão `Solution`. Note que a minha solução é apenas uma sugestão. O importante é você desenvolver a habilidade de traduzir uma equação matemática para o computador e desenhar o gráfico associado.
+Para os exercícios abaixo use a função `plot()` com a opção `type = "l"` para desenhar o gráfico das funções. Lembre-se que computacionalmente você vai avaliar a função em um conjunto de pontos. Para criar esse conjunto de pontos use a função `seq(a, b, l = tamanho)` onde `a` e `b` são os limites inferior e superior do intervalo e `l` determina o número de pontos dentro do intervalo. Recomendo que para esses exercícios você use `l = 100`. Você pode consultar a minha solução clicando no botão `Solution`. Note que a minha solução é apenas uma sugestão. O importante é você desenvolver a habilidade de traduzir uma equação matemática para o computador e desenhar o gráfico associado.
 
 a) Implemente a função $f(x) = \sqrt{x}$ e desenhe seu gráfico no intervalo $(0,3)$.
 

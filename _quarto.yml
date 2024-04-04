@@ -44,6 +44,10 @@ book:
     - content/Modulo03/index.qmd
     - content/Modulo04/index.qmd
 
+    - part: "Exercicios"
+      chapters:
+      - content/Modulo01/Exercicios/index.qmd
+
   page-footer: 
     left: |
       Estatística 2023-2026
