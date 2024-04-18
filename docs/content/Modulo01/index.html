@@ -1010,11 +1010,19 @@ f^{\prime}(x) &amp; =&amp;  -2x.
 <li>Se <span class="math inline">\(f(x) = \exp(x)\)</span> então <span class="math inline">\(f^{\prime}(x) = \exp(x)\)</span>.</li>
 <li>Se <span class="math inline">\(f(x) = \ln(x)\)</span> então <span class="math inline">\(f^{\prime}(x) = \frac{1}{x}, x &gt; 0\)</span>.</li>
 </ol>
+<<<<<<< HEAD
 <p>Sendo, <span class="math inline">\(f(x)\)</span> e <span class="math inline">\(g(x)\)</span> deriváveis em <span class="math inline">\(x\)</span> e <span class="math inline">\(c\)</span> uma constante. Então, as funções <span class="math inline">\(f(x) + g(x)\)</span>, <span class="math inline">\(c f(x)\)</span>, <span class="math inline">\(f(x) \times g(x)\)</span> e <span class="math inline">\(\frac{f(x)}{g(x)}\)</span> são deriváveis em <span class="math inline">\(x\)</span> e têm-se</p>
 <ol start="7" type="1">
 <li><span class="math inline">\((f + g)^{\prime} = f^{\prime}(x) + g^{\prime}(x)\)</span>.</li>
 <li><span class="math inline">\((c f)^{\prime}(x) = c f^{\prime}(x)\)</span>.</li>
 <li><span class="math inline">\((f \times g)^{\prime}(x) = f^{\prime}(x) g(x) + f(x) g^{\prime}(x)\)</span>.</li>
+=======
+<p>Sendo, <span class="math inline">\(f(x)\)</span> e <span class="math inline">\(g(x)\)</span> deriváveis em <span class="math inline">\(x\)</span> e <span class="math inline">\(c\)</span> uma constante. Então, as funções <span class="math inline">\(f(x) + g(x)\)</span>, <span class="math inline">\(c f(x)\)</span>, <span class="math inline">\(f(x) \cdot g(x)\)</span> e <span class="math inline">\(\frac{f(x)}{g(x)}\)</span> são deriváveis em <span class="math inline">\(x\)</span> e têm-se</p>
+<ol start="7" type="1">
+<li><span class="math inline">\((f + g)^{\prime} = f^{\prime}(x) + g^{\prime}(x)\)</span>.</li>
+<li><span class="math inline">\((c f)^{\prime}(x) = c f^{\prime}(x)\)</span>.</li>
+<li><span class="math inline">\((f \cdot g)^{\prime}(x) = f^{\prime}(x) g(x) + f(x) g^{\prime}(x)\)</span>.</li>
+>>>>>>> 72567408e572dd6a90ba165db246bee6b5c7a655
 <li><span class="math inline">\((\frac{f}{g})^{\prime}(x) = \frac{f^{\prime}(x) g(x) - f(x) g^{\prime}(x)}{[g(x)]^2}.\)</span></li>
 </ol>
 <p>Vamos fazer alguns exemplos ilustrativos.</p>
@@ -1034,7 +1042,11 @@ f^{\prime}(x) &amp; =&amp;  -2x.
 <pre><code>5 * (3 * x^2)/(4 * x + 3) - (5 * x^3) * 4/(4 * x + 3)^2</code></pre>
 </div>
 </div>
+<<<<<<< HEAD
 <p>Primeiro vamos chamar de <span class="math inline">\(f(x) = 5 x^3\)</span> e <span class="math inline">\(g(x) = 4x + 3\)</span>. Agora podemos derivar cada uma destas funções em relação a <span class="math inline">\(x\)</span>, ou seja, <span class="math inline">\(f^{\prime}(x) = 3 \times 5 \times x^{3-1} = 15 x^2.\)</span> De forma, similar temos <span class="math inline">\(g^{\prime}(x) = 4.\)</span> Agora usando a regra 10, temos <span class="math inline">\((\frac{f}{g})^{\prime}(x) = \frac{(15x^2)(4x+3) - (5x^3) (4) }{(4x + 3)^2} = \frac{15x^2}{(4x+3)} - \frac{20x^3}{(4x + 3)}.\)</span></p>
+=======
+<p>Primeiro vamos chamar de <span class="math inline">\(f(x) = 5 x^3\)</span> e <span class="math inline">\(g(x) = 4x + 3\)</span>. Agora podemos derivar cada uma destas funções em relação a <span class="math inline">\(x\)</span>, ou seja, <span class="math inline">\(f^{\prime}(x) = 3 \cdot 5 \cdot x^{3-1} = 15 x^2.\)</span> De forma, similar temos <span class="math inline">\(g^{\prime}(x) = 4.\)</span> Agora usando a regra 10, temos <span class="math inline">\((\frac{f}{g})^{\prime}(x) = \frac{(15x^2)(4x+3) - (5x^3) (4) }{(4x + 3)^2} = \frac{15x^2}{(4x+3)} - \frac{20x^3}{(4x + 3)}.\)</span></p>
+>>>>>>> 72567408e572dd6a90ba165db246bee6b5c7a655
 <p>Interessante notar que os números da expressão resultante da chamada da função <code>D()</code> são também tratados como símbolos, e portanto o <code>R</code> não faz as multiplicações usuais, por exemplo, no numerador o valor <span class="math inline">\(5\)</span> não foi multiplicado pelo <span class="math inline">\(3\)</span> para resultar em <span class="math inline">\(15x^2\)</span>, como fizemos manualmente.</p>
 <p>Em diversas situações podemos ter o desafio de calcular a derivada de uma função composta por outra função. Para ilustrar essa ideia, suponha que em um algoritmo computacional, <span class="math inline">\(C\)</span> seja o custo total de realizar <span class="math inline">\(s\)</span> tarefas, então <span class="math inline">\(C = f(s).\)</span> Além disso, suponha que <span class="math inline">\(s\)</span> tarefas sejam realizadas durante os <span class="math inline">\(t\)</span> segundos desde o início da execução do algoritmo, então <span class="math inline">\(s = g(t)\)</span>. Se conhecermos a derivada de <span class="math inline">\(s\)</span> em relação a <span class="math inline">\(t\)</span>, ou seja, a taxa de variação do número de tarefas realizadas em <span class="math inline">\(t\)</span> segundos, também podemos determinar a derivada de <span class="math inline">\(C\)</span> em relação a <span class="math inline">\(t\)</span>, que representa a taxa de variação do custo total do algoritmo em um determinado intervalo de tempo. Note que <span class="math inline">\(C\)</span> é implicitamente determinado por <span class="math inline">\(t\)</span> através de <span class="math inline">\(g(t)\)</span>. Para calcular a derivada de <span class="math inline">\(C\)</span> em relação a <span class="math inline">\(t\)</span>, usamos uma regra importante chamada de <strong>regra da cadeia</strong>.</p>
 <p>Sejam <span class="math inline">\(y = f(x)\)</span> e <span class="math inline">\(x = g(t)\)</span> duas funções deriváveis, com <span class="math inline">\(I \in D\)</span>. A função composta <span class="math inline">\(h(t) = f(g(t))\)</span> é derivável, sendo</p>
@@ -1046,7 +1058,11 @@ f^{\prime}(x) &amp; =&amp;  -2x.
 <p>Determine a taxa de variação do custo total de execução do algoritmo em relação ao tempo, <span class="math inline">\(2\)</span> segundos após o início da execução. :::</p>
 <p>Para este exemplo é interessante usarmos uma outra notação de derivada, que deixa explicito quem está sendo derivado em relação a quem. Desejamos, encontrar a derivada de <span class="math inline">\(C\)</span> em relação a <span class="math inline">\(t\)</span>, que vamos denotar por <span class="math inline">\(\frac{d C}{d t}\)</span> quando <span class="math inline">\(t = 2\)</span>. Usando a regra da cadeia, tem-se</p>
 <p><span class="math display">\[\begin{equation}
+<<<<<<< HEAD
   \frac{d C}{ dt} = \frac{d C}{d s} \times \frac{d s}{dt}.
+=======
+  \frac{d C}{ dt} = \frac{d C}{d s} \cdot \frac{d s}{dt}.
+>>>>>>> 72567408e572dd6a90ba165db246bee6b5c7a655
   \tag{1.1}
 \end{equation}
 \]</span> Usando as regras de derivação já apresentadas, tem-se</p>
@@ -1064,18 +1080,28 @@ f^{\prime}(x) &amp; =&amp;  -2x.
   \tag{1.4}
 \end{equation}\]</span></p>
 <p>Para avaliar no ponto <span class="math inline">\(t = 2\)</span>, lembre-se que</p>
+<<<<<<< HEAD
 <p><span class="math display">\[s = 3 t^2 + 50t \to s = 3\ctimes(2^2) + 50 \times 2 = 112.\]</span></p>
 <p>Substituindo, na expressão (1.4), tem-se</p>
 <p><span class="math display">\[ \frac{d C}{ dt}|_{t=2} = \left( \frac{1}{2}s + 2 \right)(6t + 50) =  \left(\frac{1}{2}(112) + 2\right)(6\times 2 + 50) = (58)\ctimes( 62) = 3596.\]</span></p>
+=======
+<p><span class="math display">\[s = 3 t^2 + 50t \to s = 3\cdot(2^2) + 50 \cdot 2 = 112.\]</span></p>
+<p>Substituindo, na expressão (1.4), tem-se</p>
+<p><span class="math display">\[ \frac{d C}{ dt}|_{t=2} = \left( \frac{1}{2}s + 2 \right)(6t + 50) =  \left(\frac{1}{2}(112) + 2\right)(6\cdot 2 + 50) = (58)\cdot( 62) = 3596.\]</span></p>
+>>>>>>> 72567408e572dd6a90ba165db246bee6b5c7a655
 <p>Assim podemos dizer que <span class="math inline">\(2\)</span> segundos após o início da execução do algoritmo o custo computacional está aumentando a uma taxa de <span class="math inline">\(3596\)</span> unidades de processamento.</p>
 </section>
 <section id="derivadas-de-ordem-superior" class="level3" data-number="1.2.3">
 <h3 data-number="1.2.3" class="anchored" data-anchor-id="derivadas-de-ordem-superior"><span class="header-section-number">1.2.3</span> Derivadas de ordem superior</h3>
 <p>Dada uma função <span class="math inline">\(f(x)\)</span> a derivada <span class="math inline">\(f^{\prime}(x)\)</span> é também chamada de derivada de primeira ordem e mede a variação da função original ou <strong>primitiva</strong>. A derivada de segunda ordem denotada por <span class="math inline">\(f^{\prime \prime}(x)\)</span> mede a taxa de variação da primeira derivada. De forma análoga, a derivada de terceira ordem <span class="math inline">\(f^{\prime \prime \prime}(x)\)</span> mede a taxa de variação da segunda derivada e assim por diante até a <span class="math inline">\(n-\)</span>ésima derivada. As derivadas de ordem superior são obtidas pela aplicação das regras de diferenciação na derivada de ordem imediatamente inferior. Em termos de notação é comum encontrar <span class="math inline">\(\frac{d^n y}{d x^n}\)</span> que é interpretada como a <span class="math inline">\(n-\)</span>ésima derivada de <span class="math inline">\(y\)</span> em relação a <span class="math inline">\(x\)</span>.</p>
+<<<<<<< HEAD
 <p><strong>Example 1.6</strong> Obtenha a derivada de ordem até <span class="math inline">\(5\)</span> da função <span class="math inline">\(y = 2x^4 + 5 x^3 + 2 x^2\)</span>.</p>
 <p>Usando as regras de derivação 2 e 7, temos</p>
 <p><span class="math inline">\(\frac{d y}{d x} = 8 x^3 + 15 x^2 + 4 x\)</span>, <span class="math inline">\(\frac{d^2 y}{d x^2} = 24x^2 + 30x + 4\)</span>, <span class="math inline">\(\frac{d^3 y}{d x^3} = 48 x + 30\)</span>, <span class="math inline">\(\frac{d^4 y}{d x^4} = 48\)</span> e <span class="math inline">\(\frac{d^5 y}{d x^5} = 0\)</span>.</p>
 <p>Neste caso, todas as derivadas de ordem superior a <span class="math inline">\(4\)</span> são zero.</p>
+=======
+<p><strong>Example 1.6</strong> Obtenha a derivada de ordem até <span class="math inline">\(5\)</span> da função <span class="math inline">\(y = 2x^4 + 5 x^3 + 2 x^2\)</span>. ::: Usando as regras de derivação 2 e 7, temos <span class="math inline">\(\frac{d y}{d x} = 8 x^3 + 15 x^2 + 4 x\)</span>, <span class="math inline">\(\frac{d^2 y}{d x^2} = 24x^2 + 30x + 4\)</span>, <span class="math inline">\(\frac{d^3 y}{d x^3} = 48 x + 30\)</span>, <span class="math inline">\(\frac{d^4 y}{d x^4} = 48\)</span> e <span class="math inline">\(\frac{d^5 y}{d x^5} = 0\)</span>. Neste caso, todas as derivadas de ordem superior a <span class="math inline">\(4\)</span> são zero. :::</p>
+>>>>>>> 72567408e572dd6a90ba165db246bee6b5c7a655
 </section>
 <section id="importância-da-derivada" class="level3" data-number="1.2.4">
 <h3 data-number="1.2.4" class="anchored" data-anchor-id="importância-da-derivada"><span class="header-section-number">1.2.4</span> Importância da derivada</h3>
@@ -1548,12 +1574,21 @@ Figure&nbsp;1.18: Representação bidimensional de uma função usando gráfico 
 -3x_2 &amp; =&amp;  9 - 12x_1 \\
 x_2 &amp; =&amp;  4x_1 - 3.
 \end{align}\]</span></p>
+<<<<<<< HEAD
 <p>Agora substituímos <span class="math inline">\(x_2 = 4x_1 - 3\)</span> na Equação (1.8) e obtemos</p>
 <p><span class="math display">\[\begin{align}
 -3x_1 + 10x_2 &amp; = &amp;  7 \\
 -3x_1 + 10(4x_1 - 3) &amp; = &amp;  7 \\
 -3x_1 + 40x_1 -30 &amp; = &amp;  7 \\
 37x_1 &amp; = &amp;  37 \\
+=======
+<p>Agora substituímos <span class="math inline">\(x_2 = 4x_1 - 3\)</span> na Equação <a href="CDI.html#eq:derivparcialx2">(1.8) e obtemos</a></p><a href="CDI.html#eq:derivparcialx2">
+<p><span class="math display">\[\begin{align}
+-3x_1 + 10x_2 &amp; =&amp;  7 \\
+-3x_1 + 10(4x_1 - 3) &amp; =&amp;  7 \\
+-3x_1 + 40x_1 -30 &amp; =&amp;  7 \\
+37x_1 &amp; =&amp;  37 \\
+>>>>>>> 72567408e572dd6a90ba165db246bee6b5c7a655
 x_1 = 1.
 \end{align}\]</span></p>
 <p>Por fim, sabemos que <span class="math inline">\(x_2 = 4x_1 - 3\)</span>, e portanto <span class="math inline">\(x_2 = 4 - 3 = 1\)</span>. Assim, chegamos que <span class="math inline">\(x_1 = 1\)</span> e <span class="math inline">\(x_2 = 1\)</span>.</p>
@@ -1575,6 +1610,7 @@ x_1 = 1.
 <p>Assim, temos que</p>
 <p><span class="math display">\[\begin{align}
 \frac{\partial^2 y}{\partial x_1^2} \frac{\partial^2 y}{\partial x_2^2} &amp; &gt;&amp;  \left( \frac{\partial^2 y}{\partial x_1 x_2} \right)^2 \\
+<<<<<<< HEAD
 12 \times 10 &amp; &gt;&amp;  (-3)^2 \\
 120 &gt; 9.
 \end{align}\]</span></p>
@@ -1599,6 +1635,21 @@ x_1 = 1.
 </div>
 </div>
 <p>A <a href="#def-116">definição 1.16</a> se estende naturalmente para funções com mais do que duas variáveis independentes. Neste caso a função é denotada por <span class="math inline">\(f(\boldsymbol{x})\)</span> onde <span class="math inline">\(\boldsymbol{x}\)</span> é um vetor <span class="math inline">\(p \times 1\)</span> de variáveis independentes o <strong>vetor gradiente</strong> de <span class="math inline">\(f(\boldsymbol{x})\)</span> é dado por</p>
+=======
+12 \cdot 10 &amp; &gt;&amp;  (-3)^2 \\
+120 &gt; 9.
+\end{align}\]</span></p>
+<p>Assim, concluímos que a função está em um ponto de mínimo quando examinada de todas as direções, e não apenas em relação aos eixos principais.</p>
+</a></section><a href="CDI.html#eq:derivparcialx2">
+</a><section id="gradiente-e-hessiano" class="level3" data-number="1.2.7"><a href="CDI.html#eq:derivparcialx2">
+<h3 data-number="1.2.7" class="anchored" data-anchor-id="gradiente-e-hessiano"><span class="header-section-number">1.2.7</span> Gradiente e Hessiano</h3>
+<p>As derivadas de primeira e segunda ordem de uma função de múltiplas variáveis independentes aparecem com muita frequência em matemática e por isso receberam nomes especiais.</p>
+<p>::: {.callout-important appearance=“simple”} ## <strong>Definição 1.16</strong> {#def-116}</p>
+<p>O <strong>vetor gradiente</strong> de uma função <span class="math inline">\(f(x_1,x_2)\)</span> é o vetor composto pelas derivadas primeiras de <span class="math inline">\(f(x_1,x_2)\)</span> em relação a <span class="math inline">\(x_1\)</span> e <span class="math inline">\(x_2\)</span>, <span class="math display">\[
+\nabla f(x_1,x_2) = \left ( \frac{\partial f(x_1,x_2)}{\partial x_1}, \frac{\partial f(x_1,x_2)}{\partial x_2} \right )^{\top}.
+\]</span></p>
+</a><p><a href="CDI.html#eq:derivparcialx2">A </a><a href="#def-116">definição 1.16</a> se estende naturalmente para funções com mais do que duas variáveis independentes. Neste caso a função é denotada por <span class="math inline">\(f(\boldsymbol{x})\)</span> onde <span class="math inline">\(\boldsymbol{x}\)</span> é um vetor <span class="math inline">\(p \times 1\)</span> de variáveis independentes o <strong>vetor gradiente</strong> de <span class="math inline">\(f(\boldsymbol{x})\)</span> é dado por</p>
+>>>>>>> 72567408e572dd6a90ba165db246bee6b5c7a655
 <p><span class="math display">\[
 \nabla f(\boldsymbol{x}) = \left ( \frac{\partial f(\boldsymbol{x})}{\partial x_1}, \ldots, \frac{\partial f(\boldsymbol{x})}{\partial x_p} \right )^{\top}.
 \]</span></p>
@@ -1636,13 +1687,23 @@ x_1 = 1.
 <p>Em diversas situações em ciência de dados é comum nos depararmos com funções difíceis de lidar, seja matematica ou computacionalmente. Em tais situações é natural pensar em fazer algum tipo de aproximação da função de interesse por uma mais simples de lidar.</p>
 <p>O núcleo das técnicas de ciência de dados dizem respeito às ferramentas de <strong>inferência estatística</strong> e <strong>métodos numéricos</strong>. Nestes campos geralmente vamos lidar com funções bastante complicadas, mas que podem ser aproximadas por funções mais simples, em geral funções quadráticas (polinômios de segunda ordem).</p>
 <p>É neste contexto que aparece o que chamamos de <strong>expansões em Séries de Taylor</strong>. Isso nada mais é do que aproximar uma função <span class="math inline">\(f(x)\)</span> por uma função mais simples: um polinômio de grau a ser definido pela ordem da aproximação. Suponha que uma função <span class="math inline">\(f(x)\)</span> é derivável <span class="math inline">\((n+1)\)</span> vezes em um intervalo contendo um ponto <span class="math inline">\(x=x_0\)</span>. A expansão em <strong>Série de Taylor</strong> de <span class="math inline">\(f(x)\)</span> em torno do ponto <span class="math inline">\(x=x_0\)</span> consiste em reescrever <span class="math inline">\(f(x)\)</span> da seguinte forma:</p>
+<<<<<<< HEAD
 <p><span class="math display">\[
 \begin{align}
+=======
+<p>$$ <span class="math display">\[\begin{equation}
+>>>>>>> 72567408e572dd6a90ba165db246bee6b5c7a655
 f(x) = f(x_0) + (x - x_0) \frac{d f(x)}{dx} |_{x=x_0} + \frac{(x-x_0)^2}{2!} \frac{d^2 f(x)}{dx^2}|_{x=x0} + \\
+
 \frac{(x-x_0)^3}{3!} \frac{d^3 f(x)}{dx^3}|_{x=x_0} + \ldots + \frac{(x-x_0)^n}{n!} \frac{d^n f(x)}{dx^n}|_{x=x_0} + R_n(x)
+<<<<<<< HEAD
 \tag{1.9}  
 \end{align}
 \]</span></p>
+=======
+  \tag{1.9}  
+\end{equation}\]</span> $$</p>
+>>>>>>> 72567408e572dd6a90ba165db246bee6b5c7a655
 <p>onde o termo <span class="math inline">\(R_n(x)\)</span> é chamado de resíduo ou erro, e dado por</p>
 <p><span class="math display">\[
 R_n(x) = \frac{(x-x_0)^{n+1}}{(n+1)!} \frac{d^{n+1} f(x)}{d x^{n+1}}|_{x= \epsilon}
@@ -1699,6 +1760,7 @@ P_2(x) &amp; =&amp;  f(x = 0) + f^{\prime}(x = 0)(x - 0) + \frac{f^{\prime \prim
 <p>O objetivo de um modelo de regressão linear simples é descrever o comportamento de uma variável dependente, digamos <span class="math inline">\(y\)</span> por meio do conhecimento de uma variável independente <span class="math inline">\(x\)</span>. Descrever o comportamento de <span class="math inline">\(y\)</span> pode ser útil para <strong>predizer</strong> valores de futuras observações de <span class="math inline">\(y\)</span> ou quantificar o efeito de <span class="math inline">\(x\)</span> em <span class="math inline">\(y\)</span>. Apenas baseado nesta informação já é possível notar a semelhança do objetivo deste modelo com a construção de uma função. Na literatura especializada a variável dependente é também chamada de <strong>variável resposta</strong>, <strong>variável de saída</strong>, <strong>target</strong>, entre outros. Enquanto que a variável independente é também chamada de <strong>covariável</strong>, <strong>variável explanatória</strong>, <strong>variável explicativa</strong> ou ainda <strong>variável de entrada</strong> entre outros.</p>
 <p>Para ilustrar a construção do modelo de regressão linear simples considere que o objetivo é verificar como o tamanho (em metros quadrados) de um apartamento em uma região homogênea de uma cidade está associado ao valor (em reais) deste apartamento. Suponha que um conjunto de <span class="math inline">\(20\)</span> apartamentos foi visitado, medido e avaliado por um profissional da área imobiliária. O conjunto de dados está disponível como material suplementar na página do livro. Abaixo são apresentadas apenas as seis primeiras observações, enquanto que na Figura 1.23 é apresentado um diagrama de dispersão do tamanho em metros quadrados (eixo <span class="math inline">\(x\)</span>) e o valor em reais do apartamento (eixo <span class="math inline">\(y\)</span>).</p>
 <blockquote class="blockquote">
+<<<<<<< HEAD
 <p><code>##        y  x</code></p>
 <p><code>## 1 207318 55</code></p>
 <p><code>## 2 250846 69</code></p>
@@ -1706,6 +1768,9 @@ P_2(x) &amp; =&amp;  f(x = 0) + f^{\prime}(x = 0)(x - 0) + \frac{f^{\prime \prim
 <p><code>## 4 219817 61</code></p>
 <p><code>## 5 268582 73</code></p>
 <p><code>## 6 229060 63</code></p>
+=======
+<p><code>##        y  x ## 1 207318 55 ## 2 250846 69 ## 3 165755 46 ## 4 219817 61 ## 5 268582 73 ## 6 229060 63</code></p>
+>>>>>>> 72567408e572dd6a90ba165db246bee6b5c7a655
 </blockquote>
 <div class="cell">
 <div class="cell-output-display">
@@ -1844,7 +1909,11 @@ Figure&nbsp;1.20: Diagrama de dispersão relacionando preço do apartamento como
 <pre><code>fit &lt;- lm(y ~ x, data = dados)
 coef(fit)</code></pre>
 <p>Dada a simplicidade do modelo é também fácil interpretar os parâmetros estimados. O intercepto representa o preço de um apartamento de tamanho zero. O que óbviamente não tem sentido prático. No entanto, a inclinação (<span class="math inline">\(\beta_1\)</span>) representa o quanto é acrescido no preço do apartamento quando o seu tamanho aumenta em um metro quadrado.</p>
+<<<<<<< HEAD
 <p>Também podemos usar o modelo para predizer o preço aproximado de um imóvel. Por exemplo, em nossa base de dados não temos nenhum apartamento com <span class="math inline">\(80\)</span> metros quadrados. Um potencial interesse pode ser em predizer o valor aproximado de um apartamento desse tamanho. Assim, podemos facilmente usar o nosso modelo que diz que o preço aproximado <span class="math inline">\(\hat{y}\)</span> de um apartamento é dado por <span class="math inline">\(\hat{y} = 2623 + 3608 \times x\)</span>. Substituindo <span class="math inline">\(x = 80\)</span> temos que o preço aproximado é de R<span class="math inline">\(\$ 291.263\)</span>.</p>
+=======
+<p>Também podemos usar o modelo para predizer o preço aproximado de um imóvel. Por exemplo, em nossa base de dados não temos nenhum apartamento com <span class="math inline">\(80\)</span> metros quadrados. Um potencial interesse pode ser em predizer o valor aproximado de um apartamento desse tamanho. Assim, podemos facilmente usar o nosso modelo que diz que o preço aproximado <span class="math inline">\(\hat{y}\)</span> de um apartamento é dado por <span class="math inline">\(\hat{y} = 2623 + 3608 \cdot x\)</span>. Substituindo <span class="math inline">\(x = 80\)</span> temos que o preço aproximado é de R<span class="math inline">\(\$ 291.263\)</span>.</p>
+>>>>>>> 72567408e572dd6a90ba165db246bee6b5c7a655
 <p>É claro que o modelo não irá predizer o valor exato do apartamento. Isso acontece porque temos apenas uma aproximação de primeira ordem da verdadeira função <span class="math inline">\(f^*(x)\)</span> que relaciona o tamanho com o preço. Uma opção é incluir mais termos na aproximação para obter uma forma de relacionamento mais flexível. Acontece que em termos práticos, tal abordagem não é muito útil por pelo menos dois motivos:</p>
 <ol type="1">
 <li>O erro cometido pode ser pelo fato de existir outras características importantes para determinar o preço do apartamento que não foram levadas em consideração em nosso modelo. Neste caso, o efeito de tais características será absorvido pelo termo de erro. E mesmo aumentando a ordem de aproximação o erro do modelo não apresentará um grande decréscimo.</li>

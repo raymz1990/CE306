@@ -1032,4 +1032,3 @@ coef(lm(medv ~ crim + zn + indus + chas + nox, data = Boston))
 ```
 
 Os resultados são idênticos. Podemos usar o modelo para predizer o valor de um imóvel dado os valores de suas covariáveis. Basicamente, tudo o que foi discutido no caso do modelo de regressão linear simples se adapta naturalmente para o modelo de regressão linear múltipla. 
-
