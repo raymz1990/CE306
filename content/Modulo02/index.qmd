@@ -1032,3 +1032,1200 @@ coef(lm(medv ~ crim + zn + indus + chas + nox, data = Boston))
 ```
 
 Os resultados são idênticos. Podemos usar o modelo para predizer o valor de um imóvel dado os valores de suas covariáveis. Basicamente, tudo o que foi discutido no caso do modelo de regressão linear simples se adapta naturalmente para o modelo de regressão linear múltipla. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Sistemas de equações lineares
+
+Um sistema de equações de duas incógnitas pode ser escrito da seguinte forma
+
+$$
+\begin{eqnarray*}
+f_1(x_1,x_2)  & = &  c_1 \\ 
+f_2(x_1,x_2)  & = &  c_2.
+\end{eqnarray*}
+$$
+
+De forma geral, desejamos encontrar a solução numérica do sistema que consiste em encontrar valores $\hat{x}_1$ e $\hat{x}_2$ que satisfaçam o sistema de equações, ou seja, que ao aplicar as funções $f_1$ e $f_2$ simultâneamente em $\hat{x}_1$ e $\hat{x}_2$, resultem em $c_1$ e $c_2$. Em termos de notação, desejamos que $f_1(x_1 = \hat{x}_1, x_2 = \hat{x}_2) = c_1$ e $f_2(x_1 = \hat{x}_1, x_2 = \hat{x}_2) = c_2$, simultâneamente.
+
+A ideia é facilmente estendida para um sistema com $n$ equações com $p$ incógnitas
+
+$$
+\begin{eqnarray*}
+f_1(x_1,\ldots, x_p)  & = &  c_1 \\
+ & \vdots &  \\
+f_n(x_1,\ldots, x_p)  & = &  c_p.
+\end{eqnarray*}
+$$
+
+Um sistema de equações é dito ser linear se as funções $f_1, f_2, \ldots, f_n$ são lineares e não-linear caso contrário. Nesta seção, nós vamos lidar apenas com sistemas lineares. Na Seção 3.1, nós vamos apresentar alguns métodos numéricos para sistemas de equações não-lineares.
+Quando as $n$ funções são lineares o sistema pode escrito da seguinte forma
+
+$$
+\begin{eqnarray*}
+a_{11} x_1 + a_{12} x_2 + \ldots a_{1p} x_p  & = &  c_1 \\
+a_{21} x_1 + a_{22} x_2 + \ldots a_{2p} x_p  & = &  c_2 \\
+ & \vdots &  \\
+a_{n1} x_1 + a_{n2} x_2 + \ldots a_{np} x_p  & = &  c_p. \\
+\end{eqnarray*}
+$$
+
+É mais fácil e compacto usar a notação matricial, neste caso o sistema toma a seguinte forma
+
+$$
+\mathbf{A} \mathbf{x} = \mathbf{c},
+$$
+
+onde $\mathbf{A}$ é uma matriz $n \times p$, $\mathbf{x}$ é um vetor $p \times 1$, e $\mathbf{c}$ é um vetor $n \times 1$. Quando $n = p$ e $\mathbf{A}$ é não-singular é possível mostrar que o sistema tem uma solução **única** dada por $\mathbf{\hat{x}} = \mathbf{A}^{-1} \mathbf{c}$. No caso em que $n > p$, $\mathbf{A}$ terá mais linhas do que colunas e o sistema tipicamente não terá solução. Por fim, se $n < p$, $\mathbf{A}$ terá menos linhas do que colunas e o sistema tipicamente terá um número infinito de soluções. Neste livro vamos considerar apenas o caso em que o sistema tem uma única solução, ou seja, $n = p$ e $\mathbf{A}$ é não-singular (admite inversa).
+
+Como um exemplo ilustrativo, considere o seguinte sistema de duas equações
+
+$$
+\begin{eqnarray}
+7 x_1 + 3x_2  & = &  45 \tag{2.4}\\
+4 x_1 + 5x_2  & = &  29. \tag{2.5}
+\end{eqnarray}
+$$
+
+A solução deste sistema consiste em encontrar valores $\hat{x}_1$ e $\hat{x}_2$, que satisfaçam as Equações (2.4) e (2.5).
+Para começar vamos isolar o $x_1$ na Equação (2.4).
+
+$$
+\begin{eqnarray}
+7x_1 + 3 x_2  & = &  45 \\
+7x_1  & = &  45 - 3x_2 \\
+x_1  & = &  \frac{45 - 3x_2}{7}. \tag{2.6}
+\end{eqnarray}
+$$
+
+Agora substituímos a Equação (2.6) na Equação (2.5)
+
+$$
+\begin{eqnarray}
+4x_1 + 5x_2  & = &  29 \\
+4 \left( \frac{45 - 3x_2}{7} \right ) + 5x_2  & = &  29 \\
+\frac{180 - 12 x_2}{7} + 5x_2  & = &  29 \\
+\frac{180}{7} - \frac{12}{7} x_2 + 5 x_2  & = &  29 \\
+5 x_2 - \frac{12}{7} x_2  & = &  29 - \frac{180}{7} \\
+\frac{35x_2 - 12 x_2}{7}  & = &  29 - \frac{180}{7} \\
+35x_2 - 12 x_2  & = &  7 \left(29 - \frac{180}{7} \right ) \\
+23 x_2  & = &  203 - 180 \\
+23 x_2  & = &  23 \\
+\hat{x}_2  & = &  \frac{23}{23} = 1. \tag{2.7}
+\end{eqnarray}
+$$
+
+Por fim, substituindo (2.7) em (2.6) obtemos $\hat{x}_1$
+
+$$
+\begin{eqnarray}
+\hat{x}_1  & = &  \frac{45 - 3 \cdot 1}{7} \\
+\hat{x}_1  & = &  6.
+\end{eqnarray}
+$$
+
+Portanto, a solução é $\hat{x}_1 = 6$ e $\hat{x}_2 = 1$.
+
+Importante ressaltar que apesar de matematicamente simples o procedimento utilizado é bastante trabalhoso e impraticável em sistemas maiores, tais como os que vamos encontrar na prática em ciência de dados. Assim, fica claro que precisamos de algoritmos genéricos que possam ser adaptáveis para sistemas de qualquer tamanho.
+
+Para resolver o sistema nós realizamos uma série de manipulações com as linhas do sistema até encontrar a solução. Estas operações são chamadas de **operações com linhas**. Sem qualquer alteração na relação linear é possível
+
+1. Trocar a posição de linhas, por exemplo
+$$
+\begin{eqnarray*}
+4 x_1 + 5 x_2  & = &  29 \\
+7 x_1 + 3 x_2  & = &  45. 
+\end{eqnarray*}
+$$
+
+2. Multiplicar qualquer linha por uma constante, aqui $4 x_1 + 5 x_2$ por $\frac{1}{4}$, obtendo
+$$
+\begin{eqnarray}
+x_1 + \frac{5}{4} x_2  & = &  \frac{29}{4} \tag{2.8}\\
+7 x_1 + 3 x_2  & = &  45. \tag{2.9}
+\end{eqnarray}
+$$
+
+3. Subtrair um múltiplo de uma linha de uma outra, aqui 7 vezes a Equação (2.8) menos (2.9), obtendo
+$$
+\begin{eqnarray*}
+x_1 + \frac{5}{4} x_2  & = &  \frac{29}{4} \\
+0 x_1 + \left(\frac{35}{4} - 3\right) x_2  & = &  \frac{203}{4} - 45. 
+\end{eqnarray*}
+$$
+
+Fazendo as contas, tem-se
+
+$$
+\begin{eqnarray*}
+0 x_1 + \frac{23}{4} x_2  & = &  \frac{23}{4} \\
+x_2  & = &  1.
+\end{eqnarray*}
+$$
+
+Baseado em **operações com linhas** podemos estabelecer diferentes estratégias para transformar um sistema linear qualquer em um sistema equivalente, porém de fácil solução. Esta é a ideia subjacente a uma classe de métodos chamados de **métodos diretos** para a solução de sistemas lineares. Por outro lado, existem os chamados **métodos iterativos** cuja ideia principal é a partir de uma solução inicial ir melhorando esta solução até que um certo critério de parada seja satisfeito. Na subseção 2.3.1 nós vamos apresentar alguns dos métodos diretos mais famosos, enquanto que na subseção 2.3.2 serão apresentados alguns métodos iterativos.
+
+### Métodos diretos
+
+Nos métodos diretos o sistema linear é manipulado usando **operações com linhas** até se transformar em um sistema equivalente de fácil solução. Por exemplo, o sistema pode ser manipulado até se tornar um sistema **triangular superior**
+
+$$
+\begin{bmatrix}
+a_{11}  &  a_{12}  &  a_{13}  &  a_{14}\\ 
+0  &  a_{22}  &  a_{23}  &  a_{24}\\ 
+0  &  0  &  a_{33}  &  a_{34} \\ 
+0  &  0  &  0  &  a_{44}
+\end{bmatrix} 
+\begin{bmatrix}
+x_1 \\ 
+x_2 \\ 
+x_3 \\ 
+x_4
+\end{bmatrix} =
+  \begin{bmatrix}
+b_1 \\ 
+b_2 \\ 
+b_3 \\ 
+b_4
+\end{bmatrix}.
+$$
+
+Que é facilmente resolvido utilizando **substituição regressiva**
+
+$$ 
+x_n = \frac{b_n}{a_{nn}} \quad x_i = \frac{b_i - \sum_{j = i+1 }^{j=n} a_{ij} x_j}{a_{ii}}, 
+\quad i = n-1, n-2,\ldots, 1.
+$$
+
+Outra opção é manipular o sistema até obter um sistema triangular inferior, ou seja,
+
+$$
+\begin{bmatrix}
+a_{11}  &  0  &  0  &  0 \\ 
+a_{21}  &  a_{22}  &  0  &  0 \\ 
+a_{31}  &  a_{32}  &  a_{33}  &  0 \\ 
+a_{41}  &  a_{42}  &  a_{43}  &  a_{44}
+\end{bmatrix} 
+\begin{bmatrix}
+x_1 \\ 
+x_2 \\ 
+x_3 \\ 
+x_4
+\end{bmatrix} =
+  \begin{bmatrix}
+b_1 \\ 
+b_2 \\ 
+b_3 \\ 
+b_4
+\end{bmatrix}.
+$$
+
+Neste caso usamos a **substituição progressiva** para obter a solução
+
+$$ 
+x_1 = \frac{b_1}{a_{11}} \quad x_i = \frac{b_i - \sum_{j = i}^{j=i-1} a_{ij} x_j}{a_{ii}}, \quad i = 2, 3,\ldots, n.
+$$
+
+Por fim, o mais óbvio porém mais caro computacionalmente é tornar o sistema diagonal
+
+$$
+\begin{bmatrix}
+a_{11}  &  0  &  0  &  0 \\ 
+0  &  a_{22}  &  0  &  0 \\ 
+0  &  0  &  a_{33}  &  0 \\ 
+0  &  0  &  0  &  a_{44}
+\end{bmatrix} 
+\begin{bmatrix}
+x_1 \\ 
+x_2 \\ 
+x_3 \\ 
+x_4
+\end{bmatrix} =
+  \begin{bmatrix}
+b_1 \\ 
+b_2 \\ 
+b_3 \\ 
+b_4
+\end{bmatrix}.
+$$
+
+Um dos métodos diretos mais utilizados é o método de **Eliminação de Gauss**. Este método consiste em usar operações com linhas para obter um sistema triangular superior e depois usar substituição regressiva para obter a solução. Vamos fazer um exemplo para ilustrar como este método funciona.
+
+**Example 2.1** Resolva o seguinte sistema usando o método de eliminação de Gauss.
+
+$$
+\begin{bmatrix}
+3  &  2  &  6 \\ 
+2  &  4  &  3 \\ 
+5  &  3  &  4  \\ 
+\end{bmatrix} 
+\begin{bmatrix}
+x_1 \\ 
+x_2 \\ 
+x_3
+\end{bmatrix} =
+  \begin{bmatrix}
+24 \\ 
+23 \\ 
+33
+\end{bmatrix}
+$$
+
+O algoritmo pode ser descrito passo-a-passo
+
+* Passo 1: Encontrar o primeiro **pivô** e eliminar os elementos abaixo dele usando operações com linhas.
+
+$$
+\begin{bmatrix}
+[3]  &  2  &  6 \\ 
+2 - \frac{2}{3}3  &  4 - \frac{2}{3}2  &  3 - \frac{2}{3}6 \\ 
+5 - \frac{5}{3}3  &  3 - \frac{5}{3}2  &  4 - \frac{5}{3}6 \\ 
+\end{bmatrix} 
+\begin{bmatrix}
+24 \\ 
+23 - \frac{2}{3}24\\ 
+33 - \frac{5}{3}24
+\end{bmatrix} \to 
+\begin{bmatrix}
+[3]  &  2  &  6 \\ 
+0  &  \frac{8}{3}  &  -1 \\ 
+0  &  -\frac{1}{3}  &  -6  \\ 
+\end{bmatrix} 
+\begin{bmatrix}
+24 \\ 
+7 \\ 
+-7
+\end{bmatrix}.
+$$
+
+Neste caso o primeiro **pivô** é o número $3$ (note entre colchetes) e precisamos tornar os elementos abaixo dele zero. Para isto multiplicamos a primeira linha por $\frac{2}{3}$, ou seja, o valor da posição a ser zerada dividida pelo valor do pivô. E depois subtraímos da segunda linha. Importante é que a operação **deve ser feita em todos os elementos da linha** para não modificar o sistema. A mesma ideia é usada para zerar o primeiro elemento da terceira linha.
+
+* Passo 2: Encontrar o segundo **pivô** e eliminar os elementos abaixo dele usando operações com linhas.
+
+$$
+  \begin{bmatrix}
+3  &  2  &  6 \\ 
+0  &  [\frac{8}{3}]  &  -1 \\ 
+0  &  -\frac{1}{3} - \left (-\frac{3}{24} \right ) \left (\frac{8}{3}\right )   &  -6 - (-\frac{3}{24})(-1)  \\ 
+\end{bmatrix} 
+\begin{bmatrix}
+24 \\ 
+7 \\ 
+-7 - (- \frac{3}{24})(7)
+\end{bmatrix} \to \\
+\begin{bmatrix}
+3  &  2  &  6 \\ 
+0  &  [\frac{8}{3}]  &  -1 \\ 
+0  &  0  &  -\frac{147}{24}  \\ 
+\end{bmatrix} 
+\begin{bmatrix}
+24 \\ 
+7 \\ 
+-\frac{147}{24}
+\end{bmatrix}
+$$
+
+Neste caso o segundo pivô é $\frac{8}{3}$ e multiplicamos a segunda linha pelo pivô e subtraímos da terceira para zerar o elemento da segunda linha da terceira coluna. Com isso chegamos a um sistema triangular superior.
+
+* Passo 3: Substituição regressiva.
+
+$$
+\begin{eqnarray*}
+\hat{x}_3  & = &  \frac{b_3}{a_{33}} \\
+\hat{x}_3  & = &  \frac{-147/24}{-147/24} = 1. \\
+\hat{x}_2  & = &  \frac{b_2 - a_{23}x_3}{a_{22}} \\
+\hat{x}_2  & = &  \frac{7 - (-1) \cdot 1}{8/3} = 3. \\
+\hat{x}_1  & = &  \frac{(b_1 - (a_{12}x_2 + a_{13}x_3) }{a_{11}} \\
+\hat{x}_1  & = &  \frac{24 - (2 \cdot 3 + 6 \cdot 1)}{3} = 4.
+\end{eqnarray*}
+$$
+
+Portanto, a solução do sistema é $\hat{x}_1 = 4$, $\hat{x}_2 = 3$ e $\hat{x}_3 = 1$.
+
+Estender o procedimento para um sistema com $n$ equações é trivial. Basta transformar o sistema em triangular superior usando operações com linhas e resolver o novo sistema usando substituição regressiva.
+
+Para ilustrar o procedimento de eliminação de Gauss o Código 2.14 implementa a estratégia para tornar um sistema triangular superior.
+
+**Código 2.14** Triangularização de um sistema.
+
+``` {r}
+gauss <- function(A, b) {
+  # Sistema aumentado
+  Ae <- cbind(A, b)
+  rownames(Ae) <- paste0("x", 1:length(b))
+  n_row <- nrow(Ae)
+  n_col <- ncol(Ae)
+  # Matriz para receber os resultados
+  SOL <- matrix(NA, n_row, n_col)
+  SOL[1,] <- Ae[1,]
+  pivo <- matrix(0, n_col, n_row)
+  for(j in 1:c(n_row-1)) {
+    for(i in c(j+1):c(n_row)) {
+      pivo[i,j] <- Ae[i,j]/SOL[j,j]
+      SOL[i,] <- Ae[i,] - pivo[i,j]*SOL[j,]
+      Ae[i,] <- SOL[i,]
+    }
+  }
+  return(SOL)
+}
+
+```
+
+Precisamos também de uma função genérica para o passo de substituição regressiva, conforme apresentado no Código 2.15.
+
+**Código 2.15** Substituição regressiva.
+
+``` {r} 
+sub_reg <- function(SOL) {
+  n_row <- nrow(SOL)
+  n_col <- ncol(SOL)
+  A <- SOL[1:n_row,1:n_row]
+  b <- SOL[,n_col]
+  n <- length(b)
+  x <- c()
+  x[n] <- b[n]/A[n,n]
+  for(i in (n-1):1) {
+    x[i] <- (b[i] - sum(A[i,c(i+1):n]*x[c(i+1):n] ))/A[i,i]
+  }
+  return(x)
+}
+```
+
+Por fim, vamos resolver o sistema apresentado no Exemplo 2.1 utilizando as funções criadas.
+
+``` {r}
+# Entrando com o sistema na forma matricial
+A <- matrix(c(3,2,5,2,4,3,6,3,4),3,3)
+b <- c(24,23,33)
+# Passo 1: Triangularização
+S <- gauss(A, b)
+S
+```
+
+``` {r} 
+# Passo 2: Substituição regressiva
+sol = sub_reg(SOL = S)
+sol
+```
+
+
+``` {r}
+# Verificando a solução
+A%*%sol
+```
+
+O método de eliminação de Gauss pode apresentar dois problemas:
+
+i. o elemento pivô é zero e neste caso não podemos dividir por zero e
+ii. o elemento pivô é pequeno em magnitude em relação aos demais. Isso pode levar a problemas numéricos por fazer uma divisão por um número muito próximo de zero.
+
+Para resolver estes problemas é usual combinar o método de eliminação de Gauss com o procedimento de **pivotação**. O procedimento de **pivotação** nada mais é do que trocar a ordem das linhas para evitar pivôs iguais a zero ou muito pequenos. Além disso, a pivotação também pode ajudar a diminuir o número de operações para resolver o sistema.
+
+Se durante o procedimento uma equação pivô tiver um elemento nulo e o sistema tiver solução, uma equação com um elemento pivô diferente de zero sempre existirá. Uma recomendação é ordenar as linhas para que o maior valor seja o primeiro pivô.
+
+**Example 2.2** Resolva o seguinte sistema usando eliminação de Gauss com pivotação.
+
+$$
+\begin{eqnarray*}
+0x_1 + 2x_2 + 3x_2  & = &  46\\ 
+4 x_1 -3x_2 + 2x_3  & = &  16 \\ 
+2x_1 + 4x_2 -3x_3  & = &  12
+\end{eqnarray*}
+$$
+
+Note que neste caso o primeiro pivô é zero o procedimento não pode ser iniciado da maneira usual. A estratégia de pivotação é simplesmente trocar a ordem das linhas de forma que valores maiores apareçam primeiro como pivôs. Por exemplo,
+
+$$
+\begin{eqnarray*}
+4 x_1 -3x_2 + 2x_3  & = &  16 \\ 
+2x_1 + 4x_2 -3x_3  & = &  12 \\
+0x_1 + 2x_2 + 3x_2  & = &  46.
+\end{eqnarray*}
+$$
+
+Importante notar que ao trocar a ordem das linhas a ordem da solução também será alterada. Vejamos como resolver este sistema usando as funções que criamos nesta seção.
+
+``` {r} 
+# Entrando com o sistema original
+A <- matrix(c(0,4,2,2,-3,4,3,2,-3), 3,3)
+b <- c(46,16,12)
+
+# Pivoteamento
+A_order <- A[order(A[,1], decreasing = TRUE),]
+b_order <- b[order(A[,1], decreasing = TRUE)]
+
+## Triangulação
+S <- gauss(A_order, b_order)
+S
+```
+
+``` 
+## Substituição regressiva
+sol <- sub_reg(SOL = S)
+sol
+```
+
+``` {r} 
+## Solução
+A_order%*%sol
+```
+
+Um segundo método direto muito popular é o método de Gauss-Jordan. Este método é similar ao método de eliminação de Gauss, porém busca transformar o sistema original em um sistema diagonal usando operações com linhas. O algoritmo pode ser resumido em dois passos:
+
+1. Normalize a equação pivô com a divisão de todos os seus termos pelo coeficiente pivô.
+2. Elimine os elementos fora da diagonal principal em TODAS as demais equações usando operações com linhas.
+
+###  Métodos iterativos
+
+Os métodos iterativos trabalham de forma ligeiramente diferente.
+Neste caso, as equações são colocadas em uma forma explícita onde cada incógnita é escrita em termos das demais, ou seja,
+
+$$
+  \begin{matrix}
+a_{11} x_1 + a_{12} x_2 + a_{13} x_3 = b_1 \\ 
+a_{21} x_1 + a_{22} x_2 + a_{23} x_3 = b_2 \\ 
+a_{31} x_1 + a_{32} x_2 + a_{33} x_3 = b_3
+\end{matrix} \to 
+\begin{matrix}
+x_1 = [b_1 - (a_{12} x_2 + a_{13}x_3)]/a_{11} \\ 
+x_2 = [b_2 - (a_{21} x_1 + a_{23}x_3)]/a_{22} \\ 
+x_3 = [b_3 - (a_{31} x_1 + a_{32}x_2)]/a_{33}
+\end{matrix}.
+$$
+
+Dado um valor inicial para as incógnitas estas são atualizadas até a convergência. Em um sistema com $n$ equações, as equações explícitas para as incógnitas $x_i$ são
+
+$$
+x_i = \frac{1}{a_{ii}} \left [ b_i - \left ( \sum_{j=1;j \neq i}^{j=n} a_{ij} x_j \right ) \right ] \quad i = 1, \ldots, n.
+$$
+
+Dentro da classe dos métodos iterativos os métodos de Jacobi e Gauss-Seidel são muito populares. A diferença básica entre os dois é que no método de Jacobi os valores das incógnitas são atualizados todos de uma vez no final de cada iteração. Por outro lado, no método de Gauss-Seidel, o valor de cada incógnita é atualizado e usado no cálculo da nova estimativa das demais incógnitas dentro da mesma iteração.
+
+Dado um valor inicial para cada uma das incógnitas, $x_1^{(1)}, x_2^{(1)}, \ldots, x_n^{(1)}$ o **método de Jacobi** atualiza a solução usando a seguinte equação de atualização:
+
+$$
+\begin{equation}
+x_i^{k+1} = \frac{1}{a_{ii}} \left[b_i - \left(\sum_{j=1, j \neq i}^{j=n} a_{ij} x_j^{(k)}  \right)   \right] \quad i = 1, 2, \ldots, n.
+\end{equation}
+$$
+
+No **método de Gauss-Seidel** as equações de atualização são as seguintes:
+
+$$
+\begin{equation}
+x_1^{k+1} = \frac{1}{a_{11}} \left[b_1 - \sum_{j=2}^{j=n} a_{1j} x_j^{(k)}  \right],
+\end{equation}
+$$
+
+$$
+\begin{equation}
+x_i^{(k+1)} = \frac{1}{a_{ii}} \left[ b_i - \left( \sum_{j=1}^{j = i-1} a_{ij} x_j^{(k+1)} + \sum_{j = i+1}^{j = n} a_{ij} x_j^{(k)} \right)  \right] \quad i = 2, 3, \ldots, n-1 \quad \text{e}
+\end{equation}
+$$
+
+$$
+\begin{equation}
+x_n^{(k+1)} = \frac{1}{a_{nn}} \left[b_n - \sum_{j = 1}^{j=n-1} a_{nj} x_j^{(k+1)}  \right].
+\end{equation}
+$$
+
+Em ambos os métodos as iterações continuam até que algum critério de parada seja atingido. Por exemplo, as iterações podem ser interrompidas quando o valor absoluto do erro relativo estimado de todas as incógnitas for menor que algum valor especificado:
+
+$$
+\begin{equation}
+\left| \frac{x_i^{k+1} - x_i^{(k)} }{x_i^{(k)}}   \right| < \epsilon.
+\end{equation}
+$$
+
+A escolha de valores iniciais é sempre um problema a ser considerado caso a caso. Uma estratégia simples é inicializar com zeros, porém obviamente esses valores nem sempre serão razoáveis e a convergência do método pode ficar muito lenta devido a valores iniciais ruins.
+
+Para exemplificar o uso e implementação computacional dos métodos iterativos o Código 2.16 implementa o método de Jacobi.
+
+**Código 2.16** Método de Jacobi.
+
+``` {r}
+jacobi <- function(A, b, inicial, max_iter = 10, tol = 1e-04) {
+  n <- length(b)
+  x_temp <- matrix(NA, ncol = n, nrow = max_iter)
+  x_temp[1,] <- inicial
+  x <- x_temp[1,]
+  ## Equação de atualização
+  for(j in 2:max_iter) {
+    for(i in 1:n) {
+      x_temp[j,i] <- (b[i] - sum(A[i,1:n][-i]*x[-i]))/A[i,i]
+    }
+    x <- x_temp[j,]
+    ## Critério de parada
+    if(sum(abs(x_temp[j,] - x_temp[c(j-1),])) < tol) break
+  }
+  return(list("Solucao" = x, "Iteracoes" = x_temp))
+}
+```
+
+**Example 2.3** Resolva o seguinte sistema de equações lineares usando o método de Jacobi.
+
+$$
+\begin{eqnarray*}
+9x_1 - 2x_2 + 3x_3 + 2x_4  & = &  54.5\\ 
+2x_1 + 8x_2 - 2x_3 + 3x_4  & = &  -14 \\ 
+-3x_1 + 2x_2 + 11x_3 - 4x_4   & = &  12.5 \\
+-2x_1 + 3x_2 + 2x_3 - 10x_4   & = &  -21 \\
+\end{eqnarray*}
+$$
+
+Vamos começar entrando com a matriz do sistema.
+
+``` {r} 
+# Matriz do sistema
+A <- matrix(c(9,2,-3,-2,-2,8,2,3,3,-2,11,2,2,3,-4,10), 4, 4)
+# Vetor de solução
+b <- c(54.5, -14, 12.5, -21)
+```
+
+Agora usamos a função implementada no Código 2.16.
+
+``` {r} 
+sol <- jacobi(A = A, b = b, inicial = c(0,0,0,0))
+sol$Solucao
+```
+
+Note que a solução fornecida é uma aproximação para a solução exata. A solução exata pode ser obtida, por exemplo usando o método de eliminação de Gauss.
+
+``` {r} 
+S <- gauss(A = A, b = b)
+sol_ex <- sub_reg(SOL = S)
+sol_ex
+```
+
+Uma questão importante sobre a implementação dos métodos iterativos é o uso do duplo `for()`. Isso torna a implementação computacional destes métodos diretamente em `R` conforme feito no Código 2.16 lento. Uma implementação eficiente dos métodos de Jacobi e Gauss-Seidel está disponível em `R` através do pacote `Rlinsolve`. Este pacote implementa os métodos utilizando a linguagem `C++` o que torna a implementação bastante rápida computacionalmente. O uso do pacote `Rlinsolve` é ilustrado no Código Rlinsolve2.17.
+
+**Código 2.17** Utilização do pacote `Rlinsolve` para resolver sistemas lineares via métodos iterativos.
+
+``` {r} 
+# Carregando o pacote
+require(Rlinsolve)
+# Método de Jacobi 
+lsolve.jacobi(A, b)$x
+```
+
+``` {r} 
+# Método de Gauss-Seidel
+lsolve.gs(A, b)$x
+```
+
+### Decomposição LU
+
+Para motivar o uso de decomposições matriciais considere que precisamos resolver vários sistemas lineares do tipo
+
+$$
+\mathbf{A} \boldsymbol{x} = \boldsymbol{b}
+$$
+
+para diferentes $\boldsymbol{b}$’s.
+
+A ideia é manipular apenas a matriz $\mathbf{A}$ de modo que as operações feitas em $\mathbf{A}$ possam ser aproveitadas para resolver os diversos sistemas lineares.
+
+A decomposição LU é uma das decomposições mais populares e comumente implementada em diversos softwares. Em `R` a função `solve()` que nós já usamos resolve um sistema linear usando a decomposição LU. O procedimento consiste em decompor ou fatorar a matriz $\mathbf{A}$ em um produto de duas matrizes
+
+$$
+\mathbf{A} = \mathbf{L} \mathbf{U},
+$$
+
+onde $\mathbf{L}$ é triangular inferior e $\mathbf{U}$ é triangular superior.
+
+Baseado na decomposição o sistema terá a forma:
+
+$$
+\begin{equation}
+\mathbf{L} \mathbf{U} \boldsymbol{x} = \boldsymbol{b}.
+  \tag{2.10}
+\end{equation}
+$$
+
+Defina $\mathbf{U} \boldsymbol{x} = \boldsymbol{y}.$ Substituindo em (2.10) tem-se
+
+$$
+\begin{equation}
+\mathbf{L} \boldsymbol{y} = \boldsymbol{b}.
+  \tag{2.11}
+\end{equation}
+$$
+
+Assim, a solução é obtida em dois passos
+
+* Resolva Equação (2.11) para obter $\boldsymbol{y}$ usando substituição progressiva.
+* Resolva Equação (2.10) para obter $\boldsymbol{x}$ usando substituição regressiva.
+
+Um método para obter a decomposição $\mathbf{LU}$ é o próprio método de eliminação de Gauss. Dentro do processo de eliminação de Gauss as matrizes $\mathbf{L}$ e $\mathbf{U}$ são obtidas como um subproduto. Considere uma matriz $4 \times 4$, a decomposição $\mathbf{LU}$ toma a seguinte forma
+
+$$
+\begin{bmatrix}
+a_{11}  &  a_{12}  &  a_{13}  &  a_{14} \\ 
+a_{21}  &  a_{22}  &  a_{23}  &  a_{24} \\ 
+a_{31}  &  a_{32}  &  a_{33}  &  a_{34} \\ 
+a_{41}  &  a_{41}  &  a_{43}  &  a_{44}
+\end{bmatrix} = \begin{bmatrix}
+1  &    &    &  \\ 
+m_{21}  &  1  &    &  \\ 
+m_{31}  &  m_{32}  &  1  &  \\ 
+m_{41}  &  m_{42}  &  m_{43}  &  1
+\end{bmatrix} 
+\begin{bmatrix}
+a_{11}  &  a_{12}  &  a_{13}  &  a_{14} \\ 
+0  &  a′_{22}  &  a′_{23}  &  a′_{24} \\ 
+0  &  0  &  a′_{33}  &  a′_{34} \\ 
+0  &  0  &  0  &  a′_{44}
+\end{bmatrix}.
+$$
+
+Os elementos $m_{ij}′s$ são os multiplicadores que multiplicam a equação pivô. Os elementos $a′_{ij}$ são os elementos usuais da triangular superior obtida pelo método de eliminação de Gauss.
+
+Relembre o Exemplo 2.1
+
+$$
+\begin{bmatrix}
+[3]  &  2  &  6 \\ 
+2 - \boldsymbol{\frac{2}{3}}3  &  4 - \frac{2}{3}2  &  3 - \frac{2}{3}6 \\ 
+5 - \boldsymbol{\frac{5}{3}}3  &  3 - \frac{5}{3}2  &  4 - \frac{5}{3}6 \\ 
+\end{bmatrix} 
+\begin{bmatrix}
+24 \\ 
+23 - \frac{2}{3}24\\ 
+33 - \frac{5}{3}24
+\end{bmatrix} \to 
+\begin{bmatrix}
+[3]  &  2  &  6 \\ 
+0  &  \frac{8}{3}  &  -1 \\ 
+0  &  -\frac{1}{3}  &  -6  \\ 
+\end{bmatrix} 
+\begin{bmatrix}
+24 \\ 
+7 \\ 
+-7
+\end{bmatrix}
+$$
+$$
+\begin{bmatrix}
+3  &  2  &  6 \\ 
+0  &  [\frac{8}{3}]  &  -1 \\ 
+0  &  -\frac{1}{3} - \left (-\frac{3}{24} \right ) \left (\frac{8}{3}\right )   &  -6 - (\boldsymbol{-\frac{3}{24}})(-1)  \\ 
+\end{bmatrix} 
+\begin{bmatrix}
+24 \\ 
+7 \\ 
+-7 - (- \frac{3}{24})(7)
+\end{bmatrix} \to 
+\begin{bmatrix}
+3  &  2  &  6 \\ 
+0  &  [\frac{8}{3}]  &  -1 \\ 
+0  &  0  &  [-\frac{147}{24}]  \\ 
+\end{bmatrix} 
+\begin{bmatrix}
+24 \\ 
+7 \\ 
+-\frac{147}{24}
+\end{bmatrix}
+$$
+
+Assim, tem-se
+
+$$
+\mathbf{L} = \begin{bmatrix}
+1  &    &  \\ 
+\frac{2}{3}  &  1  &  \\ 
+\frac{5}{3}  &  -\frac{3}{24}  &  1
+\end{bmatrix} \quad \text{e} \quad
+\mathbf{U} = 
+\begin{bmatrix}
+3  &  2  &  6 \\ 
+0  &  \frac{8}{3}  &  -1 \\ 
+0  &  0  &  -\frac{147}{24}  \\ 
+\end{bmatrix}.
+$$
+
+Neste caso, o método de eliminação de Gauss foi realizado sem pivotação. Porém, conforme já discutido a pivotação pode ser necessária. Quando realizada a pivotação, as mudanças feitas devem ser armazenadas, tal que
+
+$$
+\mathbf{P} \mathbf{A} = \mathbf{L}\mathbf{U},
+$$
+
+onde $\mathbf{P}$ é chamada de matriz de permutação. Se as matrizes $\mathbf{L}\mathbf{U}$ forem usadas para resolver o sistema
+
+$$
+\mathbf{A} \boldsymbol{x} = \boldsymbol{b},
+$$
+
+a ordem das linhas de $\boldsymbol{b}$ deve ser alterada de forma consistente com a pivotação, ou seja, $\mathbf{P} \boldsymbol{b}$.
+Para ilustrar a implementação computacional da decomposição $\mathbf{LU}$ vamos implementá-la baseada no método de eliminação de Gauss sem pivotação e depois usar as funções nativas do `R` para exemplificar o uso da matriz de permutação. O Código 2.18 apresenta uma implementação ilustrativa da decomposição $\mathbf{LU}$.
+
+**Código 2.18** Decomposição $\mathbf{LU}$.
+
+``` {r} 
+my_lu <- function(A) {
+  n_row <- nrow(A)
+  n_col <- ncol(A)
+  # Matriz para receber os resultados
+  SOL <- matrix(NA, n_row, n_col)
+  SOL[1,] <- A[1,]
+  pivo <- matrix(0, n_col, n_row)
+  for(j in 1:c(n_row-1)) {
+    for(i in c(j+1):c(n_row)) {
+      pivo[i,j] <- A[i,j]/SOL[j,j]
+      SOL[i,] <- A[i,] - pivo[i,j]*SOL[j,]
+      A[i,] <- SOL[i,]
+    }
+  }
+  diag(pivo) <- 1
+  return(list("L" = pivo, "U" = SOL))
+}
+```
+
+Para ilustrar o uso da decomposição $\mathbf{LU}$ considere a matriz $\mathbf{A}$ do Exemplo 2.3.
+
+``` {r} 
+LU <- my_lu(A) # Decomposição
+LU
+```
+
+``` {r}
+LU$L %*% LU$U # Verificando a solução
+```
+
+Para resolver o sistema usamos a matriz decomposta combinada com os procedimentos de substituição progressiva e regressiva, respectivamente. Em `R` as funções `forwardsolve()` e `backsolve()` implementam os procedimentos de substituição progressiva e regressiva, respectivamente. O Código 2.19 ilustra como resolver o sistema baseado na decomposição $\mathbf{LU}$.
+
+**Código 2.19** Solução de um sistema linear usando a decomposição $\mathbf{LU}$.
+
+``` {r} 
+# Passo 1: Substituição progressiva
+y = forwardsolve(LU$L, b)
+# Passo 2: Substituição regressiva
+x = backsolve(LU$U, y)
+x
+```
+
+
+``` {r} 
+A%*%x # Verificando a solução
+```
+
+O Código 2.18 é apenas para ilustrar a obtenção da decomposição $\mathbf{LU}$. Em problemas reais devemos usar as implementações disponíveis no pacote `Matrix`. O Código 2.20 ilustra o uso da função `lu()` do pacote `Matrix` para obtenção da decomposição $\mathbf{LU}$ neste exemplo com pivotação.
+
+**Código 2.20** Decomposição $\mathbf{LU}$ com pivotação usando o pacote `Matrix`.
+
+``` {r} 
+require(Matrix)
+LU_M <- Matrix::lu(A) # Calcula mas não retorna
+LU_M <- Matrix::expand(LU_M) # Captura as matrizes L U e P
+# Substituição progressiva. NOTE MATRIZ DE PERMUTAÇÃO
+y <- forwardsolve(LU_M$L, LU_M$P%*%b) 
+x = backsolve(LU_M$U, y) # Substituição regressiva
+x
+```
+
+### Cálculo da inversa
+
+A decomposição $\mathbf{LU}$ é especialmente adequada para o cálculo da inversa. Lembre-se que a inversa de $\mathbf{A}$ é tal que
+
+$$
+\mathbf{A} \mathbf{A}^{-1} = \mathbf{I}.
+$$
+
+O procedimento de cálculo da inversa é essencialmente o mesmo da solução de um sistema de equações lineares, porém com mais incógnitas.
+
+$$ 
+\begin{bmatrix}
+a_{11}  &  a_{12}  &  a_{13} \\ 
+a_{21}  &  a_{22}  &  a_{23} \\ 
+a_{31}  &  a_{32}  &  a_{33}
+\end{bmatrix} 
+\begin{bmatrix}
+x_{11}  &  x_{12}  &  x_{13} \\ 
+x_{21}  &  x_{22}  &  x_{23} \\ 
+x_{31}  &  x_{32}  &  x_{33}
+\end{bmatrix} =
+\begin{bmatrix}
+1  &  0  &  0\\ 
+0  &  1  &  0\\ 
+0  &  0  &  1
+\end{bmatrix}
+$$
+
+Neste exemplo simples, precisamos resolver três sistemas de equações diferentes. Em cada sistema, uma coluna da matriz $\mathbf{X}$ é a incógnita. A implementação computacional pode ser facilmente feita combinando a função 2.18 com as funções `forwardsolve()` e `backsolve()`. O Código 2.21 implementa o cálculo da inversa usando a decomposição $\mathbf{LU}$.
+
+
+**Código 2.21** Cálculo da matriz inversa usando decomposição $\mathbf{LU}$.
+
+``` {r}
+## Resolve um sistema de equações
+solve_lu <- function(LU, b) {
+  y <- forwardsolve(LU$L, b) 
+  x = backsolve(LU$U, y)
+  return(x)
+}
+
+# Cálculo da inversa
+my_solve <- function(LU, B) {
+  n_col <- ncol(B)
+  n_row <- nrow(B)
+  inv <- matrix(NA, n_col, n_row)
+  for(i in 1:n_col) {
+    inv[,i] <- solve_lu(LU, B[,i])
+  }
+  return(inv)
+}
+```
+
+A implementação foi feita em dois passos. Na primeira função `solve_lu()` resolve um sistema de equação usual. A função `my_solve()` usa uma instrução `for` para varrer todas as colunas da matriz de incógnitas e assim obter a inversa. É importante notar que ambas recebem a decomposição $\mathbf{LU}$ da matriz original.
+
+**Example 2.4** Obtenha a inversa de
+
+$$
+\mathbf{A} = \begin{bmatrix}
+3  &  2  &  6\\ 
+2  &  4  &  3\\ 
+5  &  3  &  4
+\end{bmatrix}
+$$
+
+Para resolver este exemplo, vamos usar as funções que criamos.
+
+``` {r}
+## Entrando com a matriz
+A <- matrix(c(3,2,5,2,4,3,6,3,4),3,3)
+# Criando a matriz de incógnitas
+I <- Diagonal(3, 1)
+# Decomposição LU
+LU <- my_lu(A)
+# Obtendo a inversa
+inv_A <- my_solve(LU = LU, B = I)
+inv_A
+```
+
+
+``` {r}
+# Verificando o resultado
+A%*%inv_A
+```
+
+A função nativa do `R` recomendada para a solução tanto de sistemas lineares quanto para a obtenção da inversa é a função `solve()`. A função `solve()` implementa a decomposição $\mathbf{LU}$ com pivotação. O `R` usa uma implementação eficiente disponível na biblioteca `lapack` para mais detalhes veja [lapack library](http://www.netlib.org/lapack/lug/node38.html).
+
+Existem diversas outras estratégias para o cálculo da inversa de uma matriz. Talvez o método mais simples seja usar o método de Gauss-Jordan. Neste método uma matriz aumentada é construída e a inversa é obtida usando operações com linhas. A matriz aumentada toma a seguinte forma:
+
+$$
+\begin{bmatrix}
+a_{11}  &  a_{21}  &  a_{31}  &  1  &  0  &  0\\ 
+a_{21}  &  a_{22}  &  a_{32}  &  0  &  1  &  0\\ 
+a_{31}  &  a_{32}  &  a_{33}  &  0  &  0  &  1
+\end{bmatrix} \to 
+\begin{bmatrix}
+1  &  0  &  0  &  a′_{11}  &  a′_{21}  &  a′_{31} \\ 
+0  &  1  &  0  &  a′_{21}  &  a′_{22}  &  a′_{32} \\ 
+0  &  0  &  1  &  a′_{31}  &  a′_{32}  &  a′_{33}
+\end{bmatrix}.
+$$
+
+O método é bastante simples, porém computacionalmente caro. Para implementações de alto desempenho computacional de tópicos em álgebra linear eu recomendo ao leitor interessado consultar as bibliotecas [eigen](https://eigen.tuxfamily.org) e [armadillo](http://arma.sourceforge.net/). Ambas podem ser utilizadas diretamente do `R` usando os pacotes [RcppEigen](https://github.com/RcppCore/RcppEigen) e [RcppArmadillo](https://github.com/RcppCore/RcppArmadillo).
+
+## Autovalores e autovetores
+
+Em ciência de dados é comum lidar com grandes matrizes de dados que apresentam um intrincado sistema de relações ou, em termos estatísticos, correlações. De forma intuitiva pode-se pensar em correlação como sendo uma forma de relacionamento entre duas variáveis de interesse. Por exemplo, o número de quartos em um apartamento pode estar associado com o seu preço. Porém, o número de quartos também pode estar associado com o tamanho total do imóvel, que por sua vez também está associado com o preço do imóvel. Neste exemplo simples com apenas três variáveis podemos notar como é complexo entender a estrutura de correlações em uma base de dados com muitas variáveis de interesse.
+
+Neste tipo de situação é comum fazer uma redução de dimensionalidade. Este tipo de técnica busca reduzir o número de variáveis a serem analisadas facilitando a interpretação. Essa redução baseia-se em criar novas variáveis que são combinações (em particular combinações lineares) das variáveis originais. Talvez a técnica de redução de dimensionalidade mais popular em ciência de dados seja **Análise de Componentes principais** que por sua vez é baseada na decomposição em autovalores e autovetores da matriz de dados. Neste livro, nós vamos discutir apenas os aspectos práticos da obtenção da decomposição em autovalores e autovetores.
+
+Autovalores e autovetores são definidos por uma simples igualdade
+
+$$
+\[\begin{equation}
+\mathbf{A} \boldsymbol{v} = \boldsymbol{\lambda} \boldsymbol{v}.
+\tag{2.12}
+\end{equation}
+$$
+
+Qualquer vetor unitário $\boldsymbol{v}$ que satisfaz a Equação eigen(2.12) tem apenas o efeito de alongar ou encolher $\boldsymbol{v}$, ou seja, o vetor não é rotacionado e a direção é preservada. Os vetores $\boldsymbol{v}$’s que satisfazem Equação (2.12) são os autovetores. Enquanto que os valores $\boldsymbol{\lambda}$’s que satisfazem Equação (2.12) são os autovalores. Neste livro, vamos considerar apenas o caso em que $\mathbf{A}$ é simétrica.
+
+Sendo $\mathbf{A}$ uma matriz simétrica $n \times n$, então existem exatamente $n$ pares $(\lambda_j, \boldsymbol{v}_j)$ que satisfazem a equação
+
+$$
+\begin{equation*}
+\mathbf{A} \boldsymbol{v} = \boldsymbol{\lambda} \boldsymbol{v}.
+\end{equation*}
+$$
+
+Se $\mathbf{A}$ tem autovalores $\lambda_1, \ldots, \lambda_n$, então:
+
+* $\mathrm{tr}(\mathbf{A}) = \sum_{i=1}^n \lambda_i$.
+* $\mathrm{det}(\mathbf{A}) = \prod_{i=1}^n \lambda_i$.
+* $\mathbf{A}$ é positiva definida, se e somente se todos $\lambda_j > 0$.
+* $\mathbf{A}$ é semi-positiva definida, se e somente se todos $\lambda_j \geq 0$.
+
+Qualquer matriz simétrica $\mathbf{A}$ pode ser fatorada em
+
+$$
+\mathbf{A} = \mathbf{Q} \boldsymbol{\Lambda}  \mathbf{Q}^{\top},
+$$
+
+onde $\boldsymbol{\Lambda}$ é diagonal contendo os autovalores de $\mathbf{A}$ e as colunas de $\mathbf{Q}$ contêm os autovetores ortonormais (ortogonais de comprimento unitário).
+
+A obtenção da decomposição em autovalores e autovetores de uma matriz não é simples, e em geral é baseada em uma outra decomposição chamada de **decomposição** $\mathbf{QR}$. Está fora do escopo deste livro descrever tal algoritmo, porém usando o `R` podemos facilmente obter a decomposição em autovalores e autovetores usando a função `eigen()`, conforme ilustrado no Código 2.22
+
+**Código 2.22** Decomposição em autovalores e autovetores.
+
+``` {r} 
+A <- matrix(c(1,0.8, 0.3, 0.8, 1, 0.2, 0.3, 0.2, 1),3,3)
+isSymmetric.matrix(A)
+```
+
+``` {r} 
+out <- eigen(A)
+Q <- out$vectors
+D <- diag(out$values)
+# Autovetores
+Q
+```
+
+``` {r} 
+# Autovalores
+D
+```
+
+``` {r} 
+# Verificando
+Q%*%D%*%t(Q)
+```
+
+Uma aspecto interessante dos autovalores é que eles permitem lidar com matrizes da mesma forma que lidamos com números. A ideia é que se você deseja aplicar uma função em uma matriz, como por exemplo o inverso, você pode simplesmente aplicar a função na matriz diagonal $\boldsymbol{\Lambda}$ e fazer a multiplicação por $\mathbf{Q}$ para obter a matriz resultante da aplicação da função.
+Assim, a decomposição em autovalores e autovetores pode ser usada para obter a inversa de uma matriz. Se $\mathbf{A}$ tem autovetores $\mathbf{Q}$ e autovalores $\lambda_j$. Então $\mathbf{A}^{-1}$ tem autovetores $\mathbf{Q}$ e autovalores $\lambda_j^{-1}$. Isso implica que $\mathbf{A}^{-1} = \mathbf{Q} \boldsymbol{\Lambda}^{-1} \mathbf{Q}^{\top}$. O Código 2.23 ilustra a obtenção da inversa usando a decomposição em autovalores e autovetores.
+
+**Código 2.23** Obtenção da inversa usando a decomposição em autovalores e autovetores.
+
+``` {r} 
+out <- eigen(A)
+Q <- out$vectors
+inv_D <- diag(1/out$values)
+inv_A <- Q%*%inv_D%*%t(Q)
+## Verificando
+A%*%inv_A
+```
+
+## Decomposição em valores singulares
+
+Uma outra decomposição associada a decomposição em autovalores e autovetores é a decomposição em valores singulares. A principal diferença é que a decomposição em valores singulares é definida para qualquer matriz, enquanto que a decomposição em autovalores e autovetores é definida apenas para matrizes simétricas.
+
+::: {.callout-warning appearance="simple"}
+## **Teorema 2.1** {#teorema-201}
+
+Qualquer matriz $\mathbf{A}$ pode ser decomposta em,
+
+$$
+\mathbf{A} = \mathbf{U} \mathbf{D} \mathbf{V}^{\top},
+$$
+
+onde $\mathbf{D}$ é diagonal com entradas não negativas e $\mathbf{U}$ e $\mathbf{V}$ são ortogonal, i.e. $\mathbf{U}^{\top} \mathbf{U} = \mathbf{V}^{\top} \mathbf{V} = \mathbf{I}$.
+:::
+
+Note que matrizes não quadradas não tem autovalores, porém $\mathbf{D}$ no Teorema 2.1 é obtida para qualquer matriz. Assim, os elementos de $\mathbf{D}$ são chamados de valores singulares e correspondem aos autovalores de $\mathbf{A}^{\top} \mathbf{A}$.
+No caso da decomposição em valores singulares é importante estar atento à dimensão das matrizes envolvidas. Assim,
+
+* Se $\mathbf{A}$ é $n \times n$, então $\mathbf{U}, \mathbf{D}$ e $\mathbf{V}$ são $n \times n$.
+* Se $\mathbf{A}$ é $n \times p$, sendo $n > p$, então $\mathbf{U}$ é $n \times p$, $\mathbf{D}$ e $\mathbf{V}$ são $p \times p$.
+* Se $\mathbf{A}$ é $n \times p$, sendo $n < p$, então $\mathbf{V}^{\top}$ é $n \times p$, $\mathbf{D}$ e $\mathbf{U}$ são $n \times n$.
+* $\mathbf{D}$ será sempre quadrada com dimensão igual ao mínimo entre $p$ e $n$.
+
+Em `R` a obtenção da decomposição em valores singulares está implementada na função `svd()`, conforme ilustrado no Código 2.24.
+
+**Código 2.24** Decomposição em valores singulares.
+
+``` {r}
+svd(A)
+```
+
+## Regressão ridge
+
+Para ilustrar a aplicação da decomposição em valores singulares em ciência de dados vamos considerar o modelo de **regressão ridge**. Relembre que na seção RLM2.2.7 nós escrevemos o modelo de regressão linear múltipla usando matrizes da seguinte forma:
+
+$$
+\underset{n\times 1}{\begin{bmatrix}
+y_1\\ 
+y_2\\ 
+\vdots \\ 
+y_n
+\end{bmatrix}} = 
+\underset{n\times p}{\begin{bmatrix}
+1  &  x_{11}  &  \ldots  &  x_{p1} \\ 
+1  &  x_{12}  &  \ldots  &  x_{p1} \\ 
+\vdots  &  \vdots   &  \ddots  &  \vdots \\ 
+1 &  x_{1n}  &  \ldots  &  x_{pn}
+\end{bmatrix} }
+\underset{p \times 1}{
+\begin{bmatrix}
+\beta_0 \\ 
+\vdots \\ 
+\beta_p
+\end{bmatrix}
+}.
+$$
+
+Também, usamos a seguinte notação mais compacta,
+
+$$
+\underset{n \times 1}{\mathbf{y}} = \underset{n \times p }{\mathbf{X}} \underset{p\times 1}{\boldsymbol{\beta}}.
+$$
+
+Vimos que o vetor $\boldsymbol{\hat{\beta}}$ que minimiza a perda quadrática é dado por
+
+$$
+\boldsymbol{\hat{\beta}} = (\mathbf{X}^{\top}\mathbf{X})^{-1}\mathbf{X}^{\top}\mathbf{y}.
+$$
+
+Note a importância do termo $(\mathbf{X}^{\top}\mathbf{X})^{-1}$ para a obtenção da solução. Vimos também que para calcular a inversa de uma matriz ela precisa ser não-singular. Neste caso sempre que $n > p$ a matriz $\mathbf{X}^{\top}\mathbf{X}$ será não-singular. Porém, existem situações práticas em ciência de dados em que $n < p$, ou seja, temos mais covariáveis do que observações na base de dados. Este é o tipo de problema comumente chamado de *high dimensional data*. Neste caso, o sistema gerado será singular, ou seja, tem múltiplas soluções. Porém, ainda gostaríamos de ajustar um modelo similar ao modelo de regressão linear múltipla.
+
+Para superar o problema de $n < p$ é comum introduzir uma penalização pela complexidade na soma de quadrados. A soma de quadrados penalizada é dada por:
+
+$$
+PSQ(\boldsymbol{\beta}) = \sum_{i=1}^n (y_i - \boldsymbol{x}_i^{\top} \boldsymbol{\beta})^2 + \lambda \sum_{j = 1}^p \beta_j^2.
+$$
+
+Matricialmente, tem-se
+
+$$
+PSQ(\boldsymbol{\beta}) = (\boldsymbol{y} - \mathbf{X} \boldsymbol{\beta})^{\top}(\boldsymbol{y} - \mathbf{X} \boldsymbol{\beta}) + \lambda \boldsymbol{\beta}^{\top} \boldsymbol{\beta}.
+$$
+
+**IMPORTANTE** Na soma de quadrados penalizada $\boldsymbol{y}$ deve estar centrado na média ou o intercepto do modelo não deve ser penalizado. E a matriz $\mathbf{X}$ deve estar padronizada por coluna, o que implica que cada coluna deve ter média zero e variância um.
+
+Nosso objetivo é minimizar a soma de quadrados penalizada e vamos proceder usando a mesma estratégia da Seção 2.2.7. Começamos obtendo a derivada da soma de quadrados penalizada em relação a $\boldsymbol{\beta}$
+
+$$
+\begin{eqnarray*}
+\frac{\partial PQS(\boldsymbol{\beta})}{\partial \boldsymbol{\beta}}  & = &  \frac{\partial}{\partial \boldsymbol{\beta}}  \left [  (\boldsymbol{y} - \mathbf{X} \boldsymbol{\beta} )^{\top} (\boldsymbol{y} - \mathbf{X} \boldsymbol{\beta} ) + \lambda \boldsymbol{\beta}^{\top}\boldsymbol{\beta} \right ] \\ 
+  & = &  \left [ \frac{\partial}{\partial \boldsymbol{\beta}} (\boldsymbol{y} - \mathbf{X} \boldsymbol{\beta} )^{\top}  \right ] (\boldsymbol{y} - \mathbf{X} \boldsymbol{\beta} ) + 
+    (\boldsymbol{y} - \mathbf{X} \boldsymbol{\beta} )^{\top} \left [ \frac{\partial}{\partial \boldsymbol{\beta}} (\boldsymbol{y} - \mathbf{X} \boldsymbol{\beta} )  \right ] \\  & + &   \lambda \left\{ \left [  \frac{\partial \boldsymbol{\beta}^{\top}}{\partial \boldsymbol{\beta}}\right ]\boldsymbol{\beta} +  \boldsymbol{\beta}^{\top}  \left [  \frac{\partial \boldsymbol{\beta}}{\partial \boldsymbol{\beta}}\right ] \right\}\\
+   & = &  -2 \mathbf{X}^{\top} (\boldsymbol{y} - \mathbf{X}\boldsymbol{\beta}) + 2 \lambda \boldsymbol{\beta} \\
+   & = &  -\mathbf{X}^{\top} (\boldsymbol{y} - \mathbf{X}\boldsymbol{\beta}) + \lambda \boldsymbol{\beta}.
+\end{eqnarray*}
+$$
+
+Resolvendo o sistema linear, tem-se
+
+$$
+\begin{eqnarray*}
+-\mathbf{X}^{\top}(\boldsymbol{y} - \mathbf{X}\boldsymbol{\hat{\beta} }) + \lambda \mathbf{I} \boldsymbol{\hat{\beta}}  & = &  \boldsymbol{0} \\
+-\mathbf{X}^{\top}\boldsymbol{y} + \mathbf{X}^{\top}\mathbf{X}\boldsymbol{\hat{\beta} } + \lambda \mathbf{I} \boldsymbol{\hat{\beta}}  & = &  \boldsymbol{0} \\
+\mathbf{X}^{\top}\mathbf{X}\boldsymbol{\hat{\beta} } + \lambda \mathbf{I} \boldsymbol{\hat{\beta}}  & = &  \mathbf{X}^{\top}\boldsymbol{y} \\
+  \left( \mathbf{X}^{\top}\mathbf{X} + \lambda \mathbf{I} \right )\boldsymbol{\hat{\beta} }  & = &  \mathbf{X}^{\top}\boldsymbol{y} \\
+  \boldsymbol{\hat{\beta} }  & = &  \left( \mathbf{X}^{\top}\mathbf{X} + \lambda \mathbf{I} \right )^{-1}\mathbf{X}^{\top}\boldsymbol{y}.
+\end{eqnarray*}
+$$
+
+Note que a solução depende de $\lambda$ e que foi a inclusão de $\lambda$ que tornou o sistema não-singular. Pode-se interpretar que quando fixamos o $\lambda$ selecionamos uma solução particular.
+
+Um aspecto que está subjacente é que matrizes que são diagonais dominantes permitem inversa. Note que $\mathbf{X}^{\top} \mathbf{X}$ não é diagonal dominante no caso em que $n < p$. Porém, se simplesmente somarmos uma certa quantidade positiva na diagonal de $\mathbf{X}^{\top}\mathbf{X}$ ela será diagonal dominante e portanto permitirá inversa. Apesar de parecer uma solução *ad hoc*, como mostrado, essa solução tem uma forte fundamentação matemática baseada em uma soma de quadrados penalizada.
+
+Calcular $\boldsymbol{\hat{\beta}}$ envolve a inversão de uma matrix $p \times p$ potencialmente grande
+
+$$
+\boldsymbol{\hat{\beta}} = \left( \mathbf{X}^{\top}\mathbf{X} + \lambda \mathbf{I} \right )^{-1}\mathbf{X}^{\top}\boldsymbol{y}.
+$$
+
+Para obter esta inversa podemos usar a decomposição em valores singulares. Lembre-se que a decomposição em valores singulares, fatora a matriz $\mathbf{X}$ da seguinte forma:
+
+$$
+\mathbf{X} = \mathbf{U} \mathbf{D} \mathbf{V}^{\top}.
+$$
+
+Substituindo na Equação para $\boldsymbol{\hat{\beta}}$ é fácil mostrar que
+
+$$
+\begin{equation}
+\boldsymbol{\hat{\beta}} = \mathbf{V} \mathrm{diag}\left ( \frac{d_j}{d_j^2 + \lambda} \right ) \mathbf{U}^{\top} \boldsymbol{y}.
+  \tag{2.13}
+\end{equation}
+$$
+
+Importante notar que o valor de $\lambda$ é desconhecido e que a escolha de um valor ótimo para $\lambda$ não é uma tarefa fácil. É comum em termos práticos usar **validação cruzada**. A ideia básica é separar o conjunto de dados em dois: um chamado de treino e outro de teste. Ajusta-se o modelo no conjunto de treino com o valor de $\lambda$ fixado em algum valor e avalia-se alguma função perda no conjunto de teste. Este processo é repetido para diversos valores de $\lambda$ e escolhe-se aquele $\lambda$ que minimiza a função perda no conjunto de teste. Existem diversas versões do procedimento de validação cruzada. Porém, está fora do escopo deste livro discutir tais aspectos práticos. O que importa é notar que o sistema terá que ser resolvido para muitos valores de $\lambda$.
+
+A princípio poderíamos usar a decomposição $\mathbf{LU}$ para resolver o sistema $(\mathbf{X}^{\top} \mathbf{X} + \lambda \mathbf{I}) \boldsymbol{\beta} = \mathbf{X}^{\top}\boldsymbol{y}$. Porém, teríamos que para cada valor de $\lambda$ resolver um novo sistema o que tornaria o problema computacionalmente caro e lento. Por outro lado, note que na Equação SVDREG(2.13) o valor de $\lambda$ aparece apenas no termo $\mathrm{diag}\left ( \frac{d_j}{d_j^2 + \lambda} \right )$ e portanto não afeta as matrizes $\mathbf{V}$ e $\mathbf{U}$ que são obtidas apenas uma vez independente do número de valores para $\lambda$, o que torna o uso da decomposição em valores singulares bastante interessante neste contexto.
+
+Para ilustrar a implementação computacional do modelo de regressão ridge vamos simular um conjunto de dados com $100$ linhas (observações) e $200$ covariáveis. Para simular as covariáveis vamos usar a distribuição Normal com média zero e
+variância um. Se você não é familiar com a distribuição Normal, pense que é apenas uma forma de gerar dados artificiais. Para tornar o procedimento de simulação reproduzível vamos usar a função `set.seed()`. Outro aspecto importante é que a primeira coluna da matriz $\mathbf{X}$ deve ser uma coluna de $1$s e portanto não deve ser centrada.
+
+``` {r} 
+# Fixa a semente para a simulação ser reproduzível
+set.seed(123) 
+X <- matrix(NA, ncol = 200, nrow = 100)
+X[,1] <- 1 # Intercepto
+for(i in 2:200) {
+  X[,i] <- rnorm(100, mean = 0, sd = 1)
+  X[,i] <- (X[,i] - mean(X[,i]))/var(X[,i])
+}
+```
+O próximo passo para simular o conjunto de dados é fixar o vetor de parâmetros $\boldsymbol{\beta}$. Como estamos em um exemplo de *high dimensional data* é comum a suposição que a solução seja esparsa. Isso significa que apenas alguns elementos do vetor $\boldsymbol{\beta}$ são diferentes de zero. Neste exemplo vamos fixar que os primeiros dez elementos de $\boldsymbol{\beta}$ sejam diferentes de zero assumindo valores entre 5 e 10 de forma uniforme.
+
+``` {r} 
+set.seed(123)
+## Gerando o vetor de beta's
+beta <- c(0, runif(9, min = 5, max = 10), rep(0, 190))
+## Média da distribuição Normal
+mu <- X%*%beta
+## Gerando as observações
+y <- rnorm(100, mean = mu, sd = 10)
+```
+
+Podemos agora usar o nosso procedimento para estimar os coeficientes de regressão.
+
+``` {r} 
+X_svd <- svd(X) # Decomposição svd
+lambda = 0.1 # Penalização
+DD <- Diagonal(100, X_svd$d/(X_svd$d^2 + lambda))
+DD[1] <- 0
+beta_hat = as.numeric(X_svd$v%*%DD%*%t(X_svd$u)%*%y)
+beta_hat[1:10]
+```
+
+Para verificar a qualidade do nosso procedimento comparamos os valores simulados com os estimados via regressão ridge.
+
+```{r out.width="80%", echo=FALSE} 
+#| label: fig-1
+#| fig-cap: "Parâmetros de regressão versus suas estimativas obtidas via regressão ridge."
+
+knitr::include_graphics("./img/ridge-1.png")
+```
+
+Os resultados da Figura 2.1 mostram que a regressão ridge teve sucesso em identificar boa parte dos coeficientes diferentes de zero. No entanto, parece que a penalização precisa ser melhor especificada. O leitor pode verificar o efeito de diferentes valores de $\lambda$ e tamanhos de amostra nas estimativas. Desta forma, terminamos a nossa pequena incursão no mundo da Álgebra Matricial.
+
+## 2.7 Referências bibliográficas
+Novamente, como inspiração para estruturar o capítulo foram usados livros básicos de matemática aplicada à economia e administração tais como Dowling (1984) e Leithold (1988). Para as seções de solução de sistemas lineares e decomposições matriciais as principais referências consultadas foram Gilat and Subramaniam (2009) e Rencher and Schaalje (2008).
+
+## 2.8 Exercícios
+Os exercícios deste livro são na forma de tutoriais interativos. 
+
+Acesse [Exercícios Álgebra Matricial](.\Exercicios.qmd).

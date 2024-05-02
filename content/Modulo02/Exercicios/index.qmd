@@ -14,7 +14,7 @@ Os objetivos deste tutorial são:
 * Comparar a performance computacional de diferentes algoritmos para a solução de sistemas lineares.
 * Desafio do módulo é implementar a distribuição Normal multivariada de forma mais eficiente que a função padrão do `R`.
 
-### Vetores e escalares### 
+## Vetores e escalares## 
 
 1. Considere os vetores $\boldsymbol{v}_1 = (1, 5, 10)$ e $\boldsymbol{v}_2 = (10, 50, 100)$. Obtenha
 
@@ -152,7 +152,7 @@ my_prod <- function(v1, v2) {
 my_prod(v1 = c(1,2,3), v2 = c(10, 20, 30))
 ```
 
-### Matrizes
+## Matrizes
 
 a) Sendo 
 
@@ -473,16 +473,75 @@ inv_A <- Q%*%inv_D%*%t(Q)
 A%*%inv_A
 ```
 
-### Desafio
+## Desafio
 
 7. A função densidade probabilidade da distribuição Normal multivariada é dada pela seguinte equação 
-
 $$
 p(\boldsymbol{y}; \boldsymbol{\mu}, \mathbf{\Sigma}) = (2 \pi)^{-\frac{n}{2}} | \mathbf{\Sigma}|^{\frac{1}{2}} \exp\left \{ -\frac{1}{2}(\boldsymbol{y} - \boldsymbol{\mu})^{\top} \mathbf
 {\Sigma}^{-1} (\boldsymbol{y} - \boldsymbol{\mu}) \right \},
 $$
-
 onde $\mathbf{y}$ e $\boldsymbol{\mu}$ são vetores $n \times 1$ de variáveis aleatórias e valores esperados. A matriz $\Sigma$ é chamada de matriz de variância-covariância, sendo simétrica e positiva definida (admite inversa).
 
 a) Implemente a função densidade da distribuição Normal multivariada em R em pelo menos três formas diferentes e compare o tempo computacional para diferentes números de variáveis aleatórias.
+
+```{r}
+## Implementação 1: Utilizando Fórmula Direta
+multivariate_normal_density <- function(y, mu, Sigma) {
+  n <- nrow(y)  # Ajuste para obter o número de linhas
+  det_Sigma <- det(Sigma)
+  inv_Sigma <- solve(Sigma)
+  exponent <- -0.5 * (y - mu) %*% inv_Sigma %*% t(y - mu)  # Ajuste para usar corretamente a transposição
+  density <- (2 * pi)^(-n/2) * det_Sigma^0.5 * exp(exponent)
+  return(density)
+}
+
+```
+
+```{r}
+## Implementação 2: Utilizando a Função dmvnorm do Pacote mvtnorm
+
+library(mvtnorm)
+multivariate_normal_density_mvtnorm <- function(y, mu, Sigma) {
+  density <- dmvnorm(y, mean = mu, sigma = Sigma)
+  return(density)
+}
+
+```
+
+```{r}
+## Implementação 3: Utilizando a Função dmvnorm do Pacote mvtnorm e Vetorização
+
+library(mvtnorm)
+multivariate_normal_density_mvtnorm_vec <- function(y, mu, Sigma) {
+  density <- apply(y, 1, function(y_i) dmvnorm(y_i, mean = mu, sigma = Sigma))
+  return(density)
+}
+```
+
 b) Compare a sua implementação com a função `dmvnorm()` do pacote `mvtnorm` em termos de tempo computacional.
+
+```{r}
+library(microbenchmark)
+
+# Definindo parâmetros
+n <- 10
+mu <- rep(0, n)
+Sigma <- diag(n)
+
+# Gerando variáveis aleatórias
+set.seed(123)
+y <- matrix(rnorm(n * 1000), ncol = n)
+
+# Comparando tempo computacional
+benchmark_results <- microbenchmark(
+  direct_formula = multivariate_normal_density(y, mu, Sigma),
+  mvtnorm_function = multivariate_normal_density_mvtnorm(y, mu, Sigma),
+  mvtnorm_vectorized = multivariate_normal_density_mvtnorm_vec(y, mu, Sigma),
+  dmvnorm_function = dmvnorm(y, mean = mu, sigma = Sigma),
+  times = 100
+)
+
+print(benchmark_results)
+
+```
+

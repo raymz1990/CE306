@@ -505,21 +505,28 @@ Se uma função $f(x)$ se aproxima de um número $L$ conforme $x$ tende a um nú
 Usaremos a notação $$\lim_{x \to a } f(x) = f(a) = L.$$ O limite pode não existir, mas se existir será único. Vamos ver um exemplo trivial, considere o limite
 $$\lim_{x \to 1} (x + 1) = 2.$$
 Graficamente temos
-```{r out.width="80%", echo=FALSE} #| label: fig-18 #| fig-cap:  knitr::include_graphics("./img/plotSQmu-1.png")" id="fig:lim1">
-<img src="MDSRbook_files/figure-html/lim1-1.png" alt="Ilustração de limite - Trivial." width="576" />
-<p class="caption">
-[Figura 1.1](fig-1)1: Ilustração de limite - Trivial.
 
-:::
+``` {r out.width="80%", echo=FALSE} 
+#| label: fig-11
+#| fig-cap:  "Ilustração de limite - Trivial"
+
+knitr::include_graphics("./img/lim1-1.png")
+```
+
 Considere o limite
-$$\lim_{x \to 1} \frac{x^2 - 1}{x-1} = ?$$
-Note que neste caso tomando $x = 1$ nos leva a uma divisão por zero. Graficamente, temos
-```{r out.width="80%", echo=FALSE} #| label: fig-18 #| fig-cap:  knitr::include_graphics("./img/plotSQmu-1.png")" id="fig:lim2">
-<img src="MDSRbook_files/figure-html/lim2-1.png" alt="Ilustração de limite - Não trivial" width="576" />
-<p class="caption">
-[Figura 1.1](fig-1)2: Ilustração de limite - Não trivial
 
-:::
+$$\lim_{x \to 1} \frac{x^2 - 1}{x-1} = ?$$
+
+Note que neste caso tomando $x = 1$ nos leva a uma divisão por zero. Graficamente, temos
+
+```{r out.width="80%", echo=FALSE} 
+#| label: fig-12
+#| fig-cap: "Ilustração de limite - Não trivial"
+
+knitr::include_graphics("./img/lim2-1.png")
+```
+
+
 No entanto, podemos manipular a equação de modo que
 $$\lim_{x \to 1} \frac{x^2 - 1}{x-1} =  \lim_{x \to 1} \frac{(x+1)(x-1)}{x-1} = \lim_{x \to 1} (x+1) = 2. $$
 O que nos leva a **definição intuitiva de limite.**
@@ -542,17 +549,20 @@ Munidos da definição de limite podemos definir o conceito de **funções cont�
 :::
 
 Continuidade em termos práticos significa que pequenas variações na variável independente levam a pequenas variações na variável dependente. O **Teorema do valor intermediário** no diz que se a função $f(x)$ é contínua no intervalo fechado $[a,b]$, então existe pelo menos um número $c$ em $[a,b]$ tal que $f(c) = M$. A implicação direta desse teorema é que se $f(x)$ é contínua seu gráfico não contém salto vertical. Em geral podemos pensar em funções contínuas como sendo **funções suaves.**
-Considere a seguinte função não contínua em $0$, cujo gráfico é apresentado na Figura <a href="CDI.html#fig:naocont">1.13.
+Considere a seguinte função não contínua em $0$, cujo gráfico é apresentado na Figura 1.13.
+
 $$\lim_{x \to 0} \frac{|x|}{x} = \left\{\begin{matrix}
 -1 \quad x < 0 \\ 
 1 \quad x > 0.
 \end{matrix}\right. $$
-```{r out.width="80%", echo=FALSE} #| label: fig-18 #| fig-cap:  knitr::include_graphics("./img/plotSQmu-1.png")" id="fig:naocont">
-<img src="MDSRbook_files/figure-html/naocont-1.png" alt="Ilustração de função não contínua." width="576" />
-<p class="caption">
-[Figura 1.1](fig-1)3: Ilustração de função não contínua.
 
-:::
+```{r out.width="80%", echo=FALSE} 
+#| label: fig-13
+#| fig-cap: "Ilustração de função não contínua."
+
+knitr::include_graphics("./img/naocont-1.png")
+```
+
 Para finalizar esta subseção, vejamos algumas propriedades importantes de limites que mostram que podemos operar com limites de forma muito similar ao que fazemos com escalares (números).
 Se $\lim_{x \to p} f(x) = L_1$ e $\lim_{x \to p} g(x) = L_2$, então
 
@@ -566,10 +576,6 @@ $$\lim_{x \to p} f(x)g(x) =  \lim_{x \to p} f(x) \lim_{x \to p} g(x) = L_1 L_2.$
 $$\lim_{x \to p} \frac{f(x)}{g(x)} = \frac{L_1}{L_2},$$ desde que $L_2 \neq 0$.
 
 Nesta subseção dois importantes conceitos foram apresentados, o de limite e de continuidade de uma função. Ambos serão úteis para definirmos a derivada de uma função, assunto da próxima seção.
-:::
-:::
-<div id="derivadas" class="section level2" number="1.2">
-
 
 ## Derivadas
 
@@ -611,6 +617,7 @@ Além disso, dispomos de diversos softwares de matemática simbólica que nos au
 
 
 ### Regras de derivação
+
 Para explicar as regras de derivação vamos usar funções auxiliares ou não especificadas $f(x)$ e $g(x)$ e $n \neq 0$ um natural qualquer. São válidas as seguintes regras de derivação:
 
 1. Se $f(x) = c$ então $f^{\prime}(x) = 0$.
@@ -623,19 +630,11 @@ Também podemos obter a derivada de algumas funções especiais.
 5. Se $f(x) = \exp(x)$ então $f^{\prime}(x) = \exp(x)$.
 6. Se $f(x) = \ln(x)$ então $f^{\prime}(x) = \frac{1}{x}, x > 0$.
 
-<<<<<<< HEAD
-Sendo, $f(x)$ e $g(x)$ deriváveis em $x$ e $c$ uma constante. Então, as funções $f(x) + g(x)$, $c f(x)$, $f(x) \times g(x)$ e $\frac{f(x)}{g(x)}$ são deriváveis em $x$ e têm-se
-
-7. $(f + g)^{\prime} = f^{\prime}(x) + g^{\prime}(x)$.
-8. $(c f)^{\prime}(x) = c f^{\prime}(x)$.
-9. $(f \times g)^{\prime}(x) = f^{\prime}(x) g(x) + f(x) g^{\prime}(x)$.
-=======
 Sendo, $f(x)$ e $g(x)$ deriváveis em $x$ e $c$ uma constante. Então, as funções $f(x) + g(x)$, $c f(x)$, $f(x) \cdot g(x)$ e $\frac{f(x)}{g(x)}$ são deriváveis em $x$ e têm-se
 
 7. $(f + g)^{\prime} = f^{\prime}(x) + g^{\prime}(x)$.
 8. $(c f)^{\prime}(x) = c f^{\prime}(x)$.
 9. $(f \cdot g)^{\prime}(x) = f^{\prime}(x) g(x) + f(x) g^{\prime}(x)$.
->>>>>>> 72567408e572dd6a90ba165db246bee6b5c7a655
 10. $(\frac{f}{g})^{\prime}(x) = \frac{f^{\prime}(x) g(x) - f(x) g^{\prime}(x)}{[g(x)]^2}.$
 
 Vamos fazer alguns exemplos ilustrativos.
@@ -656,11 +655,7 @@ Para usar a função `D()` devemos passar explicitamente uma expressão usando a
 D(expression( (5*x^3)/(4*x + 3) ), name = "x")
 ```
 
-<<<<<<< HEAD
 Primeiro vamos chamar de $f(x) = 5 x^3$ e $g(x) = 4x + 3$. Agora podemos derivar cada uma destas funções em relação a $x$, ou seja, $f^{\prime}(x) = 3 \times 5 \times x^{3-1} = 15 x^2.$ De forma, similar temos $g^{\prime}(x) = 4.$ Agora usando a regra 10, temos
-=======
-Primeiro vamos chamar de $f(x) = 5 x^3$ e $g(x) = 4x + 3$. Agora podemos derivar cada uma destas funções em relação a $x$, ou seja, $f^{\prime}(x) = 3 \cdot 5 \cdot x^{3-1} = 15 x^2.$ De forma, similar temos $g^{\prime}(x) = 4.$ Agora usando a regra 10, temos
->>>>>>> 72567408e572dd6a90ba165db246bee6b5c7a655
 $(\frac{f}{g})^{\prime}(x) = \frac{(15x^2)(4x+3) - (5x^3) (4) }{(4x + 3)^2} = \frac{15x^2}{(4x+3)} - \frac{20x^3}{(4x + 3)}.$
 
 Interessante notar que os números da expressão resultante da chamada da função `D()` são também tratados como símbolos, e portanto o `R` não faz as multiplicações usuais, por exemplo, no numerador o valor $5$ não foi multiplicado pelo $3$ para resultar em $15x^2$, como fizemos manualmente.
@@ -684,27 +679,29 @@ Determine a taxa de variação do custo total de execução do algoritmo em rela
 
 Para este exemplo é interessante usarmos uma outra notação de derivada, que deixa explicito quem está sendo derivado em relação a quem. Desejamos, encontrar a derivada de $C$ em relação a $t$, que vamos denotar por $\frac{d C}{d t}$ quando $t = 2$. Usando a regra da cadeia, tem-se
 
-$$\begin{equation}
-<<<<<<< HEAD
-  \frac{d C}{ dt} = \frac{d C}{d s} \times \frac{d s}{dt}. 
-=======
-  \frac{d C}{ dt} = \frac{d C}{d s} \cdot \frac{d s}{dt}. 
->>>>>>> 72567408e572dd6a90ba165db246bee6b5c7a655
-  \tag{1.1}
+$$
+\begin{equation}
+\frac{d C}{ dt} = \frac{d C}{d s} \times \frac{d s}{dt}. 
+\tag{1.1}
 \end{equation}
 $$
+
 Usando as regras de derivação já apresentadas, tem-se
 
 $$\begin{equation} 
   \frac{d C}{d s} = \frac{1}{2}s + 2.
   \tag{1.2}
-\end{equation}$$
+\end{equation}
+$$
+
 De forma similar,
 
-$$\begin{equation}
+$$
+\begin{equation}
   \frac{d s}{d t} = 6t + 50.
   \tag{1.3}
-\end{equation}$$
+\end{equation}
+$$
 
 Combinando as equações (1.2) e (1.3) com (1.1), temos
 
@@ -715,19 +712,14 @@ $$\begin{equation}
 
 Para avaliar no ponto $t = 2$, lembre-se que
 
-<<<<<<< HEAD
 $$s = 3 t^2 + 50t \to s = 3\ctimes(2^2) + 50 \times 2 = 112.$$
 
 Substituindo, na expressão (1.4), tem-se
 
-$$ \frac{d C}{ dt}|_{t=2} = \left( \frac{1}{2}s + 2 \right)(6t + 50) =  \left(\frac{1}{2}(112) + 2\right)(6\times 2 + 50) = (58)\ctimes( 62) = 3596.$$
-=======
-$$s = 3 t^2 + 50t \to s = 3\cdot(2^2) + 50 \cdot 2 = 112.$$
+$$ 
+\frac{d C}{ dt}|_{t=2} = \left( \frac{1}{2}s + 2 \right)(6t + 50) =  \left(\frac{1}{2}(112) + 2\right)(6\times 2 + 50) = (58)\ctimes( 62) = 3596.
+$$
 
-Substituindo, na expressão (1.4), tem-se
-
-$$ \frac{d C}{ dt}|_{t=2} = \left( \frac{1}{2}s + 2 \right)(6t + 50) =  \left(\frac{1}{2}(112) + 2\right)(6\cdot 2 + 50) = (58)\cdot( 62) = 3596.$$
->>>>>>> 72567408e572dd6a90ba165db246bee6b5c7a655
 
 Assim podemos dizer que $2$ segundos após o início da execução do algoritmo o custo computacional está aumentando a uma taxa de $3596$ unidades de processamento.
 
@@ -738,21 +730,12 @@ Em termos de notação é comum encontrar $\frac{d^n y}{d x^n}$ que é interpret
 
 
 **Example 1.6** Obtenha a derivada de ordem até $5$ da função $y = 2x^4 + 5 x^3 + 2 x^2$.
-<<<<<<< HEAD
 
-=======
-:::
->>>>>>> 72567408e572dd6a90ba165db246bee6b5c7a655
 Usando as regras de derivação 2 e 7, temos
 
-$\frac{d y}{d x} = 8 x^3 + 15 x^2 + 4 x$, $\frac{d^2 y}{d x^2} = 24x^2 + 30x + 4$,
-$\frac{d^3 y}{d x^3} = 48 x + 30$, $\frac{d^4 y}{d x^4} = 48$ e $\frac{d^5 y}{d x^5} = 0$.
+$\frac{d y}{d x} = 8 x^3 + 15 x^2 + 4 x$, $\frac{d^2 y}{d x^2} = 24x^2 + 30x + 4$, $\frac{d^3 y}{d x^3} = 48 x + 30$, $\frac{d^4 y}{d x^4} = 48$ e $\frac{d^5 y}{d x^5} = 0$.
 
 Neste caso, todas as derivadas de ordem superior a $4$ são zero.
-<<<<<<< HEAD
-=======
-:::
->>>>>>> 72567408e572dd6a90ba165db246bee6b5c7a655
 
 ### Importância da derivada
 
@@ -1052,11 +1035,11 @@ Neste caso a medida resumo é dada pela mediana das observações.
 
 Nós descrevemos todo o procedimento em termos da construção e obtenção da medida resumo. Veremos ao longo deste livro que praticamente todos os modelos populares em ciências de dados seguem o mesmo procedimento utilizado para encontrar a média como uma medida resumo ótima. O procedimento consiste em:
 
-I. Especificar um modelo, ou seja, uma descrição simplificada da realidade. No exemplo, nós usamos o modelo mais simples possível que admite que as observações podem ser resumidas por meio de apenas um número ou parâmetro. Porém, em termos mais gerais o modelo vai depender de muitos parâmetros.
+i. Especificar um modelo, ou seja, uma descrição simplificada da realidade. No exemplo, nós usamos o modelo mais simples possível que admite que as observações podem ser resumidas por meio de apenas um número ou parâmetro. Porém, em termos mais gerais o modelo vai depender de muitos parâmetros.
 
-II. Especificar uma função perda. Em nosso exemplo usamos a função perda quadrática, porém como já mencionado outras opções estão disponíveis na literatura e veremos mais sobre isso no decorrer do livro. A função perda nada mais é que uma forma de medir a distância entre o modelo proposto e os dados observados.
+ii. Especificar uma função perda. Em nosso exemplo usamos a função perda quadrática, porém como já mencionado outras opções estão disponíveis na literatura e veremos mais sobre isso no decorrer do livro. A função perda nada mais é que uma forma de medir a distância entre o modelo proposto e os dados observados.
 
-III. Treinar o modelo ou estimar o valor dos parâmetros do modelo. Este passo consiste em minimizar alguma noção de distância entre os dados observados, ou seja, $y_i$ e o modelo proposto. Para isso, alteramos o valor dos parâmetros do modelo para torná-lo o mais próximo possível dos dados. A distância é medida por meio da função perda.
+iii. Treinar o modelo ou estimar o valor dos parâmetros do modelo. Este passo consiste em minimizar alguma noção de distância entre os dados observados, ou seja, $y_i$ e o modelo proposto. Para isso, alteramos o valor dos parâmetros do modelo para torná-lo o mais próximo possível dos dados. A distância é medida por meio da função perda.
 
 3. Se sim, como este procedimento está relacionado com o que vimos em relação a funções e seu comportamento?
 
@@ -1203,7 +1186,6 @@ $$\begin{align}
 x_2 & =&  4x_1 - 3.
 \end{align}$$
 
-<<<<<<< HEAD
 Agora substituímos $x_2 = 4x_1 - 3$ na Equação (1.8) e obtemos
 
 $$\begin{align}
@@ -1211,15 +1193,6 @@ $$\begin{align}
 -3x_1 + 10(4x_1 - 3) & = &  7 \\
 -3x_1 + 40x_1 -30 & = &  7 \\
 37x_1 & = &  37 \\
-=======
-Agora substituímos $x_2 = 4x_1 - 3$ na Equação <a href="CDI.html#eq:derivparcialx2">(1.8) e obtemos
-
-$$\begin{align}
--3x_1 + 10x_2 & =&  7 \\
--3x_1 + 10(4x_1 - 3) & =&  7 \\
--3x_1 + 40x_1 -30 & =&  7 \\
-37x_1 & =&  37 \\
->>>>>>> 72567408e572dd6a90ba165db246bee6b5c7a655
 x_1 = 1.
 \end{align}$$
 
@@ -1245,11 +1218,7 @@ Assim, temos que
 
 $$\begin{align}
 \frac{\partial^2 y}{\partial x_1^2} \frac{\partial^2 y}{\partial x_2^2} & >&  \left( \frac{\partial^2 y}{\partial x_1 x_2} \right)^2 \\
-<<<<<<< HEAD
 12 \times 10 & >&  (-3)^2 \\
-=======
-12 \cdot 10 & >&  (-3)^2 \\
->>>>>>> 72567408e572dd6a90ba165db246bee6b5c7a655
 120 > 9.
 \end{align}$$
 
@@ -1266,10 +1235,7 @@ O **vetor gradiente** de uma função $f(x_1,x_2)$ é o vetor composto pelas der
 $$
 \nabla f(x_1,x_2) = \left ( \frac{\partial f(x_1,x_2)}{\partial x_1}, \frac{\partial f(x_1,x_2)}{\partial x_2} \right )^{\top}.
 $$
-<<<<<<< HEAD
 :::
-=======
->>>>>>> 72567408e572dd6a90ba165db246bee6b5c7a655
 
 A [definição 1.16](#def-116) se estende naturalmente para funções com mais do que duas variáveis independentes. Neste caso a função é denotada por $f(\boldsymbol{x})$ onde $\boldsymbol{x}$ é um vetor $p \times 1$ de variáveis independentes o **vetor gradiente** de $f(\boldsymbol{x})$ é dado por
 
@@ -1312,20 +1278,11 @@ O núcleo das técnicas de ciência de dados dizem respeito às ferramentas de *
 Suponha que uma função $f(x)$ é derivável $(n+1)$ vezes em um intervalo contendo um ponto $x=x_0$. A expansão em **Série de Taylor** de $f(x)$ em torno do ponto $x=x_0$ consiste em reescrever $f(x)$ da seguinte forma:
 
 $$
-<<<<<<< HEAD
 \begin{align}
 f(x) = f(x_0) + (x - x_0) \frac{d f(x)}{dx} |_{x=x_0} + \frac{(x-x_0)^2}{2!} \frac{d^2 f(x)}{dx^2}|_{x=x0} + \\
 \frac{(x-x_0)^3}{3!} \frac{d^3 f(x)}{dx^3}|_{x=x_0} + \ldots + \frac{(x-x_0)^n}{n!} \frac{d^n f(x)}{dx^n}|_{x=x_0} + R_n(x)
 \tag{1.9}  
 \end{align}
-=======
-\begin{equation}
-f(x) = f(x_0) + (x - x_0) \frac{d f(x)}{dx} |_{x=x_0} + \frac{(x-x_0)^2}{2!} \frac{d^2 f(x)}{dx^2}|_{x=x0} + \\ 
-
-\frac{(x-x_0)^3}{3!} \frac{d^3 f(x)}{dx^3}|_{x=x_0} + \ldots + \frac{(x-x_0)^n}{n!} \frac{d^n f(x)}{dx^n}|_{x=x_0} + R_n(x)
-  \tag{1.9}  
-\end{equation}
->>>>>>> 72567408e572dd6a90ba165db246bee6b5c7a655
 $$
 
 onde o termo $R_n(x)$ é chamado de resíduo ou erro, e dado por
@@ -1386,7 +1343,6 @@ lines(x, p2(x), col = "black", lty = 3)
 
 Note que ao redor do ponto $x_0$ a aproximação é razoável. No entanto, conforme nos afastamos de $x_0$ a aproximação vai piorando rapidamente.
 Em alguns casos é possível obter um limite superior para o erro de aproximação $R_n(x)$. Porém, a obtenção de tais fórmulas está além do objetivo deste livro. Para mais sobre o assunto, o leitor pode consultar o liro ‘Um Curso de Cálculo: Volume I.’ Outra importante extensão da aproximação via Séries de Taylor é aproximar funções com duas ou mais variáveis independentes. Porém, tal extensão também está além dos objetivos deste livro.
-<<<<<<< HEAD
 
 ### Regressão linear simples
 
@@ -1411,33 +1367,12 @@ Para ilustrar a construção do modelo de regressão linear simples considere qu
 >
 `## 6 229060 63`
 
-=======
-
-### Regressão linear simples
-
-O modelo de regressão linear é uma das técnicas mais populares em ciência de dados. É muito comum em livros de modelagem estatística e aprendizado de máquina começar apresentando este modelo para então motivar modelos mais complexos. Nesta subseção nós vamos construir o modelo de regressão linear simples usando argumentos baseados apenas nos conceitos de funções que vimos nas seções anteriores. Chamaremos essa construção de puramente matemática. No entanto, uma formulação completamente estatística leva exatamente ao mesmo modelo com algumas vantagens em termos de inferência para os parâmetros do modelo. Porém, uma discussão estatística do modelo está fora do escopo deste livro.
-
-O objetivo de um modelo de regressão linear simples é descrever o comportamento de uma variável dependente, digamos $y$ por meio do conhecimento de uma variável independente $x$. Descrever o comportamento de $y$ pode ser útil para **predizer** valores de futuras observações de $y$ ou quantificar o efeito de $x$ em $y$. Apenas baseado nesta informação já é possível notar a semelhança do objetivo deste modelo com a construção de uma função. Na literatura especializada a variável dependente é também chamada de **variável resposta**, **variável de saída**, **target**, entre outros. Enquanto que a variável independente é também chamada de **covariável**, **variável explanatória**, **variável explicativa** ou ainda **variável de entrada** entre outros.
-
-Para ilustrar a construção do modelo de regressão linear simples considere que o objetivo é verificar como o tamanho (em metros quadrados) de um apartamento em uma região homogênea de uma cidade está associado ao valor (em reais) deste apartamento. Suponha que um conjunto de $20$ apartamentos foi visitado, medido e avaliado por um profissional da área imobiliária. O conjunto de dados está disponível como material suplementar na página do livro. Abaixo são apresentadas apenas as seis primeiras observações, enquanto que na Figura 1.23 é apresentado um diagrama de dispersão do tamanho em metros quadrados (eixo $x$) e o valor em reais do apartamento (eixo $y$).
-
->
-`##        y  x
-## 1 207318 55
-## 2 250846 69
-## 3 165755 46
-## 4 219817 61
-## 5 268582 73
-## 6 229060 63`
-
->>>>>>> 72567408e572dd6a90ba165db246bee6b5c7a655
 ```{r out.width="80%", echo=FALSE} 
 #| label: fig-23
 #| fig-cap: "Diagrama de dispersão relacionando preço do apartamento como função do tamanho do apartamento em metros quadrados."  
 
 knitr::include_graphics("./img/reglinear-1.png")
 ```
-
 
 A Figura 1.23 sugere que o preço do apartamento deve ser alguma função do seu tamanho. Para formalizar essa situação em termos matemáticos, vamos denotar $y_i$ para $i = 1,\ldots,n$ o preço do apartamento $i$ e neste caso $n = 20$. De forma similar, denotamos por $x_i$ o tamanho do apartamento $i$ em metros quadrados. Assim, dizer que o preço é uma função do tamanho pode ser denotado da seguinte forma
 
@@ -1603,11 +1538,7 @@ coef(fit)
 
 Dada a simplicidade do modelo é também fácil interpretar os parâmetros estimados. O intercepto representa o preço de um apartamento de tamanho zero. O que óbviamente não tem sentido prático. No entanto, a inclinação ($\beta_1$) representa o quanto é acrescido no preço do apartamento quando o seu tamanho aumenta em um metro quadrado.
 
-<<<<<<< HEAD
 Também podemos usar o modelo para predizer o preço aproximado de um imóvel. Por exemplo, em nossa base de dados não temos nenhum apartamento com $80$ metros quadrados. Um potencial interesse pode ser em predizer o valor aproximado de um apartamento desse tamanho. Assim, podemos facilmente usar o nosso modelo que diz que o preço aproximado $\hat{y}$ de um apartamento é dado por $\hat{y} = 2623 + 3608 \times x$. Substituindo $x = 80$ temos que o preço aproximado é de R$\$ 291.263$.
-=======
-Também podemos usar o modelo para predizer o preço aproximado de um imóvel. Por exemplo, em nossa base de dados não temos nenhum apartamento com $80$ metros quadrados. Um potencial interesse pode ser em predizer o valor aproximado de um apartamento desse tamanho. Assim, podemos facilmente usar o nosso modelo que diz que o preço aproximado $\hat{y}$ de um apartamento é dado por $\hat{y} = 2623 + 3608 \cdot x$. Substituindo $x = 80$ temos que o preço aproximado é de R$\$ 291.263$.
->>>>>>> 72567408e572dd6a90ba165db246bee6b5c7a655
 
 É claro que o modelo não irá predizer o valor exato do apartamento. Isso acontece porque temos apenas uma aproximação de primeira ordem da verdadeira função $f^*(x)$ que relaciona o tamanho com o preço. Uma opção é incluir mais termos na aproximação para obter uma forma de relacionamento mais flexível. Acontece que em termos práticos, tal abordagem não é muito útil por pelo menos dois motivos:
 

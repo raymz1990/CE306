@@ -301,6 +301,18 @@ window.Quarto = {
   <li><a href="#cálculo-vetorial-e-matricial" id="toc-cálculo-vetorial-e-matricial" class="nav-link" data-scroll-target="#cálculo-vetorial-e-matricial"><span class="header-section-number">2.2.6</span> Cálculo vetorial e matricial</a></li>
   <li><a href="#regressão-linear-múltipla" id="toc-regressão-linear-múltipla" class="nav-link" data-scroll-target="#regressão-linear-múltipla"><span class="header-section-number">2.2.7</span> Regressão linear múltipla</a></li>
   </ul></li>
+  <li><a href="#sistemas-de-equações-lineares" id="toc-sistemas-de-equações-lineares" class="nav-link" data-scroll-target="#sistemas-de-equações-lineares"><span class="header-section-number">2.3</span> Sistemas de equações lineares</a>
+  <ul class="collapse">
+  <li><a href="#métodos-diretos" id="toc-métodos-diretos" class="nav-link" data-scroll-target="#métodos-diretos"><span class="header-section-number">2.3.1</span> Métodos diretos</a></li>
+  <li><a href="#métodos-iterativos" id="toc-métodos-iterativos" class="nav-link" data-scroll-target="#métodos-iterativos"><span class="header-section-number">2.3.2</span> Métodos iterativos</a></li>
+  <li><a href="#decomposição-lu" id="toc-decomposição-lu" class="nav-link" data-scroll-target="#decomposição-lu"><span class="header-section-number">2.3.3</span> Decomposição LU</a></li>
+  <li><a href="#cálculo-da-inversa" id="toc-cálculo-da-inversa" class="nav-link" data-scroll-target="#cálculo-da-inversa"><span class="header-section-number">2.3.4</span> Cálculo da inversa</a></li>
+  </ul></li>
+  <li><a href="#autovalores-e-autovetores" id="toc-autovalores-e-autovetores" class="nav-link" data-scroll-target="#autovalores-e-autovetores"><span class="header-section-number">2.4</span> Autovalores e autovetores</a></li>
+  <li><a href="#decomposição-em-valores-singulares" id="toc-decomposição-em-valores-singulares" class="nav-link" data-scroll-target="#decomposição-em-valores-singulares"><span class="header-section-number">2.5</span> Decomposição em valores singulares</a></li>
+  <li><a href="#regressão-ridge" id="toc-regressão-ridge" class="nav-link" data-scroll-target="#regressão-ridge"><span class="header-section-number">2.6</span> Regressão ridge</a></li>
+  <li><a href="#referências-bibliográficas" id="toc-referências-bibliográficas" class="nav-link" data-scroll-target="#referências-bibliográficas"><span class="header-section-number">2.7</span> 2.7 Referências bibliográficas</a></li>
+  <li><a href="#exercícios" id="toc-exercícios" class="nav-link" data-scroll-target="#exercícios"><span class="header-section-number">2.8</span> 2.8 Exercícios</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://raymz1990.github.io/CE313/edit/main/book/content/Modulo02/index.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://raymz1990.github.io/CE313/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -1389,9 +1401,1176 @@ nox         -5.42465902</code></pre>
 </div>
 </div>
 <p>Os resultados são idênticos. Podemos usar o modelo para predizer o valor de um imóvel dado os valores de suas covariáveis. Basicamente, tudo o que foi discutido no caso do modelo de regressão linear simples se adapta naturalmente para o modelo de regressão linear múltipla.</p>
-
-
 </section>
+</section>
+<section id="sistemas-de-equações-lineares" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="sistemas-de-equações-lineares"><span class="header-section-number">2.3</span> Sistemas de equações lineares</h2>
+<p>Um sistema de equações de duas incógnitas pode ser escrito da seguinte forma</p>
+<p><span class="math display">\[
+\begin{eqnarray*}
+f_1(x_1,x_2)  &amp; = &amp;  c_1 \\
+f_2(x_1,x_2)  &amp; = &amp;  c_2.
+\end{eqnarray*}
+\]</span></p>
+<p>De forma geral, desejamos encontrar a solução numérica do sistema que consiste em encontrar valores <span class="math inline">\(\hat{x}_1\)</span> e <span class="math inline">\(\hat{x}_2\)</span> que satisfaçam o sistema de equações, ou seja, que ao aplicar as funções <span class="math inline">\(f_1\)</span> e <span class="math inline">\(f_2\)</span> simultâneamente em <span class="math inline">\(\hat{x}_1\)</span> e <span class="math inline">\(\hat{x}_2\)</span>, resultem em <span class="math inline">\(c_1\)</span> e <span class="math inline">\(c_2\)</span>. Em termos de notação, desejamos que <span class="math inline">\(f_1(x_1 = \hat{x}_1, x_2 = \hat{x}_2) = c_1\)</span> e <span class="math inline">\(f_2(x_1 = \hat{x}_1, x_2 = \hat{x}_2) = c_2\)</span>, simultâneamente.</p>
+<p>A ideia é facilmente estendida para um sistema com <span class="math inline">\(n\)</span> equações com <span class="math inline">\(p\)</span> incógnitas</p>
+<p><span class="math display">\[
+\begin{eqnarray*}
+f_1(x_1,\ldots, x_p)  &amp; = &amp;  c_1 \\
+&amp; \vdots &amp;  \\
+f_n(x_1,\ldots, x_p)  &amp; = &amp;  c_p.
+\end{eqnarray*}
+\]</span></p>
+<p>Um sistema de equações é dito ser linear se as funções <span class="math inline">\(f_1, f_2, \ldots, f_n\)</span> são lineares e não-linear caso contrário. Nesta seção, nós vamos lidar apenas com sistemas lineares. Na Seção 3.1, nós vamos apresentar alguns métodos numéricos para sistemas de equações não-lineares. Quando as <span class="math inline">\(n\)</span> funções são lineares o sistema pode escrito da seguinte forma</p>
+<p><span class="math display">\[
+\begin{eqnarray*}
+a_{11} x_1 + a_{12} x_2 + \ldots a_{1p} x_p  &amp; = &amp;  c_1 \\
+a_{21} x_1 + a_{22} x_2 + \ldots a_{2p} x_p  &amp; = &amp;  c_2 \\
+&amp; \vdots &amp;  \\
+a_{n1} x_1 + a_{n2} x_2 + \ldots a_{np} x_p  &amp; = &amp;  c_p. \\
+\end{eqnarray*}
+\]</span></p>
+<p>É mais fácil e compacto usar a notação matricial, neste caso o sistema toma a seguinte forma</p>
+<p><span class="math display">\[
+\mathbf{A} \mathbf{x} = \mathbf{c},
+\]</span></p>
+<p>onde <span class="math inline">\(\mathbf{A}\)</span> é uma matriz <span class="math inline">\(n \times p\)</span>, <span class="math inline">\(\mathbf{x}\)</span> é um vetor <span class="math inline">\(p \times 1\)</span>, e <span class="math inline">\(\mathbf{c}\)</span> é um vetor <span class="math inline">\(n \times 1\)</span>. Quando <span class="math inline">\(n = p\)</span> e <span class="math inline">\(\mathbf{A}\)</span> é não-singular é possível mostrar que o sistema tem uma solução <strong>única</strong> dada por <span class="math inline">\(\mathbf{\hat{x}} = \mathbf{A}^{-1} \mathbf{c}\)</span>. No caso em que <span class="math inline">\(n &gt; p\)</span>, <span class="math inline">\(\mathbf{A}\)</span> terá mais linhas do que colunas e o sistema tipicamente não terá solução. Por fim, se <span class="math inline">\(n &lt; p\)</span>, <span class="math inline">\(\mathbf{A}\)</span> terá menos linhas do que colunas e o sistema tipicamente terá um número infinito de soluções. Neste livro vamos considerar apenas o caso em que o sistema tem uma única solução, ou seja, <span class="math inline">\(n = p\)</span> e <span class="math inline">\(\mathbf{A}\)</span> é não-singular (admite inversa).</p>
+<p>Como um exemplo ilustrativo, considere o seguinte sistema de duas equações</p>
+<p><span class="math display">\[
+\begin{eqnarray}
+7 x_1 + 3x_2  &amp; = &amp;  45 \tag{2.4}\\
+4 x_1 + 5x_2  &amp; = &amp;  29. \tag{2.5}
+\end{eqnarray}
+\]</span></p>
+<p>A solução deste sistema consiste em encontrar valores <span class="math inline">\(\hat{x}_1\)</span> e <span class="math inline">\(\hat{x}_2\)</span>, que satisfaçam as Equações (2.4) e (2.5). Para começar vamos isolar o <span class="math inline">\(x_1\)</span> na Equação (2.4).</p>
+<p><span class="math display">\[
+\begin{eqnarray}
+7x_1 + 3 x_2  &amp; = &amp;  45 \\
+7x_1  &amp; = &amp;  45 - 3x_2 \\
+x_1  &amp; = &amp;  \frac{45 - 3x_2}{7}. \tag{2.6}
+\end{eqnarray}
+\]</span></p>
+<p>Agora substituímos a Equação (2.6) na Equação (2.5)</p>
+<p><span class="math display">\[
+\begin{eqnarray}
+4x_1 + 5x_2  &amp; = &amp;  29 \\
+4 \left( \frac{45 - 3x_2}{7} \right ) + 5x_2  &amp; = &amp;  29 \\
+\frac{180 - 12 x_2}{7} + 5x_2  &amp; = &amp;  29 \\
+\frac{180}{7} - \frac{12}{7} x_2 + 5 x_2  &amp; = &amp;  29 \\
+5 x_2 - \frac{12}{7} x_2  &amp; = &amp;  29 - \frac{180}{7} \\
+\frac{35x_2 - 12 x_2}{7}  &amp; = &amp;  29 - \frac{180}{7} \\
+35x_2 - 12 x_2  &amp; = &amp;  7 \left(29 - \frac{180}{7} \right ) \\
+23 x_2  &amp; = &amp;  203 - 180 \\
+23 x_2  &amp; = &amp;  23 \\
+\hat{x}_2  &amp; = &amp;  \frac{23}{23} = 1. \tag{2.7}
+\end{eqnarray}
+\]</span></p>
+<p>Por fim, substituindo (2.7) em (2.6) obtemos <span class="math inline">\(\hat{x}_1\)</span></p>
+<p><span class="math display">\[
+\begin{eqnarray}
+\hat{x}_1  &amp; = &amp;  \frac{45 - 3 \cdot 1}{7} \\
+\hat{x}_1  &amp; = &amp;  6.
+\end{eqnarray}
+\]</span></p>
+<p>Portanto, a solução é <span class="math inline">\(\hat{x}_1 = 6\)</span> e <span class="math inline">\(\hat{x}_2 = 1\)</span>.</p>
+<p>Importante ressaltar que apesar de matematicamente simples o procedimento utilizado é bastante trabalhoso e impraticável em sistemas maiores, tais como os que vamos encontrar na prática em ciência de dados. Assim, fica claro que precisamos de algoritmos genéricos que possam ser adaptáveis para sistemas de qualquer tamanho.</p>
+<p>Para resolver o sistema nós realizamos uma série de manipulações com as linhas do sistema até encontrar a solução. Estas operações são chamadas de <strong>operações com linhas</strong>. Sem qualquer alteração na relação linear é possível</p>
+<ol type="1">
+<li><p>Trocar a posição de linhas, por exemplo <span class="math display">\[
+\begin{eqnarray*}
+4 x_1 + 5 x_2  &amp; = &amp;  29 \\
+7 x_1 + 3 x_2  &amp; = &amp;  45.
+\end{eqnarray*}
+\]</span></p></li>
+<li><p>Multiplicar qualquer linha por uma constante, aqui <span class="math inline">\(4 x_1 + 5 x_2\)</span> por <span class="math inline">\(\frac{1}{4}\)</span>, obtendo <span class="math display">\[
+\begin{eqnarray}
+x_1 + \frac{5}{4} x_2  &amp; = &amp;  \frac{29}{4} \tag{2.8}\\
+7 x_1 + 3 x_2  &amp; = &amp;  45. \tag{2.9}
+\end{eqnarray}
+\]</span></p></li>
+<li><p>Subtrair um múltiplo de uma linha de uma outra, aqui 7 vezes a Equação (2.8) menos (2.9), obtendo <span class="math display">\[
+\begin{eqnarray*}
+x_1 + \frac{5}{4} x_2  &amp; = &amp;  \frac{29}{4} \\
+0 x_1 + \left(\frac{35}{4} - 3\right) x_2  &amp; = &amp;  \frac{203}{4} - 45.
+\end{eqnarray*}
+\]</span></p></li>
+</ol>
+<p>Fazendo as contas, tem-se</p>
+<p><span class="math display">\[
+\begin{eqnarray*}
+0 x_1 + \frac{23}{4} x_2  &amp; = &amp;  \frac{23}{4} \\
+x_2  &amp; = &amp;  1.
+\end{eqnarray*}
+\]</span></p>
+<p>Baseado em <strong>operações com linhas</strong> podemos estabelecer diferentes estratégias para transformar um sistema linear qualquer em um sistema equivalente, porém de fácil solução. Esta é a ideia subjacente a uma classe de métodos chamados de <strong>métodos diretos</strong> para a solução de sistemas lineares. Por outro lado, existem os chamados <strong>métodos iterativos</strong> cuja ideia principal é a partir de uma solução inicial ir melhorando esta solução até que um certo critério de parada seja satisfeito. Na subseção 2.3.1 nós vamos apresentar alguns dos métodos diretos mais famosos, enquanto que na subseção 2.3.2 serão apresentados alguns métodos iterativos.</p>
+<section id="métodos-diretos" class="level3" data-number="2.3.1">
+<h3 data-number="2.3.1" class="anchored" data-anchor-id="métodos-diretos"><span class="header-section-number">2.3.1</span> Métodos diretos</h3>
+<p>Nos métodos diretos o sistema linear é manipulado usando <strong>operações com linhas</strong> até se transformar em um sistema equivalente de fácil solução. Por exemplo, o sistema pode ser manipulado até se tornar um sistema <strong>triangular superior</strong></p>
+<p><span class="math display">\[
+\begin{bmatrix}
+a_{11}  &amp;  a_{12}  &amp;  a_{13}  &amp;  a_{14}\\
+0  &amp;  a_{22}  &amp;  a_{23}  &amp;  a_{24}\\
+0  &amp;  0  &amp;  a_{33}  &amp;  a_{34} \\
+0  &amp;  0  &amp;  0  &amp;  a_{44}
+\end{bmatrix}
+\begin{bmatrix}
+x_1 \\
+x_2 \\
+x_3 \\
+x_4
+\end{bmatrix} =
+  \begin{bmatrix}
+b_1 \\
+b_2 \\
+b_3 \\
+b_4
+\end{bmatrix}.
+\]</span></p>
+<p>Que é facilmente resolvido utilizando <strong>substituição regressiva</strong></p>
+<p><span class="math display">\[
+x_n = \frac{b_n}{a_{nn}} \quad x_i = \frac{b_i - \sum_{j = i+1 }^{j=n} a_{ij} x_j}{a_{ii}},
+\quad i = n-1, n-2,\ldots, 1.
+\]</span></p>
+<p>Outra opção é manipular o sistema até obter um sistema triangular inferior, ou seja,</p>
+<p><span class="math display">\[
+\begin{bmatrix}
+a_{11}  &amp;  0  &amp;  0  &amp;  0 \\
+a_{21}  &amp;  a_{22}  &amp;  0  &amp;  0 \\
+a_{31}  &amp;  a_{32}  &amp;  a_{33}  &amp;  0 \\
+a_{41}  &amp;  a_{42}  &amp;  a_{43}  &amp;  a_{44}
+\end{bmatrix}
+\begin{bmatrix}
+x_1 \\
+x_2 \\
+x_3 \\
+x_4
+\end{bmatrix} =
+  \begin{bmatrix}
+b_1 \\
+b_2 \\
+b_3 \\
+b_4
+\end{bmatrix}.
+\]</span></p>
+<p>Neste caso usamos a <strong>substituição progressiva</strong> para obter a solução</p>
+<p><span class="math display">\[
+x_1 = \frac{b_1}{a_{11}} \quad x_i = \frac{b_i - \sum_{j = i}^{j=i-1} a_{ij} x_j}{a_{ii}}, \quad i = 2, 3,\ldots, n.
+\]</span></p>
+<p>Por fim, o mais óbvio porém mais caro computacionalmente é tornar o sistema diagonal</p>
+<p><span class="math display">\[
+\begin{bmatrix}
+a_{11}  &amp;  0  &amp;  0  &amp;  0 \\
+0  &amp;  a_{22}  &amp;  0  &amp;  0 \\
+0  &amp;  0  &amp;  a_{33}  &amp;  0 \\
+0  &amp;  0  &amp;  0  &amp;  a_{44}
+\end{bmatrix}
+\begin{bmatrix}
+x_1 \\
+x_2 \\
+x_3 \\
+x_4
+\end{bmatrix} =
+  \begin{bmatrix}
+b_1 \\
+b_2 \\
+b_3 \\
+b_4
+\end{bmatrix}.
+\]</span></p>
+<p>Um dos métodos diretos mais utilizados é o método de <strong>Eliminação de Gauss</strong>. Este método consiste em usar operações com linhas para obter um sistema triangular superior e depois usar substituição regressiva para obter a solução. Vamos fazer um exemplo para ilustrar como este método funciona.</p>
+<p><strong>Example 2.1</strong> Resolva o seguinte sistema usando o método de eliminação de Gauss.</p>
+<p><span class="math display">\[
+\begin{bmatrix}
+3  &amp;  2  &amp;  6 \\
+2  &amp;  4  &amp;  3 \\
+5  &amp;  3  &amp;  4  \\
+\end{bmatrix}
+\begin{bmatrix}
+x_1 \\
+x_2 \\
+x_3
+\end{bmatrix} =
+  \begin{bmatrix}
+24 \\
+23 \\
+33
+\end{bmatrix}
+\]</span></p>
+<p>O algoritmo pode ser descrito passo-a-passo</p>
+<ul>
+<li>Passo 1: Encontrar o primeiro <strong>pivô</strong> e eliminar os elementos abaixo dele usando operações com linhas.</li>
+</ul>
+<p><span class="math display">\[
+\begin{bmatrix}
+[3]  &amp;  2  &amp;  6 \\
+2 - \frac{2}{3}3  &amp;  4 - \frac{2}{3}2  &amp;  3 - \frac{2}{3}6 \\
+5 - \frac{5}{3}3  &amp;  3 - \frac{5}{3}2  &amp;  4 - \frac{5}{3}6 \\
+\end{bmatrix}
+\begin{bmatrix}
+24 \\
+23 - \frac{2}{3}24\\
+33 - \frac{5}{3}24
+\end{bmatrix} \to
+\begin{bmatrix}
+[3]  &amp;  2  &amp;  6 \\
+0  &amp;  \frac{8}{3}  &amp;  -1 \\
+0  &amp;  -\frac{1}{3}  &amp;  -6  \\
+\end{bmatrix}
+\begin{bmatrix}
+24 \\
+7 \\
+-7
+\end{bmatrix}.
+\]</span></p>
+<p>Neste caso o primeiro <strong>pivô</strong> é o número <span class="math inline">\(3\)</span> (note entre colchetes) e precisamos tornar os elementos abaixo dele zero. Para isto multiplicamos a primeira linha por <span class="math inline">\(\frac{2}{3}\)</span>, ou seja, o valor da posição a ser zerada dividida pelo valor do pivô. E depois subtraímos da segunda linha. Importante é que a operação <strong>deve ser feita em todos os elementos da linha</strong> para não modificar o sistema. A mesma ideia é usada para zerar o primeiro elemento da terceira linha.</p>
+<ul>
+<li>Passo 2: Encontrar o segundo <strong>pivô</strong> e eliminar os elementos abaixo dele usando operações com linhas.</li>
+</ul>
+<p><span class="math display">\[
+  \begin{bmatrix}
+3  &amp;  2  &amp;  6 \\
+0  &amp;  [\frac{8}{3}]  &amp;  -1 \\
+0  &amp;  -\frac{1}{3} - \left (-\frac{3}{24} \right ) \left (\frac{8}{3}\right )   &amp;  -6 - (-\frac{3}{24})(-1)  \\
+\end{bmatrix}
+\begin{bmatrix}
+24 \\
+7 \\
+-7 - (- \frac{3}{24})(7)
+\end{bmatrix} \to \\
+\begin{bmatrix}
+3  &amp;  2  &amp;  6 \\
+0  &amp;  [\frac{8}{3}]  &amp;  -1 \\
+0  &amp;  0  &amp;  -\frac{147}{24}  \\
+\end{bmatrix}
+\begin{bmatrix}
+24 \\
+7 \\
+-\frac{147}{24}
+\end{bmatrix}
+\]</span></p>
+<p>Neste caso o segundo pivô é <span class="math inline">\(\frac{8}{3}\)</span> e multiplicamos a segunda linha pelo pivô e subtraímos da terceira para zerar o elemento da segunda linha da terceira coluna. Com isso chegamos a um sistema triangular superior.</p>
+<ul>
+<li>Passo 3: Substituição regressiva.</li>
+</ul>
+<p><span class="math display">\[
+\begin{eqnarray*}
+\hat{x}_3  &amp; = &amp;  \frac{b_3}{a_{33}} \\
+\hat{x}_3  &amp; = &amp;  \frac{-147/24}{-147/24} = 1. \\
+\hat{x}_2  &amp; = &amp;  \frac{b_2 - a_{23}x_3}{a_{22}} \\
+\hat{x}_2  &amp; = &amp;  \frac{7 - (-1) \cdot 1}{8/3} = 3. \\
+\hat{x}_1  &amp; = &amp;  \frac{(b_1 - (a_{12}x_2 + a_{13}x_3) }{a_{11}} \\
+\hat{x}_1  &amp; = &amp;  \frac{24 - (2 \cdot 3 + 6 \cdot 1)}{3} = 4.
+\end{eqnarray*}
+\]</span></p>
+<p>Portanto, a solução do sistema é <span class="math inline">\(\hat{x}_1 = 4\)</span>, <span class="math inline">\(\hat{x}_2 = 3\)</span> e <span class="math inline">\(\hat{x}_3 = 1\)</span>.</p>
+<p>Estender o procedimento para um sistema com <span class="math inline">\(n\)</span> equações é trivial. Basta transformar o sistema em triangular superior usando operações com linhas e resolver o novo sistema usando substituição regressiva.</p>
+<p>Para ilustrar o procedimento de eliminação de Gauss o Código 2.14 implementa a estratégia para tornar um sistema triangular superior.</p>
+<p><strong>Código 2.14</strong> Triangularização de um sistema.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>gauss <span class="ot">&lt;-</span> <span class="cf">function</span>(A, b) {</span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Sistema aumentado</span></span>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>  Ae <span class="ot">&lt;-</span> <span class="fu">cbind</span>(A, b)</span>
+<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rownames</span>(Ae) <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"x"</span>, <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(b))</span>
+<span id="cb72-5"><a href="#cb72-5" aria-hidden="true" tabindex="-1"></a>  n_row <span class="ot">&lt;-</span> <span class="fu">nrow</span>(Ae)</span>
+<span id="cb72-6"><a href="#cb72-6" aria-hidden="true" tabindex="-1"></a>  n_col <span class="ot">&lt;-</span> <span class="fu">ncol</span>(Ae)</span>
+<span id="cb72-7"><a href="#cb72-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Matriz para receber os resultados</span></span>
+<span id="cb72-8"><a href="#cb72-8" aria-hidden="true" tabindex="-1"></a>  SOL <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="cn">NA</span>, n_row, n_col)</span>
+<span id="cb72-9"><a href="#cb72-9" aria-hidden="true" tabindex="-1"></a>  SOL[<span class="dv">1</span>,] <span class="ot">&lt;-</span> Ae[<span class="dv">1</span>,]</span>
+<span id="cb72-10"><a href="#cb72-10" aria-hidden="true" tabindex="-1"></a>  pivo <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, n_col, n_row)</span>
+<span id="cb72-11"><a href="#cb72-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">c</span>(n_row<span class="dv">-1</span>)) {</span>
+<span id="cb72-12"><a href="#cb72-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span>(i <span class="cf">in</span> <span class="fu">c</span>(j<span class="sc">+</span><span class="dv">1</span>)<span class="sc">:</span><span class="fu">c</span>(n_row)) {</span>
+<span id="cb72-13"><a href="#cb72-13" aria-hidden="true" tabindex="-1"></a>      pivo[i,j] <span class="ot">&lt;-</span> Ae[i,j]<span class="sc">/</span>SOL[j,j]</span>
+<span id="cb72-14"><a href="#cb72-14" aria-hidden="true" tabindex="-1"></a>      SOL[i,] <span class="ot">&lt;-</span> Ae[i,] <span class="sc">-</span> pivo[i,j]<span class="sc">*</span>SOL[j,]</span>
+<span id="cb72-15"><a href="#cb72-15" aria-hidden="true" tabindex="-1"></a>      Ae[i,] <span class="ot">&lt;-</span> SOL[i,]</span>
+<span id="cb72-16"><a href="#cb72-16" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb72-17"><a href="#cb72-17" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb72-18"><a href="#cb72-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(SOL)</span>
+<span id="cb72-19"><a href="#cb72-19" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Precisamos também de uma função genérica para o passo de substituição regressiva, conforme apresentado no Código 2.15.</p>
+<p><strong>Código 2.15</strong> Substituição regressiva.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>sub_reg <span class="ot">&lt;-</span> <span class="cf">function</span>(SOL) {</span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>  n_row <span class="ot">&lt;-</span> <span class="fu">nrow</span>(SOL)</span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>  n_col <span class="ot">&lt;-</span> <span class="fu">ncol</span>(SOL)</span>
+<span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a>  A <span class="ot">&lt;-</span> SOL[<span class="dv">1</span><span class="sc">:</span>n_row,<span class="dv">1</span><span class="sc">:</span>n_row]</span>
+<span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a>  b <span class="ot">&lt;-</span> SOL[,n_col]</span>
+<span id="cb73-6"><a href="#cb73-6" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(b)</span>
+<span id="cb73-7"><a href="#cb73-7" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb73-8"><a href="#cb73-8" aria-hidden="true" tabindex="-1"></a>  x[n] <span class="ot">&lt;-</span> b[n]<span class="sc">/</span>A[n,n]</span>
+<span id="cb73-9"><a href="#cb73-9" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> (n<span class="dv">-1</span>)<span class="sc">:</span><span class="dv">1</span>) {</span>
+<span id="cb73-10"><a href="#cb73-10" aria-hidden="true" tabindex="-1"></a>    x[i] <span class="ot">&lt;-</span> (b[i] <span class="sc">-</span> <span class="fu">sum</span>(A[i,<span class="fu">c</span>(i<span class="sc">+</span><span class="dv">1</span>)<span class="sc">:</span>n]<span class="sc">*</span>x[<span class="fu">c</span>(i<span class="sc">+</span><span class="dv">1</span>)<span class="sc">:</span>n] ))<span class="sc">/</span>A[i,i]</span>
+<span id="cb73-11"><a href="#cb73-11" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb73-12"><a href="#cb73-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(x)</span>
+<span id="cb73-13"><a href="#cb73-13" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Por fim, vamos resolver o sistema apresentado no Exemplo 2.1 utilizando as funções criadas.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Entrando com o sistema na forma matricial</span></span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">6</span>,<span class="dv">3</span>,<span class="dv">4</span>),<span class="dv">3</span>,<span class="dv">3</span>)</span>
+<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">24</span>,<span class="dv">23</span>,<span class="dv">33</span>)</span>
+<span id="cb74-4"><a href="#cb74-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Passo 1: Triangularização</span></span>
+<span id="cb74-5"><a href="#cb74-5" aria-hidden="true" tabindex="-1"></a>S <span class="ot">&lt;-</span> <span class="fu">gauss</span>(A, b)</span>
+<span id="cb74-6"><a href="#cb74-6" aria-hidden="true" tabindex="-1"></a>S</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1]          [,2]   [,3]   [,4]
+[1,]    3  2.000000e+00  6.000 24.000
+[2,]    0  2.666667e+00 -1.000  7.000
+[3,]    0 -5.551115e-17 -6.125 -6.125</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Passo 2: Substituição regressiva</span></span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>sol <span class="ot">=</span> <span class="fu">sub_reg</span>(<span class="at">SOL =</span> S)</span>
+<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>sol</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4 3 1</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Verificando a solução</span></span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>A<span class="sc">%*%</span>sol</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1]
+[1,]   24
+[2,]   23
+[3,]   33</code></pre>
+</div>
+</div>
+<p>O método de eliminação de Gauss pode apresentar dois problemas:</p>
+<ol type="i">
+<li>o elemento pivô é zero e neste caso não podemos dividir por zero e</li>
+<li>o elemento pivô é pequeno em magnitude em relação aos demais. Isso pode levar a problemas numéricos por fazer uma divisão por um número muito próximo de zero.</li>
+</ol>
+<p>Para resolver estes problemas é usual combinar o método de eliminação de Gauss com o procedimento de <strong>pivotação</strong>. O procedimento de <strong>pivotação</strong> nada mais é do que trocar a ordem das linhas para evitar pivôs iguais a zero ou muito pequenos. Além disso, a pivotação também pode ajudar a diminuir o número de operações para resolver o sistema.</p>
+<p>Se durante o procedimento uma equação pivô tiver um elemento nulo e o sistema tiver solução, uma equação com um elemento pivô diferente de zero sempre existirá. Uma recomendação é ordenar as linhas para que o maior valor seja o primeiro pivô.</p>
+<p><strong>Example 2.2</strong> Resolva o seguinte sistema usando eliminação de Gauss com pivotação.</p>
+<p><span class="math display">\[
+\begin{eqnarray*}
+0x_1 + 2x_2 + 3x_2  &amp; = &amp;  46\\
+4 x_1 -3x_2 + 2x_3  &amp; = &amp;  16 \\
+2x_1 + 4x_2 -3x_3  &amp; = &amp;  12
+\end{eqnarray*}
+\]</span></p>
+<p>Note que neste caso o primeiro pivô é zero o procedimento não pode ser iniciado da maneira usual. A estratégia de pivotação é simplesmente trocar a ordem das linhas de forma que valores maiores apareçam primeiro como pivôs. Por exemplo,</p>
+<p><span class="math display">\[
+\begin{eqnarray*}
+4 x_1 -3x_2 + 2x_3  &amp; = &amp;  16 \\
+2x_1 + 4x_2 -3x_3  &amp; = &amp;  12 \\
+0x_1 + 2x_2 + 3x_2  &amp; = &amp;  46.
+\end{eqnarray*}
+\]</span></p>
+<p>Importante notar que ao trocar a ordem das linhas a ordem da solução também será alterada. Vejamos como resolver este sistema usando as funções que criamos nesta seção.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Entrando com o sistema original</span></span>
+<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="sc">-</span><span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="sc">-</span><span class="dv">3</span>), <span class="dv">3</span>,<span class="dv">3</span>)</span>
+<span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">46</span>,<span class="dv">16</span>,<span class="dv">12</span>)</span>
+<span id="cb80-4"><a href="#cb80-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-5"><a href="#cb80-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Pivoteamento</span></span>
+<span id="cb80-6"><a href="#cb80-6" aria-hidden="true" tabindex="-1"></a>A_order <span class="ot">&lt;-</span> A[<span class="fu">order</span>(A[,<span class="dv">1</span>], <span class="at">decreasing =</span> <span class="cn">TRUE</span>),]</span>
+<span id="cb80-7"><a href="#cb80-7" aria-hidden="true" tabindex="-1"></a>b_order <span class="ot">&lt;-</span> b[<span class="fu">order</span>(A[,<span class="dv">1</span>], <span class="at">decreasing =</span> <span class="cn">TRUE</span>)]</span>
+<span id="cb80-8"><a href="#cb80-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-9"><a href="#cb80-9" aria-hidden="true" tabindex="-1"></a><span class="do">## Triangulação</span></span>
+<span id="cb80-10"><a href="#cb80-10" aria-hidden="true" tabindex="-1"></a>S <span class="ot">&lt;-</span> <span class="fu">gauss</span>(A_order, b_order)</span>
+<span id="cb80-11"><a href="#cb80-11" aria-hidden="true" tabindex="-1"></a>S</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2]      [,3]     [,4]
+[1,]    4 -3.0  2.000000 16.00000
+[2,]    0  5.5 -4.000000  4.00000
+[3,]    0  0.0  4.454545 44.54545</code></pre>
+</div>
+</div>
+<pre><code>## Substituição regressiva
+sol &lt;- sub_reg(SOL = S)
+sol</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Solução</span></span>
+<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a>A_order<span class="sc">%*%</span>sol</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1]
+[1,]    9
+[2,]   17
+[3,]    9</code></pre>
+</div>
+</div>
+<p>Um segundo método direto muito popular é o método de Gauss-Jordan. Este método é similar ao método de eliminação de Gauss, porém busca transformar o sistema original em um sistema diagonal usando operações com linhas. O algoritmo pode ser resumido em dois passos:</p>
+<ol type="1">
+<li>Normalize a equação pivô com a divisão de todos os seus termos pelo coeficiente pivô.</li>
+<li>Elimine os elementos fora da diagonal principal em TODAS as demais equações usando operações com linhas.</li>
+</ol>
+</section>
+<section id="métodos-iterativos" class="level3" data-number="2.3.2">
+<h3 data-number="2.3.2" class="anchored" data-anchor-id="métodos-iterativos"><span class="header-section-number">2.3.2</span> Métodos iterativos</h3>
+<p>Os métodos iterativos trabalham de forma ligeiramente diferente. Neste caso, as equações são colocadas em uma forma explícita onde cada incógnita é escrita em termos das demais, ou seja,</p>
+<p><span class="math display">\[
+  \begin{matrix}
+a_{11} x_1 + a_{12} x_2 + a_{13} x_3 = b_1 \\
+a_{21} x_1 + a_{22} x_2 + a_{23} x_3 = b_2 \\
+a_{31} x_1 + a_{32} x_2 + a_{33} x_3 = b_3
+\end{matrix} \to
+\begin{matrix}
+x_1 = [b_1 - (a_{12} x_2 + a_{13}x_3)]/a_{11} \\
+x_2 = [b_2 - (a_{21} x_1 + a_{23}x_3)]/a_{22} \\
+x_3 = [b_3 - (a_{31} x_1 + a_{32}x_2)]/a_{33}
+\end{matrix}.
+\]</span></p>
+<p>Dado um valor inicial para as incógnitas estas são atualizadas até a convergência. Em um sistema com <span class="math inline">\(n\)</span> equações, as equações explícitas para as incógnitas <span class="math inline">\(x_i\)</span> são</p>
+<p><span class="math display">\[
+x_i = \frac{1}{a_{ii}} \left [ b_i - \left ( \sum_{j=1;j \neq i}^{j=n} a_{ij} x_j \right ) \right ] \quad i = 1, \ldots, n.
+\]</span></p>
+<p>Dentro da classe dos métodos iterativos os métodos de Jacobi e Gauss-Seidel são muito populares. A diferença básica entre os dois é que no método de Jacobi os valores das incógnitas são atualizados todos de uma vez no final de cada iteração. Por outro lado, no método de Gauss-Seidel, o valor de cada incógnita é atualizado e usado no cálculo da nova estimativa das demais incógnitas dentro da mesma iteração.</p>
+<p>Dado um valor inicial para cada uma das incógnitas, <span class="math inline">\(x_1^{(1)}, x_2^{(1)}, \ldots, x_n^{(1)}\)</span> o <strong>método de Jacobi</strong> atualiza a solução usando a seguinte equação de atualização:</p>
+<p><span class="math display">\[
+\begin{equation}
+x_i^{k+1} = \frac{1}{a_{ii}} \left[b_i - \left(\sum_{j=1, j \neq i}^{j=n} a_{ij} x_j^{(k)}  \right)   \right] \quad i = 1, 2, \ldots, n.
+\end{equation}
+\]</span></p>
+<p>No <strong>método de Gauss-Seidel</strong> as equações de atualização são as seguintes:</p>
+<p><span class="math display">\[
+\begin{equation}
+x_1^{k+1} = \frac{1}{a_{11}} \left[b_1 - \sum_{j=2}^{j=n} a_{1j} x_j^{(k)}  \right],
+\end{equation}
+\]</span></p>
+<p><span class="math display">\[
+\begin{equation}
+x_i^{(k+1)} = \frac{1}{a_{ii}} \left[ b_i - \left( \sum_{j=1}^{j = i-1} a_{ij} x_j^{(k+1)} + \sum_{j = i+1}^{j = n} a_{ij} x_j^{(k)} \right)  \right] \quad i = 2, 3, \ldots, n-1 \quad \text{e}
+\end{equation}
+\]</span></p>
+<p><span class="math display">\[
+\begin{equation}
+x_n^{(k+1)} = \frac{1}{a_{nn}} \left[b_n - \sum_{j = 1}^{j=n-1} a_{nj} x_j^{(k+1)}  \right].
+\end{equation}
+\]</span></p>
+<p>Em ambos os métodos as iterações continuam até que algum critério de parada seja atingido. Por exemplo, as iterações podem ser interrompidas quando o valor absoluto do erro relativo estimado de todas as incógnitas for menor que algum valor especificado:</p>
+<p><span class="math display">\[
+\begin{equation}
+\left| \frac{x_i^{k+1} - x_i^{(k)} }{x_i^{(k)}}   \right| &lt; \epsilon.
+\end{equation}
+\]</span></p>
+<p>A escolha de valores iniciais é sempre um problema a ser considerado caso a caso. Uma estratégia simples é inicializar com zeros, porém obviamente esses valores nem sempre serão razoáveis e a convergência do método pode ficar muito lenta devido a valores iniciais ruins.</p>
+<p>Para exemplificar o uso e implementação computacional dos métodos iterativos o Código 2.16 implementa o método de Jacobi.</p>
+<p><strong>Código 2.16</strong> Método de Jacobi.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a>jacobi <span class="ot">&lt;-</span> <span class="cf">function</span>(A, b, inicial, <span class="at">max_iter =</span> <span class="dv">10</span>, <span class="at">tol =</span> <span class="fl">1e-04</span>) {</span>
+<span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(b)</span>
+<span id="cb85-3"><a href="#cb85-3" aria-hidden="true" tabindex="-1"></a>  x_temp <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="cn">NA</span>, <span class="at">ncol =</span> n, <span class="at">nrow =</span> max_iter)</span>
+<span id="cb85-4"><a href="#cb85-4" aria-hidden="true" tabindex="-1"></a>  x_temp[<span class="dv">1</span>,] <span class="ot">&lt;-</span> inicial</span>
+<span id="cb85-5"><a href="#cb85-5" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> x_temp[<span class="dv">1</span>,]</span>
+<span id="cb85-6"><a href="#cb85-6" aria-hidden="true" tabindex="-1"></a>  <span class="do">## Equação de atualização</span></span>
+<span id="cb85-7"><a href="#cb85-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span>max_iter) {</span>
+<span id="cb85-8"><a href="#cb85-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n) {</span>
+<span id="cb85-9"><a href="#cb85-9" aria-hidden="true" tabindex="-1"></a>      x_temp[j,i] <span class="ot">&lt;-</span> (b[i] <span class="sc">-</span> <span class="fu">sum</span>(A[i,<span class="dv">1</span><span class="sc">:</span>n][<span class="sc">-</span>i]<span class="sc">*</span>x[<span class="sc">-</span>i]))<span class="sc">/</span>A[i,i]</span>
+<span id="cb85-10"><a href="#cb85-10" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb85-11"><a href="#cb85-11" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">&lt;-</span> x_temp[j,]</span>
+<span id="cb85-12"><a href="#cb85-12" aria-hidden="true" tabindex="-1"></a>    <span class="do">## Critério de parada</span></span>
+<span id="cb85-13"><a href="#cb85-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(<span class="fu">sum</span>(<span class="fu">abs</span>(x_temp[j,] <span class="sc">-</span> x_temp[<span class="fu">c</span>(j<span class="dv">-1</span>),])) <span class="sc">&lt;</span> tol) <span class="cf">break</span></span>
+<span id="cb85-14"><a href="#cb85-14" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb85-15"><a href="#cb85-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">list</span>(<span class="st">"Solucao"</span> <span class="ot">=</span> x, <span class="st">"Iteracoes"</span> <span class="ot">=</span> x_temp))</span>
+<span id="cb85-16"><a href="#cb85-16" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Example 2.3</strong> Resolva o seguinte sistema de equações lineares usando o método de Jacobi.</p>
+<p><span class="math display">\[
+\begin{eqnarray*}
+9x_1 - 2x_2 + 3x_3 + 2x_4  &amp; = &amp;  54.5\\
+2x_1 + 8x_2 - 2x_3 + 3x_4  &amp; = &amp;  -14 \\
+-3x_1 + 2x_2 + 11x_3 - 4x_4   &amp; = &amp;  12.5 \\
+-2x_1 + 3x_2 + 2x_3 - 10x_4   &amp; = &amp;  -21 \\
+\end{eqnarray*}
+\]</span></p>
+<p>Vamos começar entrando com a matriz do sistema.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Matriz do sistema</span></span>
+<span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">9</span>,<span class="dv">2</span>,<span class="sc">-</span><span class="dv">3</span>,<span class="sc">-</span><span class="dv">2</span>,<span class="sc">-</span><span class="dv">2</span>,<span class="dv">8</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="sc">-</span><span class="dv">2</span>,<span class="dv">11</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="sc">-</span><span class="dv">4</span>,<span class="dv">10</span>), <span class="dv">4</span>, <span class="dv">4</span>)</span>
+<span id="cb86-3"><a href="#cb86-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Vetor de solução</span></span>
+<span id="cb86-4"><a href="#cb86-4" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">54.5</span>, <span class="sc">-</span><span class="dv">14</span>, <span class="fl">12.5</span>, <span class="sc">-</span><span class="dv">21</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Agora usamos a função implementada no Código 2.16.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a>sol <span class="ot">&lt;-</span> <span class="fu">jacobi</span>(<span class="at">A =</span> A, <span class="at">b =</span> b, <span class="at">inicial =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
+<span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a>sol<span class="sc">$</span>Solucao</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  4.988102 -1.997265  2.503982 -1.001923</code></pre>
+</div>
+</div>
+<p>Note que a solução fornecida é uma aproximação para a solução exata. A solução exata pode ser obtida, por exemplo usando o método de eliminação de Gauss.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a>S <span class="ot">&lt;-</span> <span class="fu">gauss</span>(<span class="at">A =</span> A, <span class="at">b =</span> b)</span>
+<span id="cb89-2"><a href="#cb89-2" aria-hidden="true" tabindex="-1"></a>sol_ex <span class="ot">&lt;-</span> <span class="fu">sub_reg</span>(<span class="at">SOL =</span> S)</span>
+<span id="cb89-3"><a href="#cb89-3" aria-hidden="true" tabindex="-1"></a>sol_ex</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  5.0 -2.0  2.5 -1.0</code></pre>
+</div>
+</div>
+<p>Uma questão importante sobre a implementação dos métodos iterativos é o uso do duplo <code>for()</code>. Isso torna a implementação computacional destes métodos diretamente em <code>R</code> conforme feito no Código 2.16 lento. Uma implementação eficiente dos métodos de Jacobi e Gauss-Seidel está disponível em <code>R</code> através do pacote <code>Rlinsolve</code>. Este pacote implementa os métodos utilizando a linguagem <code>C++</code> o que torna a implementação bastante rápida computacionalmente. O uso do pacote <code>Rlinsolve</code> é ilustrado no Código Rlinsolve2.17.</p>
+<p><strong>Código 2.17</strong> Utilização do pacote <code>Rlinsolve</code> para resolver sistemas lineares via métodos iterativos.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Carregando o pacote</span></span>
+<span id="cb91-2"><a href="#cb91-2" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(Rlinsolve)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Carregando pacotes exigidos: Rlinsolve</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>** ------------------------------------------------------- **</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>** Rlinsolve</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>**  - Solving (Sparse) System of Linear Equations</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>**</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>** Version    : 0.3.2      (2024)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>** Maintainer : Kisung You (kisungyou@outlook.com)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>**</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>** Please share any bugs or suggestions to the maintainer.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>** ------------------------------------------------------- **</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Método de Jacobi </span></span>
+<span id="cb102-2"><a href="#cb102-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lsolve.jacobi</span>(A, b)<span class="sc">$</span>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>* lsolve.jacobi : Initialiszed.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>* lsolve.jacobi : A may not be symmetric.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>* lsolve.jacobi : making it normal equation form via 'adjsym' flag.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>* lsolve.jacobi : computations finished.</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          [,1]
+[1,]  4.999971
+[2,] -2.000064
+[3,]  2.500017
+[4,] -0.999947</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Método de Gauss-Seidel</span></span>
+<span id="cb108-2"><a href="#cb108-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lsolve.gs</span>(A, b)<span class="sc">$</span>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>* lsolve.gs : Initialiszed.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>* lsolve.gs : A may not be symmetric.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>* lsolve.gs : making it normal equation form via 'adjsym' flag.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>* lsolve.gs : computations finished.</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           [,1]
+[1,]  4.9999633
+[2,] -2.0000580
+[3,]  2.5000148
+[4,] -0.9999738</code></pre>
+</div>
+</div>
+</section>
+<section id="decomposição-lu" class="level3" data-number="2.3.3">
+<h3 data-number="2.3.3" class="anchored" data-anchor-id="decomposição-lu"><span class="header-section-number">2.3.3</span> Decomposição LU</h3>
+<p>Para motivar o uso de decomposições matriciais considere que precisamos resolver vários sistemas lineares do tipo</p>
+<p><span class="math display">\[
+\mathbf{A} \boldsymbol{x} = \boldsymbol{b}
+\]</span></p>
+<p>para diferentes <span class="math inline">\(\boldsymbol{b}\)</span>’s.</p>
+<p>A ideia é manipular apenas a matriz <span class="math inline">\(\mathbf{A}\)</span> de modo que as operações feitas em <span class="math inline">\(\mathbf{A}\)</span> possam ser aproveitadas para resolver os diversos sistemas lineares.</p>
+<p>A decomposição LU é uma das decomposições mais populares e comumente implementada em diversos softwares. Em <code>R</code> a função <code>solve()</code> que nós já usamos resolve um sistema linear usando a decomposição LU. O procedimento consiste em decompor ou fatorar a matriz <span class="math inline">\(\mathbf{A}\)</span> em um produto de duas matrizes</p>
+<p><span class="math display">\[
+\mathbf{A} = \mathbf{L} \mathbf{U},
+\]</span></p>
+<p>onde <span class="math inline">\(\mathbf{L}\)</span> é triangular inferior e <span class="math inline">\(\mathbf{U}\)</span> é triangular superior.</p>
+<p>Baseado na decomposição o sistema terá a forma:</p>
+<p><span class="math display">\[
+\begin{equation}
+\mathbf{L} \mathbf{U} \boldsymbol{x} = \boldsymbol{b}.
+  \tag{2.10}
+\end{equation}
+\]</span></p>
+<p>Defina <span class="math inline">\(\mathbf{U} \boldsymbol{x} = \boldsymbol{y}.\)</span> Substituindo em (2.10) tem-se</p>
+<p><span class="math display">\[
+\begin{equation}
+\mathbf{L} \boldsymbol{y} = \boldsymbol{b}.
+  \tag{2.11}
+\end{equation}
+\]</span></p>
+<p>Assim, a solução é obtida em dois passos</p>
+<ul>
+<li>Resolva Equação (2.11) para obter <span class="math inline">\(\boldsymbol{y}\)</span> usando substituição progressiva.</li>
+<li>Resolva Equação (2.10) para obter <span class="math inline">\(\boldsymbol{x}\)</span> usando substituição regressiva.</li>
+</ul>
+<p>Um método para obter a decomposição <span class="math inline">\(\mathbf{LU}\)</span> é o próprio método de eliminação de Gauss. Dentro do processo de eliminação de Gauss as matrizes <span class="math inline">\(\mathbf{L}\)</span> e <span class="math inline">\(\mathbf{U}\)</span> são obtidas como um subproduto. Considere uma matriz <span class="math inline">\(4 \times 4\)</span>, a decomposição <span class="math inline">\(\mathbf{LU}\)</span> toma a seguinte forma</p>
+<p><span class="math display">\[
+\begin{bmatrix}
+a_{11}  &amp;  a_{12}  &amp;  a_{13}  &amp;  a_{14} \\
+a_{21}  &amp;  a_{22}  &amp;  a_{23}  &amp;  a_{24} \\
+a_{31}  &amp;  a_{32}  &amp;  a_{33}  &amp;  a_{34} \\
+a_{41}  &amp;  a_{41}  &amp;  a_{43}  &amp;  a_{44}
+\end{bmatrix} = \begin{bmatrix}
+1  &amp;    &amp;    &amp;  \\
+m_{21}  &amp;  1  &amp;    &amp;  \\
+m_{31}  &amp;  m_{32}  &amp;  1  &amp;  \\
+m_{41}  &amp;  m_{42}  &amp;  m_{43}  &amp;  1
+\end{bmatrix}
+\begin{bmatrix}
+a_{11}  &amp;  a_{12}  &amp;  a_{13}  &amp;  a_{14} \\
+0  &amp;  a′_{22}  &amp;  a′_{23}  &amp;  a′_{24} \\
+0  &amp;  0  &amp;  a′_{33}  &amp;  a′_{34} \\
+0  &amp;  0  &amp;  0  &amp;  a′_{44}
+\end{bmatrix}.
+\]</span></p>
+<p>Os elementos <span class="math inline">\(m_{ij}′s\)</span> são os multiplicadores que multiplicam a equação pivô. Os elementos <span class="math inline">\(a′_{ij}\)</span> são os elementos usuais da triangular superior obtida pelo método de eliminação de Gauss.</p>
+<p>Relembre o Exemplo 2.1</p>
+<p><span class="math display">\[
+\begin{bmatrix}
+[3]  &amp;  2  &amp;  6 \\
+2 - \boldsymbol{\frac{2}{3}}3  &amp;  4 - \frac{2}{3}2  &amp;  3 - \frac{2}{3}6 \\
+5 - \boldsymbol{\frac{5}{3}}3  &amp;  3 - \frac{5}{3}2  &amp;  4 - \frac{5}{3}6 \\
+\end{bmatrix}
+\begin{bmatrix}
+24 \\
+23 - \frac{2}{3}24\\
+33 - \frac{5}{3}24
+\end{bmatrix} \to
+\begin{bmatrix}
+[3]  &amp;  2  &amp;  6 \\
+0  &amp;  \frac{8}{3}  &amp;  -1 \\
+0  &amp;  -\frac{1}{3}  &amp;  -6  \\
+\end{bmatrix}
+\begin{bmatrix}
+24 \\
+7 \\
+-7
+\end{bmatrix}
+\]</span> <span class="math display">\[
+\begin{bmatrix}
+3  &amp;  2  &amp;  6 \\
+0  &amp;  [\frac{8}{3}]  &amp;  -1 \\
+0  &amp;  -\frac{1}{3} - \left (-\frac{3}{24} \right ) \left (\frac{8}{3}\right )   &amp;  -6 - (\boldsymbol{-\frac{3}{24}})(-1)  \\
+\end{bmatrix}
+\begin{bmatrix}
+24 \\
+7 \\
+-7 - (- \frac{3}{24})(7)
+\end{bmatrix} \to
+\begin{bmatrix}
+3  &amp;  2  &amp;  6 \\
+0  &amp;  [\frac{8}{3}]  &amp;  -1 \\
+0  &amp;  0  &amp;  [-\frac{147}{24}]  \\
+\end{bmatrix}
+\begin{bmatrix}
+24 \\
+7 \\
+-\frac{147}{24}
+\end{bmatrix}
+\]</span></p>
+<p>Assim, tem-se</p>
+<p><span class="math display">\[
+\mathbf{L} = \begin{bmatrix}
+1  &amp;    &amp;  \\
+\frac{2}{3}  &amp;  1  &amp;  \\
+\frac{5}{3}  &amp;  -\frac{3}{24}  &amp;  1
+\end{bmatrix} \quad \text{e} \quad
+\mathbf{U} =
+\begin{bmatrix}
+3  &amp;  2  &amp;  6 \\
+0  &amp;  \frac{8}{3}  &amp;  -1 \\
+0  &amp;  0  &amp;  -\frac{147}{24}  \\
+\end{bmatrix}.
+\]</span></p>
+<p>Neste caso, o método de eliminação de Gauss foi realizado sem pivotação. Porém, conforme já discutido a pivotação pode ser necessária. Quando realizada a pivotação, as mudanças feitas devem ser armazenadas, tal que</p>
+<p><span class="math display">\[
+\mathbf{P} \mathbf{A} = \mathbf{L}\mathbf{U},
+\]</span></p>
+<p>onde <span class="math inline">\(\mathbf{P}\)</span> é chamada de matriz de permutação. Se as matrizes <span class="math inline">\(\mathbf{L}\mathbf{U}\)</span> forem usadas para resolver o sistema</p>
+<p><span class="math display">\[
+\mathbf{A} \boldsymbol{x} = \boldsymbol{b},
+\]</span></p>
+<p>a ordem das linhas de <span class="math inline">\(\boldsymbol{b}\)</span> deve ser alterada de forma consistente com a pivotação, ou seja, <span class="math inline">\(\mathbf{P} \boldsymbol{b}\)</span>. Para ilustrar a implementação computacional da decomposição <span class="math inline">\(\mathbf{LU}\)</span> vamos implementá-la baseada no método de eliminação de Gauss sem pivotação e depois usar as funções nativas do <code>R</code> para exemplificar o uso da matriz de permutação. O Código 2.18 apresenta uma implementação ilustrativa da decomposição <span class="math inline">\(\mathbf{LU}\)</span>.</p>
+<p><strong>Código 2.18</strong> Decomposição <span class="math inline">\(\mathbf{LU}\)</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a>my_lu <span class="ot">&lt;-</span> <span class="cf">function</span>(A) {</span>
+<span id="cb114-2"><a href="#cb114-2" aria-hidden="true" tabindex="-1"></a>  n_row <span class="ot">&lt;-</span> <span class="fu">nrow</span>(A)</span>
+<span id="cb114-3"><a href="#cb114-3" aria-hidden="true" tabindex="-1"></a>  n_col <span class="ot">&lt;-</span> <span class="fu">ncol</span>(A)</span>
+<span id="cb114-4"><a href="#cb114-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Matriz para receber os resultados</span></span>
+<span id="cb114-5"><a href="#cb114-5" aria-hidden="true" tabindex="-1"></a>  SOL <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="cn">NA</span>, n_row, n_col)</span>
+<span id="cb114-6"><a href="#cb114-6" aria-hidden="true" tabindex="-1"></a>  SOL[<span class="dv">1</span>,] <span class="ot">&lt;-</span> A[<span class="dv">1</span>,]</span>
+<span id="cb114-7"><a href="#cb114-7" aria-hidden="true" tabindex="-1"></a>  pivo <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, n_col, n_row)</span>
+<span id="cb114-8"><a href="#cb114-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">c</span>(n_row<span class="dv">-1</span>)) {</span>
+<span id="cb114-9"><a href="#cb114-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span>(i <span class="cf">in</span> <span class="fu">c</span>(j<span class="sc">+</span><span class="dv">1</span>)<span class="sc">:</span><span class="fu">c</span>(n_row)) {</span>
+<span id="cb114-10"><a href="#cb114-10" aria-hidden="true" tabindex="-1"></a>      pivo[i,j] <span class="ot">&lt;-</span> A[i,j]<span class="sc">/</span>SOL[j,j]</span>
+<span id="cb114-11"><a href="#cb114-11" aria-hidden="true" tabindex="-1"></a>      SOL[i,] <span class="ot">&lt;-</span> A[i,] <span class="sc">-</span> pivo[i,j]<span class="sc">*</span>SOL[j,]</span>
+<span id="cb114-12"><a href="#cb114-12" aria-hidden="true" tabindex="-1"></a>      A[i,] <span class="ot">&lt;-</span> SOL[i,]</span>
+<span id="cb114-13"><a href="#cb114-13" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb114-14"><a href="#cb114-14" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb114-15"><a href="#cb114-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">diag</span>(pivo) <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb114-16"><a href="#cb114-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">list</span>(<span class="st">"L"</span> <span class="ot">=</span> pivo, <span class="st">"U"</span> <span class="ot">=</span> SOL))</span>
+<span id="cb114-17"><a href="#cb114-17" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Para ilustrar o uso da decomposição <span class="math inline">\(\mathbf{LU}\)</span> considere a matriz <span class="math inline">\(\mathbf{A}\)</span> do Exemplo 2.3.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb115"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a>LU <span class="ot">&lt;-</span> <span class="fu">my_lu</span>(A) <span class="co"># Decomposição</span></span>
+<span id="cb115-2"><a href="#cb115-2" aria-hidden="true" tabindex="-1"></a>LU</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$L
+           [,1]      [,2]     [,3] [,4]
+[1,]  1.0000000 0.0000000 0.000000    0
+[2,]  0.2222222 1.0000000 0.000000    0
+[3,] -0.3333333 0.1578947 1.000000    0
+[4,] -0.2222222 0.3026316 0.279661    1
+
+$U
+     [,1]          [,2]      [,3]      [,4]
+[1,]    9 -2.000000e+00  3.000000  2.000000
+[2,]    0  8.444444e+00 -2.666667  2.555556
+[3,]    0  0.000000e+00 12.421053 -3.736842
+[4,]    0 -4.440892e-16  0.000000 10.716102</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb117"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb117-1"><a href="#cb117-1" aria-hidden="true" tabindex="-1"></a>LU<span class="sc">$</span>L <span class="sc">%*%</span> LU<span class="sc">$</span>U <span class="co"># Verificando a solução</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2] [,3] [,4]
+[1,]    9   -2    3    2
+[2,]    2    8   -2    3
+[3,]   -3    2   11   -4
+[4,]   -2    3    2   10</code></pre>
+</div>
+</div>
+<p>Para resolver o sistema usamos a matriz decomposta combinada com os procedimentos de substituição progressiva e regressiva, respectivamente. Em <code>R</code> as funções <code>forwardsolve()</code> e <code>backsolve()</code> implementam os procedimentos de substituição progressiva e regressiva, respectivamente. O Código 2.19 ilustra como resolver o sistema baseado na decomposição <span class="math inline">\(\mathbf{LU}\)</span>.</p>
+<p><strong>Código 2.19</strong> Solução de um sistema linear usando a decomposição <span class="math inline">\(\mathbf{LU}\)</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb119"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Passo 1: Substituição progressiva</span></span>
+<span id="cb119-2"><a href="#cb119-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">forwardsolve</span>(LU<span class="sc">$</span>L, b)</span>
+<span id="cb119-3"><a href="#cb119-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Passo 2: Substituição regressiva</span></span>
+<span id="cb119-4"><a href="#cb119-4" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">backsolve</span>(LU<span class="sc">$</span>U, y)</span>
+<span id="cb119-5"><a href="#cb119-5" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  5.0 -2.0  2.5 -1.0</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb121"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb121-1"><a href="#cb121-1" aria-hidden="true" tabindex="-1"></a>A<span class="sc">%*%</span>x <span class="co"># Verificando a solução</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      [,1]
+[1,]  54.5
+[2,] -14.0
+[3,]  12.5
+[4,] -21.0</code></pre>
+</div>
+</div>
+<p>O Código 2.18 é apenas para ilustrar a obtenção da decomposição <span class="math inline">\(\mathbf{LU}\)</span>. Em problemas reais devemos usar as implementações disponíveis no pacote <code>Matrix</code>. O Código 2.20 ilustra o uso da função <code>lu()</code> do pacote <code>Matrix</code> para obtenção da decomposição <span class="math inline">\(\mathbf{LU}\)</span> neste exemplo com pivotação.</p>
+<p><strong>Código 2.20</strong> Decomposição <span class="math inline">\(\mathbf{LU}\)</span> com pivotação usando o pacote <code>Matrix</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb123"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(Matrix)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Carregando pacotes exigidos: Matrix</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb125"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a>LU_M <span class="ot">&lt;-</span> Matrix<span class="sc">::</span><span class="fu">lu</span>(A) <span class="co"># Calcula mas não retorna</span></span>
+<span id="cb125-2"><a href="#cb125-2" aria-hidden="true" tabindex="-1"></a>LU_M <span class="ot">&lt;-</span> Matrix<span class="sc">::</span><span class="fu">expand</span>(LU_M) <span class="co"># Captura as matrizes L U e P</span></span>
+<span id="cb125-3"><a href="#cb125-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Substituição progressiva. </span><span class="al">NOTE</span><span class="co"> MATRIZ DE PERMUTAÇÃO</span></span>
+<span id="cb125-4"><a href="#cb125-4" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">forwardsolve</span>(LU_M<span class="sc">$</span>L, LU_M<span class="sc">$</span>P<span class="sc">%*%</span>b) </span>
+<span id="cb125-5"><a href="#cb125-5" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">backsolve</span>(LU_M<span class="sc">$</span>U, y) <span class="co"># Substituição regressiva</span></span>
+<span id="cb125-6"><a href="#cb125-6" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  5.0 -2.0  2.5 -1.0</code></pre>
+</div>
+</div>
+</section>
+<section id="cálculo-da-inversa" class="level3" data-number="2.3.4">
+<h3 data-number="2.3.4" class="anchored" data-anchor-id="cálculo-da-inversa"><span class="header-section-number">2.3.4</span> Cálculo da inversa</h3>
+<p>A decomposição <span class="math inline">\(\mathbf{LU}\)</span> é especialmente adequada para o cálculo da inversa. Lembre-se que a inversa de <span class="math inline">\(\mathbf{A}\)</span> é tal que</p>
+<p><span class="math display">\[
+\mathbf{A} \mathbf{A}^{-1} = \mathbf{I}.
+\]</span></p>
+<p>O procedimento de cálculo da inversa é essencialmente o mesmo da solução de um sistema de equações lineares, porém com mais incógnitas.</p>
+<p><span class="math display">\[
+\begin{bmatrix}
+a_{11}  &amp;  a_{12}  &amp;  a_{13} \\
+a_{21}  &amp;  a_{22}  &amp;  a_{23} \\
+a_{31}  &amp;  a_{32}  &amp;  a_{33}
+\end{bmatrix}
+\begin{bmatrix}
+x_{11}  &amp;  x_{12}  &amp;  x_{13} \\
+x_{21}  &amp;  x_{22}  &amp;  x_{23} \\
+x_{31}  &amp;  x_{32}  &amp;  x_{33}
+\end{bmatrix} =
+\begin{bmatrix}
+1  &amp;  0  &amp;  0\\
+0  &amp;  1  &amp;  0\\
+0  &amp;  0  &amp;  1
+\end{bmatrix}
+\]</span></p>
+<p>Neste exemplo simples, precisamos resolver três sistemas de equações diferentes. Em cada sistema, uma coluna da matriz <span class="math inline">\(\mathbf{X}\)</span> é a incógnita. A implementação computacional pode ser facilmente feita combinando a função 2.18 com as funções <code>forwardsolve()</code> e <code>backsolve()</code>. O Código 2.21 implementa o cálculo da inversa usando a decomposição <span class="math inline">\(\mathbf{LU}\)</span>.</p>
+<p><strong>Código 2.21</strong> Cálculo da matriz inversa usando decomposição <span class="math inline">\(\mathbf{LU}\)</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb127"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb127-1"><a href="#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Resolve um sistema de equações</span></span>
+<span id="cb127-2"><a href="#cb127-2" aria-hidden="true" tabindex="-1"></a>solve_lu <span class="ot">&lt;-</span> <span class="cf">function</span>(LU, b) {</span>
+<span id="cb127-3"><a href="#cb127-3" aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> <span class="fu">forwardsolve</span>(LU<span class="sc">$</span>L, b) </span>
+<span id="cb127-4"><a href="#cb127-4" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">=</span> <span class="fu">backsolve</span>(LU<span class="sc">$</span>U, y)</span>
+<span id="cb127-5"><a href="#cb127-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(x)</span>
+<span id="cb127-6"><a href="#cb127-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb127-7"><a href="#cb127-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb127-8"><a href="#cb127-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Cálculo da inversa</span></span>
+<span id="cb127-9"><a href="#cb127-9" aria-hidden="true" tabindex="-1"></a>my_solve <span class="ot">&lt;-</span> <span class="cf">function</span>(LU, B) {</span>
+<span id="cb127-10"><a href="#cb127-10" aria-hidden="true" tabindex="-1"></a>  n_col <span class="ot">&lt;-</span> <span class="fu">ncol</span>(B)</span>
+<span id="cb127-11"><a href="#cb127-11" aria-hidden="true" tabindex="-1"></a>  n_row <span class="ot">&lt;-</span> <span class="fu">nrow</span>(B)</span>
+<span id="cb127-12"><a href="#cb127-12" aria-hidden="true" tabindex="-1"></a>  inv <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="cn">NA</span>, n_col, n_row)</span>
+<span id="cb127-13"><a href="#cb127-13" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n_col) {</span>
+<span id="cb127-14"><a href="#cb127-14" aria-hidden="true" tabindex="-1"></a>    inv[,i] <span class="ot">&lt;-</span> <span class="fu">solve_lu</span>(LU, B[,i])</span>
+<span id="cb127-15"><a href="#cb127-15" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb127-16"><a href="#cb127-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(inv)</span>
+<span id="cb127-17"><a href="#cb127-17" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>A implementação foi feita em dois passos. Na primeira função <code>solve_lu()</code> resolve um sistema de equação usual. A função <code>my_solve()</code> usa uma instrução <code>for</code> para varrer todas as colunas da matriz de incógnitas e assim obter a inversa. É importante notar que ambas recebem a decomposição <span class="math inline">\(\mathbf{LU}\)</span> da matriz original.</p>
+<p><strong>Example 2.4</strong> Obtenha a inversa de</p>
+<p><span class="math display">\[
+\mathbf{A} = \begin{bmatrix}
+3  &amp;  2  &amp;  6\\
+2  &amp;  4  &amp;  3\\
+5  &amp;  3  &amp;  4
+\end{bmatrix}
+\]</span></p>
+<p>Para resolver este exemplo, vamos usar as funções que criamos.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb128"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb128-1"><a href="#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Entrando com a matriz</span></span>
+<span id="cb128-2"><a href="#cb128-2" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">6</span>,<span class="dv">3</span>,<span class="dv">4</span>),<span class="dv">3</span>,<span class="dv">3</span>)</span>
+<span id="cb128-3"><a href="#cb128-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Criando a matriz de incógnitas</span></span>
+<span id="cb128-4"><a href="#cb128-4" aria-hidden="true" tabindex="-1"></a>I <span class="ot">&lt;-</span> <span class="fu">Diagonal</span>(<span class="dv">3</span>, <span class="dv">1</span>)</span>
+<span id="cb128-5"><a href="#cb128-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Decomposição LU</span></span>
+<span id="cb128-6"><a href="#cb128-6" aria-hidden="true" tabindex="-1"></a>LU <span class="ot">&lt;-</span> <span class="fu">my_lu</span>(A)</span>
+<span id="cb128-7"><a href="#cb128-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Obtendo a inversa</span></span>
+<span id="cb128-8"><a href="#cb128-8" aria-hidden="true" tabindex="-1"></a>inv_A <span class="ot">&lt;-</span> <span class="fu">my_solve</span>(<span class="at">LU =</span> LU, <span class="at">B =</span> I)</span>
+<span id="cb128-9"><a href="#cb128-9" aria-hidden="true" tabindex="-1"></a>inv_A</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           [,1]        [,2]        [,3]
+[1,] -0.1428571 -0.20408163  0.36734694
+[2,] -0.1428571  0.36734694 -0.06122449
+[3,]  0.2857143 -0.02040816 -0.16326531</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb130"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb130-1"><a href="#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Verificando o resultado</span></span>
+<span id="cb130-2"><a href="#cb130-2" aria-hidden="true" tabindex="-1"></a>A<span class="sc">%*%</span>inv_A</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             [,1]         [,2]          [,3]
+[1,] 1.000000e+00 0.000000e+00 -1.110223e-16
+[2,] 1.110223e-16 1.000000e+00  0.000000e+00
+[3,] 0.000000e+00 6.938894e-17  1.000000e+00</code></pre>
+</div>
+</div>
+<p>A função nativa do <code>R</code> recomendada para a solução tanto de sistemas lineares quanto para a obtenção da inversa é a função <code>solve()</code>. A função <code>solve()</code> implementa a decomposição <span class="math inline">\(\mathbf{LU}\)</span> com pivotação. O <code>R</code> usa uma implementação eficiente disponível na biblioteca <code>lapack</code> para mais detalhes veja <a href="http://www.netlib.org/lapack/lug/node38.html">lapack library</a>.</p>
+<p>Existem diversas outras estratégias para o cálculo da inversa de uma matriz. Talvez o método mais simples seja usar o método de Gauss-Jordan. Neste método uma matriz aumentada é construída e a inversa é obtida usando operações com linhas. A matriz aumentada toma a seguinte forma:</p>
+<p><span class="math display">\[
+\begin{bmatrix}
+a_{11}  &amp;  a_{21}  &amp;  a_{31}  &amp;  1  &amp;  0  &amp;  0\\
+a_{21}  &amp;  a_{22}  &amp;  a_{32}  &amp;  0  &amp;  1  &amp;  0\\
+a_{31}  &amp;  a_{32}  &amp;  a_{33}  &amp;  0  &amp;  0  &amp;  1
+\end{bmatrix} \to
+\begin{bmatrix}
+1  &amp;  0  &amp;  0  &amp;  a′_{11}  &amp;  a′_{21}  &amp;  a′_{31} \\
+0  &amp;  1  &amp;  0  &amp;  a′_{21}  &amp;  a′_{22}  &amp;  a′_{32} \\
+0  &amp;  0  &amp;  1  &amp;  a′_{31}  &amp;  a′_{32}  &amp;  a′_{33}
+\end{bmatrix}.
+\]</span></p>
+<p>O método é bastante simples, porém computacionalmente caro. Para implementações de alto desempenho computacional de tópicos em álgebra linear eu recomendo ao leitor interessado consultar as bibliotecas <a href="https://eigen.tuxfamily.org">eigen</a> e <a href="http://arma.sourceforge.net/">armadillo</a>. Ambas podem ser utilizadas diretamente do <code>R</code> usando os pacotes <a href="https://github.com/RcppCore/RcppEigen">RcppEigen</a> e <a href="https://github.com/RcppCore/RcppArmadillo">RcppArmadillo</a>.</p>
+</section>
+</section>
+<section id="autovalores-e-autovetores" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="autovalores-e-autovetores"><span class="header-section-number">2.4</span> Autovalores e autovetores</h2>
+<p>Em ciência de dados é comum lidar com grandes matrizes de dados que apresentam um intrincado sistema de relações ou, em termos estatísticos, correlações. De forma intuitiva pode-se pensar em correlação como sendo uma forma de relacionamento entre duas variáveis de interesse. Por exemplo, o número de quartos em um apartamento pode estar associado com o seu preço. Porém, o número de quartos também pode estar associado com o tamanho total do imóvel, que por sua vez também está associado com o preço do imóvel. Neste exemplo simples com apenas três variáveis podemos notar como é complexo entender a estrutura de correlações em uma base de dados com muitas variáveis de interesse.</p>
+<p>Neste tipo de situação é comum fazer uma redução de dimensionalidade. Este tipo de técnica busca reduzir o número de variáveis a serem analisadas facilitando a interpretação. Essa redução baseia-se em criar novas variáveis que são combinações (em particular combinações lineares) das variáveis originais. Talvez a técnica de redução de dimensionalidade mais popular em ciência de dados seja <strong>Análise de Componentes principais</strong> que por sua vez é baseada na decomposição em autovalores e autovetores da matriz de dados. Neste livro, nós vamos discutir apenas os aspectos práticos da obtenção da decomposição em autovalores e autovetores.</p>
+<p>Autovalores e autovetores são definidos por uma simples igualdade</p>
+<p><span class="math display">\[
+\[\begin{equation}
+\mathbf{A} \boldsymbol{v} = \boldsymbol{\lambda} \boldsymbol{v}.
+\tag{2.12}
+\end{equation}
+\]</span></p>
+<p>Qualquer vetor unitário <span class="math inline">\(\boldsymbol{v}\)</span> que satisfaz a Equação eigen(2.12) tem apenas o efeito de alongar ou encolher <span class="math inline">\(\boldsymbol{v}\)</span>, ou seja, o vetor não é rotacionado e a direção é preservada. Os vetores <span class="math inline">\(\boldsymbol{v}\)</span>’s que satisfazem Equação (2.12) são os autovetores. Enquanto que os valores <span class="math inline">\(\boldsymbol{\lambda}\)</span>’s que satisfazem Equação (2.12) são os autovalores. Neste livro, vamos considerar apenas o caso em que <span class="math inline">\(\mathbf{A}\)</span> é simétrica.</p>
+<p>Sendo <span class="math inline">\(\mathbf{A}\)</span> uma matriz simétrica <span class="math inline">\(n \times n\)</span>, então existem exatamente <span class="math inline">\(n\)</span> pares <span class="math inline">\((\lambda_j, \boldsymbol{v}_j)\)</span> que satisfazem a equação</p>
+<p><span class="math display">\[
+\begin{equation*}
+\mathbf{A} \boldsymbol{v} = \boldsymbol{\lambda} \boldsymbol{v}.
+\end{equation*}
+\]</span></p>
+<p>Se <span class="math inline">\(\mathbf{A}\)</span> tem autovalores <span class="math inline">\(\lambda_1, \ldots, \lambda_n\)</span>, então:</p>
+<ul>
+<li><span class="math inline">\(\mathrm{tr}(\mathbf{A}) = \sum_{i=1}^n \lambda_i\)</span>.</li>
+<li><span class="math inline">\(\mathrm{det}(\mathbf{A}) = \prod_{i=1}^n \lambda_i\)</span>.</li>
+<li><span class="math inline">\(\mathbf{A}\)</span> é positiva definida, se e somente se todos <span class="math inline">\(\lambda_j &gt; 0\)</span>.</li>
+<li><span class="math inline">\(\mathbf{A}\)</span> é semi-positiva definida, se e somente se todos <span class="math inline">\(\lambda_j \geq 0\)</span>.</li>
+</ul>
+<p>Qualquer matriz simétrica <span class="math inline">\(\mathbf{A}\)</span> pode ser fatorada em</p>
+<p><span class="math display">\[
+\mathbf{A} = \mathbf{Q} \boldsymbol{\Lambda}  \mathbf{Q}^{\top},
+\]</span></p>
+<p>onde <span class="math inline">\(\boldsymbol{\Lambda}\)</span> é diagonal contendo os autovalores de <span class="math inline">\(\mathbf{A}\)</span> e as colunas de <span class="math inline">\(\mathbf{Q}\)</span> contêm os autovetores ortonormais (ortogonais de comprimento unitário).</p>
+<p>A obtenção da decomposição em autovalores e autovetores de uma matriz não é simples, e em geral é baseada em uma outra decomposição chamada de <strong>decomposição</strong> <span class="math inline">\(\mathbf{QR}\)</span>. Está fora do escopo deste livro descrever tal algoritmo, porém usando o <code>R</code> podemos facilmente obter a decomposição em autovalores e autovetores usando a função <code>eigen()</code>, conforme ilustrado no Código 2.22</p>
+<p><strong>Código 2.22</strong> Decomposição em autovalores e autovetores.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb132"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb132-1"><a href="#cb132-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="fl">0.8</span>, <span class="fl">0.3</span>, <span class="fl">0.8</span>, <span class="dv">1</span>, <span class="fl">0.2</span>, <span class="fl">0.3</span>, <span class="fl">0.2</span>, <span class="dv">1</span>),<span class="dv">3</span>,<span class="dv">3</span>)</span>
+<span id="cb132-2"><a href="#cb132-2" aria-hidden="true" tabindex="-1"></a><span class="fu">isSymmetric.matrix</span>(A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb134"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb134-1"><a href="#cb134-1" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">eigen</span>(A)</span>
+<span id="cb134-2"><a href="#cb134-2" aria-hidden="true" tabindex="-1"></a>Q <span class="ot">&lt;-</span> out<span class="sc">$</span>vectors</span>
+<span id="cb134-3"><a href="#cb134-3" aria-hidden="true" tabindex="-1"></a>D <span class="ot">&lt;-</span> <span class="fu">diag</span>(out<span class="sc">$</span>values)</span>
+<span id="cb134-4"><a href="#cb134-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Autovetores</span></span>
+<span id="cb134-5"><a href="#cb134-5" aria-hidden="true" tabindex="-1"></a>Q</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           [,1]       [,2]        [,3]
+[1,] -0.6712373 -0.1815663  0.71866142
+[2,] -0.6507744 -0.3198152 -0.68862977
+[3,] -0.3548708  0.9299204 -0.09651322</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb136"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb136-1"><a href="#cb136-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Autovalores</span></span>
+<span id="cb136-2"><a href="#cb136-2" aria-hidden="true" tabindex="-1"></a>D</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>         [,1]      [,2]      [,3]
+[1,] 1.934216 0.0000000 0.0000000
+[2,] 0.000000 0.8726419 0.0000000
+[3,] 0.000000 0.0000000 0.1931419</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb138"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb138-1"><a href="#cb138-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Verificando</span></span>
+<span id="cb138-2"><a href="#cb138-2" aria-hidden="true" tabindex="-1"></a>Q<span class="sc">%*%</span>D<span class="sc">%*%</span><span class="fu">t</span>(Q)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2] [,3]
+[1,]  1.0  0.8  0.3
+[2,]  0.8  1.0  0.2
+[3,]  0.3  0.2  1.0</code></pre>
+</div>
+</div>
+<p>Uma aspecto interessante dos autovalores é que eles permitem lidar com matrizes da mesma forma que lidamos com números. A ideia é que se você deseja aplicar uma função em uma matriz, como por exemplo o inverso, você pode simplesmente aplicar a função na matriz diagonal <span class="math inline">\(\boldsymbol{\Lambda}\)</span> e fazer a multiplicação por <span class="math inline">\(\mathbf{Q}\)</span> para obter a matriz resultante da aplicação da função. Assim, a decomposição em autovalores e autovetores pode ser usada para obter a inversa de uma matriz. Se <span class="math inline">\(\mathbf{A}\)</span> tem autovetores <span class="math inline">\(\mathbf{Q}\)</span> e autovalores <span class="math inline">\(\lambda_j\)</span>. Então <span class="math inline">\(\mathbf{A}^{-1}\)</span> tem autovetores <span class="math inline">\(\mathbf{Q}\)</span> e autovalores <span class="math inline">\(\lambda_j^{-1}\)</span>. Isso implica que <span class="math inline">\(\mathbf{A}^{-1} = \mathbf{Q} \boldsymbol{\Lambda}^{-1} \mathbf{Q}^{\top}\)</span>. O Código 2.23 ilustra a obtenção da inversa usando a decomposição em autovalores e autovetores.</p>
+<p><strong>Código 2.23</strong> Obtenção da inversa usando a decomposição em autovalores e autovetores.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb140"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb140-1"><a href="#cb140-1" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">eigen</span>(A)</span>
+<span id="cb140-2"><a href="#cb140-2" aria-hidden="true" tabindex="-1"></a>Q <span class="ot">&lt;-</span> out<span class="sc">$</span>vectors</span>
+<span id="cb140-3"><a href="#cb140-3" aria-hidden="true" tabindex="-1"></a>inv_D <span class="ot">&lt;-</span> <span class="fu">diag</span>(<span class="dv">1</span><span class="sc">/</span>out<span class="sc">$</span>values)</span>
+<span id="cb140-4"><a href="#cb140-4" aria-hidden="true" tabindex="-1"></a>inv_A <span class="ot">&lt;-</span> Q<span class="sc">%*%</span>inv_D<span class="sc">%*%</span><span class="fu">t</span>(Q)</span>
+<span id="cb140-5"><a href="#cb140-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Verificando</span></span>
+<span id="cb140-6"><a href="#cb140-6" aria-hidden="true" tabindex="-1"></a>A<span class="sc">%*%</span>inv_A</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>              [,1]         [,2]          [,3]
+[1,]  1.000000e+00 2.567391e-16 -3.330669e-16
+[2,]  4.857226e-16 1.000000e+00  3.330669e-16
+[3,] -1.776357e-15 1.665335e-15  1.000000e+00</code></pre>
+</div>
+</div>
+</section>
+<section id="decomposição-em-valores-singulares" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="decomposição-em-valores-singulares"><span class="header-section-number">2.5</span> Decomposição em valores singulares</h2>
+<p>Uma outra decomposição associada a decomposição em autovalores e autovetores é a decomposição em valores singulares. A principal diferença é que a decomposição em valores singulares é definida para qualquer matriz, enquanto que a decomposição em autovalores e autovetores é definida apenas para matrizes simétricas.</p>
+<div class="callout callout-style-simple callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<strong>Teorema 2.1</strong>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Qualquer matriz <span class="math inline">\(\mathbf{A}\)</span> pode ser decomposta em,</p>
+<p><span class="math display">\[
+\mathbf{A} = \mathbf{U} \mathbf{D} \mathbf{V}^{\top},
+\]</span></p>
+<p>onde <span class="math inline">\(\mathbf{D}\)</span> é diagonal com entradas não negativas e <span class="math inline">\(\mathbf{U}\)</span> e <span class="math inline">\(\mathbf{V}\)</span> são ortogonal, i.e.&nbsp;<span class="math inline">\(\mathbf{U}^{\top} \mathbf{U} = \mathbf{V}^{\top} \mathbf{V} = \mathbf{I}\)</span>.</p>
+</div>
+</div>
+<p>Note que matrizes não quadradas não tem autovalores, porém <span class="math inline">\(\mathbf{D}\)</span> no Teorema 2.1 é obtida para qualquer matriz. Assim, os elementos de <span class="math inline">\(\mathbf{D}\)</span> são chamados de valores singulares e correspondem aos autovalores de <span class="math inline">\(\mathbf{A}^{\top} \mathbf{A}\)</span>. No caso da decomposição em valores singulares é importante estar atento à dimensão das matrizes envolvidas. Assim,</p>
+<ul>
+<li>Se <span class="math inline">\(\mathbf{A}\)</span> é <span class="math inline">\(n \times n\)</span>, então <span class="math inline">\(\mathbf{U}, \mathbf{D}\)</span> e <span class="math inline">\(\mathbf{V}\)</span> são <span class="math inline">\(n \times n\)</span>.</li>
+<li>Se <span class="math inline">\(\mathbf{A}\)</span> é <span class="math inline">\(n \times p\)</span>, sendo <span class="math inline">\(n &gt; p\)</span>, então <span class="math inline">\(\mathbf{U}\)</span> é <span class="math inline">\(n \times p\)</span>, <span class="math inline">\(\mathbf{D}\)</span> e <span class="math inline">\(\mathbf{V}\)</span> são <span class="math inline">\(p \times p\)</span>.</li>
+<li>Se <span class="math inline">\(\mathbf{A}\)</span> é <span class="math inline">\(n \times p\)</span>, sendo <span class="math inline">\(n &lt; p\)</span>, então <span class="math inline">\(\mathbf{V}^{\top}\)</span> é <span class="math inline">\(n \times p\)</span>, <span class="math inline">\(\mathbf{D}\)</span> e <span class="math inline">\(\mathbf{U}\)</span> são <span class="math inline">\(n \times n\)</span>.</li>
+<li><span class="math inline">\(\mathbf{D}\)</span> será sempre quadrada com dimensão igual ao mínimo entre <span class="math inline">\(p\)</span> e <span class="math inline">\(n\)</span>.</li>
+</ul>
+<p>Em <code>R</code> a obtenção da decomposição em valores singulares está implementada na função <code>svd()</code>, conforme ilustrado no Código 2.24.</p>
+<p><strong>Código 2.24</strong> Decomposição em valores singulares.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb142"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb142-1"><a href="#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="fu">svd</span>(A)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$d
+[1] 1.9342162 0.8726419 0.1931419
+
+$u
+           [,1]       [,2]        [,3]
+[1,] -0.6712373  0.1815663  0.71866142
+[2,] -0.6507744  0.3198152 -0.68862977
+[3,] -0.3548708 -0.9299204 -0.09651322
+
+$v
+           [,1]       [,2]        [,3]
+[1,] -0.6712373  0.1815663  0.71866142
+[2,] -0.6507744  0.3198152 -0.68862977
+[3,] -0.3548708 -0.9299204 -0.09651322</code></pre>
+</div>
+</div>
+</section>
+<section id="regressão-ridge" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="regressão-ridge"><span class="header-section-number">2.6</span> Regressão ridge</h2>
+<p>Para ilustrar a aplicação da decomposição em valores singulares em ciência de dados vamos considerar o modelo de <strong>regressão ridge</strong>. Relembre que na seção RLM2.2.7 nós escrevemos o modelo de regressão linear múltipla usando matrizes da seguinte forma:</p>
+<p><span class="math display">\[
+\underset{n\times 1}{\begin{bmatrix}
+y_1\\
+y_2\\
+\vdots \\
+y_n
+\end{bmatrix}} =
+\underset{n\times p}{\begin{bmatrix}
+1  &amp;  x_{11}  &amp;  \ldots  &amp;  x_{p1} \\
+1  &amp;  x_{12}  &amp;  \ldots  &amp;  x_{p1} \\
+\vdots  &amp;  \vdots   &amp;  \ddots  &amp;  \vdots \\
+1 &amp;  x_{1n}  &amp;  \ldots  &amp;  x_{pn}
+\end{bmatrix} }
+\underset{p \times 1}{
+\begin{bmatrix}
+\beta_0 \\
+\vdots \\
+\beta_p
+\end{bmatrix}
+}.
+\]</span></p>
+<p>Também, usamos a seguinte notação mais compacta,</p>
+<p><span class="math display">\[
+\underset{n \times 1}{\mathbf{y}} = \underset{n \times p }{\mathbf{X}} \underset{p\times 1}{\boldsymbol{\beta}}.
+\]</span></p>
+<p>Vimos que o vetor <span class="math inline">\(\boldsymbol{\hat{\beta}}\)</span> que minimiza a perda quadrática é dado por</p>
+<p><span class="math display">\[
+\boldsymbol{\hat{\beta}} = (\mathbf{X}^{\top}\mathbf{X})^{-1}\mathbf{X}^{\top}\mathbf{y}.
+\]</span></p>
+<p>Note a importância do termo <span class="math inline">\((\mathbf{X}^{\top}\mathbf{X})^{-1}\)</span> para a obtenção da solução. Vimos também que para calcular a inversa de uma matriz ela precisa ser não-singular. Neste caso sempre que <span class="math inline">\(n &gt; p\)</span> a matriz <span class="math inline">\(\mathbf{X}^{\top}\mathbf{X}\)</span> será não-singular. Porém, existem situações práticas em ciência de dados em que <span class="math inline">\(n &lt; p\)</span>, ou seja, temos mais covariáveis do que observações na base de dados. Este é o tipo de problema comumente chamado de <em>high dimensional data</em>. Neste caso, o sistema gerado será singular, ou seja, tem múltiplas soluções. Porém, ainda gostaríamos de ajustar um modelo similar ao modelo de regressão linear múltipla.</p>
+<p>Para superar o problema de <span class="math inline">\(n &lt; p\)</span> é comum introduzir uma penalização pela complexidade na soma de quadrados. A soma de quadrados penalizada é dada por:</p>
+<p><span class="math display">\[
+PSQ(\boldsymbol{\beta}) = \sum_{i=1}^n (y_i - \boldsymbol{x}_i^{\top} \boldsymbol{\beta})^2 + \lambda \sum_{j = 1}^p \beta_j^2.
+\]</span></p>
+<p>Matricialmente, tem-se</p>
+<p><span class="math display">\[
+PSQ(\boldsymbol{\beta}) = (\boldsymbol{y} - \mathbf{X} \boldsymbol{\beta})^{\top}(\boldsymbol{y} - \mathbf{X} \boldsymbol{\beta}) + \lambda \boldsymbol{\beta}^{\top} \boldsymbol{\beta}.
+\]</span></p>
+<p><strong>IMPORTANTE</strong> Na soma de quadrados penalizada <span class="math inline">\(\boldsymbol{y}\)</span> deve estar centrado na média ou o intercepto do modelo não deve ser penalizado. E a matriz <span class="math inline">\(\mathbf{X}\)</span> deve estar padronizada por coluna, o que implica que cada coluna deve ter média zero e variância um.</p>
+<p>Nosso objetivo é minimizar a soma de quadrados penalizada e vamos proceder usando a mesma estratégia da Seção 2.2.7. Começamos obtendo a derivada da soma de quadrados penalizada em relação a <span class="math inline">\(\boldsymbol{\beta}\)</span></p>
+<p><span class="math display">\[
+\begin{eqnarray*}
+\frac{\partial PQS(\boldsymbol{\beta})}{\partial \boldsymbol{\beta}}  &amp; = &amp;  \frac{\partial}{\partial \boldsymbol{\beta}}  \left [  (\boldsymbol{y} - \mathbf{X} \boldsymbol{\beta} )^{\top} (\boldsymbol{y} - \mathbf{X} \boldsymbol{\beta} ) + \lambda \boldsymbol{\beta}^{\top}\boldsymbol{\beta} \right ] \\
+  &amp; = &amp;  \left [ \frac{\partial}{\partial \boldsymbol{\beta}} (\boldsymbol{y} - \mathbf{X} \boldsymbol{\beta} )^{\top}  \right ] (\boldsymbol{y} - \mathbf{X} \boldsymbol{\beta} ) +
+    (\boldsymbol{y} - \mathbf{X} \boldsymbol{\beta} )^{\top} \left [ \frac{\partial}{\partial \boldsymbol{\beta}} (\boldsymbol{y} - \mathbf{X} \boldsymbol{\beta} )  \right ] \\  &amp; + &amp;   \lambda \left\{ \left [  \frac{\partial \boldsymbol{\beta}^{\top}}{\partial \boldsymbol{\beta}}\right ]\boldsymbol{\beta} +  \boldsymbol{\beta}^{\top}  \left [  \frac{\partial \boldsymbol{\beta}}{\partial \boldsymbol{\beta}}\right ] \right\}\\
+   &amp; = &amp;  -2 \mathbf{X}^{\top} (\boldsymbol{y} - \mathbf{X}\boldsymbol{\beta}) + 2 \lambda \boldsymbol{\beta} \\
+   &amp; = &amp;  -\mathbf{X}^{\top} (\boldsymbol{y} - \mathbf{X}\boldsymbol{\beta}) + \lambda \boldsymbol{\beta}.
+\end{eqnarray*}
+\]</span></p>
+<p>Resolvendo o sistema linear, tem-se</p>
+<p><span class="math display">\[
+\begin{eqnarray*}
+-\mathbf{X}^{\top}(\boldsymbol{y} - \mathbf{X}\boldsymbol{\hat{\beta} }) + \lambda \mathbf{I} \boldsymbol{\hat{\beta}}  &amp; = &amp;  \boldsymbol{0} \\
+-\mathbf{X}^{\top}\boldsymbol{y} + \mathbf{X}^{\top}\mathbf{X}\boldsymbol{\hat{\beta} } + \lambda \mathbf{I} \boldsymbol{\hat{\beta}}  &amp; = &amp;  \boldsymbol{0} \\
+\mathbf{X}^{\top}\mathbf{X}\boldsymbol{\hat{\beta} } + \lambda \mathbf{I} \boldsymbol{\hat{\beta}}  &amp; = &amp;  \mathbf{X}^{\top}\boldsymbol{y} \\
+  \left( \mathbf{X}^{\top}\mathbf{X} + \lambda \mathbf{I} \right )\boldsymbol{\hat{\beta} }  &amp; = &amp;  \mathbf{X}^{\top}\boldsymbol{y} \\
+  \boldsymbol{\hat{\beta} }  &amp; = &amp;  \left( \mathbf{X}^{\top}\mathbf{X} + \lambda \mathbf{I} \right )^{-1}\mathbf{X}^{\top}\boldsymbol{y}.
+\end{eqnarray*}
+\]</span></p>
+<p>Note que a solução depende de <span class="math inline">\(\lambda\)</span> e que foi a inclusão de <span class="math inline">\(\lambda\)</span> que tornou o sistema não-singular. Pode-se interpretar que quando fixamos o <span class="math inline">\(\lambda\)</span> selecionamos uma solução particular.</p>
+<p>Um aspecto que está subjacente é que matrizes que são diagonais dominantes permitem inversa. Note que <span class="math inline">\(\mathbf{X}^{\top} \mathbf{X}\)</span> não é diagonal dominante no caso em que <span class="math inline">\(n &lt; p\)</span>. Porém, se simplesmente somarmos uma certa quantidade positiva na diagonal de <span class="math inline">\(\mathbf{X}^{\top}\mathbf{X}\)</span> ela será diagonal dominante e portanto permitirá inversa. Apesar de parecer uma solução <em>ad hoc</em>, como mostrado, essa solução tem uma forte fundamentação matemática baseada em uma soma de quadrados penalizada.</p>
+<p>Calcular <span class="math inline">\(\boldsymbol{\hat{\beta}}\)</span> envolve a inversão de uma matrix <span class="math inline">\(p \times p\)</span> potencialmente grande</p>
+<p><span class="math display">\[
+\boldsymbol{\hat{\beta}} = \left( \mathbf{X}^{\top}\mathbf{X} + \lambda \mathbf{I} \right )^{-1}\mathbf{X}^{\top}\boldsymbol{y}.
+\]</span></p>
+<p>Para obter esta inversa podemos usar a decomposição em valores singulares. Lembre-se que a decomposição em valores singulares, fatora a matriz <span class="math inline">\(\mathbf{X}\)</span> da seguinte forma:</p>
+<p><span class="math display">\[
+\mathbf{X} = \mathbf{U} \mathbf{D} \mathbf{V}^{\top}.
+\]</span></p>
+<p>Substituindo na Equação para <span class="math inline">\(\boldsymbol{\hat{\beta}}\)</span> é fácil mostrar que</p>
+<p><span class="math display">\[
+\begin{equation}
+\boldsymbol{\hat{\beta}} = \mathbf{V} \mathrm{diag}\left ( \frac{d_j}{d_j^2 + \lambda} \right ) \mathbf{U}^{\top} \boldsymbol{y}.
+  \tag{2.13}
+\end{equation}
+\]</span></p>
+<p>Importante notar que o valor de <span class="math inline">\(\lambda\)</span> é desconhecido e que a escolha de um valor ótimo para <span class="math inline">\(\lambda\)</span> não é uma tarefa fácil. É comum em termos práticos usar <strong>validação cruzada</strong>. A ideia básica é separar o conjunto de dados em dois: um chamado de treino e outro de teste. Ajusta-se o modelo no conjunto de treino com o valor de <span class="math inline">\(\lambda\)</span> fixado em algum valor e avalia-se alguma função perda no conjunto de teste. Este processo é repetido para diversos valores de <span class="math inline">\(\lambda\)</span> e escolhe-se aquele <span class="math inline">\(\lambda\)</span> que minimiza a função perda no conjunto de teste. Existem diversas versões do procedimento de validação cruzada. Porém, está fora do escopo deste livro discutir tais aspectos práticos. O que importa é notar que o sistema terá que ser resolvido para muitos valores de <span class="math inline">\(\lambda\)</span>.</p>
+<p>A princípio poderíamos usar a decomposição <span class="math inline">\(\mathbf{LU}\)</span> para resolver o sistema <span class="math inline">\((\mathbf{X}^{\top} \mathbf{X} + \lambda \mathbf{I}) \boldsymbol{\beta} = \mathbf{X}^{\top}\boldsymbol{y}\)</span>. Porém, teríamos que para cada valor de <span class="math inline">\(\lambda\)</span> resolver um novo sistema o que tornaria o problema computacionalmente caro e lento. Por outro lado, note que na Equação SVDREG(2.13) o valor de <span class="math inline">\(\lambda\)</span> aparece apenas no termo <span class="math inline">\(\mathrm{diag}\left ( \frac{d_j}{d_j^2 + \lambda} \right )\)</span> e portanto não afeta as matrizes <span class="math inline">\(\mathbf{V}\)</span> e <span class="math inline">\(\mathbf{U}\)</span> que são obtidas apenas uma vez independente do número de valores para <span class="math inline">\(\lambda\)</span>, o que torna o uso da decomposição em valores singulares bastante interessante neste contexto.</p>
+<p>Para ilustrar a implementação computacional do modelo de regressão ridge vamos simular um conjunto de dados com <span class="math inline">\(100\)</span> linhas (observações) e <span class="math inline">\(200\)</span> covariáveis. Para simular as covariáveis vamos usar a distribuição Normal com média zero e variância um. Se você não é familiar com a distribuição Normal, pense que é apenas uma forma de gerar dados artificiais. Para tornar o procedimento de simulação reproduzível vamos usar a função <code>set.seed()</code>. Outro aspecto importante é que a primeira coluna da matriz <span class="math inline">\(\mathbf{X}\)</span> deve ser uma coluna de <span class="math inline">\(1\)</span>s e portanto não deve ser centrada.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb144"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb144-1"><a href="#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fixa a semente para a simulação ser reproduzível</span></span>
+<span id="cb144-2"><a href="#cb144-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>) </span>
+<span id="cb144-3"><a href="#cb144-3" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="cn">NA</span>, <span class="at">ncol =</span> <span class="dv">200</span>, <span class="at">nrow =</span> <span class="dv">100</span>)</span>
+<span id="cb144-4"><a href="#cb144-4" aria-hidden="true" tabindex="-1"></a>X[,<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="co"># Intercepto</span></span>
+<span id="cb144-5"><a href="#cb144-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">200</span>) {</span>
+<span id="cb144-6"><a href="#cb144-6" aria-hidden="true" tabindex="-1"></a>  X[,i] <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb144-7"><a href="#cb144-7" aria-hidden="true" tabindex="-1"></a>  X[,i] <span class="ot">&lt;-</span> (X[,i] <span class="sc">-</span> <span class="fu">mean</span>(X[,i]))<span class="sc">/</span><span class="fu">var</span>(X[,i])</span>
+<span id="cb144-8"><a href="#cb144-8" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>O próximo passo para simular o conjunto de dados é fixar o vetor de parâmetros <span class="math inline">\(\boldsymbol{\beta}\)</span>. Como estamos em um exemplo de <em>high dimensional data</em> é comum a suposição que a solução seja esparsa. Isso significa que apenas alguns elementos do vetor <span class="math inline">\(\boldsymbol{\beta}\)</span> são diferentes de zero. Neste exemplo vamos fixar que os primeiros dez elementos de <span class="math inline">\(\boldsymbol{\beta}\)</span> sejam diferentes de zero assumindo valores entre 5 e 10 de forma uniforme.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb145"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb145-1"><a href="#cb145-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb145-2"><a href="#cb145-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Gerando o vetor de beta's</span></span>
+<span id="cb145-3"><a href="#cb145-3" aria-hidden="true" tabindex="-1"></a>beta <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">runif</span>(<span class="dv">9</span>, <span class="at">min =</span> <span class="dv">5</span>, <span class="at">max =</span> <span class="dv">10</span>), <span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">190</span>))</span>
+<span id="cb145-4"><a href="#cb145-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Média da distribuição Normal</span></span>
+<span id="cb145-5"><a href="#cb145-5" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> X<span class="sc">%*%</span>beta</span>
+<span id="cb145-6"><a href="#cb145-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Gerando as observações</span></span>
+<span id="cb145-7"><a href="#cb145-7" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean =</span> mu, <span class="at">sd =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Podemos agora usar o nosso procedimento para estimar os coeficientes de regressão.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb146"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb146-1"><a href="#cb146-1" aria-hidden="true" tabindex="-1"></a>X_svd <span class="ot">&lt;-</span> <span class="fu">svd</span>(X) <span class="co"># Decomposição svd</span></span>
+<span id="cb146-2"><a href="#cb146-2" aria-hidden="true" tabindex="-1"></a>lambda <span class="ot">=</span> <span class="fl">0.1</span> <span class="co"># Penalização</span></span>
+<span id="cb146-3"><a href="#cb146-3" aria-hidden="true" tabindex="-1"></a>DD <span class="ot">&lt;-</span> <span class="fu">Diagonal</span>(<span class="dv">100</span>, X_svd<span class="sc">$</span>d<span class="sc">/</span>(X_svd<span class="sc">$</span>d<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> lambda))</span>
+<span id="cb146-4"><a href="#cb146-4" aria-hidden="true" tabindex="-1"></a>DD[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb146-5"><a href="#cb146-5" aria-hidden="true" tabindex="-1"></a>beta_hat <span class="ot">=</span> <span class="fu">as.numeric</span>(X_svd<span class="sc">$</span>v<span class="sc">%*%</span>DD<span class="sc">%*%</span><span class="fu">t</span>(X_svd<span class="sc">$</span>u)<span class="sc">%*%</span>y)</span>
+<span id="cb146-6"><a href="#cb146-6" aria-hidden="true" tabindex="-1"></a>beta_hat[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] -0.141227  2.877692  4.457781  3.639234  2.051478  3.333452  5.026439
+ [8]  3.340764  5.784538  1.860069</code></pre>
+</div>
+</div>
+<p>Para verificar a qualidade do nosso procedimento comparamos os valores simulados com os estimados via regressão ridge.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-1" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./img/ridge-1.png" class="img-fluid figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.1: Parâmetros de regressão versus suas estimativas obtidas via regressão ridge.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Os resultados da Figura 2.1 mostram que a regressão ridge teve sucesso em identificar boa parte dos coeficientes diferentes de zero. No entanto, parece que a penalização precisa ser melhor especificada. O leitor pode verificar o efeito de diferentes valores de <span class="math inline">\(\lambda\)</span> e tamanhos de amostra nas estimativas. Desta forma, terminamos a nossa pequena incursão no mundo da Álgebra Matricial.</p>
+</section>
+<section id="referências-bibliográficas" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="referências-bibliográficas"><span class="header-section-number">2.7</span> 2.7 Referências bibliográficas</h2>
+<p>Novamente, como inspiração para estruturar o capítulo foram usados livros básicos de matemática aplicada à economia e administração tais como Dowling (1984) e Leithold (1988). Para as seções de solução de sistemas lineares e decomposições matriciais as principais referências consultadas foram Gilat and Subramaniam (2009) e Rencher and Schaalje (2008).</p>
+</section>
+<section id="exercícios" class="level2" data-number="2.8">
+<h2 data-number="2.8" class="anchored" data-anchor-id="exercícios"><span class="header-section-number">2.8</span> 2.8 Exercícios</h2>
+<p>Os exercícios deste livro são na forma de tutoriais interativos.</p>
+<p>Acesse <a href=".\Exercicios.qmd">Exercícios Álgebra Matricial</a>.</p>
+
+
 </section>
 
 </main> <!-- /main -->

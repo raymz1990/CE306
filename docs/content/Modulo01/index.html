@@ -239,7 +239,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../content/Modulo02/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Cálculo Diferencial e Integral para Cientista de Dados</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Álgebra Matricial</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -267,6 +267,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="../../content/Modulo01/Exercicios/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Cálculo Diferencial e Integral para Cientista de Dados</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/Modulo02/Exercicios/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Algebra Matricial</span></span></a>
   </div>
 </li>
       </ul>
@@ -911,13 +917,39 @@ Figure&nbsp;1.10: Exemplos de gráficos de funções: (A) potência (a = 2); (B)
 <p>Se uma função <span class="math inline">\(f(x)\)</span> se aproxima de um número <span class="math inline">\(L\)</span> conforme <span class="math inline">\(x\)</span> tende a um número <span class="math inline">\(a\)</span> vindo da direita ou da esquerda, dizemos que o limite de <span class="math inline">\(f(x)\)</span> tende a <span class="math inline">\(L\)</span> quando <span class="math inline">\(x\)</span> tende a <span class="math inline">\(a\)</span>.</p>
 </div>
 </div>
-Usaremos a notação <span class="math display">\[\lim_{x \to a } f(x) = f(a) = L.\]</span> O limite pode não existir, mas se existir será único. Vamos ver um exemplo trivial, considere o limite <span class="math display">\[\lim_{x \to 1} (x + 1) = 2.\]</span> Graficamente temos ```{r out.width=“80%”, echo=FALSE} #| label: fig-18 #| fig-cap: knitr::include_graphics(“./img/plotSQmu-1.png”)” id=“fig:lim1”&gt; <img src="MDSRbook_files/figure-html/lim1-1.png" alt="Ilustração de limite - Trivial." width="576">
-<p class="caption">
-</p><p><a href="fig-1">Figura 1.1</a>1: Ilustração de limite - Trivial.</p>
-::: Considere o limite <span class="math display">\[\lim_{x \to 1} \frac{x^2 - 1}{x-1} = ?\]</span> Note que neste caso tomando <span class="math inline">\(x = 1\)</span> nos leva a uma divisão por zero. Graficamente, temos ```{r out.width=“80%”, echo=FALSE} #| label: fig-18 #| fig-cap: knitr::include_graphics(“./img/plotSQmu-1.png”)” id=“fig:lim2”&gt; <img src="MDSRbook_files/figure-html/lim2-1.png" alt="Ilustração de limite - Não trivial" width="576">
-<p class="caption">
-</p><p><a href="fig-1">Figura 1.1</a>2: Ilustração de limite - Não trivial</p>
-<p>::: No entanto, podemos manipular a equação de modo que <span class="math display">\[\lim_{x \to 1} \frac{x^2 - 1}{x-1} =  \lim_{x \to 1} \frac{(x+1)(x-1)}{x-1} = \lim_{x \to 1} (x+1) = 2. \]</span> O que nos leva a <strong>definição intuitiva de limite.</strong></p>
+<p>Usaremos a notação <span class="math display">\[\lim_{x \to a } f(x) = f(a) = L.\]</span> O limite pode não existir, mas se existir será único. Vamos ver um exemplo trivial, considere o limite <span class="math display">\[\lim_{x \to 1} (x + 1) = 2.\]</span> Graficamente temos</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-11" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./img/lim1-1.png" class="img-fluid figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1.11: Ilustração de limite - Trivial
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Considere o limite</p>
+<p><span class="math display">\[\lim_{x \to 1} \frac{x^2 - 1}{x-1} = ?\]</span></p>
+<p>Note que neste caso tomando <span class="math inline">\(x = 1\)</span> nos leva a uma divisão por zero. Graficamente, temos</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-12" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./img/lim2-1.png" class="img-fluid figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1.12: Ilustração de limite - Não trivial
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>No entanto, podemos manipular a equação de modo que <span class="math display">\[\lim_{x \to 1} \frac{x^2 - 1}{x-1} =  \lim_{x \to 1} \frac{(x+1)(x-1)}{x-1} = \lim_{x \to 1} (x+1) = 2. \]</span> O que nos leva a <strong>definição intuitiva de limite.</strong></p>
 <div class="callout callout-style-simple callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -946,19 +978,29 @@ Usaremos a notação <span class="math display">\[\lim_{x \to a } f(x) = f(a) = 
 <p>1.<span class="math inline">\(f(a)\)</span> existe, 1.<span class="math inline">\(\lim_{x \to a} f(x)\)</span> existe e 1.<span class="math inline">\(\lim_{x \to a} f(x) = f(a).\)</span></p>
 </div>
 </div>
-Continuidade em termos práticos significa que pequenas variações na variável independente levam a pequenas variações na variável dependente. O <strong>Teorema do valor intermediário</strong> no diz que se a função <span class="math inline">\(f(x)\)</span> é contínua no intervalo fechado <span class="math inline">\([a,b]\)</span>, então existe pelo menos um número <span class="math inline">\(c\)</span> em <span class="math inline">\([a,b]\)</span> tal que <span class="math inline">\(f(c) = M\)</span>. A implicação direta desse teorema é que se <span class="math inline">\(f(x)\)</span> é contínua seu gráfico não contém salto vertical. Em geral podemos pensar em funções contínuas como sendo <strong>funções suaves.</strong> Considere a seguinte função não contínua em <span class="math inline">\(0\)</span>, cujo gráfico é apresentado na Figura <a href="CDI.html#fig:naocont">1.13. <span class="math display">\[\lim_{x \to 0} \frac{|x|}{x} = \left\{\begin{matrix}
+<p>Continuidade em termos práticos significa que pequenas variações na variável independente levam a pequenas variações na variável dependente. O <strong>Teorema do valor intermediário</strong> no diz que se a função <span class="math inline">\(f(x)\)</span> é contínua no intervalo fechado <span class="math inline">\([a,b]\)</span>, então existe pelo menos um número <span class="math inline">\(c\)</span> em <span class="math inline">\([a,b]\)</span> tal que <span class="math inline">\(f(c) = M\)</span>. A implicação direta desse teorema é que se <span class="math inline">\(f(x)\)</span> é contínua seu gráfico não contém salto vertical. Em geral podemos pensar em funções contínuas como sendo <strong>funções suaves.</strong> Considere a seguinte função não contínua em <span class="math inline">\(0\)</span>, cujo gráfico é apresentado na Figura 1.13.</p>
+<p><span class="math display">\[\lim_{x \to 0} \frac{|x|}{x} = \left\{\begin{matrix}
 -1 \quad x &lt; 0 \\
 1 \quad x &gt; 0.
-\end{matrix}\right. \]</span> ```{r out.width=“80%”, echo=FALSE} #| label: fig-18 #| fig-cap: knitr::include_graphics(“./img/plotSQmu-1.png”)” id=“fig:naocont”&gt; <img src="MDSRbook_files/figure-html/naocont-1.png" alt="Ilustração de função não contínua." width="576">
-<p class="caption">
-</p></a><p><a href="CDI.html#fig:naocont"></a><a href="fig-1">Figura 1.1</a>3: Ilustração de função não contínua.</p>
-<p>::: Para finalizar esta subseção, vejamos algumas propriedades importantes de limites que mostram que podemos operar com limites de forma muito similar ao que fazemos com escalares (números). Se <span class="math inline">\(\lim_{x \to p} f(x) = L_1\)</span> e <span class="math inline">\(\lim_{x \to p} g(x) = L_2\)</span>, então</p>
+\end{matrix}\right. \]</span></p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-13" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./img/naocont-1.png" class="img-fluid figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1.13: Ilustração de função não contínua.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Para finalizar esta subseção, vejamos algumas propriedades importantes de limites que mostram que podemos operar com limites de forma muito similar ao que fazemos com escalares (números). Se <span class="math inline">\(\lim_{x \to p} f(x) = L_1\)</span> e <span class="math inline">\(\lim_{x \to p} g(x) = L_2\)</span>, então</p>
 <p>1.O limite de uma soma é igual à soma dos limites das parcelas; <span class="math display">\[\lim_{x \to p}[f(x) + g(x)] = \lim_{x \to p}f(x) + \lim_{x \to p} g(x) = L_1 + L_2.\]</span> 1.Uma constante <span class="math inline">\(k\)</span> pode sair do limite sem alterar a solução; <span class="math display">\[\lim_{x \to p} k f(x) = k \lim_{x \to p} f(x) = k L_1.\]</span> 1.O limite de um produto é igual ao produto dos limites; <span class="math display">\[\lim_{x \to p} f(x)g(x) =  \lim_{x \to p} f(x) \lim_{x \to p} g(x) = L_1 L_2.\]</span> 1.O limite da razão é a razão dos limites, desde que o denominador não seja zero; <span class="math display">\[\lim_{x \to p} \frac{f(x)}{g(x)} = \frac{L_1}{L_2},\]</span> desde que <span class="math inline">\(L_2 \neq 0\)</span>.</p>
-Nesta subseção dois importantes conceitos foram apresentados, o de limite e de continuidade de uma função. Ambos serão úteis para definirmos a derivada de uma função, assunto da próxima seção. ::: :::
-<div id="derivadas" class="section level2" number="1.2">
-
-
-</div></section>
+<p>Nesta subseção dois importantes conceitos foram apresentados, o de limite e de continuidade de uma função. Ambos serão úteis para definirmos a derivada de uma função, assunto da próxima seção.</p>
+</section>
 </section>
 <section id="derivadas" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="derivadas"><span class="header-section-number">1.2</span> Derivadas</h2>
@@ -1010,19 +1052,11 @@ f^{\prime}(x) &amp; =&amp;  -2x.
 <li>Se <span class="math inline">\(f(x) = \exp(x)\)</span> então <span class="math inline">\(f^{\prime}(x) = \exp(x)\)</span>.</li>
 <li>Se <span class="math inline">\(f(x) = \ln(x)\)</span> então <span class="math inline">\(f^{\prime}(x) = \frac{1}{x}, x &gt; 0\)</span>.</li>
 </ol>
-<<<<<<< HEAD
-<p>Sendo, <span class="math inline">\(f(x)\)</span> e <span class="math inline">\(g(x)\)</span> deriváveis em <span class="math inline">\(x\)</span> e <span class="math inline">\(c\)</span> uma constante. Então, as funções <span class="math inline">\(f(x) + g(x)\)</span>, <span class="math inline">\(c f(x)\)</span>, <span class="math inline">\(f(x) \times g(x)\)</span> e <span class="math inline">\(\frac{f(x)}{g(x)}\)</span> são deriváveis em <span class="math inline">\(x\)</span> e têm-se</p>
-<ol start="7" type="1">
-<li><span class="math inline">\((f + g)^{\prime} = f^{\prime}(x) + g^{\prime}(x)\)</span>.</li>
-<li><span class="math inline">\((c f)^{\prime}(x) = c f^{\prime}(x)\)</span>.</li>
-<li><span class="math inline">\((f \times g)^{\prime}(x) = f^{\prime}(x) g(x) + f(x) g^{\prime}(x)\)</span>.</li>
-=======
 <p>Sendo, <span class="math inline">\(f(x)\)</span> e <span class="math inline">\(g(x)\)</span> deriváveis em <span class="math inline">\(x\)</span> e <span class="math inline">\(c\)</span> uma constante. Então, as funções <span class="math inline">\(f(x) + g(x)\)</span>, <span class="math inline">\(c f(x)\)</span>, <span class="math inline">\(f(x) \cdot g(x)\)</span> e <span class="math inline">\(\frac{f(x)}{g(x)}\)</span> são deriváveis em <span class="math inline">\(x\)</span> e têm-se</p>
 <ol start="7" type="1">
 <li><span class="math inline">\((f + g)^{\prime} = f^{\prime}(x) + g^{\prime}(x)\)</span>.</li>
 <li><span class="math inline">\((c f)^{\prime}(x) = c f^{\prime}(x)\)</span>.</li>
 <li><span class="math inline">\((f \cdot g)^{\prime}(x) = f^{\prime}(x) g(x) + f(x) g^{\prime}(x)\)</span>.</li>
->>>>>>> 72567408e572dd6a90ba165db246bee6b5c7a655
 <li><span class="math inline">\((\frac{f}{g})^{\prime}(x) = \frac{f^{\prime}(x) g(x) - f(x) g^{\prime}(x)}{[g(x)]^2}.\)</span></li>
 </ol>
 <p>Vamos fazer alguns exemplos ilustrativos.</p>
@@ -1042,11 +1076,7 @@ f^{\prime}(x) &amp; =&amp;  -2x.
 <pre><code>5 * (3 * x^2)/(4 * x + 3) - (5 * x^3) * 4/(4 * x + 3)^2</code></pre>
 </div>
 </div>
-<<<<<<< HEAD
 <p>Primeiro vamos chamar de <span class="math inline">\(f(x) = 5 x^3\)</span> e <span class="math inline">\(g(x) = 4x + 3\)</span>. Agora podemos derivar cada uma destas funções em relação a <span class="math inline">\(x\)</span>, ou seja, <span class="math inline">\(f^{\prime}(x) = 3 \times 5 \times x^{3-1} = 15 x^2.\)</span> De forma, similar temos <span class="math inline">\(g^{\prime}(x) = 4.\)</span> Agora usando a regra 10, temos <span class="math inline">\((\frac{f}{g})^{\prime}(x) = \frac{(15x^2)(4x+3) - (5x^3) (4) }{(4x + 3)^2} = \frac{15x^2}{(4x+3)} - \frac{20x^3}{(4x + 3)}.\)</span></p>
-=======
-<p>Primeiro vamos chamar de <span class="math inline">\(f(x) = 5 x^3\)</span> e <span class="math inline">\(g(x) = 4x + 3\)</span>. Agora podemos derivar cada uma destas funções em relação a <span class="math inline">\(x\)</span>, ou seja, <span class="math inline">\(f^{\prime}(x) = 3 \cdot 5 \cdot x^{3-1} = 15 x^2.\)</span> De forma, similar temos <span class="math inline">\(g^{\prime}(x) = 4.\)</span> Agora usando a regra 10, temos <span class="math inline">\((\frac{f}{g})^{\prime}(x) = \frac{(15x^2)(4x+3) - (5x^3) (4) }{(4x + 3)^2} = \frac{15x^2}{(4x+3)} - \frac{20x^3}{(4x + 3)}.\)</span></p>
->>>>>>> 72567408e572dd6a90ba165db246bee6b5c7a655
 <p>Interessante notar que os números da expressão resultante da chamada da função <code>D()</code> são também tratados como símbolos, e portanto o <code>R</code> não faz as multiplicações usuais, por exemplo, no numerador o valor <span class="math inline">\(5\)</span> não foi multiplicado pelo <span class="math inline">\(3\)</span> para resultar em <span class="math inline">\(15x^2\)</span>, como fizemos manualmente.</p>
 <p>Em diversas situações podemos ter o desafio de calcular a derivada de uma função composta por outra função. Para ilustrar essa ideia, suponha que em um algoritmo computacional, <span class="math inline">\(C\)</span> seja o custo total de realizar <span class="math inline">\(s\)</span> tarefas, então <span class="math inline">\(C = f(s).\)</span> Além disso, suponha que <span class="math inline">\(s\)</span> tarefas sejam realizadas durante os <span class="math inline">\(t\)</span> segundos desde o início da execução do algoritmo, então <span class="math inline">\(s = g(t)\)</span>. Se conhecermos a derivada de <span class="math inline">\(s\)</span> em relação a <span class="math inline">\(t\)</span>, ou seja, a taxa de variação do número de tarefas realizadas em <span class="math inline">\(t\)</span> segundos, também podemos determinar a derivada de <span class="math inline">\(C\)</span> em relação a <span class="math inline">\(t\)</span>, que representa a taxa de variação do custo total do algoritmo em um determinado intervalo de tempo. Note que <span class="math inline">\(C\)</span> é implicitamente determinado por <span class="math inline">\(t\)</span> através de <span class="math inline">\(g(t)\)</span>. Para calcular a derivada de <span class="math inline">\(C\)</span> em relação a <span class="math inline">\(t\)</span>, usamos uma regra importante chamada de <strong>regra da cadeia</strong>.</p>
 <p>Sejam <span class="math inline">\(y = f(x)\)</span> e <span class="math inline">\(x = g(t)\)</span> duas funções deriváveis, com <span class="math inline">\(I \in D\)</span>. A função composta <span class="math inline">\(h(t) = f(g(t))\)</span> é derivável, sendo</p>
@@ -1057,51 +1087,45 @@ f^{\prime}(x) &amp; =&amp;  -2x.
 <p><span class="math display">\[s = 3 t^2 + 50 t.\]</span></p>
 <p>Determine a taxa de variação do custo total de execução do algoritmo em relação ao tempo, <span class="math inline">\(2\)</span> segundos após o início da execução. :::</p>
 <p>Para este exemplo é interessante usarmos uma outra notação de derivada, que deixa explicito quem está sendo derivado em relação a quem. Desejamos, encontrar a derivada de <span class="math inline">\(C\)</span> em relação a <span class="math inline">\(t\)</span>, que vamos denotar por <span class="math inline">\(\frac{d C}{d t}\)</span> quando <span class="math inline">\(t = 2\)</span>. Usando a regra da cadeia, tem-se</p>
-<p><span class="math display">\[\begin{equation}
-<<<<<<< HEAD
-  \frac{d C}{ dt} = \frac{d C}{d s} \times \frac{d s}{dt}.
-=======
-  \frac{d C}{ dt} = \frac{d C}{d s} \cdot \frac{d s}{dt}.
->>>>>>> 72567408e572dd6a90ba165db246bee6b5c7a655
-  \tag{1.1}
+<p><span class="math display">\[
+\begin{equation}
+\frac{d C}{ dt} = \frac{d C}{d s} \times \frac{d s}{dt}.
+\tag{1.1}
 \end{equation}
-\]</span> Usando as regras de derivação já apresentadas, tem-se</p>
+\]</span></p>
+<p>Usando as regras de derivação já apresentadas, tem-se</p>
 <p><span class="math display">\[\begin{equation}
   \frac{d C}{d s} = \frac{1}{2}s + 2.
   \tag{1.2}
-\end{equation}\]</span> De forma similar,</p>
-<p><span class="math display">\[\begin{equation}
+\end{equation}
+\]</span></p>
+<p>De forma similar,</p>
+<p><span class="math display">\[
+\begin{equation}
   \frac{d s}{d t} = 6t + 50.
   \tag{1.3}
-\end{equation}\]</span></p>
+\end{equation}
+\]</span></p>
 <p>Combinando as equações (1.2) e (1.3) com (1.1), temos</p>
 <p><span class="math display">\[\begin{equation}
   \frac{d C}{ dt} = \left( \frac{1}{2}s + 2 \right)(6t + 50).
   \tag{1.4}
 \end{equation}\]</span></p>
 <p>Para avaliar no ponto <span class="math inline">\(t = 2\)</span>, lembre-se que</p>
-<<<<<<< HEAD
 <p><span class="math display">\[s = 3 t^2 + 50t \to s = 3\ctimes(2^2) + 50 \times 2 = 112.\]</span></p>
 <p>Substituindo, na expressão (1.4), tem-se</p>
-<p><span class="math display">\[ \frac{d C}{ dt}|_{t=2} = \left( \frac{1}{2}s + 2 \right)(6t + 50) =  \left(\frac{1}{2}(112) + 2\right)(6\times 2 + 50) = (58)\ctimes( 62) = 3596.\]</span></p>
-=======
-<p><span class="math display">\[s = 3 t^2 + 50t \to s = 3\cdot(2^2) + 50 \cdot 2 = 112.\]</span></p>
-<p>Substituindo, na expressão (1.4), tem-se</p>
-<p><span class="math display">\[ \frac{d C}{ dt}|_{t=2} = \left( \frac{1}{2}s + 2 \right)(6t + 50) =  \left(\frac{1}{2}(112) + 2\right)(6\cdot 2 + 50) = (58)\cdot( 62) = 3596.\]</span></p>
->>>>>>> 72567408e572dd6a90ba165db246bee6b5c7a655
+<p><span class="math display">\[
+\frac{d C}{ dt}|_{t=2} = \left( \frac{1}{2}s + 2 \right)(6t + 50) =  \left(\frac{1}{2}(112) + 2\right)(6\times 2 + 50) = (58)\ctimes( 62) = 3596.
+\]</span></p>
 <p>Assim podemos dizer que <span class="math inline">\(2\)</span> segundos após o início da execução do algoritmo o custo computacional está aumentando a uma taxa de <span class="math inline">\(3596\)</span> unidades de processamento.</p>
 </section>
 <section id="derivadas-de-ordem-superior" class="level3" data-number="1.2.3">
 <h3 data-number="1.2.3" class="anchored" data-anchor-id="derivadas-de-ordem-superior"><span class="header-section-number">1.2.3</span> Derivadas de ordem superior</h3>
 <p>Dada uma função <span class="math inline">\(f(x)\)</span> a derivada <span class="math inline">\(f^{\prime}(x)\)</span> é também chamada de derivada de primeira ordem e mede a variação da função original ou <strong>primitiva</strong>. A derivada de segunda ordem denotada por <span class="math inline">\(f^{\prime \prime}(x)\)</span> mede a taxa de variação da primeira derivada. De forma análoga, a derivada de terceira ordem <span class="math inline">\(f^{\prime \prime \prime}(x)\)</span> mede a taxa de variação da segunda derivada e assim por diante até a <span class="math inline">\(n-\)</span>ésima derivada. As derivadas de ordem superior são obtidas pela aplicação das regras de diferenciação na derivada de ordem imediatamente inferior. Em termos de notação é comum encontrar <span class="math inline">\(\frac{d^n y}{d x^n}\)</span> que é interpretada como a <span class="math inline">\(n-\)</span>ésima derivada de <span class="math inline">\(y\)</span> em relação a <span class="math inline">\(x\)</span>.</p>
-<<<<<<< HEAD
 <p><strong>Example 1.6</strong> Obtenha a derivada de ordem até <span class="math inline">\(5\)</span> da função <span class="math inline">\(y = 2x^4 + 5 x^3 + 2 x^2\)</span>.</p>
 <p>Usando as regras de derivação 2 e 7, temos</p>
 <p><span class="math inline">\(\frac{d y}{d x} = 8 x^3 + 15 x^2 + 4 x\)</span>, <span class="math inline">\(\frac{d^2 y}{d x^2} = 24x^2 + 30x + 4\)</span>, <span class="math inline">\(\frac{d^3 y}{d x^3} = 48 x + 30\)</span>, <span class="math inline">\(\frac{d^4 y}{d x^4} = 48\)</span> e <span class="math inline">\(\frac{d^5 y}{d x^5} = 0\)</span>.</p>
 <p>Neste caso, todas as derivadas de ordem superior a <span class="math inline">\(4\)</span> são zero.</p>
-=======
-<p><strong>Example 1.6</strong> Obtenha a derivada de ordem até <span class="math inline">\(5\)</span> da função <span class="math inline">\(y = 2x^4 + 5 x^3 + 2 x^2\)</span>. ::: Usando as regras de derivação 2 e 7, temos <span class="math inline">\(\frac{d y}{d x} = 8 x^3 + 15 x^2 + 4 x\)</span>, <span class="math inline">\(\frac{d^2 y}{d x^2} = 24x^2 + 30x + 4\)</span>, <span class="math inline">\(\frac{d^3 y}{d x^3} = 48 x + 30\)</span>, <span class="math inline">\(\frac{d^4 y}{d x^4} = 48\)</span> e <span class="math inline">\(\frac{d^5 y}{d x^5} = 0\)</span>. Neste caso, todas as derivadas de ordem superior a <span class="math inline">\(4\)</span> são zero. :::</p>
->>>>>>> 72567408e572dd6a90ba165db246bee6b5c7a655
 </section>
 <section id="importância-da-derivada" class="level3" data-number="1.2.4">
 <h3 data-number="1.2.4" class="anchored" data-anchor-id="importância-da-derivada"><span class="header-section-number">1.2.4</span> Importância da derivada</h3>
@@ -1141,7 +1165,7 @@ f^{\prime}(x) &amp; =&amp;  -2x.
 <img src="./img/maxmin-1.png" class="img-fluid figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1.11: Ilustração de máximo/mínimo relativos.
+Figure&nbsp;1.14: Ilustração de máximo/mínimo relativos.
 </figcaption>
 </figure>
 </div>
@@ -1168,7 +1192,7 @@ f^{\prime}(x) &amp; =&amp;  -2x.
 <img src="./img/retatangente-1.png" class="img-fluid figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-15-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1.12: Ilustração de uma função com a reta tangente a pontos distintos.
+Figure&nbsp;1.15: Ilustração de uma função com a reta tangente a pontos distintos.
 </figcaption>
 </figure>
 </div>
@@ -1253,7 +1277,7 @@ y &amp; =&amp;  a^2 - 2ax.
 <img src="index_files/figure-html/fig-16-1.png" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-16-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1.13: Ilustração de uma função com a reta tangente em pontos distintos.
+Figure&nbsp;1.16: Ilustração de uma função com a reta tangente em pontos distintos.
 </figcaption>
 </figure>
 </div>
@@ -1282,7 +1306,7 @@ Figure&nbsp;1.13: Ilustração de uma função com a reta tangente em pontos dis
 <img src="./img/noextremo-1.png" class="img-fluid figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-17-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1.14: Ilustração de uma função onde derivada zero não é ponto extremo.
+Figure&nbsp;1.17: Ilustração de uma função onde derivada zero não é ponto extremo.
 </figcaption>
 </figure>
 </div>
@@ -1375,7 +1399,7 @@ Figure&nbsp;1.14: Ilustração de uma função onde derivada zero não é ponto 
 <img src="./img/plotSQmu-1.png" class="img-fluid figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-18-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1.15: Diagrama de dispersão e função perda quadrática para os dados do exemplo sobre o tempo de entrega de produtos.
+Figure&nbsp;1.18: Diagrama de dispersão e função perda quadrática para os dados do exemplo sobre o tempo de entrega de produtos.
 </figcaption>
 </figure>
 </div>
@@ -1391,7 +1415,7 @@ Figure&nbsp;1.15: Diagrama de dispersão e função perda quadrática para os da
 <img src="./img/plotSQmu-1.png" class="img-fluid figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-19-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1.16: Resumo do processo de minimização da função perda quadrática.
+Figure&nbsp;1.19: Resumo do processo de minimização da função perda quadrática.
 </figcaption>
 </figure>
 </div>
@@ -1430,8 +1454,8 @@ n \hat{\mu} &amp; =&amp;  \sum_{i=1}^n y_i \\
 <li>Será que existe algum procedimento mais geral que leva à obtenção destas medidas resumo?</li>
 </ol>
 <p>Nós descrevemos todo o procedimento em termos da construção e obtenção da medida resumo. Veremos ao longo deste livro que praticamente todos os modelos populares em ciências de dados seguem o mesmo procedimento utilizado para encontrar a média como uma medida resumo ótima. O procedimento consiste em:</p>
-<p>I. Especificar um modelo, ou seja, uma descrição simplificada da realidade. No exemplo, nós usamos o modelo mais simples possível que admite que as observações podem ser resumidas por meio de apenas um número ou parâmetro. Porém, em termos mais gerais o modelo vai depender de muitos parâmetros.</p>
-<ol start="2" type="I">
+<ol type="i">
+<li><p>Especificar um modelo, ou seja, uma descrição simplificada da realidade. No exemplo, nós usamos o modelo mais simples possível que admite que as observações podem ser resumidas por meio de apenas um número ou parâmetro. Porém, em termos mais gerais o modelo vai depender de muitos parâmetros.</p></li>
 <li><p>Especificar uma função perda. Em nosso exemplo usamos a função perda quadrática, porém como já mencionado outras opções estão disponíveis na literatura e veremos mais sobre isso no decorrer do livro. A função perda nada mais é que uma forma de medir a distância entre o modelo proposto e os dados observados.</p></li>
 <li><p>Treinar o modelo ou estimar o valor dos parâmetros do modelo. Este passo consiste em minimizar alguma noção de distância entre os dados observados, ou seja, <span class="math inline">\(y_i\)</span> e o modelo proposto. Para isso, alteramos o valor dos parâmetros do modelo para torná-lo o mais próximo possível dos dados. A distância é medida por meio da função perda.</p></li>
 </ol>
@@ -1524,7 +1548,7 @@ n \hat{\mu} &amp; =&amp;  \sum_{i=1}^n y_i \\
 <img src="./img/super2d-1.png" class="img-fluid figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-20-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1.17: Representação bidimensional de uma função com suas curvas de nível.
+Figure&nbsp;1.20: Representação bidimensional de uma função com suas curvas de nível.
 </figcaption>
 </figure>
 </div>
@@ -1539,7 +1563,7 @@ Figure&nbsp;1.17: Representação bidimensional de uma função com suas curvas 
 <img src="./img/persp2d-1.png" class="img-fluid figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-21-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1.18: Representação bidimensional de uma função usando gráfico de perspectiva.
+Figure&nbsp;1.21: Representação bidimensional de uma função usando gráfico de perspectiva.
 </figcaption>
 </figure>
 </div>
@@ -1574,21 +1598,12 @@ Figure&nbsp;1.18: Representação bidimensional de uma função usando gráfico 
 -3x_2 &amp; =&amp;  9 - 12x_1 \\
 x_2 &amp; =&amp;  4x_1 - 3.
 \end{align}\]</span></p>
-<<<<<<< HEAD
 <p>Agora substituímos <span class="math inline">\(x_2 = 4x_1 - 3\)</span> na Equação (1.8) e obtemos</p>
 <p><span class="math display">\[\begin{align}
 -3x_1 + 10x_2 &amp; = &amp;  7 \\
 -3x_1 + 10(4x_1 - 3) &amp; = &amp;  7 \\
 -3x_1 + 40x_1 -30 &amp; = &amp;  7 \\
 37x_1 &amp; = &amp;  37 \\
-=======
-<p>Agora substituímos <span class="math inline">\(x_2 = 4x_1 - 3\)</span> na Equação <a href="CDI.html#eq:derivparcialx2">(1.8) e obtemos</a></p><a href="CDI.html#eq:derivparcialx2">
-<p><span class="math display">\[\begin{align}
--3x_1 + 10x_2 &amp; =&amp;  7 \\
--3x_1 + 10(4x_1 - 3) &amp; =&amp;  7 \\
--3x_1 + 40x_1 -30 &amp; =&amp;  7 \\
-37x_1 &amp; =&amp;  37 \\
->>>>>>> 72567408e572dd6a90ba165db246bee6b5c7a655
 x_1 = 1.
 \end{align}\]</span></p>
 <p>Por fim, sabemos que <span class="math inline">\(x_2 = 4x_1 - 3\)</span>, e portanto <span class="math inline">\(x_2 = 4 - 3 = 1\)</span>. Assim, chegamos que <span class="math inline">\(x_1 = 1\)</span> e <span class="math inline">\(x_2 = 1\)</span>.</p>
@@ -1610,7 +1625,6 @@ x_1 = 1.
 <p>Assim, temos que</p>
 <p><span class="math display">\[\begin{align}
 \frac{\partial^2 y}{\partial x_1^2} \frac{\partial^2 y}{\partial x_2^2} &amp; &gt;&amp;  \left( \frac{\partial^2 y}{\partial x_1 x_2} \right)^2 \\
-<<<<<<< HEAD
 12 \times 10 &amp; &gt;&amp;  (-3)^2 \\
 120 &gt; 9.
 \end{align}\]</span></p>
@@ -1635,21 +1649,6 @@ x_1 = 1.
 </div>
 </div>
 <p>A <a href="#def-116">definição 1.16</a> se estende naturalmente para funções com mais do que duas variáveis independentes. Neste caso a função é denotada por <span class="math inline">\(f(\boldsymbol{x})\)</span> onde <span class="math inline">\(\boldsymbol{x}\)</span> é um vetor <span class="math inline">\(p \times 1\)</span> de variáveis independentes o <strong>vetor gradiente</strong> de <span class="math inline">\(f(\boldsymbol{x})\)</span> é dado por</p>
-=======
-12 \cdot 10 &amp; &gt;&amp;  (-3)^2 \\
-120 &gt; 9.
-\end{align}\]</span></p>
-<p>Assim, concluímos que a função está em um ponto de mínimo quando examinada de todas as direções, e não apenas em relação aos eixos principais.</p>
-</a></section><a href="CDI.html#eq:derivparcialx2">
-</a><section id="gradiente-e-hessiano" class="level3" data-number="1.2.7"><a href="CDI.html#eq:derivparcialx2">
-<h3 data-number="1.2.7" class="anchored" data-anchor-id="gradiente-e-hessiano"><span class="header-section-number">1.2.7</span> Gradiente e Hessiano</h3>
-<p>As derivadas de primeira e segunda ordem de uma função de múltiplas variáveis independentes aparecem com muita frequência em matemática e por isso receberam nomes especiais.</p>
-<p>::: {.callout-important appearance=“simple”} ## <strong>Definição 1.16</strong> {#def-116}</p>
-<p>O <strong>vetor gradiente</strong> de uma função <span class="math inline">\(f(x_1,x_2)\)</span> é o vetor composto pelas derivadas primeiras de <span class="math inline">\(f(x_1,x_2)\)</span> em relação a <span class="math inline">\(x_1\)</span> e <span class="math inline">\(x_2\)</span>, <span class="math display">\[
-\nabla f(x_1,x_2) = \left ( \frac{\partial f(x_1,x_2)}{\partial x_1}, \frac{\partial f(x_1,x_2)}{\partial x_2} \right )^{\top}.
-\]</span></p>
-</a><p><a href="CDI.html#eq:derivparcialx2">A </a><a href="#def-116">definição 1.16</a> se estende naturalmente para funções com mais do que duas variáveis independentes. Neste caso a função é denotada por <span class="math inline">\(f(\boldsymbol{x})\)</span> onde <span class="math inline">\(\boldsymbol{x}\)</span> é um vetor <span class="math inline">\(p \times 1\)</span> de variáveis independentes o <strong>vetor gradiente</strong> de <span class="math inline">\(f(\boldsymbol{x})\)</span> é dado por</p>
->>>>>>> 72567408e572dd6a90ba165db246bee6b5c7a655
 <p><span class="math display">\[
 \nabla f(\boldsymbol{x}) = \left ( \frac{\partial f(\boldsymbol{x})}{\partial x_1}, \ldots, \frac{\partial f(\boldsymbol{x})}{\partial x_p} \right )^{\top}.
 \]</span></p>
@@ -1687,23 +1686,13 @@ x_1 = 1.
 <p>Em diversas situações em ciência de dados é comum nos depararmos com funções difíceis de lidar, seja matematica ou computacionalmente. Em tais situações é natural pensar em fazer algum tipo de aproximação da função de interesse por uma mais simples de lidar.</p>
 <p>O núcleo das técnicas de ciência de dados dizem respeito às ferramentas de <strong>inferência estatística</strong> e <strong>métodos numéricos</strong>. Nestes campos geralmente vamos lidar com funções bastante complicadas, mas que podem ser aproximadas por funções mais simples, em geral funções quadráticas (polinômios de segunda ordem).</p>
 <p>É neste contexto que aparece o que chamamos de <strong>expansões em Séries de Taylor</strong>. Isso nada mais é do que aproximar uma função <span class="math inline">\(f(x)\)</span> por uma função mais simples: um polinômio de grau a ser definido pela ordem da aproximação. Suponha que uma função <span class="math inline">\(f(x)\)</span> é derivável <span class="math inline">\((n+1)\)</span> vezes em um intervalo contendo um ponto <span class="math inline">\(x=x_0\)</span>. A expansão em <strong>Série de Taylor</strong> de <span class="math inline">\(f(x)\)</span> em torno do ponto <span class="math inline">\(x=x_0\)</span> consiste em reescrever <span class="math inline">\(f(x)\)</span> da seguinte forma:</p>
-<<<<<<< HEAD
 <p><span class="math display">\[
 \begin{align}
-=======
-<p>$$ <span class="math display">\[\begin{equation}
->>>>>>> 72567408e572dd6a90ba165db246bee6b5c7a655
 f(x) = f(x_0) + (x - x_0) \frac{d f(x)}{dx} |_{x=x_0} + \frac{(x-x_0)^2}{2!} \frac{d^2 f(x)}{dx^2}|_{x=x0} + \\
-
 \frac{(x-x_0)^3}{3!} \frac{d^3 f(x)}{dx^3}|_{x=x_0} + \ldots + \frac{(x-x_0)^n}{n!} \frac{d^n f(x)}{dx^n}|_{x=x_0} + R_n(x)
-<<<<<<< HEAD
 \tag{1.9}  
 \end{align}
 \]</span></p>
-=======
-  \tag{1.9}  
-\end{equation}\]</span> $$</p>
->>>>>>> 72567408e572dd6a90ba165db246bee6b5c7a655
 <p>onde o termo <span class="math inline">\(R_n(x)\)</span> é chamado de resíduo ou erro, e dado por</p>
 <p><span class="math display">\[
 R_n(x) = \frac{(x-x_0)^{n+1}}{(n+1)!} \frac{d^{n+1} f(x)}{d x^{n+1}}|_{x= \epsilon}
@@ -1746,7 +1735,7 @@ P_2(x) &amp; =&amp;  f(x = 0) + f^{\prime}(x = 0)(x - 0) + \frac{f^{\prime \prim
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-55-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-58-1.png" class="img-fluid figure-img" width="672"></p>
 <figcaption>Ilustração da aproximação em Séries de Taylor de primeira e segunda ordem da função exponencial ao redor de zero.</figcaption>
 </figure>
 </div>
@@ -1760,7 +1749,6 @@ P_2(x) &amp; =&amp;  f(x = 0) + f^{\prime}(x = 0)(x - 0) + \frac{f^{\prime \prim
 <p>O objetivo de um modelo de regressão linear simples é descrever o comportamento de uma variável dependente, digamos <span class="math inline">\(y\)</span> por meio do conhecimento de uma variável independente <span class="math inline">\(x\)</span>. Descrever o comportamento de <span class="math inline">\(y\)</span> pode ser útil para <strong>predizer</strong> valores de futuras observações de <span class="math inline">\(y\)</span> ou quantificar o efeito de <span class="math inline">\(x\)</span> em <span class="math inline">\(y\)</span>. Apenas baseado nesta informação já é possível notar a semelhança do objetivo deste modelo com a construção de uma função. Na literatura especializada a variável dependente é também chamada de <strong>variável resposta</strong>, <strong>variável de saída</strong>, <strong>target</strong>, entre outros. Enquanto que a variável independente é também chamada de <strong>covariável</strong>, <strong>variável explanatória</strong>, <strong>variável explicativa</strong> ou ainda <strong>variável de entrada</strong> entre outros.</p>
 <p>Para ilustrar a construção do modelo de regressão linear simples considere que o objetivo é verificar como o tamanho (em metros quadrados) de um apartamento em uma região homogênea de uma cidade está associado ao valor (em reais) deste apartamento. Suponha que um conjunto de <span class="math inline">\(20\)</span> apartamentos foi visitado, medido e avaliado por um profissional da área imobiliária. O conjunto de dados está disponível como material suplementar na página do livro. Abaixo são apresentadas apenas as seis primeiras observações, enquanto que na Figura 1.23 é apresentado um diagrama de dispersão do tamanho em metros quadrados (eixo <span class="math inline">\(x\)</span>) e o valor em reais do apartamento (eixo <span class="math inline">\(y\)</span>).</p>
 <blockquote class="blockquote">
-<<<<<<< HEAD
 <p><code>##        y  x</code></p>
 <p><code>## 1 207318 55</code></p>
 <p><code>## 2 250846 69</code></p>
@@ -1768,9 +1756,6 @@ P_2(x) &amp; =&amp;  f(x = 0) + f^{\prime}(x = 0)(x - 0) + \frac{f^{\prime \prim
 <p><code>## 4 219817 61</code></p>
 <p><code>## 5 268582 73</code></p>
 <p><code>## 6 229060 63</code></p>
-=======
-<p><code>##        y  x ## 1 207318 55 ## 2 250846 69 ## 3 165755 46 ## 4 219817 61 ## 5 268582 73 ## 6 229060 63</code></p>
->>>>>>> 72567408e572dd6a90ba165db246bee6b5c7a655
 </blockquote>
 <div class="cell">
 <div class="cell-output-display">
@@ -1780,7 +1765,7 @@ P_2(x) &amp; =&amp;  f(x = 0) + f^{\prime}(x = 0)(x - 0) + \frac{f^{\prime \prim
 <img src="./img/reglinear-1.png" class="img-fluid figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-23-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1.19: Diagrama de dispersão relacionando preço do apartamento como função do tamanho do apartamento em metros quadrados.
+Figure&nbsp;1.22: Diagrama de dispersão relacionando preço do apartamento como função do tamanho do apartamento em metros quadrados.
 </figcaption>
 </figure>
 </div>
@@ -1899,7 +1884,7 @@ c(beta0, beta1)</code></pre>
 <img src="./img/reglinear2-1.png" class="img-fluid figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-24-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1.20: Diagrama de dispersão relacionando preço do apartamento como função do tamanho do apartamento em metros quadrados e reta de regressão ajustada.
+Figure&nbsp;1.23: Diagrama de dispersão relacionando preço do apartamento como função do tamanho do apartamento em metros quadrados e reta de regressão ajustada.
 </figcaption>
 </figure>
 </div>
@@ -1909,11 +1894,7 @@ Figure&nbsp;1.20: Diagrama de dispersão relacionando preço do apartamento como
 <pre><code>fit &lt;- lm(y ~ x, data = dados)
 coef(fit)</code></pre>
 <p>Dada a simplicidade do modelo é também fácil interpretar os parâmetros estimados. O intercepto representa o preço de um apartamento de tamanho zero. O que óbviamente não tem sentido prático. No entanto, a inclinação (<span class="math inline">\(\beta_1\)</span>) representa o quanto é acrescido no preço do apartamento quando o seu tamanho aumenta em um metro quadrado.</p>
-<<<<<<< HEAD
 <p>Também podemos usar o modelo para predizer o preço aproximado de um imóvel. Por exemplo, em nossa base de dados não temos nenhum apartamento com <span class="math inline">\(80\)</span> metros quadrados. Um potencial interesse pode ser em predizer o valor aproximado de um apartamento desse tamanho. Assim, podemos facilmente usar o nosso modelo que diz que o preço aproximado <span class="math inline">\(\hat{y}\)</span> de um apartamento é dado por <span class="math inline">\(\hat{y} = 2623 + 3608 \times x\)</span>. Substituindo <span class="math inline">\(x = 80\)</span> temos que o preço aproximado é de R<span class="math inline">\(\$ 291.263\)</span>.</p>
-=======
-<p>Também podemos usar o modelo para predizer o preço aproximado de um imóvel. Por exemplo, em nossa base de dados não temos nenhum apartamento com <span class="math inline">\(80\)</span> metros quadrados. Um potencial interesse pode ser em predizer o valor aproximado de um apartamento desse tamanho. Assim, podemos facilmente usar o nosso modelo que diz que o preço aproximado <span class="math inline">\(\hat{y}\)</span> de um apartamento é dado por <span class="math inline">\(\hat{y} = 2623 + 3608 \cdot x\)</span>. Substituindo <span class="math inline">\(x = 80\)</span> temos que o preço aproximado é de R<span class="math inline">\(\$ 291.263\)</span>.</p>
->>>>>>> 72567408e572dd6a90ba165db246bee6b5c7a655
 <p>É claro que o modelo não irá predizer o valor exato do apartamento. Isso acontece porque temos apenas uma aproximação de primeira ordem da verdadeira função <span class="math inline">\(f^*(x)\)</span> que relaciona o tamanho com o preço. Uma opção é incluir mais termos na aproximação para obter uma forma de relacionamento mais flexível. Acontece que em termos práticos, tal abordagem não é muito útil por pelo menos dois motivos:</p>
 <ol type="1">
 <li>O erro cometido pode ser pelo fato de existir outras características importantes para determinar o preço do apartamento que não foram levadas em consideração em nosso modelo. Neste caso, o efeito de tais características será absorvido pelo termo de erro. E mesmo aumentando a ordem de aproximação o erro do modelo não apresentará um grande decréscimo.</li>
@@ -1970,7 +1951,7 @@ coef(fit)</code></pre>
 <img src="./img/integralilus-1.png" class="img-fluid figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-25-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1.21: Ilustração de função para o cálculo de área abaixo de uma curva.
+Figure&nbsp;1.24: Ilustração de função para o cálculo de área abaixo de uma curva.
 </figcaption>
 </figure>
 </div>
@@ -1990,7 +1971,7 @@ Figure&nbsp;1.21: Ilustração de função para o cálculo de área abaixo de um
 <img src="./img/integralilus2-1.png" class="img-fluid figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-26-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1.22: Ilustração da soma de Riemann.
+Figure&nbsp;1.25: Ilustração da soma de Riemann.
 </figcaption>
 </figure>
 </div>
@@ -2043,7 +2024,7 @@ Figure&nbsp;1.22: Ilustração da soma de Riemann.
 <img src="./img/Riemann2-1.png" class="img-fluid figure-img" style="width:80.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-27-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1.23: Ilustração da soma de Riemann.
+Figure&nbsp;1.26: Ilustração da soma de Riemann.
 </figcaption>
 </figure>
 </div>
@@ -2482,8 +2463,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../content/Modulo02/index.html" class="pagination-link" aria-label="<span class='chapter-number'>2</span>&nbsp; <span class='chapter-title'>Cálculo Diferencial e Integral para Cientista de Dados</span>">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Cálculo Diferencial e Integral para Cientista de Dados</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../content/Modulo02/index.html" class="pagination-link" aria-label="<span class='chapter-number'>2</span>&nbsp; <span class='chapter-title'>Álgebra Matricial</span>">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Álgebra Matricial</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
