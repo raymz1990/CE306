@@ -2222,10 +2222,10 @@ knitr::include_graphics("./img/ridge-1.png")
 
 Os resultados da Figura 2.1 mostram que a regressão ridge teve sucesso em identificar boa parte dos coeficientes diferentes de zero. No entanto, parece que a penalização precisa ser melhor especificada. O leitor pode verificar o efeito de diferentes valores de $\lambda$ e tamanhos de amostra nas estimativas. Desta forma, terminamos a nossa pequena incursão no mundo da Álgebra Matricial.
 
-## 2.7 Referências bibliográficas
+## Referências bibliográficas
 Novamente, como inspiração para estruturar o capítulo foram usados livros básicos de matemática aplicada à economia e administração tais como Dowling (1984) e Leithold (1988). Para as seções de solução de sistemas lineares e decomposições matriciais as principais referências consultadas foram Gilat and Subramaniam (2009) e Rencher and Schaalje (2008).
 
-## 2.8 Exercícios
+## Exercícios
 Os exercícios deste livro são na forma de tutoriais interativos. 
 
 Acesse [Exercícios Álgebra Matricial](.\Exercicios.qmd).

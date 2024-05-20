@@ -48,6 +48,7 @@ book:
       chapters:
       - content/Modulo01/Exercicios/index.qmd
       - content/Modulo02/Exercicios/index.qmd
+      - content/Modulo03/Exercicios/index.qmd
 
   page-footer: 
     left: |
