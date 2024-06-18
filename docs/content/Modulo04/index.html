@@ -2,13 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.4.553">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2024-03-08">
 
-<title>CE306 - Instrumentação Matemática para Estatística - 4&nbsp; Função de Distribuição Empírica</title>
+<title>CE306 - Instrumentação Matemática para Estatística - 4&nbsp; Exemplos Integradores</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,6 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../content/Modulo01/Exercicios/index.html" rel="next">
 <link href="../../content/Modulo03/index.html" rel="prev">
 <link href="../../default_overview_image.jpg" rel="icon" type="image/jpeg">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
@@ -135,7 +135,7 @@ window.Quarto = {
 </script>
 
 <link rel="stylesheet" href="../../custom.css">
-<meta property="og:title" content="CE306 - Instrumentação Matemática para Estatística - 4&nbsp; Função de Distribuição Empírica">
+<meta property="og:title" content="CE306 - Instrumentação Matemática para Estatística - 4&nbsp; Exemplos Integradores">
 <meta property="og:description" content="Material da disciplina CE306 - Instrumentação Matemática para Estatística do curso de Estatística da Universidade Federal do Paraná (UFPR).">
 <meta property="og:image" content="default_overview_image.jpg">
 <meta property="og:site_name" content="CE306 - Instrumentação Matemática para Estatística">
@@ -150,7 +150,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/index.html">Prefácio</a></li><li class="breadcrumb-item"><a href="../../content/Modulo04/index.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Função de Distribuição Empírica</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/Modulo04/index.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Exemplos Integradores</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -224,10 +224,40 @@ window.Quarto = {
  <span class="menu-text">Apresentação</span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefácio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/Modulo01/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Cálculo Diferencial e Integral</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/Modulo02/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Álgebra Matricial</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/Modulo03/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Métodos numéricos</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/Modulo04/index.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Exemplos Integradores</span></span></a>
+  </div>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../content/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Prefácio</span></a>
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Exercicios</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -235,26 +265,20 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/Modulo01/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Estatística Não Paramétrica</span></span></a>
+  <a href="../../content/Modulo01/Exercicios/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Cálculo Diferencial e Integral para Cientista de Dados</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/Modulo02/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Estatísticas de Ordem</span></span></a>
+  <a href="../../content/Modulo02/Exercicios/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Algebra Matricial</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../content/Modulo03/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Estatística Não Paramétrica 2</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../content/Modulo04/index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Função de Distribuição Empírica</span></span></a>
+  <a href="../../content/Modulo03/Exercicios/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Métodos numéricos</span></span></a>
   </div>
 </li>
       </ul>
@@ -269,16 +293,27 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#exercícios" id="toc-exercícios" class="nav-link active" data-scroll-target="#exercícios"><span class="header-section-number">4.1</span> Exercícios</a></li>
+  <li><a href="#construindo-um-classificador-binário" id="toc-construindo-um-classificador-binário" class="nav-link active" data-scroll-target="#construindo-um-classificador-binário"><span class="header-section-number">4.1</span> Construindo um classificador binário</a>
+  <ul class="collapse">
+  <li><a href="#descrição-do-problema" id="toc-descrição-do-problema" class="nav-link" data-scroll-target="#descrição-do-problema"><span class="header-section-number">4.1.1</span> Descrição do problema</a></li>
+  <li><a href="#função-perda-quadrática-para-variáveis-binárias" id="toc-função-perda-quadrática-para-variáveis-binárias" class="nav-link" data-scroll-target="#função-perda-quadrática-para-variáveis-binárias"><span class="header-section-number">4.1.2</span> Função perda quadrática para variáveis binárias</a></li>
+  <li><a href="#melhorando-o-modelo" id="toc-melhorando-o-modelo" class="nav-link" data-scroll-target="#melhorando-o-modelo"><span class="header-section-number">4.1.3</span> Melhorando o modelo</a></li>
+  <li><a href="#melhorando-a-função-objetivo" id="toc-melhorando-a-função-objetivo" class="nav-link" data-scroll-target="#melhorando-a-função-objetivo"><span class="header-section-number">4.1.4</span> Melhorando a função objetivo</a></li>
+  <li><a href="#melhorando-o-algoritmo-de-ajuste" id="toc-melhorando-o-algoritmo-de-ajuste" class="nav-link" data-scroll-target="#melhorando-o-algoritmo-de-ajuste"><span class="header-section-number">4.1.5</span> Melhorando o algoritmo de ajuste</a></li>
+  </ul></li>
+  <li><a href="#clusterização-usando-kmeans" id="toc-clusterização-usando-kmeans" class="nav-link" data-scroll-target="#clusterização-usando-kmeans"><span class="header-section-number">4.2</span> Clusterização usando <em>kmeans</em></a></li>
+  <li><a href="#redes-neurais-artificiais" id="toc-redes-neurais-artificiais" class="nav-link" data-scroll-target="#redes-neurais-artificiais"><span class="header-section-number">4.3</span> Redes neurais artificiais</a></li>
+  <li><a href="#projeto-integrador" id="toc-projeto-integrador" class="nav-link" data-scroll-target="#projeto-integrador"><span class="header-section-number">4.4</span> Projeto integrador</a></li>
+  <li><a href="#referências-bibliográficas" id="toc-referências-bibliográficas" class="nav-link" data-scroll-target="#referências-bibliográficas"><span class="header-section-number">4.5</span> Referências Bibliográficas</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://raymz1990.github.io/CE313/edit/main/book/content/Modulo04/index.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://raymz1990.github.io/CE313/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/index.html">Prefácio</a></li><li class="breadcrumb-item"><a href="../../content/Modulo04/index.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Função de Distribuição Empírica</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Função de Distribuição Empírica</span></h1>
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Exemplos Integradores</span></h1>
 </div>
 
 
@@ -286,12 +321,6 @@ window.Quarto = {
 <div class="quarto-title-meta">
 
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">March 8, 2024</p>
-    </div>
-  </div>
   
     
   </div>
@@ -301,153 +330,1041 @@ window.Quarto = {
 </header>
 
 
-<p>Começamos com o problema de estimar uma função de distribuição acumulada. Seja</p>
-<p><span class="math display">\[X_1,\cdots, X_n\sim F\]</span> onde <span class="math inline">\(F(x) = P(X\leq x)\)</span> é uma função de distribuição na reta real. Estimamos <span class="math inline">\(F\)</span> com a função de distribuição empírica.</p>
-<p>A função de distribuição empírica <span class="math inline">\(\widehat{F}_n\)</span> é a função de distribuição que coloca peso <span class="math inline">\(1/n\)</span> em cada ponto de dados <span class="math inline">\(X_i\)</span>. Formalmente,</p>
-<p><span class="math display">\[
-\widehat{F}_n(x) = \dfrac{1}{n}\sum_{i=1}^n \pmb{I}(X_i\leq x),
-\]</span></p>
-<p>para <span class="math inline">\(x\in\mathbb{R}\)</span>, sendo que</p>
-<p><span class="math display">\[
-    \pmb{I}(x)=\left\{
-        \begin{array}{lc} 1, &amp; \mbox{se } X_i\leq x \\
-        0, &amp; \mbox{se } X_i &gt; x\end{array}\right.\cdot
-\]</span></p>
-<p><strong>Exemplo 1: Dados do nervo.</strong></p>
-<p>Cox and Lewis (1966) relataram 799 tempos de espera entre pulsos sucessivos ao longo de uma fibra nervosa. A figura abaixo mostra os dados e a função de distribuição empírica <span class="math inline">\(\widehat{F}_n\)</span>.</p>
+<p>Neste Capítulo vamos apresentar a construção detalhada de três técnicas populares em ciência de dados: regressão logística, clusterização usando o algoritmo <em>kmeans</em> e redes neurais artificiais. O objetivo é mostrar que apesar das técnicas serem diferentes todas seguem as mesmas premissas e são apenas representações matemáticas para diferentes tipos de problemas. De forma geral, todas são uma certa combinação de funções que devem ser otimizadas em algum sentido. Importante ressaltar que o objetivo é apenas ilustrar como as diversas ferramentas matemáticas apresentadas no decorrer do livro são aplicadas simultaneamente e não no uso prático das respectivas técnicas.</p>
+<section id="construindo-um-classificador-binário" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="construindo-um-classificador-binário"><span class="header-section-number">4.1</span> Construindo um classificador binário</h2>
+<p>Classificadores binários são ferramentas populares em estatística e aprendizagem de máquina. O objetivo de um classificador é, como o nome já diz, classificar um indivíduo ou observação como pertencente a um entre dois grupos. Por exemplo, dado um certo conjunto de exames clínicos classificar um paciente como sadio ou doente. Dentre os vários classificadores, a regressão logística é um dos mais simples e populares e se aplica a uma variável de interesse (resposta) do tipo binária. As aplicações são as mais diversas possíveis cobrindo desde aplicações na indústria onde itens são classificados como conforme ou não-conforme até a medicina onde se estuda a presença ou ausência de uma certa doença e como ela se relaciona com hábitos de vida dos pacientes, tais como sexo, idade, tabagismo entre outros.</p>
+<p>O objetivo desta seção é discutir apenas os aspectos matemáticos relacionados à construção de um classificador binário. Mais especificamente, vamos discutir como, a partir da ideia simples do modelo de regressão linear múltipla, podemos chegar ao modelo de regressão logística. Os aspectos práticos desta técnica não serão discutidos neste livro.</p>
+<p>A especificação e implementação do modelo de regressão logística envolve uma série de conhecimentos em métodos matemáticos que começam em funções, passando por cálculo diferencial onde a necessidade de resolver um sistema não-linear fica evidente. No processo de solução de sistemas não-lineares aparecem de forma proeminente operações com vetores, matrizes, obtenção de inversas e de forma mais geral a solução de sistemas lineares. Entretanto, todo o processo de ajuste ou treinamento do modelo pode ser descrito como um simples problema de programação não-linear.</p>
+<section id="descrição-do-problema" class="level3" data-number="4.1.1">
+<h3 data-number="4.1.1" class="anchored" data-anchor-id="descrição-do-problema"><span class="header-section-number">4.1.1</span> Descrição do problema</h3>
+<p>Suponha que temos um conjunto de observações <span class="math inline">\(y_i\)</span> com <span class="math inline">\(i = 1, \ldots, n\)</span> de uma variável de interesse do tipo binária, ou seja, <span class="math inline">\(y_i \in [0, 1]\)</span>. O objetivo pode ser descrever o relacionamento de <span class="math inline">\(y_i\)</span> com um conjunto de variáveis explanatórias, digamos <span class="math inline">\(\boldsymbol{x}_{ij}\)</span>, ou mesmo apenas classificar uma nova observação em um dos grupos <span class="math inline">\(0\)</span> ou <span class="math inline">\(1\)</span> de acordo com os valores das variáveis explanatórias.</p>
+<p>Como um exemplo de aplicação, suponha que temos um conjunto de dados com três colunas: renda do usuário (por mil), anos de experiência do usuário e se o usuário é assinante <em>premium</em> ou não. Nosso objetivo é descrever como as variáveis explanatórias (renda e anos de experiência do usuário) estão relacionados com o fato dele ser ou não um assinante <em>premium</em>. Uma vez identificado tal relacionamento, podemos usá-lo para predizer se um novo usuário será ou não assinante <em>premium</em>, bem como, identificar dentro da base, usuários que podem se interessar pela assinatura <em>premium</em>. O resultado também pode ser usado para orientar campanhas de marketing, entre outros. A base de dados é fornecida no arquivo <em>reg_log.txt</em> e as primeiras linhas são mostradas abaixo.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>nervo <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">"http://leg.ufpr.br/~lucambio/CE313/20241S/nerve.dat"</span>, <span class="at">header =</span> <span class="cn">FALSE</span>) </span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(nervo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="do">##   Premium Renda Anos</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="do">## 1       0  18.9    4</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="do">## 2       1  38.7    7</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="do">## 3       1  82.2    4</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="do">## 4       1  22.3    8</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 5       1  36.1    9</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 6       0  52.6    2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>    V1
-1 0.21
-2 0.03
-3 0.05
-4 0.11
-5 0.59
-6 0.06</code></pre>
 </div>
-</div>
+<p>Podemos visualizar os dados plotando as variáveis explanatórias e marcar com diferentes símbolos usuários <em>premium</em> e não <em>premium</em>.</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="fu">length</span>(nervo<span class="sc">$</span>V1)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>n</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 799</code></pre>
-</div>
-</div>
-<p>O seguinte exemplo mostra como obtermos a função de distribuição acumulada estimada ou empírica no <strong>R</strong>.</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>Fn <span class="ot">=</span> <span class="fu">ecdf</span>(nervo<span class="sc">$</span>V1)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">1</span>))</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Fn, <span class="at">verticals =</span> <span class="cn">TRUE</span>, <span class="at">do.points =</span> <span class="cn">FALSE</span>, <span class="at">lwd =</span> <span class="dv">2</span>, </span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Função de distribuição acumulada"</span>)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rug</span>(nervo<span class="sc">$</span>V1)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">grid</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="./img/unnamed-chunk-160-1.png" class="img-fluid figure-img" style="width:80.0%"></p>
 </figure>
 </div>
 </div>
 </div>
-<p><strong>FIGURA 1:</strong> Dados de uma fibra nervosa. Cada linha vertical representa um ponto de dados. A linha sólida é a função de distribuição empírica.</p>
-<p>O teorema a seguir fornece algumas propriedades de <span class="math inline">\(\widehat{F}_n\)</span></p>
-<p>::: {.callout-note appearance=“simple”} ## Teorema 4.1</p>
-<p>Seja <span class="math inline">\((_1,\cdots,X_n\)</span> uma amostra aleatória da distribuição <span class="math inline">\(F\)</span> e seja <span class="math inline">\(\widehat{F}_n\)</span> a função de distribuição empírica. Então</p>
-<ol type="1">
-<li><p>Para qualquer valor fixo <span class="math inline">\(x\in\mathbb{R}\)</span>, <span class="math display">\[
-\mbox{E}\Big(\widehat{F}_n(x) \Big)=F(x) \qquad \mbox{e} \qquad
-\mbox{Var}\Big(\widehat{F}_n(x) \Big)=\dfrac{F(x)(1-F(x))}{n}\cdot
-\]</span> Isto significa que <span class="math inline">\(\widehat{F}_n(x)\)</span> é consistente para <span class="math inline">\(F(x)\)</span>.</p></li>
-<li><p><strong>Teorema de Glivenco-Cantelli</strong> <span class="math display">\[
-\sup_x |\widehat{F}_n(x)-F(x) | \to 0, \quad \mbox{quase
-certamente}\cdot
-\]</span></p></li>
-<li><p><strong>Teorema desigualdade de Dvoretzky-Kiefer-Wolfowitz</strong></p></li>
-</ol>
+</section>
+<section id="função-perda-quadrática-para-variáveis-binárias" class="level3" data-number="4.1.2">
+<h3 data-number="4.1.2" class="anchored" data-anchor-id="função-perda-quadrática-para-variáveis-binárias"><span class="header-section-number">4.1.2</span> Função perda quadrática para variáveis binárias</h3>
+<p>A ideia de construir um classificador é similar ao modelo de regressão linear múltipla, ou seja, queremos minimizar uma certa distância entre os dados <span class="math inline">\(y_i\)</span> e nosso modelo linear <span class="math inline">\(\beta_0 + \beta_1 renda_i + \beta_2 anos_i\)</span>. Sendo assim, uma primeira tentativa óbvia é minimizar</p>
 <p><span class="math display">\[
-P\left ( \sup_x |\widehat{F}_n(x)-F(x) |&amp;gt;\epsilon\right) \leq
-2\mbox{e}^{-2n\epsilon^2}\quad \mbox{para algum  } \epsilon&amp;gt;0\cdot
+SQ(\boldsymbol{\beta}) = \sum_{i=1}^n (y_i - (\beta_0 + \beta_1 renda_i + \beta_2 anos_i))^2.
 \]</span></p>
-<p><strong>Demonstração.</strong></p>
-<p>A partir da desigualdade de Dvoretzky-Kiefer-Wolfowitz (DKW), podemos construir um conjunto de confiança. Seja <span class="math inline">\(\epsilon^2_n = \log(2/\alpha)/(2n)\)</span>, <span class="math inline">\(L(x) = \max\{\widehat{F}_n(x) - \epsilon_n,0\}\)</span> e <span class="math inline">\(U(x) = \min\{\widehat{F}_n(x) + \epsilon_n, 1\}\)</span>. Segue do item 3, no teorema acima, que para qualquer <span class="math inline">\(F\)</span>,</p>
-<p><span class="math display">\[
-P\Big( L(x)\leq F(x)\leq U(x) \quad \forall x\in\mathbb{R}\Big) \geq
-1-\alpha\cdot
-\]</span></p>
-<p>Assim, <span class="math inline">\(\big(L(x), U(x)\big)\)</span> é uma faixa de confiança não paramétrica com coeficiente de confiaça <span class="math inline">\(1-\alpha\)</span>. Existem faixas de confiança mais restritas, mas usamos a faixa DKW porque é simples. &lt;br&lt;</p>
-<p><strong>Exemplo 2: Intervalo de confiança.</strong></p>
-<p>Queremos obter uma banda de confiança para <span class="math inline">\(\widehat{F}_n\)</span> com nível de confiança <span class="math inline">\(\alpha=0.05\)</span>. Para isto utilizaremos a desigualdade DKW, no Teorema 1.</p>
-<p>Observemos que <span class="math display">\[
-\epsilon = \sqrt{\frac{1}{2n}\log\big( \frac{2}{0.05}\big)} = 0.048\cdot
-\]</span></p>
-<p>Encontremos os limites do intervalo de confiança.</p>
+<p>Isso pode ser feito facilmente em <code>R</code> uma vez que temos vários otimizadores numéricos disponíveis. O primeiro passo é escrever a função objetivo:</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>epsilon <span class="ot">=</span> <span class="fu">sqrt</span>(<span class="dv">1</span><span class="sc">/</span>(<span class="dv">2</span><span class="sc">*</span>n)<span class="sc">*</span><span class="fu">log</span>(<span class="dv">2</span><span class="sc">/</span><span class="fl">0.05</span>))</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>epsilon</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>f_ols <span class="ot">&lt;-</span> <span class="cf">function</span>(par, y, renda, anos) {</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  mu <span class="ot">&lt;-</span> par[<span class="dv">1</span>] <span class="sc">+</span> par[<span class="dv">2</span>]<span class="sc">*</span>renda <span class="sc">+</span> par[<span class="dv">3</span>]<span class="sc">*</span>anos</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  SQ <span class="ot">&lt;-</span> <span class="fu">sum</span>( (y <span class="sc">-</span> mu)<span class="sc">^</span><span class="dv">2</span> )</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(SQ)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.04804618</code></pre>
 </div>
-</div>
+<p>O segundo passo consiste em otimizar a função objetivo. Por simplicidade vamos usar um algoritmo numérico, porém lembre-se que neste caso temos expressões fechadas disponíveis.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>(<span class="fu">environment</span>(Fn))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>fit_ols <span class="ot">&lt;-</span> <span class="fu">optim</span>(<span class="at">par =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>), <span class="at">fn =</span> f_ols, <span class="at">y =</span> dados<span class="sc">$</span>Premium, </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">renda =</span> dados<span class="sc">$</span>Renda, <span class="at">anos =</span> dados<span class="sc">$</span>Anos)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "f"      "method" "na.rm"  "nobs"   "x"      "y"      "yleft"  "yright"</code></pre>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): objeto 'dados' não encontrado</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>fit_ols</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): objeto 'fit_ols' não encontrado</code></pre>
 </div>
 </div>
+<p>O algoritmo convergiu e forneceu o vetor de <span class="math inline">\(\beta\)</span>’s que minimiza a soma de quadrados. Podemos agora usar estes valores para predizer se um usuário é ou não <em>premium</em> dado sua renda e anos de experiência. Neste caso, apenas como exemplo vamos predizer os mesmos usuários que foram usados para ajustar/treinar o modelo. Note que isso também indica se o modelo tem um bom poder de predição. Entretanto, na prática, é mais usual separar a base em treino e teste e predizer os usuários na base teste. A predição é bastante simples: entramos com a renda e anos de estudo e saímos com uma predição para <span class="math inline">\(y_i\)</span>.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">get</span>(<span class="st">"y"</span>,<span class="fu">environment</span>(Fn))</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">get</span>(<span class="st">"x"</span>,<span class="fu">environment</span>(Fn))</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>L <span class="ot">=</span> <span class="fu">ifelse</span>(y<span class="sc">-</span>epsilon<span class="sc">&lt;</span><span class="dv">0</span>,<span class="dv">0</span>,y<span class="sc">-</span>epsilon)</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>U <span class="ot">=</span> <span class="fu">ifelse</span>(y<span class="sc">+</span>epsilon<span class="sc">&gt;</span><span class="dv">1</span>,<span class="dv">1</span>,y<span class="sc">+</span>epsilon)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>preditos <span class="ot">&lt;-</span> fit_ols<span class="sc">$</span>par[<span class="dv">1</span>] <span class="sc">+</span> fit_ols<span class="sc">$</span>par[<span class="dv">2</span>]<span class="sc">*</span>dados<span class="sc">$</span>Renda <span class="sc">+</span> fit_ols<span class="sc">$</span>par[<span class="dv">3</span>]<span class="sc">*</span>dados<span class="sc">$</span>Anos</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): objeto 'fit_ols' não encontrado</code></pre>
 </div>
-<p>Mostrando o gráfico resultante, ou seja, a função de distribuição empírica e a banda de confiança.</p>
+</div>
+<p>Vamos plotar os preditos contra os observados para verificar a performance do nosso modelo.</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">1</span>))</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Fn, <span class="at">verticals =</span> <span class="cn">TRUE</span>, <span class="at">do.points =</span> <span class="cn">FALSE</span>, <span class="at">lwd =</span> <span class="dv">2</span>, </span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Função de distribuição acumulada"</span>)</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">knots</span>(Fn),L,<span class="at">type=</span><span class="st">"b"</span>,<span class="at">pch=</span><span class="dv">19</span>,<span class="at">cex=</span><span class="fl">0.3</span>)</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">knots</span>(Fn),U,<span class="at">type=</span><span class="st">"b"</span>,<span class="at">pch=</span><span class="dv">19</span>,<span class="at">cex=</span><span class="fl">0.3</span>)</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="fu">rug</span>(nervo<span class="sc">$</span>V1)</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="fu">grid</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="./img/unnamed-chunk-164-1.png" class="img-fluid figure-img" style="width:80.0%"></p>
 </figure>
 </div>
 </div>
 </div>
-<p><strong>FIGURA 2:</strong> Dados de uma fibra nervosa. Cada linha vertical representa um ponto de dados. A linha sólida é a função de distribuição empírica. As linhas acima e abaixo da linha média representam uma faixa de confiança de 95%.</p>
-<section id="exercícios" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="exercícios"><span class="header-section-number">4.1</span> Exercícios</h2>
+<p>Apesar de ser possível, essa abordagem leva a algumas inconveniências. Por exemplo, o ideal seria que as previsões fossem <span class="math inline">\(0\)</span> ou <span class="math inline">\(1\)</span> refletindo se o novo usuário será ou não um assinante <em>premium</em>. No entanto, vimos que o modelo fornece preditos maiores que <span class="math inline">\(1\)</span> e pode potencialmente fornecer preditos negativos para usuários com pouca experiência e renda menor. Neste sentido, a interpretação do modelo não é clara e não reflete de forma fidedigna a realidade. Lembrando que um modelo nada mais é do que uma representação simplificada da realidade. Neste caso, parece que o nosso modelo está muito simplista e não reflete os aspectos da realidade de forma adequada. Porém, dadas as funções que estudamos no <strong>Capítulo 1</strong> podemos construir um modelo mais realista.</p>
+</section>
+<section id="melhorando-o-modelo" class="level3" data-number="4.1.3">
+<h3 data-number="4.1.3" class="anchored" data-anchor-id="melhorando-o-modelo"><span class="header-section-number">4.1.3</span> Melhorando o modelo</h3>
+<p>Uma vez que nosso modelo não parece uma aproximação razoável para a realidade, podemos tentar melhorá-lo fazendo com que aspectos práticos sejam levados em consideração. Note que se a previsão fosse restrita ao intervalo unitário poderíamos interpretar a previsão como uma medida de pertinência aos grupos, o que seria mais intuitivo. O que gostaríamos é que grandes valores de <span class="math inline">\(\hat{\beta}_0 + \hat{\beta}_1 renda_i + \hat{\beta}_2 anos_i\)</span> resultassem em valores próximos a <span class="math inline">\(1\)</span>. Da mesma forma, pequenos valores de <span class="math inline">\(\hat{\beta}_0 + \hat{\beta}_1 renda_i + \hat{\beta}_2 anos_i\)</span> devem resultar em valores próximos a <span class="math inline">\(0\)</span>. Para incluir em nosso modelo essa intuição podemos usar uma função matemática que tenha essa característica. O que precisamos é uma função que receba um número real qualquer e resulte em um número no intervalo unitário. Em outros termos, precisamos de uma função que tenha domínio sendo os números reais e tenha como imagem o intervalo unitário, ou seja, <span class="math inline">\(f(\cdot): \Re \to (0,1)\)</span>.</p>
+<p>Existem na literatura diversas funções que tem tal propriedade. Uma escolha popular é a função logística dada por:</p>
+<p><span class="math display">\[
+f(x) = \frac{1}{1+e^{-x}},
+\]</span></p>
+<p>cujo gráfico é apresentado abaixo.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/unnamed-chunk-165-1.png" class="img-fluid figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Com a função logística em mãos podemos reescrever nossa função objetivo como</p>
+<p><span class="math display">\[
+SQ_{logit}(\boldsymbol{\beta}) = \sum_{i=1}^n \left(y_i - \frac{1}{(1+ e^{-(\beta_0 + \beta_1 renda_i + \beta_2 anos_i)} )} \right)^2.
+\]</span></p>
+<p>Novamente, podemos facilmente otimizar essa função objetivo, ou seja, encontrar <span class="math inline">\(\beta_0\)</span>, <span class="math inline">\(\beta_1\)</span> e <span class="math inline">\(\beta_2\)</span> que tornam <span class="math inline">\(SQ_{logit}\)</span> o menor possível. Novamente escrevemos a função objetivo</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>f_logit <span class="ot">&lt;-</span> <span class="cf">function</span>(par, y, renda, anos) {</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  mu <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span> <span class="fu">exp</span>(<span class="sc">-</span> (par[<span class="dv">1</span>] <span class="sc">+</span> par[<span class="dv">2</span>]<span class="sc">*</span>renda <span class="sc">+</span> par[<span class="dv">3</span>]<span class="sc">*</span>anos)))</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  SQ_logit <span class="ot">&lt;-</span> <span class="fu">sum</span>( (y <span class="sc">-</span> mu)<span class="sc">^</span><span class="dv">2</span> )</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(SQ_logit)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Otimizamos numericamente.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>fit_logit_ols <span class="ot">&lt;-</span> <span class="fu">optim</span>(<span class="at">par =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>), <span class="at">fn =</span> f_logit, <span class="at">y =</span> dados<span class="sc">$</span>Premium, </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">renda =</span> dados<span class="sc">$</span>Renda, <span class="at">anos =</span> dados<span class="sc">$</span>Anos)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): objeto 'dados' não encontrado</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>fit_logit_ols</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): objeto 'fit_logit_ols' não encontrado</code></pre>
+</div>
+</div>
+<p>Plotando os preditos contra os observados.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/unnamed-chunk-168-1.png" class="img-fluid figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Neste caso fica claro que nosso modelo só prediz valores no intervalo unitário como gostaríamos. Claramente quanto maior é o preditor maior é a chance dos usuários serem do grupo <span class="math inline">\(1\)</span> como queríamos.</p>
+</section>
+<section id="melhorando-a-função-objetivo" class="level3" data-number="4.1.4">
+<h3 data-number="4.1.4" class="anchored" data-anchor-id="melhorando-a-função-objetivo"><span class="header-section-number">4.1.4</span> Melhorando a função objetivo</h3>
+<p>Apesar de melhor que a estratégia anterior, essa abordagem ainda faz uso da perda quadrática. Isso significa que assumimos que nossos erros são simétricos ao redor da curva ajustada, neste caso a logística. Entretanto, tal suposição não reflete o fato de que nas caudas da curva os erros não podem ser simétricos. Por exemplo, no extremo da cauda esquerda (baixa renda e pouca experiência) só podemos errar para mais, enquanto que no extremo da cauda direita só podemos errar para menos. Assim, seria interessante termos uma função objetivo que melhor represente nossa intuição.</p>
+<p>Para construir uma função objetivo que atenda a nossa intuição, podemos recorrer a uma distribuição de probabilidade adequada para dados binários. A distribuição Bernoulli modela variáveis aleatórias que podem assumir apenas dois valores: <span class="math inline">\(0\)</span> ou <span class="math inline">\(1\)</span>, sendo <span class="math inline">\(1\)</span> chamado de sucesso e <span class="math inline">\(0\)</span> de fracasso. A distribuição Bernoulli, tem a seguinte função de probabilidade</p>
+<p><span class="math display">\[
+\mathrm{P}(Y = y_i) = \mu^{y_i}(1-\mu)^{1-y_i},
+\]</span></p>
+<p>onde <span class="math inline">\(\mu\)</span> é a probabilidade de sucesso, ou seja, <span class="math inline">\(\mathrm{P}(Y = 1) = \mu\)</span>.</p>
+<p>Para um conjunto de <span class="math inline">\(n\)</span> observações, cada uma sendo binária, podemos usar o produto das funções de probabilidade como uma função objetivo a ser maximizada neste caso. Note que a função de probabilidade fornece a probabilidade da variável aleatória assumir um certo valor dado um valor para <span class="math inline">\(\mu\)</span>. Uma vez que temos os dados observados <span class="math inline">\(y_i\)</span>, a única quantidade desconhecida é o valor de <span class="math inline">\(\mu\)</span>. E a nossa função objetivo fornece a probabilidade de observar os dados realmente observados <span class="math inline">\(y_i\)</span> caso o valor do <span class="math inline">\(\mu\)</span> seja um valor fixado. O objetivo é encontrar <span class="math inline">\(\hat{\mu}\)</span> que maximize essa probabilidade, ou seja, de observar o que você realmente observou. Essa é a ideia por trás de um dos métodos mais populares e poderosos de estimação chamado método de máxima verossimilhança.</p>
+<p>Como <span class="math inline">\(\mu\)</span> é a probabilidade de sucesso, ou seja, o usuário ser assinante <em>premium</em>, podemos descrever tal probabilidade de acordo com as características dos usuários, neste caso renda e anos de experiência. Uma vez que <span class="math inline">\(\mu\)</span> é uma probabilidade só pode assumir valores no intervalo unitário, assim usando a função logística podemos descrever/modelar <span class="math inline">\(\mu\)</span> pela seguinte equação:</p>
+<p><span class="math display">\[
+\mu_i = \frac{1}{1+e^{-(\beta_0 + \beta_1 renda_i + \beta_2 anos_i)}}.
+\]</span></p>
+<p>Substituindo na equação acima chegamos a seguinte função objetivo <span class="math display">\[
+L(\boldsymbol{\beta}) = \prod_{i=1}^n \mu_i^{y_i}(1-\mu_i)^{1-y_i}.
+\]</span></p>
+<p>Entretanto, em termos computacionais usar o produto de números entre <span class="math inline">\(0\)</span> e <span class="math inline">\(1\)</span> é inconveniente, porque conforme o número de termos sendo multiplicado cresce a função objetivo vai rapidamente para zero. Assim, é mais conveniente computacionalmente usar o logaritmo do produto das funções de probabilidade o que resulta na seguinte função objetivo:</p>
+<p><span class="math display">\[
+l(\boldsymbol{\beta}) = \sum_{i=1}^n y_i \log(\mu_i) + (1-y_i)\log(1-\mu_i).
+\]</span></p>
+<p>Essa função objetivo reflete o fato dos erros não serem simétricos. Para finalizar, vamos implementar essa nova função objetivo e otimizá-la numéricamente. A função em <code>R</code> fica dada por</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>f_ber <span class="ot">&lt;-</span> <span class="cf">function</span>(par, y, renda, anos) {</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  eta <span class="ot">=</span> par[<span class="dv">1</span>] <span class="sc">+</span> par[<span class="dv">2</span>]<span class="sc">*</span>renda <span class="sc">+</span> par[<span class="dv">3</span>]<span class="sc">*</span>anos</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  mu <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(<span class="sc">-</span>eta))</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">sum</span>(y<span class="sc">*</span><span class="fu">log</span>(mu) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">-</span>y)<span class="sc">*</span><span class="fu">log</span>(<span class="dv">1</span><span class="sc">-</span>mu))</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(out)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Fazendo a otimização numericamente, temos</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>fit_ber <span class="ot">&lt;-</span> <span class="fu">optim</span>(<span class="at">par =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>), <span class="at">fn =</span> f_ber, <span class="at">y =</span> dados<span class="sc">$</span>Premium, </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">renda =</span> dados<span class="sc">$</span>Renda, <span class="at">anos =</span> dados<span class="sc">$</span>Anos, </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">control =</span> <span class="fu">list</span>(<span class="at">fnscale =</span> <span class="sc">-</span><span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): objeto 'dados' não encontrado</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>fit_ber</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): objeto 'fit_ber' não encontrado</code></pre>
+</div>
+</div>
+<p>Note que neste caso temos que maximizar a função objetivo, por isso usamos o argumento adicional da função <code>optim()</code> <code>fnscale = -1</code> para tornar o problema de minimização, uma vez, que por <em>default</em> a função <code>optim()</code> minimiza a função objetivo. Podemos novamente calcular os preditos usando esse novo modelo.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/unnamed-chunk-171-1.png" class="img-fluid figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Caso fosse de interesse, podemos até comparar os preditos obtidos por cada uma das abordagens. Por exemplo,</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="./img/unnamed-chunk-172-1.png" class="img-fluid figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Neste caso, vemos uma grande similaridade entre os dois classificadores. Para classificar, podemos definir um limiar por exemplo, se <span class="math inline">\(\hat{\mu} &lt; l1\)</span> dizemos que o usuário não é <em>premium</em> e caso contrário, ou seja, se <span class="math inline">\(\hat{\mu} &gt; l1\)</span> o usuário é <em>premium</em>.</p>
+<p>É importante notar que nós fomos passo-a-passo tornando nosso modelo mais condizente com a realidade e consequentemente atendendo às nossas intuições de como a realidade deve ser. O uso da distribuição Bernoulli para construir a função objetivo combinada com a função logística é o que se denomina de modelo de regressão logística na literatura estatística.</p>
+</section>
+<section id="melhorando-o-algoritmo-de-ajuste" class="level3" data-number="4.1.5">
+<h3 data-number="4.1.5" class="anchored" data-anchor-id="melhorando-o-algoritmo-de-ajuste"><span class="header-section-number">4.1.5</span> Melhorando o algoritmo de ajuste</h3>
+<p>Uma vez que o modelo foi definido e a função objetivo escolhida, o processo de treinamento ou ajuste do modelo consiste em um problema de otimização numérica. Até o momento, nós simplesmente usamos otimizadores genéricos já implementados na função <code>optim()</code> do software <code>R</code>.</p>
+<p>Como já discutimos, a otimização de uma função pode ser feita de diversas formas. Nos exemplos anteriores nós usamos o algoritmo de Nelder-Mead que não depende de derivadas. O algoritmo de Newton é o mais eficiente em termos de número de iterações para atingir a convergência. Sendo assim, vamos agora discutir como implementar o algoritmo de Newton para o modelo de regressão logística. Lembre-se que a função a ser otimizada é</p>
+<p><span class="math display">\[
+l(\boldsymbol{\beta}) = \sum_{i=1}^n y_i \log(\mu_i) + (1-y_i)\log(1-\mu_i).
+\]</span></p>
+<p>O algoritmo de Newton trabalha com a seguinte equação de iteração</p>
+<p><span class="math display">\[
+\boldsymbol{\beta^{(i+1)}} = \boldsymbol{\beta^{(i)}} - \mathbf{J(\boldsymbol{\beta^{(i)}})}^{-1} l'(\boldsymbol{\beta^{(i)}}),
+\]</span></p>
+<p>onde <span class="math inline">\(\mathbf{J(\boldsymbol{\beta^{(i)}})}\)</span> é uma matriz hessiana de dimensão <span class="math inline">\(3 \times 3\)</span> e <span class="math inline">\(l'(\boldsymbol{\beta^{(i)}})\)</span> é o vetor gradiente de dimensão <span class="math inline">\(3 \times 1\)</span>. Precisamos de um vetor inicial <span class="math inline">\(\boldsymbol{\beta}^{(1)}\)</span> para o vetor de parâmetros <span class="math inline">\(3 \times 1\)</span> no caso do nosso exemplo. O vetor gradiente é dado por</p>
+<p><span class="math display">\[
+l'(\boldsymbol{\beta^{(i)}}) = \left(\frac{\partial l'(\boldsymbol{\beta})}{\partial \beta_0},\frac{\partial l'(\boldsymbol{\beta})}{\partial \beta_1}, \frac{\partial l'(\boldsymbol{\beta})}{\partial \beta_2} \right)^{\top}.
+\]</span></p>
+<p>Para obter cada uma das entradas do vetor gradiente usamos as regras básicas de derivação associadas a regra da cadeia. Para simplificar a notação, seja <span class="math inline">\(\eta_i = \beta_0 + \beta_1 renda_i + \beta_2 Anos_i\)</span>. Assim, tem-se</p>
+<p><span class="math display">\[
+\frac{\partial l'(\boldsymbol{\beta})}{\partial \beta_j} = \frac{\partial l'(\boldsymbol{\beta})}{\partial \mu} \frac{\partial \mu}{\partial \eta} \frac{\partial \eta}{\partial \beta_j}, \quad \text{para} \quad j = 1, 2, 3.
+\]</span></p>
+<p>Obtendo cada uma das entradas, tem-se</p>
+<p><span class="math display">\[
+\frac{\partial l'(\boldsymbol{\beta})}{\partial \mu} = \frac{\partial}{\partial \mu}  y_i \log(\mu_i) + (1-y_i)\log(1-\mu_i) = \frac{y_i}{\mu_i} - \frac{(1-y_i)}{(1-\mu_i)} = \frac{y_i - \mu_i}{\mu_i(1-\mu_i)}.
+\]</span></p>
+<p>Derivando o <span class="math inline">\(\mu\)</span> em relação ao <span class="math inline">\(\eta\)</span>, tem-se</p>
+<p><span class="math display">\[
+\frac{\partial \mu}{\partial \eta} = \frac{\partial}{\partial \eta} \frac{1}{1+ e^{-\eta}} = \frac{e^{-\eta}}{(1+e^{-\eta})^2} = \mu_i(1-\mu_i).
+\]</span></p>
+<p>Derivando <span class="math inline">\(\eta\)</span> em relação aos <span class="math inline">\(\beta\)</span>’s temos</p>
+<p><span class="math display">\[
+\frac{\partial \eta}{\beta_0} = 1, \quad \frac{\partial \eta}{\beta_1} = renda_i \quad \text{e} \quad \frac{\partial \eta}{\beta_2} = anos_i.
+\]</span></p>
+<p>Finalmente, temos o vetor gradiente</p>
+<p><span class="math display">\[
+l'(\boldsymbol{\beta^{(i)}}) = \left(\sum_{i=1}^n (y_i - \mu_i)1, \sum_{i=1}^n (y_i - \mu_i)renda_i, \sum_{i=1}^n (y_i - \mu_i)anos_i  \right)^{\top}.
+\]</span></p>
+<p>Usando cálculos similares, podemos obter a matriz hessiana. Lembre-se, não deixe as derivadas te assustar, use um software de matemática simbólica caso não se sinta confortável com os resultados.</p>
+<p><span class="math display">\[
+\mathbf{J(\boldsymbol{\beta})} = -
+\begin{bmatrix}
+\mu_i(1-\mu_i)1 &amp; \mu_i(1-\mu_i)renda_i &amp; \mu_i(1-\mu_i)anos_i \\
+\mu_i(1-\mu_i)renda_i &amp; \mu_i(1-\mu_i)renda_i^2  &amp; \mu_i(1-\mu_i)renda_i anos_i \\
+\mu_i(1-\mu_i)anos_i &amp; \mu_i(1-\mu_i)renda_i anos_i &amp; \mu_i(1-\mu_i)anos_i^2
+\end{bmatrix}.
+\]</span></p>
+<p>Uma vez obtidos o gradiente e o hessiano, podemos implementar ambas funções em <code>R</code>.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gradiente</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>gradiente <span class="ot">&lt;-</span> <span class="cf">function</span>(par, y, renda, anos) {</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  eta <span class="ot">=</span> par[<span class="dv">1</span>] <span class="sc">+</span> par[<span class="dv">2</span>]<span class="sc">*</span>renda <span class="sc">+</span> par[<span class="dv">3</span>]<span class="sc">*</span>anos</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  mu <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(<span class="sc">-</span>eta))</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  db0 <span class="ot">&lt;-</span> <span class="fu">sum</span>((y <span class="sc">-</span> mu))</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  db1 <span class="ot">&lt;-</span> <span class="fu">sum</span>((y<span class="sc">-</span>mu)<span class="sc">*</span>renda)</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  db2 <span class="ot">&lt;-</span> <span class="fu">sum</span>((y<span class="sc">-</span>mu)<span class="sc">*</span>anos)</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">c</span>(db0, db1, db2)</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(out)</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Hessiana</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>hessiano <span class="ot">&lt;-</span> <span class="cf">function</span>(par, y, renda, anos) {</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>  J <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="cn">NA</span>, <span class="at">ncol =</span> <span class="dv">3</span>, <span class="at">nrow =</span> <span class="dv">3</span>)</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>  eta <span class="ot">=</span> par[<span class="dv">1</span>] <span class="sc">+</span> par[<span class="dv">2</span>]<span class="sc">*</span>renda <span class="sc">+</span> par[<span class="dv">3</span>]<span class="sc">*</span>anos</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>  mu <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(<span class="sc">-</span>eta))</span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>  J[<span class="dv">1</span>,<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">sum</span>(mu<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>mu)) </span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>  J[<span class="dv">1</span>,<span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="fu">sum</span>(mu<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>mu)<span class="sc">*</span>renda) </span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>  J[<span class="dv">1</span>,<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="fu">sum</span>(mu<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>mu)<span class="sc">*</span>anos)</span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>  J[<span class="dv">2</span>,<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">sum</span>(mu<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>mu)<span class="sc">*</span>renda) </span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>  J[<span class="dv">2</span>,<span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="fu">sum</span>(mu<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>mu)<span class="sc">*</span>(renda<span class="sc">^</span><span class="dv">2</span>) )</span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>  J[<span class="dv">2</span>,<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="fu">sum</span>(mu<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>mu)<span class="sc">*</span>renda<span class="sc">*</span>anos)</span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>  J[<span class="dv">3</span>,<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="fu">sum</span>(mu<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>mu)<span class="sc">*</span>anos) </span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>  J[<span class="dv">3</span>,<span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="fu">sum</span>(mu<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>mu)<span class="sc">*</span>(renda<span class="sc">*</span>anos)) </span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a>  J[<span class="dv">3</span>,<span class="dv">3</span>] <span class="ot">&lt;-</span> <span class="fu">sum</span>(mu<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>mu)<span class="sc">*</span>(anos<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="sc">-</span>J)</span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>O método de Newton foi discutido e implementado, assim podemos usar a nossa função.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>newton <span class="ot">&lt;-</span> <span class="cf">function</span>(fx, jacobian, x1, <span class="at">tol =</span> <span class="fl">1e-04</span>, <span class="at">max_iter =</span> <span class="dv">10</span>, ...) {</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  solucao <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="cn">NA</span>, <span class="at">ncol =</span> <span class="fu">length</span>(x1), <span class="at">nrow =</span> max_iter)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  solucao[<span class="dv">1</span>,] <span class="ot">&lt;-</span> x1</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>max_iter) {</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    J <span class="ot">&lt;-</span> <span class="fu">jacobian</span>(solucao[i,], ...)</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    grad <span class="ot">&lt;-</span> <span class="fu">fx</span>(solucao[i,], ...)</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>    solucao[i<span class="sc">+</span><span class="dv">1</span>,] <span class="ot">=</span> solucao[i,] <span class="sc">-</span> <span class="fu">solve</span>(J, grad)</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>( <span class="fu">sum</span>(<span class="fu">abs</span>(solucao[i<span class="sc">+</span><span class="dv">1</span>,] <span class="sc">-</span> solucao[i,])) <span class="sc">&lt;</span> tol) <span class="cf">break</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(solucao)</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Otimizando a função, tem-se</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="do">##        [,1]   [,2]  [,3]</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1,]  0.00 0.0000 0.000</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="do">##  [2,] -2.00 0.0318 0.194</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="do">##  [3,] -3.62 0.0638 0.302</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="do">##  [4,] -5.11 0.0932 0.418</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  [5,] -5.94 0.1092 0.488</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  [6,] -6.12 0.1124 0.504</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  [7,] -6.12 0.1125 0.504</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  [8,] -6.12 0.1125 0.504</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  [9,]    NA     NA    NA</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a><span class="do">## [10,]    NA     NA    NA</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Pelo traço do algoritmo é fácil verificar a convergência. Como exercício, tente implementar o mesmo modelo usando o algoritmo gradiente descendente e o método quasi-Newton BFGS.</p>
+<p>Importante notar que o mesmo modelo pode ser ajustado ou treinado de diversas formas. Neste exemplo, usamos o método de Nelder-Mead via a função <code>optim()</code> o que foi simples e rápido. No caso do método de Newton foi necessário maior entendimento de cálculo para obter o vetor gradiente e a matriz Hessiana. De forma geral, para um exemplo simples com apenas duas variáveis explanatórias, a diferença em termos de tempo computacional é muito pequena. Porém, para situações mais complexas pode ser a diferença entre obter convergência ou não. Em <code>R</code> a função <code>glm()</code> implementa o modelo de regressão logística usando um outro algoritmo similar ao método de Newton chamado de <em>Fisher scoring</em>. A principal diferença é que a matriz hessiana é substituída pela sua esperança. Esse é um algoritmo com um componente estatístico (a esperança) e está fora do escopo deste livro.</p>
+</section>
+</section>
+<section id="clusterização-usando-kmeans" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="clusterização-usando-kmeans"><span class="header-section-number">4.2</span> Clusterização usando <em>kmeans</em></h2>
+<p>A tarefa de agrupar indivíduos/unidades semelhantes é muito comum e importante em ciência de dados. Exemplos comuns aparecem na segmentação de clientes para aplicar diferentes estratégias de <em>marketing</em>. Classificar gêneros musicais para melhorar a experiência dos usuários em plataformas especializadas, entre diversas outras. Técnicas de agrupamento fazem parte dos chamados métodos de aprendizagem não-supervisionada na literatura de aprendizagem de máquina.</p>
+<p>Dentre as diversas estratégias para agrupamento, o método conhecido como <em>kmeans</em> é muito popular. A ideia do método é dado um vetor de características de um indivíduo criar grupos onde indivíduos dentro do mesmo grupo são mais parecidos do que indivíduos em grupos diferentes. Para fazer esse agrupamento o método <em>kmeans</em> usa como medida resumo de cada grupo a média amostral e o objetivo é fazer com que cada indivíduo pertença ao grupo com a média mais próxima à ele. A média de cada grupo corresponde ao centróide de cada grupo e ilustra o comportamento usual de determinado grupo.</p>
+<p>Para ilustrar a ideia considere os dados da Figura 4.1 onde temos duas variáveis contínuas <span class="math inline">\(x_1\)</span> e <span class="math inline">\(x_2\)</span> observadas em um conjunto de <span class="math inline">\(300\)</span> indivíduos. O objetivo do método <em>kmeans</em> é agrupar os <span class="math inline">\(300\)</span> indivíduos, em digamos <span class="math inline">\(k\)</span> grupos de forma que a distância de cada indivíduo ao centróide de seu grupo seja a menor possível.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-1" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./img/cluster-1.png" class="img-fluid figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4.1: Ilustração de conjunto de dados para uso do método kmeans.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>De forma mais geral, considere um conjunto de observações <span class="math inline">\((\mathbf{x}_1, \ldots, \mathbf{x}_n)\)</span>, sendo cada observação um vetor <span class="math inline">\(p\)</span>-dimensional de valores reais e <span class="math inline">\(n\)</span> o tamanho do conjunto de dados. O objetivo do método de agrupamento <em>kmeans</em> é particionar as <span class="math inline">\(n\)</span> observações em <span class="math inline">\(k &lt; n\)</span> grupos, digamos <span class="math inline">\(G = \{G1_, \ldots, G_k\}\)</span> de tal forma a minimizar a soma de quadrados dentro de cada grupo, ou de forma equivalente, maximizar a heterogeneidade entre grupos. Em termos de notação matemática podemos escrever esse objetivo da seguinte forma:</p>
+<p><span class="math display">\[
+\underset{\mathbf{G}}{\mathrm{arg\;min}} \sum_{i = 1}^k \sum_{\mathbf{x} \in G_i} (\mathbf{x} - \mu_i)^2.
+\]</span></p>
+<p>Note que esse não é um problema de otimização usual como aqueles apresentados no Capítulo 3. A principal diferença é que nós desejamos otimizar uma função que depende dos elementos dentro de cada grupo. Isso gera uma função que não é contínua e portanto não podemos usar os algoritmos de otimização usuais baseados em derivadas e solução de sistemas não-lineares.</p>
+<p>Para resolver este problema o algoritmo mais comum usa a chamada técnica de refinamento. A ideia é muito simples, dado um conjunto inicial de <span class="math inline">\(k\)</span> médias, digamos, <span class="math inline">\(\mu_1^{(1)}, \mu_2^{(1)}, \ldots, \mu_k^{(1)}\)</span> o algoritmo alterna entre dois passos:</p>
 <ol type="1">
-<li><p>Gere 100 observações a partir de uma distribuição <span class="math inline">\(N(0,1)\)</span>. Calcule uma faixa de confiança de 95% para a função de distribuição empírica <span class="math inline">\(\widehat{F}_n\)</span>. Repita isso 1000 vezes e veja com que frequência a faixa de confiança contém a verdadeira função de distribuição. Repita usando dados de uma distribuição Cauchy.</p></li>
-<li><p>Seja <span class="math inline">\(X_1,\cdots, X_n\)</span> uma amostra aleatória da distribuição <span class="math inline">\(F\)</span> e seja <span class="math inline">\(\widehat{F}_n\)</span> a função de distribuição empírica. Para um <span class="math inline">\(x\)</span> fixo, encontre a distribuição limite de <span class="math inline">\(\sqrt{\widehat{F}_n(x)}\)</span>.</p></li>
-<li><p>Sejam <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> dois pontos distintos. Encontre <span class="math inline">\(\mbox{Cov}\Big(\widehat{F}_n(x),\widehat{F}_n(y)\Big)\)</span>.</p></li>
+<li>Passo de agrupamento: agrupa cada observação ao grupo que tem a média mais próxima baseado em alguma medida de distância, sendo a distância Euclidiana a mais comum.</li>
+<li>Passo de atualização: recalcula as médias (centróides) dado o agrupamento do Passo 1.</li>
 </ol>
+<p>O algoritmo repete até que algum critério de parada seja atingido. Um critério comum é que as observações parem de mudar de grupo, ou equivalentemente, a composição dos grupos não mude. Em geral este algoritmo não tem convergência garantida, mas funciona bem em termos práticos. Note que a medida de distância usada é uma parte importante deste algoritmo. O Código 4.1 apresenta uma função genérica para calcular a distância Euclidiana entre uma matriz de observações (argumento <code>dados</code>) e um ponto (argumento <code>media</code>). Note que o argumento <code>media</code> será o centróide do grupo, na implementação do método <em>kmeans</em>.</p>
+<p><strong>Código 4.1</strong> Distância Euclidiana entre uma matriz de observações e um ponto.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>my_dist <span class="ot">&lt;-</span> <span class="cf">function</span>(dados, media) {</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">apply</span>(dados, <span class="dv">1</span>, <span class="cf">function</span>(x, media) {<span class="fu">sqrt</span>(<span class="fu">sum</span>((x <span class="sc">-</span> media)<span class="sc">^</span><span class="dv">2</span>))}, </span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">media =</span> media)</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(out)</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>No Código 4.1 foi utilizada a função <code>apply()</code> para percorrer todas as linhas da matriz <code>dados</code> e calcular a sua distância Euclidiana até o vetor <code>media</code>. De forma equivalente poderia ter sido utilizada uma instrução do tipo <code>for()</code> para esta tarefa.</p>
+<p>Com a função que calcula a distância pronta, podemos facilmente implementar o método <em>kmeans</em> como ilustrado pelo Código 4.2.</p>
+<p><strong>Código 4.2</strong> Implementação didática do método <em>kmeans</em>.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>my_kmeans <span class="ot">&lt;-</span> <span class="cf">function</span>(data, k, <span class="at">max_iter =</span> <span class="dv">20</span>, <span class="at">set.seed =</span> <span class="dv">123</span>) {</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Inicializando</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">dim</span>(data)[<span class="dv">1</span>]</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  data_temp <span class="ot">&lt;-</span> data</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="do">## Inicializando os grupos de forma aleatórias</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set.seed</span>(set.seed)</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  data_temp<span class="sc">$</span>grupo <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span>k, <span class="at">size =</span> n, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Cria matriz para guardar os grupos intermediários</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>  grupos <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="cn">NA</span>, <span class="at">ncol =</span> max_iter, <span class="at">nrow =</span> n)</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Primeiro grupo</span></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>  grupos[,<span class="dv">1</span>] <span class="ot">&lt;-</span> data_temp<span class="sc">$</span>grupo</span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>  n_col <span class="ot">&lt;-</span> <span class="fu">dim</span>(data)[<span class="dv">2</span>] <span class="co"># Número de variáveis para fazer o agrupamento</span></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>  criterio <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>  criterio[<span class="dv">1</span>] <span class="ot">&lt;-</span> n <span class="co"># inicia o critério de parada com n trocas</span></span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>  SOMA_QQ <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="cn">NA</span>, <span class="at">nrow =</span> max_iter, <span class="at">ncol =</span> k)</span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span>max_iter) {</span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>    media_grupo <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(data, <span class="fu">list</span>(grupos[,<span class="fu">c</span>(i<span class="dv">-1</span>)]), mean)</span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>    temp <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>k) {</span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>      temp[[j]] <span class="ot">&lt;-</span> <span class="fu">my_dist</span>(<span class="at">dados =</span> data, <span class="at">media =</span> media_grupo[j, <span class="dv">2</span><span class="sc">:</span><span class="fu">c</span>(n_col<span class="sc">+</span><span class="dv">1</span>)])</span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>    temp <span class="ot">&lt;-</span> <span class="fu">do.call</span>(cbind, temp)</span>
+<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a>    SOMA_QQ[i,] <span class="ot">&lt;-</span> <span class="fu">colSums</span>(temp)</span>
+<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Escolhe a qual grupo a observação pertence</span></span>
+<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a>    grupos[,i] <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(<span class="fu">apply</span>(temp, <span class="dv">1</span>, which.min)) </span>
+<span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a>    data_temp<span class="sc">$</span>grupo <span class="ot">&lt;-</span> grupos[,i]</span>
+<span id="cb23-27"><a href="#cb23-27" aria-hidden="true" tabindex="-1"></a>    criterio[i] <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">abs</span>(grupos[,i] <span class="sc">-</span> grupos[,<span class="fu">c</span>(i<span class="dv">-1</span>)]))</span>
+<span id="cb23-28"><a href="#cb23-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(<span class="fu">abs</span>(criterio[i] <span class="sc">-</span> criterio[<span class="fu">c</span>(i<span class="dv">-1</span>)]) <span class="sc">==</span> <span class="dv">0</span>) <span class="cf">break</span></span>
+<span id="cb23-29"><a href="#cb23-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(criterio[i])</span>
+<span id="cb23-30"><a href="#cb23-30" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb23-31"><a href="#cb23-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">list</span>(<span class="st">"grupos"</span> <span class="ot">=</span> grupos, <span class="st">"data"</span> <span class="ot">=</span> data_temp, <span class="st">"criterio"</span> <span class="ot">=</span> criterio, </span>
+<span id="cb23-32"><a href="#cb23-32" aria-hidden="true" tabindex="-1"></a>              <span class="st">"centers"</span> <span class="ot">=</span> media_grupo, <span class="st">"GOF"</span> <span class="ot">=</span> SOMA_QQ))</span>
+<span id="cb23-33"><a href="#cb23-33" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Devemos nos atentar a alguns detalhes sobre a função no Código 4.2. A primeira decisão para a implementação é como inicializar o algoritmo. Neste exemplo, optamos por gerar <span class="math inline">\(n\)</span> números aleatórios entre <span class="math inline">\(1\)</span> e <span class="math inline">\(k\)</span>, sendo <span class="math inline">\(k\)</span> o número de grupos criados. Note que <span class="math inline">\(k\)</span> é um hiperparâmetro do modelo, uma vez que precisa ser especificado previamente para que o algoritmo possa ser executado. Para guardar todo o histórico do que acontece durante as iterações do algoritmo, foram criados três objetos <code>grupos</code>, <code>criterio</code> e <code>SOMA_QQ</code>. Estes objetos vão guardar a composição de cada grupo, o criterio vai receber o número absoluto de trocas de grupos, medida como a diferença entre a composição dos grupos no passo <span class="math inline">\(i\)</span> menos <span class="math inline">\(i-1\)</span>. Como critério para parada fixamos que a composição dos grupos pare de mudar, ou seja, o <code>criterio</code> no passo <span class="math inline">\(i\)</span> é igual ao critério no passo <span class="math inline">\(i-1\)</span>. Por fim, calculamos a soma de quadrados que é uma medida de heterogeneidade entre os grupos. Assim, esperamos que essas somas cresçam conforme o algoritmo itera, melhorando assim a homogeneidade interna dos grupos. Para calcular a media dentro de cada grupo usamos a função <code>aggregate()</code>. Para ilustrar o progresso do algoritmo imprimimos a cada iteração o valor do objeto <code>criterio</code>. O que esperamos é que esse número vá diminuindo até estabilizar, indicando a convergência do algoritmo para uma solução.</p>
+<p>Com a nossa função implementada podemos usar o método para criar os grupos baseados nos dados apresentados na Figura 4.1. Neste caso vamos fixar o número de grupos em <span class="math inline">\(3\)</span>, por simplicidade. Na prática é comum usar diferentes números de grupos e comparar os resultados em termos da composição dos grupos para então decidir qual o número ideal de grupos.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>resultado <span class="ot">&lt;-</span> <span class="fu">my_kmeans</span>(<span class="at">data =</span> dados, <span class="at">k =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): objeto 'dados' não encontrado</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>resultado</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): objeto 'resultado' não encontrado</code></pre>
+</div>
+</div>
+<p>Importante ressaltar que a convergência para um ótimo global não é garantida. Além disso, dada a inicialização aleatória é perfeitamente possível que o método resulte em agrupamentos diferentes para diferentes chamadas da função <code>my_kmeans</code>. Para tornar reproduzível para o leitor foi fixada a semente (argumento <code>set.seed</code>). A Figura 4.2 apresenta os grupos no passo inicial (aleatório) e no passo final do algoritmo <em>kmeans</em>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-2" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./img/kmeansresult-1.png" class="img-fluid figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4.2: Ilustração do método kmeans, solução inicial (A) e solução final (B).
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Não é o objetivo deste livro discutir os aspectos práticos da aplicação do método <em>kmeans</em>. Porém, é perceptível por meio dos gráficos da Figura 4.2 que o algoritmo foi capaz de encontrar três grupos com comportamento distintos. Em <code>R</code> a função <code>kmeans()</code> do pacote <code>stats</code> implementa diferentes algoritmos para realizar agrupamentos usando o método <em>kmeans</em>.</p>
+<p>Outro aspecto importante é que agora que você entende a lógica matemática por trás de um algoritmo de agrupamento, você pode facilmente propor novas técnicas trocando alguns de seus componentes. Por exemplo, trocar a medida de distância ou trocar a medida resumo de cada grupo. Alguns métodos derivados com essas ideias são o <span class="math inline">\(kmedians\)</span> e o <span class="math inline">\(kmenoids\)</span>. O primeiro troca a medida resumo de cada grupo da média para a mediana. O segundo estabelece que o centróide do grupo deve ser um indivíduo observada (<em>menoid</em>). O importante é que conhecendo um algoritmo em detalhes você está mais perto de entender diversos outros que são apenas modificações da ideia inicial.</p>
+</section>
+<section id="redes-neurais-artificiais" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="redes-neurais-artificiais"><span class="header-section-number">4.3</span> Redes neurais artificiais</h2>
+<p>Redes neurais artificiais configuram uma das principais técnicas em uso por cientistas de dados. Além disso, são a principal força de trabalho dentro de uma grande área de pesquisa chamada genericamente de <strong>Inteligência Artificial</strong>. Dado o enorme desenvolvimento de tais técnicas nos últimos anos, hoje temos uma infinidade de construções de redes neurais para desempenhar os mais diversos tipos de tarefas como, por exemplo, a construção de <em>chatbots</em>, carros autônomos, assistentes virtuais, detecção de objetos em imagens, reconhecimento facial e análise da linguagem natural.</p>
+<p>Como a maioria da técnicas criadas para extrair informações de dados as redes neurais precisam de três ingredientes:</p>
+<ol type="1">
+<li>Dados de entrada ou <em>input</em>: o que será o <em>input</em> para uma rede neural vai depender da tarefa a ser realizada. Por exemplo, para reconhecimento de discurso os dados de entrada podem ser arquivos de som de uma pessoa falando. Se a tarefa é reconhecer objetos em uma imagem, a entrada pode ser um conjunto de fotos ou mesmo frames de vídeo. Para tarefas mais convencionais como, por exemplo, predizer o preço de um certo imóvel, os dados de entrada podem ser características do imóvel, de forma análoga ao modelo de regressão linear múltipla discutido na seção (RLM).</li>
+<li>Exemplos da saída esperada ou <em>output</em>: no caso de reconhecimento de discurso a saída pode ser um conjunto de textos traduzidos por humanos a partir de arquivos de som. Imagens classificadas por humanos como tendo ou não um certo objeto. E novamente, no caso da precificação de imóveis um conjunto de preços arbitrado por alguém <em>expert</em> da área.</li>
+<li>Uma forma de medir se o algoritmo é capaz de reproduzir os exemplos de saída: a ideia é de alguma forma medir a distância entre o <em>output</em> e o que o algoritmo prediz para o <em>output</em>. Isso nada mais é do que definir uma função perda que mede o quanto estamos perdendo ao usar o modelo ao invés dos dados. Nós já discutimos essa ideia, em especial na seção (RD) quando deduzimos a média amostral como um resumo de um único número de um conjunto de dados.</li>
+</ol>
+<p>Existem diversos tipos de redes neurais, porém neste livro vamos discutir apenas uma tipo de redes neurais chamada de <em>Multilayer Perceptron</em>. Uma forma de pensar neste tipo de rede neural é como um modelo de regressão, porém a forma da relação entre as covariáveis (<em>inputs</em>) e a variável resposta (<em>output</em>) é dada por um conjunto de função não-lineares encadeadas em um formato de rede, conforme ilustrado na Figura 4.3.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-3" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./img/NN.png" class="img-fluid figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4.3: Desenho esquemático da estrutura de uma rede neural.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Na Figura 4.3 a primeira coluna indica as variáveis de entrada. As camadas em verde são chamadas de camadas ocultas, no sentido que serão geradas com base na camada de entrada por meio de combinações lineares das variáveis de entrada. Cada círculo das camadas ocultas são chamados de neurônios. Dentro de cada neurônio uma função não-linear (função de ativação) é aplicada a uma combinação linear das entradas de modo a resultar em um número. Na sequência esse número vira uma entrada para o próximo neurônio e assim por diante até chegar a camada de saída. A camada de saída corresponde ao valor que o nosso modelo prediz para a variável resposta. Este processo de percorrer as variáveis de entrada pela rede é chamado de <em>feedforward</em>.</p>
+<p>Para materializar essa ideia considere um conjunto de dados com duas variáveis de entrada <span class="math inline">\(x_1\)</span> e <span class="math inline">\(x_2\)</span> e uma variável de saída (contínua). Por simplicidade, vamos considerar apenas uma camada oculta e dois neurônios. Neste caso a rede neural tem a estrutura apresentada na Figura 4.4.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-4" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./img/NN2-1.png" class="img-fluid figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4.4: Desenho esquemático da estrutura de uma rede neural com duas variáveis de entrada e uma camada oculta.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Fica claro que as variáveis de entrada <span class="math inline">\(x_1\)</span> e <span class="math inline">\(x_2\)</span> ativam os dois neurônios da camada oculta gerando novos valores <span class="math inline">\(h_1\)</span> e <span class="math inline">\(h_2\)</span>. Adicionalmente, em cada camada é adicionado um <em>bias</em> denotado por <span class="math inline">\(b_1\)</span> e <span class="math inline">\(b_2\)</span>. Esse termo é análogo ao intercepto do modelo de regressão linear múltipla. Como mencionado dentro de cada neurônio as entradas passam por uma função de ativação que precisa ser escolhida. Para este exemplo, vamos usar a função logística já apresentada na seção 1.1.2.</p>
+<p>Vamos agora ver em detalhes os passos da etapa <em>feedforward</em>. Para simplificar a discussão, considere que a base de dados tem apenas um indivíduo. Assim, o vetor de entrada é dado por <span class="math inline">\(\mathbf{x} = (x_{1}, x_{2})^{\top}\)</span>. O primeiro passo é gerar uma combinação linear entre essas duas variáveis de entrada. Para isso selecionamos dois pesos <span class="math inline">\(w_{11}\)</span> e <span class="math inline">\(w_{21}\)</span> para representar o efeito das entradas <span class="math inline">\(x_1\)</span> e <span class="math inline">\(x_2\)</span> no neurônio <span class="math inline">\(1\)</span> e denotamos por <span class="math inline">\(w_{01}\)</span> o <em>bias</em> associado ao primeiro neurônio. De forma, similar denotamos por <span class="math inline">\(w_{02}\)</span> o <em>bias</em> associado ao segundo neurônio e <span class="math inline">\(w_{12}\)</span> e <span class="math inline">\(w_{22}\)</span> pesos representando os efeitos das entradas <span class="math inline">\(x_1\)</span> e <span class="math inline">\(x_2\)</span> no neurônio <span class="math inline">\(2\)</span>. Assim, temos</p>
+<p><span class="math display">\[
+\eta_1 = w_{01} + w_{11} x_1 + w_{12} x_2 \quad \text{e} \quad \eta_2 = w_{02} + w_{21} x_1 + w_{22} x_2.
+\]</span></p>
+<p>O próximo passo é passar os valores <span class="math inline">\(\eta_1\)</span> e <span class="math inline">\(\eta_2\)</span> pela função de ativação logística para gerar os valores <span class="math inline">\(h_1\)</span> e <span class="math inline">\(h_2\)</span>. Neste caso, temos</p>
+<p><span class="math display">\[
+h_1 = \frac{1}{1+ e^{-\eta_1}} \quad h_2 = \frac{1}{1+ e^{-\eta_2}}.
+\]</span></p>
+<p>Por fim, na última camada também conhecida como camada de saída, combinamos <span class="math inline">\(h_1\)</span> e <span class="math inline">\(h_2\)</span> com o termo de <em>bias</em> para gerar o valor predito pela rede. Para este passo também podemos usar alguma função não-linear, porém isso vai depender da natureza da variável de saída. Neste exemplo, como temos uma variável contínua o usual é usar como função de saída a função identidade. Portanto, temos</p>
+<p><span class="math display">\[
+\hat{y} = w_{0O} + w_{1O} h_1 + w_{2O} h_2,
+\]</span></p>
+<p>em que <span class="math inline">\(w_{0O}\)</span> denota o <em>bias</em> da camada de saída. De forma similar <span class="math inline">\(w_{1O}\)</span> e <span class="math inline">\(w_{2O}\)</span> os pesos associados aos efeitos ocultos <span class="math inline">\(h_1\)</span> e <span class="math inline">\(h_2\)</span>. Vamos ilustrar esse passo-a-passo em <code>R</code>. Para isso considere o conjunto de dados <code>NN.txt</code> disponível na página do livro. Esse conjunto de dados foi simulado apenas para ilustrar a implementação computacional de uma rede neural.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"data/NN.txt"</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">";"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in file(file, "rt"): não foi possível abrir o arquivo 'data/NN.txt': No
+such file or directory</code></pre>
+</div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in file(file, "rt"): não é possível abrir a conexão</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dados)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): objeto 'dados' não encontrado</code></pre>
+</div>
+</div>
+<p>Vamos selecionar apenas o primeiro indivíduo e proceder o passo-a-passo da etapa de <em>feedforward</em>. Para poder executar os cálculos vamos especificar valores numéricos para os pesos em todas as camadas do modelo. Para este exemplo vamos usar como pesos alguns valores pré-selecionados para resultar em um ajuste razoável para os dados.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Variáveis de entrada</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> dados[<span class="dv">1</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): objeto 'dados' não encontrado</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Variável de saída</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> dados[<span class="dv">1</span>, <span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): objeto 'dados' não encontrado</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Primeiro neurônio</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>w01 <span class="ot">&lt;-</span> <span class="fl">7.20</span>; w11 <span class="ot">&lt;-</span> <span class="fl">6.31</span>; w12 <span class="ot">&lt;-</span> <span class="fl">4.73</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>eta1 <span class="ot">&lt;-</span> w01 <span class="sc">+</span> w11<span class="sc">*</span>x[<span class="dv">1</span>] <span class="sc">+</span> w12<span class="sc">*</span>x[<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): objeto 'x' não encontrado</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Segundo neurônio</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>w02 <span class="ot">&lt;-</span> <span class="fl">2.54</span>; w21 <span class="ot">&lt;-</span> <span class="fl">1.59</span>; w22 <span class="ot">&lt;-</span> <span class="fl">1.52</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>eta2 <span class="ot">&lt;-</span> w02 <span class="sc">+</span> w21<span class="sc">*</span>x[<span class="dv">1</span>] <span class="sc">+</span> w22<span class="sc">*</span>x[<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): objeto 'x' não encontrado</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Passando pela camada oculta</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>h1 <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(<span class="sc">-</span>eta1))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): objeto 'eta1' não encontrado</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>h2 <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(<span class="sc">-</span>eta2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): objeto 'eta2' não encontrado</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gerando a saída</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>w0O <span class="ot">&lt;-</span> <span class="fl">9.21</span>; w1O <span class="ot">&lt;-</span> <span class="fl">9.41</span>; w2O <span class="ot">&lt;-</span> <span class="fl">11.65</span></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>y_hat <span class="ot">&lt;-</span> w0O <span class="sc">+</span> w1O<span class="sc">*</span>h1 <span class="sc">+</span> w2O<span class="sc">*</span>h2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): objeto 'h1' não encontrado</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparando com o dado observado</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(y, y_hat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): objeto 'y' não encontrado</code></pre>
+</div>
+</div>
+<p>Note que o valor de saída da rede neural foi o valor <span class="math inline">\(22.1\)</span>, enquanto que o valor observado para este indivíduo foi de <span class="math inline">\(21.8\)</span>. Essa diferença é resultado dos valores pré-especificados para os pesos da rede.</p>
+<p>O próximo passo é criar uma forma de medir o quanto o modelo está diferente das observações. Isso é atingido por especificar uma função perda, de forma análoga com o que fizemos para obter a média amostral e os coeficientes de regressão na seção 2.2.7. Novamente, a função perda mais popular é a perda quadrática. Denote por <span class="math inline">\(\hat{y}_i(\mathbf{w})\)</span> a saída da rede neural (passo <em>feedforward</em>) para o indivíduo <span class="math inline">\(i\)</span> e note que a notação <span class="math inline">\(\hat{y}_i(\mathbf{w})\)</span> enfatiza que os valores de saída da rede neural são funções dos pesos <span class="math inline">\(\mathbf{w} = (w_{01}, w_{11}, w_{12}, w_{02}, w_{21}, w_{22}, w_{0O}, w_{1O}, w_{2O})^{\top}\)</span>. Denote por <span class="math inline">\(y_i\)</span> o valor observado para o indivíduo <span class="math inline">\(i\)</span>. Nestas condições a função perda quadrática fica dada por</p>
+<p><span class="math display">\[
+\mathrm{SQ}(\mathbf{w}) = \sum_{i=1}^n (y_i - \hat{y_i})^2,
+\]</span></p>
+<p>sendo obviamente uma função dos pesos <span class="math inline">\(\mathbf{w}\)</span>. Note que os pesos foram omitidos da notação no termo <span class="math inline">\(\hat{y}_i\)</span> para facilitar a discussão.</p>
+<p>Nossa tarefa agora consiste em treinar o nosso modelo, no sentido de ajustar os pesos para que a rede neural forneça valores próximos aos valores observados. Para esta tarefa podemos usar os métodos de otimização apresentados na seção 3.4.3. Porém, a forma mais popular de treinar redes neurais é por meio do algoritmo gradiente descendente. Lembre-se que neste caso precisamos obter o gradiente da função <span class="math inline">\(\mathrm{SQ}(\mathbf{w})\)</span> que consiste em obter as derivadas parciais com relação a cada um dos pesos da rede. Neste caso, temos nove pesos para serem treinados.</p>
+<p>Para implementar este processo de treinamento precisamos implementar a função de ativação e suas derivadas. Tal função é apresentada no Código 4.3.</p>
+<p><strong>Código 4.3</strong> Função de ativação logística e suas derivadas parciais.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>act_fc <span class="ot">&lt;-</span> <span class="cf">function</span>(pesos, X, <span class="at">derivative =</span> <span class="cn">FALSE</span>) {</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>  eta <span class="ot">&lt;-</span> X<span class="sc">%*%</span>pesos</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>  mu <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(<span class="sc">-</span>eta))</span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>  output <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">"mu"</span> <span class="ot">=</span> mu)</span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(derivative <span class="sc">==</span> <span class="cn">TRUE</span>) {</span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>    derivada <span class="ot">&lt;-</span> mu<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>mu)</span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>    D <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">dim</span>(derivada)[<span class="dv">2</span>]) {</span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a>      D[[i]] <span class="ot">&lt;-</span> derivada[,i]<span class="sc">*</span>X</span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a>    output<span class="sc">$</span>D_mu <span class="ot">&lt;-</span> D</span>
+<span id="cb49-12"><a href="#cb49-12" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb49-13"><a href="#cb49-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(output)</span>
+<span id="cb49-14"><a href="#cb49-14" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Note que temos como argumentos os pesos e uma matriz <code>X</code> com uma coluna de <span class="math inline">\(1\)</span>’s concatenada com as variáveis de entrada. Usando a função <code>act_fc()</code> podemos agora implementar o passo <em>feedforward</em> de forma genérica para um dado conjunto de variáveis de entrada e pesos, conforme apresentado na função 4.4.</p>
+<p><strong>Código 4.4</strong> Implementação computacional do passo <em>feedforward</em> para uma rede neural com uma camada oculta.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>neural_net <span class="ot">&lt;-</span> <span class="cf">function</span>(w, X, n_neuronio) {</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>  n_weight <span class="ot">&lt;-</span> <span class="fu">dim</span>(X)[<span class="dv">2</span>] <span class="do">## Qts pesos em cada neurônio</span></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>  n_param <span class="ot">&lt;-</span> <span class="fu">length</span>(w) <span class="do">## Qtd total de parametros</span></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>  w_E <span class="ot">&lt;-</span> w[<span class="dv">1</span><span class="sc">:</span><span class="fu">c</span>(n_neuronio<span class="sc">*</span>n_weight)]</span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>  W_E <span class="ot">&lt;-</span> <span class="fu">matrix</span>(w_E, <span class="at">ncol =</span> n_neuronio) <span class="co"># Forma matricial</span></span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>  w_h <span class="ot">&lt;-</span> w[<span class="fu">c</span>(n_neuronio<span class="sc">*</span>n_weight<span class="sc">+</span><span class="dv">1</span>)<span class="sc">:</span>n_param]</span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>  mu <span class="ot">&lt;-</span> <span class="fu">act_fc</span>(<span class="at">pesos =</span> W_E, <span class="at">X =</span> X)</span>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>  H <span class="ot">&lt;-</span> <span class="fu">model.matrix</span>(<span class="sc">~</span> mu<span class="sc">$</span>mu)</span>
+<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a>  y_hat <span class="ot">&lt;-</span> H<span class="sc">%*%</span>w_h</span>
+<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(y_hat)</span>
+<span id="cb50-11"><a href="#cb50-11" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Vamos ilustrar o uso da função <code>neural_net()</code> para o conjunto de dados simulados.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">model.matrix</span>(<span class="sc">~</span> x1 <span class="sc">+</span> x2, <span class="at">data =</span> dados) <span class="co"># Cria a matriz X</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): objeto 'dados' não encontrado</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): objeto 'X' não encontrado</code></pre>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>y_hat <span class="ot">&lt;-</span> <span class="fu">neural_net</span>(<span class="at">w =</span> w, <span class="at">X =</span> X, <span class="at">n_neuronio =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): objeto 'X' não encontrado</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(y_hat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): objeto 'y_hat' não encontrado</code></pre>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(y_hat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): objeto 'y_hat' não encontrado</code></pre>
+</div>
+</div>
+<p>A saída da função <code>neural_net()</code> é o valor predito pela rede para cada uma das <span class="math inline">\(100\)</span> observações do nosso conjunto de dados. Com isso podemos agora implementar a função perda quadrática, conforme apresentado no Código 4.5.</p>
+<p><strong>Código 4.5</strong> Função perda quadrática no contexto de uma rede neural.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>SQ <span class="ot">&lt;-</span> <span class="cf">function</span>(w, X, Y, n_neuronio) {</span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>  y_hat <span class="ot">&lt;-</span> <span class="fu">neural_net</span>(<span class="at">w =</span> w, <span class="at">X =</span> X, <span class="at">n_neuronio =</span> n_neuronio)</span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fl">0.5</span><span class="sc">*</span><span class="fu">sum</span>((Y <span class="sc">-</span> y_hat)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(out)</span>
+<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Importante ressaltar que a multiplicação por <span class="math inline">\(0.5\)</span> é apenas para facilitar a posterior obtenção do gradiente e manter compatibilidade com a função <code>neuralnet()</code> do pacote <code>neuralnet</code>. Este pacote implementa tais modelos em <code>R</code> e será usado posteriormente para comparação com a nossa implementação didática. Vamos avaliar a função perda para dois conjuntos de pesos gerados aleatoriamente.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">SQ</span>(<span class="at">w =</span> <span class="fu">rnorm</span>(<span class="dv">9</span>), <span class="at">X =</span> X, <span class="at">Y =</span> dados<span class="sc">$</span>y, <span class="at">n_neuronio =</span> <span class="dv">2</span>) <span class="co"># Pesos gerados al</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): objeto 'X' não encontrado</code></pre>
+</div>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">SQ</span>(<span class="at">w =</span> <span class="fu">rnorm</span>(<span class="dv">9</span>), <span class="at">X =</span> X, <span class="at">Y =</span> dados<span class="sc">$</span>y, <span class="at">n_neuronio =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): objeto 'X' não encontrado</code></pre>
+</div>
+</div>
+<p>A função <code>SQ()</code> retorna a soma de quadrados dos resíduos dividido por dois, para cada conjunto de pesos. Assim, o próximo passo é otimizar ou treinar os pesos de modo que tal soma de quadrados seja a menor possível. Para começar vamos usar os métodos de otimização não-linear vistos na seção 3.4.3 e implementados na função <code>optim()</code>.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>fit_NM <span class="ot">&lt;-</span> <span class="fu">optim</span>(<span class="at">par =</span> w, <span class="at">fn =</span> SQ, <span class="at">method =</span> <span class="st">"Nelder-Mead"</span>, </span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">X =</span> X, <span class="at">Y =</span> dados<span class="sc">$</span>y, <span class="at">n_neuronio =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): objeto 'w' não encontrado</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>fit_CG <span class="ot">&lt;-</span> <span class="fu">optim</span>(<span class="at">par =</span> w, <span class="at">fn =</span> SQ, <span class="at">method =</span> <span class="st">"CG"</span>, </span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">X =</span> X, <span class="at">Y =</span> dados<span class="sc">$</span>y, <span class="at">n_neuronio =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): objeto 'w' não encontrado</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>fit_BFGS <span class="ot">&lt;-</span> <span class="fu">optim</span>(<span class="at">par =</span> w, <span class="at">fn =</span> SQ, <span class="at">method =</span> <span class="st">"BFGS"</span>, </span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">X =</span> X, <span class="at">Y =</span> dados<span class="sc">$</span>y, <span class="at">n_neuronio =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): objeto 'w' não encontrado</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>fit_SANN <span class="ot">&lt;-</span> <span class="fu">optim</span>(<span class="at">par =</span> w, <span class="at">fn =</span> SQ, <span class="at">method =</span> <span class="st">"SANN"</span>, </span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">X =</span> X, <span class="at">Y =</span> dados<span class="sc">$</span>y, <span class="at">n_neuronio =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): objeto 'w' não encontrado</code></pre>
+</div>
+</div>
+<p>Vamos comparar o valor da soma de quadrados ótima obtido por cada um destes métodos.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>resultado <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">"Nelder-Mead"</span> <span class="ot">=</span> fit_NM<span class="sc">$</span>value, </span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"Gradiente Conjugado"</span> <span class="ot">=</span> fit_CG<span class="sc">$</span>value, </span>
+<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"BFGS"</span> <span class="ot">=</span> fit_BFGS<span class="sc">$</span>value, </span>
+<span id="cb74-4"><a href="#cb74-4" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"SANN"</span> <span class="ot">=</span> fit_SANN<span class="sc">$</span>value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): objeto 'fit_NM' não encontrado</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>resultado</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): objeto 'resultado' não encontrado</code></pre>
+</div>
+</div>
+<p>Note que cada um dos métodos retornou um valor diferente para a função objetivo otimizada. Isso indica que cada método encontrou um ponto de mínimo local diferente e evidencia um fato conhecido que em geral em modelos de redes neurais a função objetivo apresenta múltiplos mínimos locais tornando o uso deste tipo de método difícil para redes com múltiplas camadas e muitos pesos.</p>
+<p>É neste ponto que o uso do método gradiente descendente aparece como uma forma de apenas andar na função por um certo número de iterações para encontrar um mínimo local. Lembre-se que o gradiente aponta na direção de maior crescimento da função. Assim, andar na direção contrária do gradiente com um certo tamanho de passo <span class="math inline">\(\alpha\)</span> garante que estamos descendo na superfície multidimensional gerada pela função objetivo. Para usar este método precisamos obter o gradiente o que pode ser feito analiticamente, conforme implementado no Código 4.6 ou mesmo numericamente. É claro que para modelos pequenos como o do nosso exemplo obter o gradiente numericamente é mais fácil e factível, porém em modelos reais o indicado é via <em>automatic differentiation</em> o que está fora do escopo deste livro.</p>
+<p><strong>Código 4.6</strong> Gradiente da função perda quadrática para uma rede neural.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>gradiente <span class="ot">&lt;-</span> <span class="cf">function</span>(w, X, Y, <span class="at">n_neuronio =</span> <span class="dv">2</span>) {</span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>  n_weight <span class="ot">&lt;-</span> <span class="fu">dim</span>(X)[<span class="dv">2</span>] <span class="do">## Qts pesos em cada neuronio</span></span>
+<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a>  n_param <span class="ot">&lt;-</span> <span class="fu">length</span>(w) <span class="do">## Qtd total de parametros</span></span>
+<span id="cb78-4"><a href="#cb78-4" aria-hidden="true" tabindex="-1"></a>  w_E <span class="ot">&lt;-</span> w[<span class="dv">1</span><span class="sc">:</span><span class="fu">c</span>(n_neuronio<span class="sc">*</span>n_weight)]</span>
+<span id="cb78-5"><a href="#cb78-5" aria-hidden="true" tabindex="-1"></a>  W_E <span class="ot">&lt;-</span> <span class="fu">matrix</span>(w_E, <span class="at">ncol =</span> n_neuronio) <span class="co"># Forma matricial</span></span>
+<span id="cb78-6"><a href="#cb78-6" aria-hidden="true" tabindex="-1"></a>  w_h <span class="ot">&lt;-</span> w[<span class="fu">c</span>(n_neuronio<span class="sc">*</span>n_weight<span class="sc">+</span><span class="dv">1</span>)<span class="sc">:</span>n_param]</span>
+<span id="cb78-7"><a href="#cb78-7" aria-hidden="true" tabindex="-1"></a>  mu <span class="ot">&lt;-</span> <span class="fu">act_fc</span>(<span class="at">pesos =</span> W_E, <span class="at">X =</span> X, <span class="at">derivative =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb78-8"><a href="#cb78-8" aria-hidden="true" tabindex="-1"></a>  H <span class="ot">&lt;-</span> <span class="fu">model.matrix</span>(<span class="sc">~</span> mu<span class="sc">$</span>mu)</span>
+<span id="cb78-9"><a href="#cb78-9" aria-hidden="true" tabindex="-1"></a>  y_hat <span class="ot">&lt;-</span> H<span class="sc">%*%</span>w_h</span>
+<span id="cb78-10"><a href="#cb78-10" aria-hidden="true" tabindex="-1"></a>  res <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="sc">-</span>(Y <span class="sc">-</span> y_hat))</span>
+<span id="cb78-11"><a href="#cb78-11" aria-hidden="true" tabindex="-1"></a>  grad <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb78-12"><a href="#cb78-12" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">c</span>(<span class="fu">length</span>(w_h)<span class="sc">-</span><span class="dv">1</span>)) {</span>
+<span id="cb78-13"><a href="#cb78-13" aria-hidden="true" tabindex="-1"></a>    grad[[i]] <span class="ot">&lt;-</span> res<span class="sc">*</span>mu<span class="sc">$</span>D_mu[[i]]<span class="sc">*</span>w_h[<span class="fu">c</span>(i<span class="sc">+</span><span class="dv">1</span>)]</span>
+<span id="cb78-14"><a href="#cb78-14" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb78-15"><a href="#cb78-15" aria-hidden="true" tabindex="-1"></a>  output <span class="ot">&lt;-</span> <span class="fu">colSums</span>(<span class="fu">cbind</span>(<span class="fu">do.call</span>(cbind, grad), res<span class="sc">*</span>H))</span>
+<span id="cb78-16"><a href="#cb78-16" aria-hidden="true" tabindex="-1"></a>  <span class="co">#output &lt;- colSums(cbind(res*mu$D_mu[,1:3]*w_h[2], res*mu$D_mu[,4:6]*w_h[3], res*H))</span></span>
+<span id="cb78-17"><a href="#cb78-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(output)</span>
+<span id="cb78-18"><a href="#cb78-18" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>O Código 4.7 apresenta uma versão expandida do método do gradiente descendente para podermos passar argumentos adicionais a função objetivo.</p>
+<p><strong>Código 4.7</strong> Método do gradiente descendente para uma função qualquer com argumentos extras.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a>grad_des <span class="ot">&lt;-</span> <span class="cf">function</span>(fx, x1, alpha, <span class="at">max_iter =</span> <span class="fl">1e+05</span>, <span class="at">tol =</span> <span class="fl">1e-02</span>, ...) {</span>
+<span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a>  solucao <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="cn">NA</span>, <span class="at">ncol =</span> <span class="fu">length</span>(x1), <span class="at">nrow =</span> max_iter)</span>
+<span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a>  solucao[<span class="dv">1</span>,] <span class="ot">&lt;-</span> x1</span>
+<span id="cb79-4"><a href="#cb79-4" aria-hidden="true" tabindex="-1"></a>  obj <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb79-5"><a href="#cb79-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">c</span>(max_iter<span class="dv">-1</span>)) {</span>
+<span id="cb79-6"><a href="#cb79-6" aria-hidden="true" tabindex="-1"></a>    solucao[i<span class="sc">+</span><span class="dv">1</span>,] <span class="ot">&lt;-</span> solucao[i,] <span class="sc">-</span> alpha<span class="sc">*</span><span class="fu">fx</span>(solucao[i,], ...)</span>
+<span id="cb79-7"><a href="#cb79-7" aria-hidden="true" tabindex="-1"></a>    obj[<span class="fu">c</span>(i<span class="sc">+</span><span class="dv">1</span>)] <span class="ot">&lt;-</span> <span class="fu">SQ</span>(<span class="at">w =</span> solucao[i<span class="sc">+</span><span class="dv">1</span>,], ...)</span>
+<span id="cb79-8"><a href="#cb79-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>( <span class="fu">sum</span>(<span class="fu">abs</span>(solucao[i<span class="sc">+</span><span class="dv">1</span>,] <span class="sc">-</span> solucao[i, ])) <span class="sc">&lt;</span> tol) <span class="cf">break</span></span>
+<span id="cb79-9"><a href="#cb79-9" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb79-10"><a href="#cb79-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">list</span>(<span class="st">"solucao"</span> <span class="ot">=</span> solucao, <span class="st">"Objetivo"</span> <span class="ot">=</span> obj, </span>
+<span id="cb79-11"><a href="#cb79-11" aria-hidden="true" tabindex="-1"></a>              <span class="st">"SolucaoOtima"</span> <span class="ot">=</span> solucao[i<span class="sc">+</span><span class="dv">1</span>,], <span class="st">"Otimo"</span> <span class="ot">=</span> obj[<span class="fu">c</span>(i<span class="sc">+</span><span class="dv">1</span>)]))</span>
+<span id="cb79-12"><a href="#cb79-12" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Finalmente, podemos proceder com o treinamento. O próximo código deve demorar alguns minutos para finalizar. Note que o número máximo de iterações foi fixado em <span class="math inline">\(1e+05\)</span> e estamos usando um <em>tuning</em> <span class="math inline">\(\alpha = 0.005\)</span>. Esse valor foi obtido via diversas tentativas até obter convergência.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>fit_grad_des <span class="ot">&lt;-</span> <span class="fu">grad_des</span>(<span class="at">fx =</span> gradiente, <span class="at">x1 =</span> w, <span class="at">alpha =</span> <span class="fl">0.005</span>, <span class="at">tol =</span> <span class="fl">1e-04</span>,</span>
+<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a>                         <span class="at">max_iter =</span> <span class="fl">1e+05</span>, <span class="at">X =</span> X, <span class="at">Y =</span> dados<span class="sc">$</span>y, <span class="at">n_neuronio =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): objeto 'w' não encontrado</code></pre>
+</div>
+</div>
+<p>Uma forma de visualizar o processo de treinamento é fazer um gráfico dos valores da função objetivo contra o indice da iteração para ver o progresso do algoritmo. Na Figura 4.5(A) apresentamos todas as iterações enquanto que na Figura 4.5(B) descartamos as <span class="math inline">\(10000\)</span> primeiras iterações.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-5" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./img/processo-1.png" class="img-fluid figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4.5: Progresso do algoritmo gradiente descendente.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>A Figura 4.5 mostra claramente que a função objetivo decresce rapidamente nas primeiras iterações, porém após esse rápido decréscimo o algoritmo faz apenas pequenas modificações na função objetivo. Isso ilustra o porquê é necessário tantas iterações e a complexidade do processo de treinamento de tais modelos.</p>
+<p>Por fim, vamos treinar a nossa rede usando a função <code>neuralnet()</code> do pacote <code>neuralnet</code> e comparar todos os resultados.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(neuralnet)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Carregando pacotes exigidos: neuralnet</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a>fit_nn <span class="ot">&lt;-</span> <span class="fu">neuralnet</span>(<span class="at">formula =</span> y <span class="sc">~</span> x1 <span class="sc">+</span> x2, <span class="at">hidden =</span> <span class="dv">2</span>, </span>
+<span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">startweights =</span> w,</span>
+<span id="cb84-3"><a href="#cb84-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">algorithm =</span> <span class="st">"backprop"</span>, <span class="at">learningrate =</span> <span class="fl">0.005</span>, </span>
+<span id="cb84-4"><a href="#cb84-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">linear.output =</span> <span class="cn">TRUE</span>, <span class="at">data =</span> dados)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): objeto 'dados' não encontrado</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a>nn_w <span class="ot">&lt;-</span> <span class="fu">c</span>(fit_nn<span class="sc">$</span>weights[[<span class="dv">1</span>]][[<span class="dv">1</span>]][,<span class="dv">1</span>],fit_nn<span class="sc">$</span>weights[[<span class="dv">1</span>]][[<span class="dv">1</span>]][,<span class="dv">2</span>], fit_nn<span class="sc">$</span>weights[[<span class="dv">1</span>]][[<span class="dv">2</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): objeto 'fit_nn' não encontrado</code></pre>
+</div>
+</div>
+<p>Podemos comparar o valor da função objetivo obtida por cada esquema de treinamento.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a>resultado <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">"Nelder-Mead"</span> <span class="ot">=</span> fit_NM<span class="sc">$</span>value, </span>
+<span id="cb88-2"><a href="#cb88-2" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"Gradiente Conjugado"</span> <span class="ot">=</span> fit_CG<span class="sc">$</span>value, </span>
+<span id="cb88-3"><a href="#cb88-3" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"BFGS"</span> <span class="ot">=</span> fit_BFGS<span class="sc">$</span>value, </span>
+<span id="cb88-4"><a href="#cb88-4" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"SANN"</span> <span class="ot">=</span> fit_SANN<span class="sc">$</span>value,</span>
+<span id="cb88-5"><a href="#cb88-5" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"GradDes"</span> <span class="ot">=</span> fit_grad_des<span class="sc">$</span>Otimo,</span>
+<span id="cb88-6"><a href="#cb88-6" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"Neuralnet"</span> <span class="ot">=</span> <span class="fu">SQ</span>(<span class="at">w =</span> nn_w, <span class="at">X =</span> X, <span class="at">Y =</span> dados<span class="sc">$</span>y, <span class="at">n_neuronio =</span> <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): objeto 'fit_NM' não encontrado</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a>resultado</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): objeto 'resultado' não encontrado</code></pre>
+</div>
+</div>
+<p>Neste exemplo vemos que o método BFGS apresentou a menor soma de quadrados, porém a diferença entre a nossa implementação e a da <code>neuralnet</code> é de apenas uma unidade. O algoritmo utilizado pela <code>neuralnet</code> foi o <em>back propagation</em> ou apenas <em>backprop</em> que é exatamente o que implementamos. Para finalizar, podemos comparar os valores obtidos para os pesos da rede.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a>pesos <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">"Nelder-Mead"</span> <span class="ot">=</span> fit_NM<span class="sc">$</span>par,</span>
+<span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"CG"</span> <span class="ot">=</span> fit_CG<span class="sc">$</span>par,</span>
+<span id="cb92-3"><a href="#cb92-3" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"BFGS"</span> <span class="ot">=</span> fit_BFGS<span class="sc">$</span>par,</span>
+<span id="cb92-4"><a href="#cb92-4" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"SANN"</span> <span class="ot">=</span> fit_SANN<span class="sc">$</span>par,</span>
+<span id="cb92-5"><a href="#cb92-5" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"GradDes"</span> <span class="ot">=</span> fit_grad_des<span class="sc">$</span>SolucaoOtima,</span>
+<span id="cb92-6"><a href="#cb92-6" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"neuralnet"</span> <span class="ot">=</span> nn_w)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): objeto 'fit_NM' não encontrado</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a>pesos</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): objeto 'pesos' não encontrado</code></pre>
+</div>
+</div>
+<p>A similaridade entre a nossa implementação e a da <code>neuralnet</code> é bastante evidente. As pequenas diferenças se devem provavelmente a diferentes critérios de parada. Para os outros algoritmos o BFGS forneceu uma solução ligeiramente melhor que o gradiente descendente e os demais Nelder-Mead, gradiente conjugado e <em>simulating anealling</em> soluções sub-ótimas.</p>
+</section>
+<section id="projeto-integrador" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="projeto-integrador"><span class="header-section-number">4.4</span> Projeto integrador</h2>
+<p>Para terminar este livro sugerimos ao leitor o desafio de treinar um modelo ligeiramente diferente dos que foram apresentados durante o curso.</p>
+<p>Para isto considere, o conjunto de dados <code>youtube.csv</code> que apresenta o número de <em>views</em> e inscritos de dois canais de sucesso do <em>youtube</em> desde o dia de sua abertura. O objetivo é predizer o número <strong>acumulado</strong> de inscritos em cada um destes canais para o próximo ano (365 dias). Para isto você decidiu emprestar um modelo biológico que modela o crescimento de bactérias chamado de modelo logístico, dado pela seguinte equação:</p>
+<p><span class="math display">\[
+y = \frac{L}{1+ \exp(\beta(x - \beta_0)) }
+\]</span></p>
+<p>onde <span class="math inline">\(L\)</span> é o valor máximo da curva (platô), <span class="math inline">\(\beta_0\)</span> é o valor de <span class="math inline">\(x\)</span> no ponto médio da curva (tempo de meia-vida) e <span class="math inline">\(\beta\)</span> é a declividade da curva.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-6" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-6-1.png" class="img-fluid figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4.6: Modelo logístico.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Note que o modelo representa a intuição de como o número acumulado de inscritos em um canal deve se comportar. No Código abaixo a base de dados é carregada e organizada por canal.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a>dados <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"data/youtube.txt"</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in file(file, "rt"): não foi possível abrir o arquivo
+'data/youtube.txt': No such file or directory</code></pre>
+</div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in file(file, "rt"): não é possível abrir a conexão</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a>dados_canal <span class="ot">&lt;-</span> <span class="fu">split</span>(dados, dados<span class="sc">$</span>CANAL)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): objeto 'dados' não encontrado</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a>dados1 <span class="ot">&lt;-</span> dados_canal[[<span class="dv">1</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): objeto 'dados_canal' não encontrado</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a>dados2 <span class="ot">&lt;-</span> dados_canal[[<span class="dv">2</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): objeto 'dados_canal' não encontrado</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb105"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a>dados1<span class="sc">$</span>INSCRITOS <span class="ot">&lt;-</span> dados1<span class="sc">$</span>INSCRITOS<span class="sc">/</span><span class="dv">100000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): objeto 'dados1' não encontrado</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a>dados1<span class="sc">$</span>Y <span class="ot">&lt;-</span> <span class="fu">cumsum</span>(dados1<span class="sc">$</span>INSCRITOS)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): objeto 'dados1' não encontrado</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a>dados2<span class="sc">$</span>INSCRITOS <span class="ot">&lt;-</span> dados2<span class="sc">$</span>INSCRITOS<span class="sc">/</span><span class="dv">100000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): objeto 'dados2' não encontrado</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a>dados2<span class="sc">$</span>Y <span class="ot">&lt;-</span> <span class="fu">cumsum</span>(dados2<span class="sc">$</span>INSCRITOS)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): objeto 'dados2' não encontrado</code></pre>
+</div>
+</div>
+<p>Podemos fazer o gráfico dos dados observados para explicitar o objetivo de predizer o número de inscritos acumulado para os próximos <span class="math inline">\(365\)</span> dias.</p>
+<div class="cell">
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(predvars, data, env): objeto 'dados1' não encontrado</code></pre>
+</div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in int_abline(a = a, b = b, h = h, v = v, untf = untf, ...): plot.new has not been called yet</code></pre>
+</div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(predvars, data, env): objeto 'dados2' não encontrado</code></pre>
+</div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in int_abline(a = a, b = b, h = h, v = v, untf = untf, ...): plot.new has not been called yet</code></pre>
+</div>
+</div>
+<p>O objetivo deste projeto é ajustar o modelo logístico para os dados de cada um destes canais e predizer qual será o número acumulado de inscritos para os próximos <span class="math inline">\(365\)</span> dias. Ao apresentar sua solução computacional faça o máximo para explicar as suas decisões e estratégias de implementação. Tome o máximo de cuidado para que a sua análise seja reproduzível.</p>
+</section>
+<section id="referências-bibliográficas" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="referências-bibliográficas"><span class="header-section-number">4.5</span> Referências Bibliográficas</h2>
+<p>Becker, R. A., J. M. Chambers, and A. R. Wilks. 1988. <em>The New s Language: A Programming Environment for Data Analysis and Graphics</em>. Computer Science Series. Wadsworth &amp; Brooks/Cole Advanced Books &amp; Software.</p>
+<p>Berkelaar, Michel, and others. 2020. https://CRAN.R-project.org/package=lpSolve</p>
+<p>Borchers, Hans W. 2021. <em>Pracma: Practical Numerical Math Functions</em>. https://CRAN.R-project.org/package=pracma.</p>
+<p>Deisenroth, M. P., A. A. Faisal, and C. S. Ong. 2020. <em>Mathematics for Machine Learning</em>. Cambridge University Press.</p>
+<p>Dowling, E. T. 1984. <em>Elementos de Matemática Aplicada à Economia e Administração</em>. Coleção Schaum. McGraw-Hill do Brasil.</p>
+<p>Gilat, A., and V. Subramaniam. 2009. <em>Métodos Numéricos Para Engenheiros e Cientistas: Uma Introdução Com Aplicações Usando o MATLAB</em>. Grupo A - Bookman.</p>
+<p>Goodfellow, I., Y. Bengio, and A. Courville. 2016. <em>Deep Learning</em>. The MIT Press.</p>
+<p>Guidorizzi, H. L. 2013. <em>Um Curso de cálculo</em>. LTC.</p>
+<p>Leithold, L. 1988. <em>Matemática Aplicada a Economia e Administração</em>. Harbra.</p>
+<p>Molenberghs, G., and G. Verbeke. 2006. <em>Models for Discrete Longitudinal Data</em>. Springer Series in Statistics. Springer New York.</p>
+<p>Rencher, A. C., and G. B. Schaalje. 2008. <em>Linear Models in Statistics</em>. Wiley.</p>
 
 
 </section>
@@ -532,6 +1449,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -566,7 +1501,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
@@ -842,11 +1781,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../content/Modulo03/index.html" class="pagination-link  aria-label=" &lt;span="" não="" paramétrica="" 2&lt;="" span&gt;"="">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Estatística Não Paramétrica 2</span></span>
+      <a href="../../content/Modulo03/index.html" class="pagination-link" aria-label="Métodos numéricos">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Métodos numéricos</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../../content/Modulo01/Exercicios/index.html" class="pagination-link" aria-label="Cálculo Diferencial e Integral para Cientista de Dados">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Cálculo Diferencial e Integral para Cientista de Dados</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

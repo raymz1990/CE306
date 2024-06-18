@@ -1,0 +1,379 @@
+---
+title: "Métodos numéricos"
+code-fold: false
+---
+Os objetivos deste tutorial são:
+
+* Usar métodos numéricos para a solução de equações não-lineares.
+* Usar métodos numéricos para aproximar a derivada de uma função.
+* Usar métodos numéricos para aproximar a integral de uma função.
+* Usar métodos numéricos para otimizar uma função.
+
+## Equações não-lineares
+
+### Exercício 1.
+* Determine a raiz de $f(x) = x^2 - \exp{-x}$. Use qualquer um dos métodos vistos em aula.
+``` {r}
+fx <- function(x) {x^2 - exp(-x)}
+uniroot(f = fx, interval = c(0, 10))
+```
+
+### Exercício 2.
+* Determine a raiz cúbica de $155$ obtendo a solução númerica da equação $x^3 - 155 = 0$. Use qualquer um dos métodos vistos em aula.
+``` {r}
+fx <- function(x){x^3 - 155}
+uniroot(f = fx, interval = c(0,155))
+```
+
+### Exercício 3.
+* Determine todas as raízes da equação $x^3 + 12x^2 - 100x - 6 = 0$ no intervalo $[-100,100]$. Dica: Faça um gráfico da função e particione a dominio de $f(x)$ de modo a encontrar todas as raízes usando algum método de confinamento.
+``` {r}
+require(rootSolve)
+fx <- function(x){x^3 + 12*x^2 - 100*x - 6}
+x = seq(-100, 100, l = 1000)
+plot(fx(x = x) ~ x)
+uniroot.all(fx, interval = c(-100, 100))
+```
+
+### Exercício 4.
+* Resolva o seguinte sistema de equações não-lineares:
+$$
+\begin{matrix}
+4x^2 - y^3 + 28 = 0\\ 
+3x^3 + 4 y^2 - 145 = 0.
+\end{matrix}
+$$
+
+Use o método de Newton.
+```{r}
+# Algoritmo do método de Newton
+newton <- function(fx, jacobian, x1, tol = 1e-04, max_iter = 10) {
+  solucao <- matrix(NA, ncol = length(x1), nrow = max_iter)
+  solucao[1,] <- x1
+  for(i in 1:c(max_iter+1)) {
+J <- jacobian(solucao[i,])
+grad <- fx(solucao[i,])
+solucao[i+1,] = solucao[i,] - solve(J, grad)
+if( sum(abs(solucao[i+1,] - solucao[i,])) < tol) break
+  }
+  return(solucao)
+}
+
+## Sistema a ser resolvido
+fx <- function(x) {
+  term1 <- 4*x[1]^2 - x[2]^3 + 28
+  term2 <- 3*x[1]^3 + 4*x[2]^2 -145
+  output <- c(term1, term2)
+  return(output)
+}
+
+# Jacobiano
+Jacobian <- function(x) {
+  e11 <- 8*x[1]
+  e12 <- -3*x[2]^2
+  e21 <- 9*x[1]^2
+  e22 <- 8*x[2]
+  output <- matrix(c(e11,e21,e12,e22), 2, 2)
+  return(output)
+}
+
+sol <- newton(fx = fx, jacobian = Jacobian, x1 = c(1,1), max_iter = 15)
+sol
+```
+
+### Exercício 5.
+* Resolva o seguinte sistema de equações não-lineares:
+$$
+\begin{matrix}
+4x^2 - y^3 + 28 = 0\\ 
+3x^3 + 4 y^2 - 145 = 0.
+\end{matrix}
+$$
+
+Use o método do gradiente descendente.
+
+``` {r}
+# Algoritmo do método do gradiente descendente
+grad_des <- function(fx, x1, alpha, max_iter = 100, tol = 1e-04) {
+  solucao <- matrix(NA, ncol = length(x1), nrow = max_iter)
+  solucao[1,] <- x1
+  for(i in 1:c(max_iter-1)) {
+    solucao[i+1,] <- solucao[i,] - alpha*fx(solucao[i,])
+    #print(solucao[i+1,])
+    if( sum(abs(solucao[i+1,] - solucao[i,])) < tol) break
+  }
+  return(sol)
+}
+
+## Sistema a ser resolvido
+fx <- function(x) {
+  term1 <- 4*x[1]^2 - x[2]^3 + 28
+  term2 <- 3*x[1]^3 + 4*x[2]^2 -145
+  output <- c(term1, term2)
+  return(output)
+}
+
+sol <- grad_des(fx = fx, x1 = c(1,1), alpha = 0.01)
+sol
+```
+
+### Exercício 6.
+* A determinação da raiz quadrada de um número $p$, é o mesmo que obter uma solução para a equação $f(x) = x^2 - p = 0$. Escreva uma função que determine a raiz quadrada de um número positivo usando o método de Newton.
+``` {r}
+newton <- function(fx, f_prime, x1, tol = 1e-04, max_iter = 10, ...) {
+  solucao <- c()
+  solucao[1] <- x1
+  for(i in 1:max_iter) {
+solucao[i+1] = solucao[i] - fx(solucao[i], ...)/f_prime(solucao[i], ...)
+if( abs(solucao[i+1] - solucao[i]) < tol) break
+  }
+  return(solucao)
+}
+
+fx <- function(x, p) x^2 - p
+dfx <- function(x, p) 2*x
+
+my_sqrt <- function(x) {
+  if(x < 0) {stop("Número precisa ser maior que 0.")}
+  out <- newton(fx = fx, f_prime = dfx, x1 = x/2, p = x)
+  return(out[length(out)])
+}
+my_sqrt(10)
+```
+
+## Diferenciação numérica
+
+### Exercício 7.
+* Para cada uma das funções abaixo obtenha a sua derivada usando o método de diferença central com dois pontos. Implemente uma função chamada `dx()` que calcula a derivada númerica obtida no ponto $x = 2$ e retorna o seu valor. Para usar a correção automática a linha final do seu código deve ser `dx(x = 2)`. Use $h = 0.010$.
+
+#### Exercício 7.1.
+* $f(x) = \exp3x$
+
+``` {r}
+dif_cen <- function(fx, x, h) {
+  df <- (fx(x + h) - fx(x - h))/( (x + h) - (x - h))
+  return(df)
+}
+fx <- function(x) 3*x
+dx <- function(x) {dif_cen(fx = fx, x = x, h = 0.01)}
+dx(x = 2)
+```
+
+#### Exercício 7.2. 
+
+* $f(x) = \sin(x^2)$
+
+``` {r}
+dif_cen <- function(fx, x, h) {
+  df <- (fx(x + h) - fx(x - h))/( (x + h) - (x - h))
+  return(df)
+}
+fx <- function(x) sin(x^2)
+dx <- function(x) {dif_cen(fx = fx, x = x, h = 0.01)}
+dx(x = 2)
+```
+
+#### Exercício 7.3.
+
+* $f(x) = (3x^2 + 1)^3$.
+
+``` {r}
+dif_cen <- function(fx, x, h) {
+  df <- (fx(x + h) - fx(x - h))/( (x + h) - (x - h))
+  return(df)
+}
+fx <- function(x) (3*x^2 + 1)^3
+dx <- function(x) {dif_cen(fx = fx, x = x, h = 0.01)}
+dx(x = 2)
+```
+
+#### Exercício 7.4.
+
+* $f(x) = \log(x^2 + 3)$.
+``` {r}
+dif_cen <- function(fx, x, h) {
+  df <- (fx(x + h) - fx(x - h))/( (x + h) - (x - h))
+  return(df)
+}
+fx <- function(x) log(x^2 + 3)
+dx <- function(x) {dif_cen(fx = fx, x = x, h = 0.01)}
+dx(x = 2)
+```
+
+#### Exercício 7.5.
+
+* $f(x) = x^2 \exp(3x)$.
+``` {r}
+dif_cen <- function(fx, x, h) {
+  df <- (fx(x + h) - fx(x - h))/( (x + h) - (x - h))
+  return(df)
+}
+fx <- function(x) (x^2)*exp(3*x)
+dx <- function(x) {dif_cen(fx = fx, x = x, h = 0.01)}
+dx(x = 2)
+```
+
+#### Exercício 7.6.
+
+* $f(x) = \log(x^2 + 3x + 9)$.
+``` {r}
+dif_cen <- function(fx, x, h) {
+  df <- (fx(x + h) - fx(x - h))/( (x + h) - (x - h))
+  return(df)
+}
+fx <- function(x) log(x^2 + 3 * x + 9)
+dx <- function(x) {dif_cen(fx = fx, x = x, h = 0.01)}
+dx(x = 2)
+```
+
+#### Exercício 7.7. 
+
+* $f(x) = \sqrt{x + \exp(x)}$.
+``` {r}
+dif_cen <- function(fx, x, h) {
+  df <- (fx(x + h) - fx(x - h))/( (x + h) - (x - h))
+  return(df)
+}
+fx <- function(x) sqrt(x + exp(x))
+dx <- function(x) {dif_cen(fx = fx, x = x, h = 0.01)}
+dx(x = 2)
+```
+
+## Integração numérica
+
+### Exercício 8.
+* Aproxime numéricamente as seguintes integrais definidas. Você deve testar diversos métodos. Porém, para usar a correção automática o método deve ser Gauss-Legendre com $250$ pontos de integração. O valor da integral deve estar em um objeto chamado `area`.
+
+#### Exercício 8.1.
+
+* $\int_{1}^2 x^2 dx$.
+
+``` {r}
+require(pracma)
+gauss_legendre <- function(integrando, n_pontos, a, b, ...){
+  pontos <- gaussLegendre(n_pontos, a = a, b = b)
+  integral <- sum(pontos$w*integrando(pontos$x,...))
+  return(integral)
+}
+fx <- function(x) {x^2}
+area <- gauss_legendre(integrando = fx, a = 1, b = 2, n_pontos = 250)
+```
+
+#### Exercício 8.2.
+* $\int_{0}^2 (x^3 + 3x -1) dx$.
+``` {r}
+require(pracma)
+gauss_legendre <- function(integrando, n_pontos, a, b, ...){
+  pontos <- gaussLegendre(n_pontos, a = a, b = b)
+  integral <- sum(pontos$w*integrando(pontos$x,...))
+  return(integral)
+}
+fx <- function(x) {x^3 + 3*x - 1}
+area <- gauss_legendre(integrando = fx, a = 0, b = 2, n_pontos = 250)
+```
+
+#### Exercício 8.3.
+* $\int_{-150}^{150} \exp \left\{ -\frac{(x - 5)^2}{2}   \right \} dx$.
+``` {r}
+require(pracma)
+gauss_legendre <- function(integrando, n_pontos, a, b, ...){
+  pontos <- gaussLegendre(n_pontos, a = a, b = b)
+  integral <- sum(pontos$w*integrando(pontos$x,...))
+  return(integral)
+}
+fx <- function(x) {exp( - ((x - 5)^2)/2 )}
+area <- gauss_legendre(integrando = fx, a = -150, b = 150, n_pontos = 250)
+```
+
+#### Exercício 8.4.
+* $\int_{0}^{100} \exp \left\{ -\frac{|x - 5|}{2}   \right \} dx$.
+``` {r}
+require(pracma)
+gauss_legendre <- function(integrando, n_pontos, a, b, ...){
+  pontos <- gaussLegendre(n_pontos, a = a, b = b)
+  integral <- sum(pontos$w*integrando(pontos$x,...))
+  return(integral)
+}
+fx <- function(x) {exp(-abs(x - 5)/2 )}
+area <- gauss_legendre(integrando = fx, a = 0, b = 150, n_pontos = 250)
+```
+
+#### Exercício 8.5.
+* $\int_{1}^{2}  \left(\frac{1}{x} + \frac{1}{x^3}   \right \} dx$.
+``` {r}
+require(pracma)
+gauss_legendre <- function(integrando, n_pontos, a, b, ...){
+  pontos <- gaussLegendre(n_pontos, a = a, b = b)
+  integral <- sum(pontos$w*integrando(pontos$x,...))
+  return(integral)
+}
+fx <- function(x) {(1/x + 1/x^3)}
+area <- gauss_legendre(integrando = fx, a = 1, b = 2, n_pontos = 250)
+```
+
+## Otimização numérica
+
+### Exercício 9.
+* Para cada uma das funções abaixo encontre o ponto de minimo/máximo local de acordo com o algoritmo solicitado. Para usar a correção automática o valor da função no ponto de minimo/máximo deve ser atribuído a um objeto chamado `valor`.
+
+#### Exercício 9.1.
+* $f(\mu; \boldsymbol{y}) = \sum_{i=1}^n (y_i - \mu)^2$. Fixe $y_i = 2.09;-1.32;-0.20;0.05;-0.07$. Use o algoritmo de Nelder-Mead.
+``` {r}
+# Dados do exercício
+y <- c(2.09, -1.32, -0.20, 0.05, -0.07)
+f <- function(mu) {sum( (y - mu)^2) }
+f <- Vectorize(FUN = f, vectorize.args = "mu")
+temp <- optim(par = c(2), fn = f, method = "Nelder-Mead")
+valor <- temp$value
+```
+
+#### Exercício 9.2.
+* $f(\mu; \boldsymbol{y}) = \sum_{i=1}^n 2 \left ( y_i \log \frac{y_i}{\mu} + \mu - y_i \right )$. Fixe $y_i = 7;4;4;6;5$. Use o método `BFGS`.
+``` {r}
+# Dados do exercício
+y <- c(7, 4, 4, 6, 5)
+f <- function(mu) {sum(2*(y*log(y/mu) + mu - y) )}
+f <- Vectorize(FUN = f, vectorize.args = "mu")
+temp <- optim(par = c(2), fn = f, method = "BFGS")
+valor <- temp$value
+```
+
+#### Exercício 9.3.
+*  $f(\mu; \boldsymbol{y}) = \sum_{i=1}^n 2 \left ( \frac{y_i}{\mu} - \log \frac{y_i}{\mu} - 1 \right )$. Fixe $y_i = 2.35;0.16;0.56;1.05;0.51$. Use o algoritmo gradiente conjugado.
+``` {r}
+# Dados do exercício
+y <- c(2.35, 0.16, 0.56, 1.05, 0.51)
+f <- function(mu) {sum(2*((y/mu) - log(y/mu) -1 ))}
+f <- Vectorize(FUN = f, vectorize.args = "mu")
+temp <- optim(par = c(2), fn = f, method = "CG")
+valor <- temp$value
+```
+
+#### Exercício 9.4.
+* $f(\mu; \boldsymbol{y}) = \sum_{i=1}^n 2 \left ( y_i \log \frac{y_i}{\mu} + (1- y_i) \log \frac{1-y_i}{1-\mu} \right )$. Fixe $y_i = 1;0;0;1;1$. Neste exemplo use o método `L-BFGS-B` que é uma modificação do algoritmo `BFGS`que permite controlar o espaço de busca. Fixe o intervalo de busca como $(0,1)$.
+``` {r}
+# Dados do exercício
+y <- c(1,0,0,1,1)
+f <- function(mu) {
+  temp <- c()
+  for(i in 1:length(y)) {
+if(y[i] == 1) { temp[i] <- y[i]*log(y[i]/mu) }
+if(y[i] == 0) { temp[i] <- (1-y[i])*log( (1-y[i])/(1-mu) ) }
+  }
+  return(sum(2*temp))
+}
+f <- Vectorize(FUN = f, vectorize.args = "mu")
+temp <- optim(par = c(2), fn = f, method = "L-BFGS-B", lower = 1e-10, upper = 0.99999)
+valor <- temp$value
+```
+
+#### Exercício 9.5.
+* $f(\mu; \boldsymbol{y}) = \sum_{i=1}^n 2 \left ( y_i \log \frac{y_i}{\mu} + (m + y_i) \log \frac{m + \mu}{m + y_i} \right) $. Fixe $m = 10$ e $y_i = 7;4;4;6;5$. Neste caso use o método *golden section search*.
+
+```{r}
+# Dados do exercício
+y <- c(7,4,4,6,5)
+f <- function(mu) {sum (2*( y*log(y/mu) + (10 + y)* log( (10+mu)/(10 + y) ))) }
+f <- Vectorize(FUN = f, vectorize.args = "mu")
+optim(par = 0.5, fn = f, method = "Brent", lower = 0, upper = 20)
+```
